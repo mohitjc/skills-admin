@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { ToastsStore } from 'react-toasts';
 import { logout } from '../../../actions/user';
@@ -8,6 +8,7 @@ import loader from '../../../methods/loader';
 import methodModel from '../../../methods/methods';
 
 const ChangePassword = p => {
+  const user=useSelector(state=>state.user)
   const dispatch = useDispatch()
   const history = useHistory()
   const [form, setForm] = useState({ confirmPassword: '', currentPassword: '', newPassword: '' })
@@ -29,7 +30,12 @@ const ChangePassword = p => {
     if (invalid) return
 
     loader(true)
-    ApiClient.put('api/user/change/password', form).then(res => {
+    let payload={
+      currentPassword:form.currentPassword,
+      newPassword:form.newPassword,
+      userId:user._id
+    }
+    ApiClient.put('api/user/change/password', payload).then(res => {
       if (res.success) {
         // ToastsStore.success(res.message)
         dispatch(logout())

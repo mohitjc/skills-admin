@@ -67,12 +67,12 @@ const Users = (p) => {
   const getData = (p = {}) => {
     setLoader(true);
     let filter = { ...filters, ...p };
-    let url = 'api/admin/users';
+    let url = 'api/users/admin';
     if (filter.role) url = 'api/users/listing';
     ApiClient.get(url, filter).then((res) => {
       if (res.success) {
         setData(res.data);
-        setTotal(res.total);
+        setTotal(res?.total||0);
       }
       setLoader(false);
     });
@@ -236,7 +236,7 @@ const Users = (p) => {
   };
 
   const isAllow = (key = '') => {
-    let permissions = user.role?.permissions[0];
+    let permissions = user.role?.permissions?.[0];
     let value = permissions?.[key];
     if (user?.role?._id == environment.adminRoleId) value = true;
     return value;

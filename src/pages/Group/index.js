@@ -131,7 +131,7 @@ const Group = (p) => {
     }
 
     const isAllow = (key = '') => {
-        let permissions = user.role?.permissions[0]
+        let permissions = user.role?.permissions?.[0]
         let value = permissions?.[key]
         if (user?.role?._id == environment.adminRoleId) value = true
         // return value
