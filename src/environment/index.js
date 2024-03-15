@@ -1,8 +1,8 @@
 let host = document.location.host;
-let apiUrl ='http://portal.jcsoftwaresolution.in:6068/'
+let apiUrl ='https://skillprobackend.azurewebsites.net/'
 if(host.includes('localhost')){
-  apiUrl='http://portal.jcsoftwaresolution.in:6068/'
-  // apiUrl='https://app2api.dazhboards.com/'
+  // apiUrl='http://portal.jcsoftwaresolution.in:6068/'
+  apiUrl='https://skillprobackend.azurewebsites.net/'
 }
 
 const environment = {

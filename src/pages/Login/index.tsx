@@ -44,7 +44,7 @@ const Login = () => {
       password
     };
     loader(true)
-    ApiClient.post('api/admin/login', data).then(res => {
+    ApiClient.post('api/login/admin', data).then(res => {
       loader(false)
       if (res.success == true) {
         if (remember) {
