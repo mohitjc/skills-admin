@@ -52,7 +52,7 @@ const AddEditUser = () => {
         }
         if (value.id) {
             method = 'put'
-            url = 'api/user/profile'
+            url = 'api/user/detail'
         } else {
             delete value.id
         }
@@ -87,7 +87,7 @@ const AddEditUser = () => {
     const getRoles = () => {
         ApiClient.get('api/roles/listing', { status: 'active' }).then(res => {
             if (res.success) {
-                let data = res.result
+                let data = res.data
                 data = data.filter(itm => itm.id != environment.userRoleId)
                 setRoles(data)
             }
@@ -119,7 +119,7 @@ const AddEditUser = () => {
 
         if (id) {
             loader(true)
-            ApiClient.get("api/user/profile", { id }).then(res => {
+            ApiClient.get("api/user/detail", { id }).then(res => {
                 if (res.success) {
                     let value = res.data
                     setDetail(value)
@@ -128,7 +128,7 @@ const AddEditUser = () => {
                     oarr.map(itm => {
                         payload[itm] = value[itm] || ''
                     })
-                    payload.role = value.role._id
+                    // payload.role = value.role._id
                     payload.id = id
                     setform({ ...payload })
                     images.image = payload?.image

@@ -14,7 +14,7 @@ const RoleDetail = (p) => {
     const [data, setData] = useState()
     const getDetail = (did) => {
         loader(true)
-        ApiClient.get(`api/role/detail`, { id: did }).then(res => {
+        ApiClient.get(`api/role`, { id: did }).then(res => {
             if (res.success) {
                 setData(res.data)
             }

@@ -53,7 +53,7 @@ const AddEdit = () => {
         }
         if (value.id) {
             method = 'put'
-            url = 'api/user/profile'
+            url = 'api/user/detail'
         } else {
             delete value.id
         }
@@ -83,7 +83,7 @@ const AddEdit = () => {
     const getRoles=()=>{
         ApiClient.get('api/roles/listing',{status:'active'}).then(res=>{
             if(res.success){
-                setRoles(res.result)
+                setRoles(res.data)
             }
         })
     }
@@ -118,7 +118,7 @@ const AddEdit = () => {
        
         if (id) {
             loader(true)
-            ApiClient.get("api/user/profile", { id }).then(res => {
+            ApiClient.get("api/user/detail", { id }).then(res => {
                 if (res.success) {
                     let value=res.data
                     setDetail(value)
@@ -127,7 +127,7 @@ const AddEdit = () => {
                     oarr.map(itm => {
                         payload[itm] = value[itm] || ''
                     })
-                    payload.role=value.role._id
+                    // payload.role=value.role._id
                     payload.password=''
                     payload.id=id
                     let multiAddress=value.multiAddress||[]

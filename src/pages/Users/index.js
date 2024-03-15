@@ -86,7 +86,7 @@ const Users = (p) => {
   const getRoles = () => {
     ApiClient.get('api/roles/listing', { status: 'active' }).then((res) => {
       if (res.success) {
-        setRoles(res.result);
+        setRoles(res.data);
       }
     });
   };

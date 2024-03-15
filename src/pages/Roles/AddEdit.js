@@ -63,7 +63,7 @@ const AddEditRole = () => {
   useEffect(() => {
     if (id) {
       loader(true);
-      ApiClient.get('api/role/detail', { id }).then((res) => {
+      ApiClient.get('api/role', { id }).then((res) => {
         if (res.success) {
           let value = res.data;
           let payload = roleType;

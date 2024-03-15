@@ -15,7 +15,7 @@ const Profile = () => {
 
   const gallaryData = () => {
     loader(true)
-    ApiClient.get(`api/user/profile`, { id: user._id }).then(res => {
+    ApiClient.get(`api/user/detail`, { id: user._id }).then(res => {
       if (res.success) {
         setData(res.data)
       }

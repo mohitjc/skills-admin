@@ -17,7 +17,7 @@ const LogoSetting = (p) => {
     // if (invalid && (!addressSellected && form.address && tab == 'info') || timezoneLoader) return
     let value = { ...form };
 
-    ApiClient.put('api/user/profile', value).then((res) => {
+    ApiClient.put('api/user/detail', value).then((res) => {
       console.log(res);
       if (res.success) {
         let uUser = { ...user, ...value };

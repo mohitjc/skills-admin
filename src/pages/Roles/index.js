@@ -86,7 +86,7 @@ const Roles = (p) => {
         let filter = { ...filters, ...p }
         ApiClient.get('api/roles/listing', filter).then(res => {
             if (res.success) {
-                setData(res.result.map(itm => {
+                setData(res.data.map(itm => {
                     itm.id = itm._id
                     return itm
                 }))
