@@ -32,12 +32,13 @@ const AddEdit = () => {
         let url = 'api/group'
         let value = {
             ...form,
-            ...images
+            ...images,
         }
         if (value.id) {
             method = 'put'
-            url = 'api/group/update'
+            url = 'api/group'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 
@@ -62,6 +63,7 @@ const AddEdit = () => {
                     Object.keys(payload).map(itm => {
                         payload[itm] = value[itm]
                     })
+                    payload.id=id
                     setform({
                         ...payload
                     })
