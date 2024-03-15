@@ -83,7 +83,7 @@ const AddEdit = () => {
     const getRoles=()=>{
         ApiClient.get('api/roles/listing',{status:'active'}).then(res=>{
             if(res.success){
-                setRoles(res.data)
+                setRoles(res.result)
             }
         })
     }

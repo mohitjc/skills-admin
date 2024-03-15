@@ -86,7 +86,7 @@ const Roles = (p) => {
         let filter = { ...filters, ...p }
         ApiClient.get('api/roles/listing', filter).then(res => {
             if (res.success) {
-                setData(res.data.map(itm => {
+                setData(res.result.map(itm => {
                     itm.id = itm._id
                     return itm
                 }))
@@ -212,9 +212,9 @@ const Roles = (p) => {
 
 
     const isAllow = (key = '') => {
-        let permissions = user.role?.permissions?.[0]
+        let permissions = user.roleDetail?.permissions?.[0]
         let value = permissions?.[key]
-        if (user?.role?._id == environment.adminRoleId) value = true
+        if (user?.roleDetail?._id == environment.adminRoleId) value = true
         return value
     }
 

@@ -53,7 +53,7 @@ const Html = ({ isOpen, toggle, searchHandle, search, user, isOpen1, searchChang
                 <img alt="image" src={methodModel.userImg(user.image)} className="h-12 w-12 rounded-full object-cover" />
                 <div className="ml-2 text-left">
                   <b>{user.fullName}</b>
-                  <p className="grayCls mb-0 text-capitalize">{user.role?.name}</p>
+                  <p className="grayCls mb-0 text-capitalize">{user.roleDetail?.name}</p>
                 </div>
               </div>
               <i className="fa fa-angle-down top-1 relative h-5 w-5 text-gray-400" aria-hidden="true" />

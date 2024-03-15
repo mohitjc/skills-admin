@@ -87,7 +87,7 @@ const AddEditUser = () => {
     const getRoles = () => {
         ApiClient.get('api/roles/listing', { status: 'active' }).then(res => {
             if (res.success) {
-                let data = res.data
+                let data = res.result
                 data = data.filter(itm => itm.id != environment.userRoleId)
                 setRoles(data)
             }

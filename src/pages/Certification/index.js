@@ -131,9 +131,9 @@ const Certification = (p) => {
     }
 
     const isAllow = (key = '') => {
-        let permissions = user.role?.permissions?.[0]
+        let permissions = user.roleDetail?.permissions?.[0]
         let value = permissions?.[key]
-        if (user?.role?._id == environment.adminRoleId) value = true
+        if (user?.roleDetail?._id == environment.adminRoleId) value = true
         // return value
         return true
     }
