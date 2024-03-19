@@ -77,8 +77,8 @@ const Html = ({
         <Layout>
             <div className="flex justify-between items-center">
                 <div>
-                    <h3 className="text-2xl font-semibold text-[#111827]"> Skill Roles</h3>
-                    <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Skill Role</p>
+                    <h3 className="text-2xl font-semibold text-[#111827]"> Customer Roles</h3>
+                    <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Customer Role</p>
                 </div>
 
                 <a id='downloadFile'></a>
@@ -92,7 +92,7 @@ const Html = ({
 
                     {isAllow('addTypes') ?
                         <Link className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to="/skill-roles/add">
-                            <FiPlus className="text-xl text-white" />   Add Skill Role
+                            <FiPlus className="text-xl text-white" />   Add Customer Role
                         </Link>
                         : <></>}
                 </div>

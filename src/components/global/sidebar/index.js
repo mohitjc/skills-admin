@@ -16,6 +16,7 @@ const Sidebar = ({ isOpen }) => {
     geo: ['continents', 'countries', 'regions', 'cities'],
     dynamicPricing: ['dynamicprice'],
     skills: ['skills','skill-roles'],
+    customer: ['customer','skill-roles'],
   }
 
   const ListItemLink = ({ to, type = 'link', disabled = false, ...rest }) => {

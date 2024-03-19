@@ -142,8 +142,8 @@ const AddEdit = () => {
             })
         }
         getRoles()
-        getCurrency()
-        getCategories()
+        // getCurrency()
+        // getCategories()
     }, [id])
 
     const addressResult = async (e) => {

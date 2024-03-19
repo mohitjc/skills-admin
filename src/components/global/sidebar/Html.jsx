@@ -92,8 +92,20 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
     {
       name:'Customers',
       icon:<RiPresentationLine className="text-[#7b68ee] shrink-0 text-lg" />,
-      url:'/customer',
-      key:'customer',
+      key:'customer,skill-roles',
+      tab:'customer',
+      menu:[
+        {
+          name:'Customer Roles',
+          url:'/skill-roles',
+          key:'skillRoles'
+        },
+        {
+          name:'Customers',
+          url:'/customer',
+          key:'customer'
+        },
+      ]
     },
     {
       name:'Participant Type',
@@ -104,20 +116,8 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
     {
       name:'Skills',
       icon:<RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
-      key:'skills,skill-roles',
-      tab:'skills',
-      menu:[
-        {
-          name:'Skill Roles',
-          url:'/skill-roles',
-          key:'skillRoles'
-        },
-        {
-          name:'Skills',
-          url:'/skills',
-          key:'skills'
-        },
-      ]
+      key:'skills',
+      url:'/skills',
     },
     {
       name:'Group',

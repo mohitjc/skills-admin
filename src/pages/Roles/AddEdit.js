@@ -78,7 +78,7 @@ const AddEditRole = () => {
           });
           console.log('payload', payload);
           console.log('permissions', permissions);
-
+          payload.id=id
           setform({
             ...payload,
           });
