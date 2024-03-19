@@ -100,7 +100,7 @@ const SkillsRoles = (p) => {
 
         if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
             loader(true)
-            ApiClient.put(`api/skillRole`, { id: itm.id, status }).then(res => {
+            ApiClient.put(`api/skillRole/update`, { id: itm.id, status }).then(res => {
                 if (res.success) {
                     getData()
                 }

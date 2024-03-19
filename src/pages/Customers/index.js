@@ -135,7 +135,7 @@ const Customer = (p) => {
     const deleteItem = (id) => {
         if (window.confirm("Do you want to delete this")) {
             loader(true)
-            ApiClient.delete('api/user/delete', {id: id }).then(res => {
+            ApiClient.delete('api/delete/user', {id: id }).then(res => {
                 if (res.success) {
                     // ToastsStore.success(res.message)
                     clear()

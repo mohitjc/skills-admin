@@ -33,6 +33,7 @@ const AddEdit = () => {
             method = 'put'
             url = 'api/skillRole/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 
@@ -57,6 +58,7 @@ const AddEdit = () => {
                     Object.keys(payload).map(itm => {
                         payload[itm] = value[itm]
                     })
+                    payload.id=id
                     setform({
                         ...payload
                     })
