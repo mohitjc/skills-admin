@@ -39,7 +39,7 @@ const AddEditCategory = () => {
 
         if (invalid) return
         let method = 'post'
-        let url = 'api/category'
+        let url = 'api/categorie'
         let value = {
             ...form,
             ...images,
@@ -50,8 +50,9 @@ const AddEditCategory = () => {
         }
         if (value.id) {
             method = 'put'
-            url = 'api/category/update'
+            url = 'api/categorie/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 
@@ -77,7 +78,7 @@ const AddEditCategory = () => {
     }
 
     const getCategory = (t = type) => {
-        ApiClient.get("api/categories/dropdown", { page: 1, count: 100, catType: t, status: 'active' }).then(res => {
+        ApiClient.get("api/categorie/list", { page: 1, count: 100, catType: t, status: 'active' }).then(res => {
             if (res.success) {
                 setCategories(res.data)
             }
@@ -98,7 +99,7 @@ const AddEditCategory = () => {
     useEffect(() => {
         if (id) {
             loader(true)
-            ApiClient.get('api/category/detail', { id }).then(res => {
+            ApiClient.get('api/categorie/detail', { id }).then(res => {
                 if (res.success) {
                     let value = res.data
                     let payload = defaultvalue
@@ -108,6 +109,7 @@ const AddEditCategory = () => {
                     })
                     if (payload.parentCategory) payload.parentCategory = payload.parentCategory._id
                     // if (payload.subParentCategory) payload.subParentCategory = payload.subParentCategory._id
+                    payload.id=id
                     setform({
                         ...payload,
                         tiny_bannerOverlayBody: payload.bannerOverlayBody,

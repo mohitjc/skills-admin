@@ -102,7 +102,7 @@ const AddEditFeature = () => {
     }
 
     const getCategoires = () => {
-        ApiClient.get(`api/categories/listing`, { catType: environment.planTypeId, status: 'active' }).then(res => {
+        ApiClient.get(`api/categorie/list`, { catType: environment.planTypeId, status: 'active' }).then(res => {
             setcategories(res.data)
         })
     }

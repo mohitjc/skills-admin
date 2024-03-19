@@ -44,8 +44,8 @@ const UserDetail = (p) => {
 
     useEffect(() => {
         getDetail(userId ? userId : id)
-        getPlanDetails()
-        getInvoices()
+        // getPlanDetails()
+        // getInvoices()
     }, [id, userId])
 
     const cancelPlan = () => {
@@ -109,7 +109,7 @@ const UserDetail = (p) => {
                         </div>
 
                     
-                        <h3 className='mt-3 mb-6 py-2 bg-gray-300 px-3'>Plan Details {planDetails?.isActive ? <i className='fa fa-trash text-danger ml-2' onClick={e => cancelPlan()}></i> : null}</h3>
+                        {/* <h3 className='mt-3 mb-6 py-2 bg-gray-300 px-3'>Plan Details {planDetails?.isActive ? <i className='fa fa-trash text-danger ml-2' onClick={e => cancelPlan()}></i> : null}</h3>
                         <div className='grid grid-cols-12 gap-4'>
                             <div className='col-span-12 md:col-span-6'>
                                 <label className="profileheddingcls">Plan Active</label>
@@ -157,9 +157,9 @@ const UserDetail = (p) => {
                                 :
                                 null
                             }
-                        </div>
+                        </div> */}
 
-                        <h3 className='mt-3 mb-6 py-2 bg-gray-300 px-3'>Plan Invoices</h3>
+                        {/* <h3 className='mt-3 mb-6 py-2 bg-gray-300 px-3'>Plan Invoices</h3>
                         <table className='table table-striped'>
                             <thead>
                                 <tr>
@@ -182,7 +182,7 @@ const UserDetail = (p) => {
                         </table>
                         {invoices.length ? <></> : <>
                             <div className='text-center mt-3'>No Data</div>
-                        </>}
+                        </>} */}
 
 
                     </div>

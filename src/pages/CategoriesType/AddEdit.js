@@ -33,6 +33,7 @@ const AddEdit = () => {
             method = 'put'
             url = 'api/categorytype/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

@@ -26,7 +26,6 @@ const Categories = (p) => {
     const [loaging, setLoader] = useState(true)
     const [tableCols, setTableCols] = useState([])
     const [form, setform] = useState(CategoryType)
-    const [categories, setCategories] = useState([])
     const [cattype, setcattype] = useState()
     const types = categoryType.list
     const history = useHistory()
@@ -50,7 +49,6 @@ const Categories = (p) => {
             let catType=localStorage.getItem('catType') || ''
             setFilter({ ...filters, search: searchState.data, catType: type ? type : catType })
             getData({ search: searchState.data, page: 1, catType: type ? type : catType })
-            getCategory()
         }
     }, [searchState, type])
 
@@ -104,7 +102,7 @@ const Categories = (p) => {
     const getData = (p = {}) => {
         setLoader(true)
         let filter = { ...filters, ...p }
-        ApiClient.get('api/categorie_list', filter).then(res => {
+        ApiClient.get('api/categorie/list', filter).then(res => {
             if (res.success) {
                 setData(res.data.map(itm => {
                     itm.id = itm._id
@@ -125,7 +123,7 @@ const Categories = (p) => {
     const deleteItem = (id) => {
         if (window.confirm("Do you want to delete this")) {
             loader(true)
-            ApiClient.delete('api/category/delete', { id: id }).then(res => {
+            ApiClient.delete('api/categorie', { id: id }).then(res => {
                 if (res.success) {
                     // ToastsStore.success(res.message)
                     clear()
@@ -192,7 +190,7 @@ const Categories = (p) => {
 
         if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
             loader(true)
-            ApiClient.put(`api/category/status/change`, { id: itm.id, status }).then(res => {
+            ApiClient.put(`api/categorie/change-status`, { id: itm.id, status }).then(res => {
                 if (res.success) {
                     getData()
                 }
@@ -215,13 +213,6 @@ const Categories = (p) => {
         setTab(tab)
     }
 
-    const getCategory = () => {
-        ApiClient.get("api/categories/dropdown", { page: 1, count: 100, catType: type }).then(res => {
-            if (res.success) {
-                setCategories(res.data)
-            }
-        })
-    }
 
     const add = () => {
         let url = "/categories/add"
@@ -339,7 +330,6 @@ const Categories = (p) => {
         statuschange={statuschange}
         add={add}
         exportfun={exportfun}
-        categories={categories}
         ChangeCategory={ChangeCategory}
         colClick={colClick}
         tabChange={tabChange}

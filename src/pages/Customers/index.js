@@ -33,8 +33,8 @@ const Customer = (p) => {
             cols.push(userTableModel.list[i])
         }
         setTableCols(cols)
-        getCountry()
-        getPlans()
+        // getCountry()
+        // getPlans()
     }, [])
 
     const sortClass=(key)=>{

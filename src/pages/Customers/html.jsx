@@ -85,19 +85,6 @@ const Html = ({
                             {/* <div className='w-80'>
                                 <SelectDropdown
                                     isSingle={true}
-                                    id="statusDropdown"
-                                    displayValue="name"
-                                    placeholder='All Countries'
-                                    intialValue={filters.country}
-                                    theme='search'
-                                    result={e => filter({ country: e.value })}
-                                    options={countries}
-                                />
-
-                            </div> */}
-                            <div className='w-80'>
-                                <SelectDropdown
-                                    isSingle={true}
                                     id="plansDropdown"
                                     displayValue="name"
                                     placeholder='All Plans'
@@ -107,7 +94,7 @@ const Html = ({
                                     options={plans}
                                 />
 
-                            </div>
+                            </div> */}
                             <div className='w-80'>
                                 <SelectDropdown
                                     isSingle={true}
@@ -128,7 +115,7 @@ const Html = ({
 
                         </div>
 
-                        <div className='flex '>
+                        {/* <div className='flex '>
                             <div className='w-80'>
                                 <DateRangePicker
                                     value={filters.startDate ? { startDate: new Date(filters.startDate), endDate: new Date(filters.endDate) } : { startDate: '', endDate: '' }}
@@ -136,20 +123,8 @@ const Html = ({
                                     onChange={e => blockDateChange(e)}
                                 />
                             </div>
-                        </div>
-                    </div>
-
-
-                    {/* <div className="dropdown addDropdown">
-                            <button className="btn btn-primary dropdown-toggle removeBg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {filters.status ? filters.status == "deactive" ? "Inactive" : filters.status : 'All Status'}
-                            </button>
-                            <div className="dropdown-menu shadow bg_hover" aria-labelledby="dropdownMenuButton">
-                                <a className={filters.status == '' ? 'dropdown-item active' : 'dropdown-item'} onClick={() => ChangeStatus("")}>All Status</a>
-                                <a className={filters.status == 'active' ? 'dropdown-item active' : 'dropdown-item'} onClick={() => ChangeStatus("active")} >Active</a>
-                                <a className={filters.status == 'Inactive' ? 'dropdown-item active' : 'dropdown-item'} onClick={() => ChangeStatus("deactive")} >Inactive</a>
-                            </div>
                         </div> */}
+                    </div>
 
                 </div>
 
@@ -162,12 +137,10 @@ const Html = ({
                                     <thead className='border-b border-[#EAECF0]'>
                                         <tr className='border-b border-[#EAECF0]'>
                                             <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3' onClick={e => sorting('fullName')}>Name<span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Start Date</th>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >End Date</th>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Current Plan</th>
+                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Created At</th>
+                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Updated At</th>
+                                            {/* <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Current Plan</th> */}
                                             <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Status</th>
-                                            {/* <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3'  onClick={e=>sorting('companyAddress')}>Compnay Address <i className={sortClass('companyAddress')} /></th> */}
-                                            {/* <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3' onClick={e=>sorting('Website')}>Website <i className={sortClass('Website')} /></th> */}
                                             <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Action</th>
                                         </tr>
                                     </thead>
@@ -190,10 +163,19 @@ const Html = ({
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.plan?.createdAt)}</td>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.plan?.validUpTo)}</td>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.plan?.planId?.name || '--'}</td>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.plan?.on_trial ? 'Trial' : itm?.plan?.status||'No Plan'}</td>
+                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.createdAt)}</td>
+                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.updatedAt)}</td>
+                                                {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.plan?.planId?.name || '--'}</td> */}
+                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
+                                                <div onClick={() => statusChange(itm)}>
+                                                    <Tooltip placement="top" title="Active / Inactive">
+                                                        <span className={`${itm.status == 'deactive' ? 'bg-[#EEE] text-[#3C3E49A3]' : 'bg-[#0fac80] text-white'} text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] !rounded`}>
+                                                            {itm.status == 'deactive' ? 'Inactive' : 'Active'}
+                                                        </span>
+                                                    </Tooltip>
+                                                </div>
+
+                                                </td>
                                                 {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.companyAddress || '--'}</td> */}
                                                 {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.website||'--'}</td> */}
                                                 <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>

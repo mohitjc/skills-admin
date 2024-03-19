@@ -22,10 +22,10 @@ const AddEditCurrency = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!form?.countryFlagImage) {
-            toast.error('Add Country Flag')
-            return
-        }
+        // if (!form?.countryFlagImage) {
+        //     toast.error('Add Country Flag')
+        //     return
+        // }
         setSubmitted(true)
         let invalid = methodModel.getFormError(formValidation, form)
         if (invalid) return

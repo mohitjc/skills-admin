@@ -204,7 +204,7 @@ const Features = (p) => {
     }
 
     const getCategoires = () => {
-        ApiClient.get(`api/categories/listing`, { catType: environment.planTypeId }).then(res => {
+        ApiClient.get(`api/categorie/list`, { catType: environment.planTypeId }).then(res => {
             setcategories(res.data)
         })
     }
