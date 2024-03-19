@@ -2,58 +2,30 @@ import React, { useEffect, useState } from "react";
 import methodModel from "../../../methods/methods";
 import Html from "./html";
 
-const MultiSelectDropdown = ({intialValue,options,isSingle=false,result,displayValue='name',id}) => {
+const MultiSelectDropdown = ({intialValue,options,result,displayValue='name',id}) => {
 
     const [selectedValues,setSelectedValues]=useState([])
 
-    const handleChange=(e,type)=>{
+    const handleChange=(e)=>{
         let value=[]
-       
-        if(isSingle){
-            let length = e.length
-            if(length){
-                value=e[length-1].id
-            }else{
-                value=''
-            }
-        }else{
-            value=e.map(itm=>{
-                return itm.id
-            })
-        }
+        value=e.map(itm=>{
+            return itm.value
+        })
         result({event:"value",value:value})
     }
 
     useEffect(()=>{
-        if(isSingle){
-            if(intialValue?.length){
-                console.log("intialValue",intialValue)
-                let ext=methodModel.find(options,intialValue,'id')
-                if(ext){
-                    setSelectedValues([ext])
-                }else{
-                    setSelectedValues([{
-                        id:intialValue,
-                        [displayValue]:intialValue
-                       }])
-                }
-            }else{
-                setSelectedValues([])
-            }
-           
-        }else{
-            let value=[]
+        let value=[]
             if(intialValue?.length && options?.length){
                 value=intialValue?.map(itm=>{
                     return {
                         ...methodModel.find(options,itm,'id'),
-                        id:methodModel.find(options,itm,'id')?.id || '',
-                        [displayValue]:methodModel.find(options,itm,'id')?.[displayValue] || 'Not Exist'
+                        value:methodModel.find(options,itm,'id')?.id || '',
+                        label:methodModel.find(options,itm,'id')?.[displayValue] || 'Not Exist'
                     }
                 })
             }
             setSelectedValues(value)
-        }
     },[intialValue,options])
 
     return <>

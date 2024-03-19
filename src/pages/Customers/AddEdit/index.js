@@ -12,7 +12,35 @@ import environment from "../../../environment";
 const AddEdit = () => {
     const { role, id } = useParams()
     const [images, setImages] = useState({ image: '', logo: '' });
-    const [form, setform] = useState({id:id, role: environment.userRoleId,password:'',confirmPassword:'' ,email:'', mobileNo:'',fullName:'',multiAddress:[{value:''}]})
+    const [form, setform] = useState({
+        id:id,
+         role: environment.userRoleId,
+         password:'',
+         confirmPassword:'',
+         email:'', 
+         mobileNo:'',
+         fullName:'',
+         multiAddress:[{id:String(new Date().getTime())}],
+         profession:'',
+         company:'',
+         companyUrl:'',
+         address:'',
+         address2:'',
+         state:'',
+         postal_code:'',
+         city:'',
+         timezone:'',
+         customerRole:'',
+         adminComment:'',
+         linkedInUrl:'',
+         certification:'',
+         skills:[],
+         networkingGroup:'',
+         category:'',
+         subCategory:'',
+         aboutUs:'',
+
+        })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)
     const history = useHistory()
@@ -27,6 +55,9 @@ const AddEdit = () => {
     const user = useSelector((state) => state.user);
     const formValidation = [
         { key: 'mobileNo', minLength: 10 }, 
+        { key: 'customerRole', required: true },
+        { key: 'certification', required: true },
+        { key: 'state', required: true },
         { key: 'password', minLength: 8 },
         { key: 'confirmPassword', minLength: 8, confirmMatch: ['confirmPassword', 'password'] }
     ]
@@ -81,7 +112,7 @@ const AddEdit = () => {
 
 
     const getRoles=()=>{
-        ApiClient.get('api/roles/listing',{status:'active'}).then(res=>{
+        ApiClient.get('api/skillRole/list',{status:'active'}).then(res=>{
             if(res.success){
                 setRoles(res.data)
             }
@@ -90,6 +121,7 @@ const AddEdit = () => {
 
 
     const emailCheck=(email)=>{
+        return
         let isValid=methodModel.emailvalidation(email)
         if(isValid){
             setEmailLoader(true)
@@ -131,8 +163,7 @@ const AddEdit = () => {
                     payload.password=''
                     payload.id=id
                     let multiAddress=value.multiAddress||[]
-                    console.log("multiAddress",multiAddress)
-                    payload.multiAddress=multiAddress.length?multiAddress:[{value:''}]
+                    payload.multiAddress=multiAddress.length?multiAddress:[{id:String(new Date().getTime())}]
                     setform({ ...payload })
                     images.image = payload?.image
                     images.logo = payload?.logo

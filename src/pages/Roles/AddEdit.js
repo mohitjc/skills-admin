@@ -45,8 +45,9 @@ const AddEditRole = () => {
     };
     if (value.id) {
       method = 'put';
-      url = 'api/role/update';
+      url = 'api/role';
     } else {
+      value.addedBy=user._id
       delete value.id;
     }
 

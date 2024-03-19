@@ -96,6 +96,7 @@ const AddEditUser = () => {
 
 
     const emailCheck = (email) => {
+        return
         let isValid = methodModel.emailvalidation(email)
         if (isValid) {
             setEmailLoader(true)

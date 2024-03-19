@@ -104,7 +104,7 @@ const Categories = (p) => {
     const getData = (p = {}) => {
         setLoader(true)
         let filter = { ...filters, ...p }
-        ApiClient.get('api/categories/listing', filter).then(res => {
+        ApiClient.get('api/categorie_list', filter).then(res => {
             if (res.success) {
                 setData(res.data.map(itm => {
                     itm.id = itm._id

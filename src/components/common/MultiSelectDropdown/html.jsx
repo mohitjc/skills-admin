@@ -1,20 +1,19 @@
 import React from "react";
 import './style.scss';
-import Multiselect from 'multiselect-react-dropdown';
+import Select from "react-select";
 
 const Html = ({ options,selectedValues,handleChange,displayValue,id}) => {
     return <>
         <div className="selectDropdown">
-            <Multiselect
-                options={options}
-                singleSelect={false}
-                selectedValues={selectedValues}
-                onSelect={e => handleChange(e,'select')}
-                onRemove={e => handleChange(e,'remove')}
-                displayValue={displayValue}
-                id={id}
-                showArrow
-            />
+             <Select
+    defaultValue={displayValue}
+    isMulti
+    value={selectedValues||[]}
+    options={options?.map(itm => { return { value: itm.id, label: itm[displayValue] } }) || []}
+    className="basic-multi-select"
+    classNamePrefix="select"
+    onChange={e => handleChange(e)}
+  />
         </div>
     </>
 }
