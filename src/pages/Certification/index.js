@@ -100,7 +100,7 @@ const Certification = (p) => {
 
         if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
             loader(true)
-            ApiClient.put(`api/certificate`, { id: itm.id, status }).then(res => {
+            ApiClient.put(`api/certificate/change-status`, { id: itm.id, status }).then(res => {
                 if (res.success) {
                     getData()
                 }

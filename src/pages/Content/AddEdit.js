@@ -62,6 +62,7 @@ const AddEdit = () => {
                     Object.keys(payload).map(itm => {
                         payload[itm] = value[itm]
                     })
+                    payload.id=id
                     setform({
                         ...payload
                     })
