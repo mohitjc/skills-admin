@@ -25,7 +25,6 @@ const Currency = (p) => {
     const [form, setform] = useState()
     const history = useHistory()
     const [search, setSearch] = useState('')
-    const [allcountry, setallcountry] = useState([])
     const [checkedItems,setCheckedItems]=useState([])
 
     useEffect(() => {
@@ -34,7 +33,6 @@ const Currency = (p) => {
             cols.push(userTableModel.Country[i])
         }
         setTableCols(cols)
-        getCountries()
         getapplied()
     }, [])
 
@@ -238,14 +236,7 @@ const Currency = (p) => {
           link.download = `Currencies.xlsx`;
           link.click();
     }
-    const getCountries=()=>{
-        ApiClient.get(`api/country/listing?page=1&count=50`).then(res=>{
-            if(res.success){
-                setallcountry(res.data)
-                console.log(res.data,"Countries");
-            }
-        })
-    }
+
 
     const getapplied = () => {
         ApiClient.get(`api/currency/applied`).then((res) => {
@@ -312,7 +303,6 @@ const Currency = (p) => {
         searchHandle={searchHandle}
         reset={reset}
         search={search}
-        allcountry={allcountry}
     />
     </>;
 };

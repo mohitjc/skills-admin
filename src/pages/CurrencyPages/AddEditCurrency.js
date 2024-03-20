@@ -11,12 +11,11 @@ import { toast } from "react-toastify";
 import { Tooltip } from "antd";
 
 const AddEditCurrency = () => {
-    const [form, setform] = useState({ currency: '' })
+    const [form, setform] = useState({ currency: '',symbol:'',isoCode:'',countryFlagImage:'' })
     const history = useHistory()
     const [submitted, setSubmitted] = useState(false)
     const { id } = useParams()
     const user = useSelector((state) => state.user);
-    const [country, setcountry] = useState([])
     const formValidation = [
     ]
 
@@ -65,23 +64,24 @@ const AddEditCurrency = () => {
         loader(true)
         ApiClient.get(`api/currency/detail?id=${id}`).then(res => {
             if (res.success) {
-                setform(res.data)
+                let value=res.data
+                let payload = form
+                    Object.keys(payload).map(itm => {
+                        payload[itm] = value[itm]
+                    })
+                    payload.id=id
+                setform({
+                    ...payload,
+                })
             }
             loader(false)
         })
     }
 
     useEffect(() => {
-        getCountries()
+   
     }, [])
 
-    const getCountries = () => {
-        ApiClient.get(`api/country/listing?page=1&count=50`).then(res => {
-            if (res.success) {
-                setcountry(res.data)
-            }
-        })
-    }
 
     const uploadImage = (e) => {
         setform({ ...form, baseImg: e.target.value })
