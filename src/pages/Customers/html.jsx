@@ -106,8 +106,7 @@ const Html = ({
                                     result={e => filter({ planStatus: e.value })}
                                     options={[
                                         { id: 'active', name: 'Active' },
-                                        { id: 'inactive', name: 'Inactive' },
-                                        { id: 'trial', name: 'Trial' },
+                                        { id: 'deactive', name: 'Inactive' },
                                     ]}
                                 />
                             </div>

@@ -11,7 +11,7 @@ const environment = {
     planTypeId:'65ead4e65cfbfd7a03ed102f',
     userRoleId:'65eac23ceac028f4dbfb1fbc',
     adminRoleId:'65eab1d84e01e43033dc2438',
-    resellerTypeId:'64b23b7d690d1d5f7ae76102',
+    professionType:'65fa7ad79ef95c639effcf1c',
     productTypeId:'64a7d198fa039f179c0320ca'
   };
   export default environment;

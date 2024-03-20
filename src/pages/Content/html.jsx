@@ -76,9 +76,6 @@ const Html = ({
                                 </a>
                             </Tooltip>
                             : <></>}
-                        {/* {itm.id != environment.planTypeId && itm.id != environment.resellerTypeId && itm.id != environment.productTypeId && isAllow('deleteTypes') ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
-                            <BsTrash3 />
-                        </span> </Tooltip> : <></>} */}
                     </div>
                 </>
             }

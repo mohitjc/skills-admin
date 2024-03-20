@@ -232,10 +232,9 @@ const Categories = (p) => {
     }
 
     const categoriestype = () => {
-        ApiClient.get(`api/categorytype/listing`).then(res => {
+        ApiClient.get(`api/categorytype/listing`,{status:''}).then(res => {
             if (res.success) {
-                let data = res.data.filter(itm => itm.id != environment.resellerTypeId)
-                setcattype(data)
+                setcattype(res.data)
             }
         })
     }

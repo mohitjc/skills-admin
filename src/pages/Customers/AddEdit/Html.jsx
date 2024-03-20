@@ -9,6 +9,7 @@ import datepipeModel from "../../../models/datepipemodel";
 import PhoneInput from "react-phone-input-2";
 import { Tooltip } from "antd";
 import ApiClient from "../../../methods/api/apiClient";
+import environment from "../../../environment";
 
 const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
 
@@ -32,6 +33,9 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   }
 
   const [certificate, setCertificate] = useState([])
+  const [skillRoles, setSkillRoles] = useState([])
+  const [categories, setCategories] = useState([])
+  const [subcategories, setSubCategories] = useState([])
 
 
   const getCertificates = () => {
@@ -43,20 +47,45 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   }
 
   const getSkills = () => {
-    ApiClient.get('api/certificate/list', { status: 'active' }).then(res => {
+    ApiClient.get('api/certificate/list', { status: 'active',skillRole:form.customerRole }).then(res => {
       if (res.success) {
-        setCertificate(res.data)
+        setSkillRoles(res.data)
+      }
+    })
+  }
+  const getCategories = () => {
+    ApiClient.get('api/categorie/list', { status: 'active',catType:environment.professionType }).then(res => {
+      if (res.success) {
+        setCategories(res.data)
       }
     })
   }
 
+  const getSubCategories = (p={}) => {
+    ApiClient.get('api/categorie/list', { status: 'active',catType:environment.professionType,...p }).then(res => {
+      if (res.success) {
+        setSubCategories(res.data)
+      }
+    })
+  }
+  
+
   useEffect(() => {
     getCertificates()
+    getCategories()
   }, [])
 
   useEffect(() => {
-    getSkills()
+    if(form.customerRole){
+      getSkills()
+    }
   }, [form.customerRole])
+
+  useEffect(() => {
+    if(form.category){
+      getSubCategories({parentCategory:form.category})
+    }
+  }, [form.category])
 
   return <>
     <Layout>
@@ -265,7 +294,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 displayValue="name"
                 placeholder="Select Customer Role"
                 intialValue={form.customerRole}
-                result={e => { setform({ ...form, customerRole: e.value }) }}
+                result={e => { setform({ ...form, customerRole: e.value,skills:[] }) }}
                 options={roles}
                 theme="search"
               />
@@ -321,7 +350,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                     setform({ ...form, skills: e.value })
                     console.log("e", e)
                   }}
-                  options={roles}
+                  options={skillRoles}
                   theme="search"
                 />
                 {submitted && !form.skills?.length ? <div className="invalid-feedback d-block">Skills is Required</div> : <></>}
@@ -345,8 +374,8 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 displayValue="name"
                 placeholder="Select Profession Category"
                 intialValue={form.category}
-                result={e => { setform({ ...form, category: e.value }) }}
-                options={roles}
+                result={e => { setform({ ...form, category: e.value,subCategory:'' }) }}
+                options={categories}
                 theme="search"
               />
               {submitted && !form.category ? <div className="invalid-feedback d-block">Profession Category is Required</div> : <></>}
@@ -360,7 +389,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 placeholder="Select Profession Sub Category"
                 intialValue={form.subCategory}
                 result={e => { setform({ ...form, subCategory: e.value }) }}
-                options={roles}
+                options={subcategories}
                 theme="search"
               />
               {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>}
