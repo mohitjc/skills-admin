@@ -54,6 +54,7 @@ const AddEditUser = () => {
             method = 'put'
             url = 'api/user/profile'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

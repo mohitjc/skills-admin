@@ -177,6 +177,7 @@ const AddEditPlan = () => {
             url = 'api/plan/update'
             value.pricing = fpricing
         } else {
+            value.addedBy=user._id
             delete value.id
         }
         loader(true)

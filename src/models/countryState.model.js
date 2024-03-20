@@ -21274,8 +21274,8 @@ const list = [
 ]
 
 const getStates=(ciso)=>{
-    let ext=list.find(itm=>itm.iso2.toLowerCase()==ciso)
-    return ext?ext.states:[]
+    let ext=list.find(itm=>itm.iso3.toLowerCase()==ciso)
+    return ext?ext.states.map(itm=>({name:itm.name,id:itm.state_code.toLowerCase()})):[]
 }
 
 const stateIso=(cname,sname)=>{
@@ -21288,5 +21288,9 @@ const stateIso=(cname,sname)=>{
     return value
 }
 
-const countryStateModel = { list,getStates ,stateIso}
+const countryStateModel = { 
+    list:list.map(itm=>({name:itm.name,id:itm.iso3.toLowerCase()})),
+    getStates,
+    stateIso
+}
 export default countryStateModel

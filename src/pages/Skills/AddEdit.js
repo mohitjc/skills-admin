@@ -34,6 +34,7 @@ const AddEdit = () => {
             method = 'put'
             url = 'api/skill/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

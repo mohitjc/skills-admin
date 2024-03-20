@@ -72,6 +72,9 @@ import Content from "./pages/Content";
 import AddEditContent from "./pages/Content/AddEdit";
 import SkillsRoles from "./pages/SkillsRoles";
 import AddEditSkillsRoles from "./pages/SkillsRoles/AddEdit";
+import Event from "./pages/Events";
+import AddEditEvent from "./pages/Events/AddEdit";
+import ViewEvent from "./pages/Events/View";
 
 
 export const history = createBrowserHistory();
@@ -146,6 +149,11 @@ export default () => {
                             <Route exact={true} path="/certification" component={Certification} />
                             <Route exact={true} path="/certification/add" component={AddEditCertification} />
                             <Route exact={true} path="/certification/edit/:id" component={AddEditCertification} />
+                            {/* Events */}
+                            <Route exact={true} path="/event" component={Event} />
+                            <Route exact={true} path="/event/add" component={AddEditEvent} />
+                            <Route exact={true} path="/event/edit/:id" component={AddEditEvent} />
+                            <Route exact={true} path="/event/detail/:id" component={ViewEvent} />
                             {/* Content */}
                             <Route exact={true} path="/content" component={Content} />
                             <Route exact={true} path="/content/add" component={AddEditContent} />

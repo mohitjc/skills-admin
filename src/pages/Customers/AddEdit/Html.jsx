@@ -10,6 +10,8 @@ import PhoneInput from "react-phone-input-2";
 import { Tooltip } from "antd";
 import ApiClient from "../../../methods/api/apiClient";
 import environment from "../../../environment";
+import countryStateModel from "../../../models/countryState.model";
+import timezoneModel from "../../../models/timezone.model";
 
 const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
 
@@ -35,8 +37,10 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   const [certificate, setCertificate] = useState([])
   const [skillRoles, setSkillRoles] = useState([])
   const [categories, setCategories] = useState([])
+  const [states, setState] = useState([])
   const [subcategories, setSubCategories] = useState([])
-
+  const countries=countryStateModel.list
+  const timezones=timezoneModel.list
 
   const getCertificates = () => {
     ApiClient.get('api/certificate/list', { status: 'active' }).then(res => {
@@ -47,7 +51,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   }
 
   const getSkills = () => {
-    ApiClient.get('api/certificate/list', { status: 'active',skillRole:form.customerRole }).then(res => {
+    ApiClient.get('api/skills/listing', { status: 'active',skillRole:form.customerRole }).then(res => {
       if (res.success) {
         setSkillRoles(res.data)
       }
@@ -86,6 +90,13 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
       getSubCategories({parentCategory:form.category})
     }
   }, [form.category])
+
+  useEffect(() => {
+    if(form.country){
+      let arr=countryStateModel.getStates(form.country)
+      setState([...arr])
+    }
+  }, [form.country])
 
   return <>
     <Layout>
@@ -241,6 +252,20 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
+              <label>Country<span className="star">*</span></label>
+              <SelectDropdown
+                id="statusDropdown"
+                displayValue="name"
+                placeholder="Select Country"
+                intialValue={form.country}
+                result={e => { setform({ ...form, country: e.value,state:'' }) }}
+                options={countries}
+                theme="search"
+              />
+              {submitted && !form.state ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>}
+            </div>
+
+            <div className="col-span-12 md:col-span-6">
               <label>State/Province<span className="star">*</span></label>
               <SelectDropdown
                 id="statusDropdown"
@@ -248,7 +273,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 placeholder="Select State/Province"
                 intialValue={form.state}
                 result={e => { setform({ ...form, state: e.value }) }}
-                options={roles}
+                options={states}
                 theme="search"
               />
               {submitted && !form.state ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>}
@@ -281,7 +306,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 placeholder="Select Timezone"
                 intialValue={form.timezone}
                 result={e => { setform({ ...form, timezone: e.value }) }}
-                options={roles}
+                options={timezones}
                 theme="search"
               />
               {submitted && !form.timezone ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>}
@@ -343,7 +368,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               <div className="col-span-12 md:col-span-6">
                 <label>Skills</label>
                 <MultiSelectDropdown
-                  displayValue="name"
+                  displayValue="title"
                   placeholder="Select Skills"
                   intialValue={form.skills}
                   result={e => {

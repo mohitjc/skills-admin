@@ -41,6 +41,7 @@ const [ checkedItems,setCheckedItems]=useState([])
         id: id,
       };
     } else {
+      value.addedBy=user._id
       delete value.id;
     }
     console.log(value,"Vlaue");

@@ -86,6 +86,7 @@ const AddEdit = () => {
             method = 'put'
             url = 'api/user/detail'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

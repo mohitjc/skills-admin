@@ -49,6 +49,7 @@ const AddEditFeature = () => {
             method = 'put'
             url = 'api/feature/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

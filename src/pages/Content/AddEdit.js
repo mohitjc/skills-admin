@@ -38,6 +38,7 @@ const AddEdit = () => {
             method = 'put'
             url = 'api/contentManagement/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

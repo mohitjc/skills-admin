@@ -51,6 +51,7 @@ const AddEditProductCategory = () => {
             method = 'put'
             url = 'api/category/update'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 

@@ -21,6 +21,7 @@ const AddEdit = ({ form, setForm, modalClosed }) => {
         if (value.id) {
             method = 'put'
         } else {
+            value.addedBy=user._id
             delete value.id
         }
 
