@@ -213,10 +213,11 @@ const AddEditRole = () => {
                   <table class="w-full">
                     <thead class="table_head roleTable">
                       <tr class="border-b border-[#EAECF0]">
-                        <th scope="col" class="cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}"></th>
-                        <th scope="col" class="cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}">
+                        <th scope="col" class="cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] !px-5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}"></th>
+                        <th scope="col" class="cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] !px-5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}">
                           <input
                             type="checkbox" 
+                            className='h-4 w-4 green_check cursor-pointer shrink-0 rounded-[4px] !border !border-[#3C3E49A3] !text-white'
                             onChange={(e) => HandleAll(e.target.checked)}
                           checked={isAllChecked()}
                             />
@@ -224,9 +225,10 @@ const AddEditRole = () => {
                           All</th>
                         {permission.map(itm => {
                           return <>
-                            <th scope="col" class="cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}">
+                            <th scope="col" class="cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] !px-5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}">
                               <input
                                 type="checkbox"
+                                className='h-4 w-4 green_check cursor-pointer shrink-0 rounded-[4px] !border !border-[#3C3E49A3] !text-white'
                                 onChange={(e) => HandleAllRead(e.target.checked, itm.key)}
                                 checked={isAllPCheck(itm.key)}
                               />{itm.name}

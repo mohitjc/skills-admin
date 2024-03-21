@@ -96,7 +96,7 @@ const Html = ({
                             <thead className='border-b border-[#EAECF0]'>
                                 <tr className='border-b border-[#EAECF0]'>
                                     <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3 ' onClick={e => sorting('name')}>Role Name <span className='ml-1'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                    <th scope="col" className='table_data text-left'>Status</th>
+                                    <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3 '>Status</th>
                                     <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3'>Action</th>
 
                                 </tr>
@@ -106,14 +106,14 @@ const Html = ({
                                     if (itm.id != environment.adminRoleId && itm.id != environment.userRoleId)
                                         return <tr className=''>
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.name}</td>
-                                            <td className='table_dats'> 
-                                            <div className='w-32' onClick={() => statusChange(itm)}>
-                        <Tooltip placement="top" title="Active / Inactive">
-                            <span className='bg-[#EEE] text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] text-[#3C3E49A3] !rounded capitalize'>
-                                {itm.status == 'deactive' ? 'inactive' : 'active'}
-                            </span>
-                        </Tooltip>
-                    </div>
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'> 
+                                                <div className='w-32' onClick={() => statusChange(itm)}>
+                                                        <Tooltip placement="top" title="Active / Inactive">
+                                                            <span className='bg-[#EEE] text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] text-[#3C3E49A3] !rounded capitalize'>
+                                                                {itm.status == 'deactive' ? 'inactive' : 'active'}
+                                                            </span>
+                                                        </Tooltip>
+                                                </div>
                                             </td>
 
                                             {/* dropdown */}
