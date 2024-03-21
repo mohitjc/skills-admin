@@ -174,7 +174,7 @@ const AddEditPlan = () => {
         // return 
         if (value.id && copy == 'false') {
             method = 'put'
-            url = 'api/plan/update'
+            url = 'api/plan'
             value.pricing = fpricing
         } else {
             value.addedBy=user._id
@@ -255,8 +255,9 @@ const AddEditPlan = () => {
                     }
                     payload.stripe_product_id = value.stripe_product_id
                     payload.trial_period_days = value?.trial_period_days
-                    setPricing(value.pricing)
-                    getFeatures(value.feature)
+                    payload.id = id
+                    setPricing(value.pricing||[])
+                    getFeatures(value.feature||[])
                     setform({
                         ...payload
                     })

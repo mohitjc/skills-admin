@@ -83,7 +83,7 @@ const Plans = (p) => {
     const getData = (p = {}) => {
         setLoader(true)
         let filter = { ...filters, ...p }
-        ApiClient.get('api/plan/listing', filter).then(res => {
+        ApiClient.get('api/plan/list', filter).then(res => {
             if (res.success) {
                 setData(res.data.map(itm=>{
                     itm.id=itm._id
@@ -118,7 +118,7 @@ const Plans = (p) => {
     const deleteItem = (id) => {
         if (window.confirm("Do you want to delete this")) {
             loader(true)
-            ApiClient.delete('api/plan/delete', {id: id }).then(res => {
+            ApiClient.delete('api/plan', {id: id }).then(res => {
                 if (res.success) {
                     // ToastsStore.success(res.message)
                     clear()
@@ -184,7 +184,7 @@ const Plans = (p) => {
 
         if(window.confirm(`Do you want to ${status=='active'?'Activate':'Deactivate'} this`)){
             loader(true)
-            ApiClient.put(`api/plan/status/change`,{id:itm.id,status}).then(res=>{
+            ApiClient.put(`api/plan`,{id:itm.id,status}).then(res=>{
                 if(res.success){
                     getData()
                 }
