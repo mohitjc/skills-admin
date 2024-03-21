@@ -13,6 +13,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import Table from "../../components/Table";
 import SelectDropdown from '../../components/common/SelectDropdown';
 import statusModel from '../../models/status.model';
+import datepipeModel from '../../models/datepipemodel';
 
 const Html = ({
     sorting,
@@ -33,9 +34,23 @@ const Html = ({
 
     const columns = [
         {
-            key: 'name', name: 'Name', sort: true,
+            key: 'title', name: 'Title', sort: true,
             render: (row) => {
-                return <>{row?.name}</>
+                return <>{row?.title}</>
+            }
+        },
+        {
+            key: 'date', name: 'Event Date',
+            render: (row) => {
+                return <>
+                    {datepipeModel.datetime(row?.date)}
+                </>
+            }
+        },
+        {
+            key: 'timezone', name: 'Timezone',
+            render: (row) => {
+                return <>{row?.timezone}</>
             }
         },
         {

@@ -1,11 +1,27 @@
 import { useHistory } from "react-router-dom";
 import Layout from "../../components/global/layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import datepipeModel from "../../models/datepipemodel";
+import ApiClient from "../../methods/api/apiClient";
+import { useParams } from "react-router-dom";
 
 const View = () => {
     const [data, setData] = useState()
     const history = useHistory()
+    const {id}=useParams()
+
+    const getDetail=()=>{
+        ApiClient.get('api/event/details',{id:id}).then(res=>{
+            if(res.success){
+                setData(res.data)
+            }
+        })
+    }
+
+    useEffect(()=>{
+        getDetail()
+    },[])
+
     return <>
         <Layout>
             <div className="text-right">
@@ -40,13 +56,14 @@ const View = () => {
                                 <div className='profiledetailscls'>{datepipeModel.date(data?.deadline)}</div>
                             </div>
                             <div className="col-span-12 md:col-span-6">
-                                <label className="profileheddingcls">Description</label>
-                                <div className='profiledetailscls'>{data?.description || '--'}</div>
-                            </div>
-                            <div className="col-span-12 md:col-span-6">
                                 <label className="profileheddingcls">External Link</label>
                                 <div className='profiledetailscls'>{data?.externalLink || '--'}</div>
                             </div>
+                            <div className="col-span-12 col-span-full">
+                                <label className="profileheddingcls">Description</label>
+                                <div className='profiledetailscls' dangerouslySetInnerHTML={{__html:data?.description || '--'}}></div>
+                            </div>
+                           
                             <div className="col-span-12 md:col-span-6">
                                 <label className="profileheddingcls">Location</label>
                                 <div className='profiledetailscls'>{data?.address || '--'}</div>

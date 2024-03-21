@@ -31,14 +31,14 @@ const AddEdit = () => {
         let invalid = methodModel.getFormError(formValidation, form)
         if (invalid) return
         let method = 'post'
-        let url = 'api/event'
+        let url = 'api/event/create'
         let value = {
             ...form,
             ...images
         }
         if (value.id) {
             method = 'put'
-            url = 'api/event/update'
+            url = 'api/event/edit'
         } else {
             value.addedBy=user._id
             delete value.id
@@ -57,7 +57,7 @@ const AddEdit = () => {
     useEffect(() => {
         if (id) {
             loader(true)
-            ApiClient.get('api/event/detail', { id }).then(res => {
+            ApiClient.get('api/event/details', { id }).then(res => {
                 if (res.success) {
                     let value = res.data
                     let payload = form

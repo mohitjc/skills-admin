@@ -137,12 +137,12 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
       url:'/content',
       key:'content',
     },
-    // {
-    //   name:'Events',
-    //   icon:<span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">workspace_premium</span>,
-    //   url:'/event',
-    //   key:'event',
-    // },
+    {
+      name:'Events',
+      icon:<span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">workspace_premium</span>,
+      url:'/event',
+      key:'event',
+    },
   ]
 
   return (

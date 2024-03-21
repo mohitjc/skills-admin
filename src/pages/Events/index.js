@@ -51,7 +51,7 @@ const Events = (p) => {
     const getData = (p = {}) => {
         setLoader(true)
         let filter = { ...filters, ...p }
-        ApiClient.get('api/certificate/list', filter).then(res => {
+        ApiClient.get('api/event/all', filter).then(res => {
             if (res.success) {
                 setData(res.data.map(itm => {
                     itm.id = itm._id
@@ -72,7 +72,7 @@ const Events = (p) => {
     const deleteItem = (id) => {
         if (window.confirm("Do you want to delete this")) {
             loader(true)
-            ApiClient.delete('api/certificate', { id: id }).then(res => {
+            ApiClient.delete('api/event/delete', { id: id }).then(res => {
                 if (res.success) {
                     // ToastsStore.success(res.message)
                     clear()
@@ -100,7 +100,7 @@ const Events = (p) => {
 
         if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
             loader(true)
-            ApiClient.put(`api/certificate/change-status`, { id: itm.id, status }).then(res => {
+            ApiClient.put(`api/event/edit`, { id: itm.id, status }).then(res => {
                 if (res.success) {
                     getData()
                 }
