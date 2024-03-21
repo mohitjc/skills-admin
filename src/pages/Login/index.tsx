@@ -89,9 +89,9 @@ const Login = () => {
         if (res.data.two_factor_email_sent || step==1) {
           setStep(2)
           setRes(res.data)
-          setLogin(res.data)
+          // setLogin(res.data)
         } else {
-          setLogin(res.data)
+          setLogin(resp)
         }
         
       }

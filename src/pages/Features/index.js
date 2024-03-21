@@ -74,7 +74,7 @@ const Features = (p) => {
     const getData = (p = {}) => {
         setLoader(true)
         let filter = { ...filters, ...p }
-        ApiClient.get('api/feature/listing', filter).then(res => {
+        ApiClient.get('api/feature/list', filter).then(res => {
             if (res.success) {
                 setData(res.data.map(itm => {
                     itm.id = itm._id
@@ -102,7 +102,7 @@ const Features = (p) => {
     const deleteItem = (id) => {
         if (window.confirm("Do you want to delete this")) {
             loader(true)
-            ApiClient.delete('api/feature/delete', { id: id }).then(res => {
+            ApiClient.delete('api/feature', { id: id }).then(res => {
                 if (res.success) {
                     // ToastsStore.success(res.message)
                     clear()
@@ -167,7 +167,7 @@ const Features = (p) => {
 
         if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
             loader(true)
-            ApiClient.put(`api/feature/status/change`, { id: itm.id, status }).then(res => {
+            ApiClient.put(`api/feature`, { id: itm.id, status }).then(res => {
                 if (res.success) {
                     getData()
                 }

@@ -172,7 +172,7 @@ const Roles = (p) => {
 
         if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
             loader(true)
-            ApiClient.put(`api/roles/status/change`, { id: itm.id, status }).then(res => {
+            ApiClient.put(`api/role`, { id: itm.id, status }).then(res => {
                 if (res.success) {
                     getData()
                 }

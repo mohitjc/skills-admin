@@ -47,7 +47,7 @@ const AddEditFeature = () => {
         }
         if (value.id) {
             method = 'put'
-            url = 'api/feature/update'
+            url = 'api/feature'
         } else {
             value.addedBy=user._id
             delete value.id
@@ -78,10 +78,10 @@ const AddEditFeature = () => {
                         payload.permissions = { ...value.permissions[0] }
                         // payload.permissions={ ...payload.permissions,...value.permissions}
                     }
-                    if (value.category) {
+                    if (value.category?._id) {
                         payload.category = value.category._id
                     }
-
+                    payload.id=id
                     setform({
                         ...payload
                     })
