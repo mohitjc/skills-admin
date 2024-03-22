@@ -68,7 +68,7 @@ const AddEditRole = () => {
         if (res.success) {
           let value = res.data;
           let payload = roleType;
-          let permissions=value.permissions?.[0]||[]
+          let permissions=value.permissions
 
           Object.keys(payload).map((itm) => {
             if(itm!='permissions') payload[itm] = value[itm];

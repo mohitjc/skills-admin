@@ -267,7 +267,7 @@ const Currency = (p) => {
     };
 
     const isAllow = (key = '') => {
-        let permissions = user.roleDetail?.permissions?.[0]
+        let permissions = user.roleDetail?.permissions
         let value = permissions?.[key]
         if (user?.roleDetail?._id == environment.adminRoleId) value = true
         return value

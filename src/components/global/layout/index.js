@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
     if (user && !user.loggedIn) {
       history.push('/login');
     } else {
-      let permissions = user.roleDetail?.permissions?.[0]
+      let permissions = user.roleDetail?.permissions
       if (!permissionModel.urlAllow(permissions)) {
         // history.push("/profile")
       }
