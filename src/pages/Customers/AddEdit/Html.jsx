@@ -247,7 +247,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.address2}
                 onChange={e => setform({ ...form, address2: e.target.value })}
-                required
+                
               />
             </div>
 
@@ -378,7 +378,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                   options={skillRoles}
                   theme="search"
                 />
-                {submitted && !form.skills?.length ? <div className="invalid-feedback d-block">Skills is Required</div> : <></>}
+                {/* {submitted && !form.skills?.length ? <div className="invalid-feedback d-block">Skills is Required</div> : <></>} */}
               </div>
             </> : <></>}
 
@@ -417,7 +417,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={subcategories}
                 theme="search"
               />
-              {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>}
+              {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
             </div>
 
 

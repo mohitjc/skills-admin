@@ -39,7 +39,7 @@ const AddEdit = () => {
          category:'',
          subCategory:'',
          aboutUs:'',
-
+         country:''
         })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)
