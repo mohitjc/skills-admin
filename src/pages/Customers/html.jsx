@@ -179,11 +179,11 @@ const Html = ({
                                                 {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.website||'--'}</td> */}
                                                 <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
                                                     <div className="flex items-center justify-center gap-1.5">
-                                                        <Tooltip placement="top" title="View">
+                                                        {/* <Tooltip placement="top" title="View">
                                                             <a className='border border-[#EBEBEB] rounded-lg bg-[#FAFAFA] hover:opacity-70 w-10 h-10 text-typo flex items-center justify-center text-xl' title="View" onClick={e => view(itm.id)}>
                                                                 <AiOutlineEye />
                                                             </a>
-                                                        </Tooltip>
+                                                        </Tooltip> */}
                                                         <Tooltip placement="top" title="Edit">
                                                             <a className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' title="Edit" onClick={e => edit(itm.id)}>
                                                                 <FiEdit3 />

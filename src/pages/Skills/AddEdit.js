@@ -67,7 +67,11 @@ const AddEdit = () => {
                     Object.keys(payload).map(itm => {
                         payload[itm] = value[itm]
                     })
-                    payload.skillRole=payload.skillRole?._id||''
+                    if(payload.skillRole?._id){
+                        payload.skillRole=payload.skillRole?._id||''
+                    }
+                   
+                    payload.id=id
                     setform({
                         ...payload
                     })

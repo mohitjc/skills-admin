@@ -21,6 +21,7 @@ var baseUrl = environment.api
 
 
 const handleError = (err, hideError) => {
+    console.log("err",err)
     let message = ''
     if (err) {
         if (err && err.error && err.error.code == 401) {
@@ -46,7 +47,11 @@ class ApiClient {
             axios
                 .post(url, JSON.stringify(params), config)
                 .then(function (response) {
-                    fulfill(response && response.data);
+                    let data=response && response.data
+                    fulfill(data);
+                    if(!data?.success){
+                        handleError(data)
+                    }
                 })
                 .catch(function (error) {
                     loader(false)
@@ -70,7 +75,11 @@ class ApiClient {
             axios
                 .put(url, JSON.stringify(params), config)
                 .then(function (response) {
-                    fulfill(response && response.data);
+                    let data=response && response.data
+                    fulfill(data);
+                    if(!data?.success){
+                        handleError(data)
+                    }
                 })
                 .catch(function (error) {
                     loader(false)
@@ -98,7 +107,11 @@ class ApiClient {
             axios
                 .get(url, config)
                 .then(function (response) {
-                    fulfill(response && response.data);
+                    let data=response && response.data
+                    fulfill(data);
+                    if(!data?.success){
+                        handleError(data)
+                    }
                 })
                 .catch(function (error) {
                     loader(false)
@@ -125,7 +138,11 @@ class ApiClient {
             axios
                 .delete(url, config)
                 .then(function (response) {
-                    fulfill(response && response.data);
+                    let data=response && response.data
+                    fulfill(data);
+                    if(!data?.success){
+                        handleError(data)
+                    }
                 })
                 .catch(function (error) {
                     loader(false)
@@ -166,7 +183,11 @@ class ApiClient {
                 .post(url, body, config)
 
                 .then(function (response) {
-                    fulfill(response && response.data);
+                    let data=response && response.data
+                    fulfill(data);
+                    if(!data?.success){
+                        handleError(data)
+                    }
                 })
                 .catch(function (error) {
                     loader(false)
