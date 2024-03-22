@@ -55,6 +55,7 @@ const AddEdit = () => {
     const formValidation = [
         { key: 'mobileNo', minLength: 10 }, 
         { key: 'customerRole', required: true },
+        { key: 'email', email: true },
         { key: 'certification', required: true },
         { key: 'state', required: true },
         { key: 'password', minLength: 8 },

@@ -111,7 +111,7 @@ const Html = ({ role, form, handleSubmit, setform, roles, addressResult, submitt
                                 required
                                 disabled={form.id?true:false}
                             />
-
+ {submitted && getError('email').invalid? <div className="invalid-feedback d-block">Email is Invalid</div> : <></>}
                         </div>
                         <div className="col-span-12 md:col-span-6 ">
                             <label>Password</label>

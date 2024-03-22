@@ -24,6 +24,7 @@ const AddEditUser = () => {
     const user = useSelector((state) => state.user);
     const formValidation = [
         { key: 'mobileNo', minLength: 10 },
+        { key: 'email', email: true },
         { key: 'role', required: true },
         { key: 'ic_number', minLength: 6 },
         { key: 'password', minLength: 8 },
@@ -39,11 +40,7 @@ const AddEditUser = () => {
         e.preventDefault()
         setSubmitted(true)
         let invalid = methodModel.getFormError(formValidation, form)
-        if (invalid || emailErr) return
-    if(!methodModel.emailvalidation(form?.email)){ 
-        setEmailErr('Enter valid Email')
-        return
-    }
+        if (invalid) return
         let method = 'post'
         let url = 'api/add/user'
         let value = {
