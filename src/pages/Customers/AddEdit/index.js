@@ -163,6 +163,7 @@ const AddEdit = () => {
                     // payload.role=value.role._id
                     payload.password=''
                     payload.id=id
+                    if(payload.customerRole?._id) payload.customerRole=payload.customerRole._id
                     let multiAddress=value.multiAddress||[]
                     payload.multiAddress=multiAddress.length?multiAddress:[{id:String(new Date().getTime())}]
                     setform({ ...payload })

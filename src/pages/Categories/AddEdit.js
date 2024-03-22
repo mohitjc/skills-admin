@@ -107,7 +107,9 @@ const AddEditCategory = () => {
                     oarr.map(itm => {
                         payload[itm] = value[itm] || ''
                     })
-                    if (payload.parentCategory) payload.parentCategory = payload.parentCategory._id
+                    if(payload.parentCategory._id) payload.parentCategory = payload.parentCategory._id
+                    if(payload.catType._id) payload.catType = payload.catType._id
+                  
                     // if (payload.subParentCategory) payload.subParentCategory = payload.subParentCategory._id
                     payload.id=id
                     setform({
@@ -154,7 +156,7 @@ const AddEditCategory = () => {
 
                     <div className='flex items-center mb-8'>
                         <Tooltip placement="top" title="Back">
-                            <button onClick={e => back()} className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all   discard mr-3"><i className='fa fa-angle-left text-lg'></i></button>
+                            <button type="button" onClick={e => back()} className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all   discard mr-3"><i className='fa fa-angle-left text-lg'></i></button>
                         </Tooltip>
                         <div>
                             <h3 className="text-2xl font-semibold text-[#111827]">
