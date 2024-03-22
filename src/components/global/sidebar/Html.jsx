@@ -224,8 +224,8 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
               </> : <>
                 <li>
                   <h6
-                    className={`${isOpen ? "py-[12px] text-center" : "p-[12px]"
-                      } text-xs font-medium text-[#7E8B99] mt-[12px]`}>
+                    className={`${isOpen ? "py-[12px] text-center " : "p-[12px]"
+                      } text-md font-medium text-[#7E8B99] mt-[20px] text-center`} t>
                     <span className=" sidebar_text"> {itm.name} </span>
                   </h6>
                 </li>
