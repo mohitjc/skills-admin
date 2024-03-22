@@ -13,8 +13,7 @@ const AddEdit = () => {
     const { role, id } = useParams()
     const [images, setImages] = useState({ image: '', logo: '' });
     const [form, setform] = useState({
-        id:id,
-         role: environment.userRoleId,
+         id:id,
          password:'',
          confirmPassword:'',
          email:'', 
@@ -29,7 +28,7 @@ const AddEdit = () => {
          state:'',
          postal_code:'',
          city:'',
-         timezone:'',
+         timezone:'America/Los_Angeles',
          customerRole:'',
          adminComment:'',
          linkedInUrl:'',
@@ -39,7 +38,7 @@ const AddEdit = () => {
          category:'',
          subCategory:'',
          aboutUs:'',
-         country:''
+         country:'usa'
         })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)

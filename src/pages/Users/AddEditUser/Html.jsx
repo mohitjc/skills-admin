@@ -100,17 +100,17 @@ const Html = ({ role, form, handleSubmit, setform, roles, addressResult, submitt
                             {submitted && getError('mobileNo').invalid && !getError('dialCode').invalid ? <div className="invalid-feedback d-block">Min Length is 10</div> : <></>}
                         </div>
                         <div className="col-span-12 md:col-span-6 ">
-                            <label>Email  {emailLoader ? <span><i className="fa fa-spinner fa-spin"></i></span> : <></>}</label>
+                            <label>Email</label>
                             <input
                                 type="email"
                                 pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
                                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                                 autoComplete="false"
                                 value={form.email}
-                                onChange={e => { setform({ ...form, email: e.target.value }); emailCheck(e.target.value) }}
+                                onChange={e => { setform({ ...form, email: e.target.value }); }}
                                 required
+                                disabled={form.id?true:false}
                             />
-                            {emailErr ? <div className="invalid-feedback d-block">{emailErr}</div> : <></>}
 
                         </div>
                         <div className="col-span-12 md:col-span-6 ">
