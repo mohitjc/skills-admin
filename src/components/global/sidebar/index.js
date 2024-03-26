@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Html from './Html';
 import permissionModel from '../../../models/permisstion.model';
+import environment from '../../../environment';
 
 const Sidebar = ({ isOpen }) => {
   const user = useSelector(state => state.user)
@@ -41,17 +42,17 @@ const Sidebar = ({ isOpen }) => {
     return value
   }
 
-  const urlAllow = (url) => {
+  const isAllow = (url = '') => {
     let permissions = user.roleDetail?.permissions
     let arr = url.split(',')
     let value = false
     arr.map(itm => {
-      if (permissionModel.urlAllow(permissions, itm)) value = true
+      if(permissions?.[itm]) value = permissions?.[itm]
     })
 
-    // return value
-    return true
-  }
+    if(user.roleDetail?._id==environment.adminRoleId)value=true
+    return value
+}
 
   const route = (p) => {
     history.push(p)
@@ -61,7 +62,7 @@ const Sidebar = ({ isOpen }) => {
     <Html
       route={route}
       tabclass={tabclass}
-      urlAllow={urlAllow}
+      urlAllow={isAllow}
       ListItemLink={ListItemLink}
       isOpen={isOpen}
     />

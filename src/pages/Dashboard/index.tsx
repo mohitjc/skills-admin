@@ -91,7 +91,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    getData()
+    // getData()
   }, [])
 
   return (

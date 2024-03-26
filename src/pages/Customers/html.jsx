@@ -20,11 +20,7 @@ import { FaCopy } from "react-icons/fa";
 
 
 const Html = ({
-    sortClass,
     sorting,
-    tab,
-    tabChange,
-    ChangeStatus,
     statusChange,
     pageChange,
     deleteItem,
@@ -34,11 +30,10 @@ const Html = ({
     data,
     exportfun,
     edit,
-    countries,
     view,
     total,
-    plans,
-    reset
+    reset,
+    isAllow
 }) => {
     const blockDateChange = (e) => {
         console.log("e", e)
@@ -66,9 +61,12 @@ const Html = ({
                         <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed mr-3" onClick={() => exportfun()}>
                             <PiFileCsv className="text-typo text-xl" />  Export CSV
                         </button>
-                        <Link className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to={`/customer/add`}>
-                            <FiPlus className="text-xl text-white" />  Create new
-                        </Link>
+                        {isAllow('addCustomers') ? <>
+                            <Link className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to={`/customer/add`}>
+                                <FiPlus className="text-xl text-white" />  Create new
+                            </Link>
+                        </> : <></>}
+
 
 
                     </div>
@@ -101,9 +99,9 @@ const Html = ({
                                     id="statusDropdown"
                                     displayValue="name"
                                     placeholder='All Status'
-                                    intialValue={filters.planStatus}
+                                    intialValue={filters.status}
                                     theme='search'
-                                    result={e => filter({ planStatus: e.value })}
+                                    result={e => filter({ status: e.value })}
                                     options={[
                                         { id: 'active', name: 'Active' },
                                         { id: 'deactive', name: 'Inactive' },
@@ -128,44 +126,44 @@ const Html = ({
                 </div>
 
                 <div className='all_dat_style'>
-                <div className=" w-full bg-white rounded-lg ">
-                            <div className="scrollbar w-full overflow-auto">
+                    <div className=" w-full bg-white rounded-lg ">
+                        <div className="scrollbar w-full overflow-auto">
 
 
-                                <table class="w-full">
-                                    <thead className='border-b border-[#EAECF0]'>
-                                        <tr className='border-b border-[#EAECF0]'>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3' onClick={e => sorting('fullName')}>Name<span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Created At</th>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Updated At</th>
-                                            {/* <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Current Plan</th> */}
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Status</th>
-                                            <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {!loaging && data && data.map((itm, i) => {
-                                            return <tr className=''>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]' onClick={e => view(itm.id)}>
-                                                    <div className='user_detail'>
-                                                        <img src={methodModel.userImg(itm.image)} className="user_imgs" />
-                                                        <div className='user_name'>
-                                                            <h4 className='user'>
-                                                                {itm.fullName}
-                                                            </h4>
-                                                            <p className='user_info'>
-                                                                {itm.email}
-                                                            </p>
-                                                            <p className='user_info'>
-                                                                {itm.mobileNo ? <>+{itm.mobileNo}</> : ''}
-                                                            </p>
-                                                        </div>
+                            <table class="w-full">
+                                <thead className='border-b border-[#EAECF0]'>
+                                    <tr className='border-b border-[#EAECF0]'>
+                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3' onClick={e => sorting('fullName')}>Name<span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Created At</th>
+                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Updated At</th>
+                                        {/* <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Current Plan</th> */}
+                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Status</th>
+                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' >Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {!loaging && data && data.map((itm, i) => {
+                                        return <tr className=''>
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]' onClick={e => view(itm.id)}>
+                                                <div className='user_detail'>
+                                                    <img src={methodModel.userImg(itm.image)} className="user_imgs" />
+                                                    <div className='user_name'>
+                                                        <h4 className='user'>
+                                                            {itm.fullName}
+                                                        </h4>
+                                                        <p className='user_info'>
+                                                            {itm.email}
+                                                        </p>
+                                                        <p className='user_info'>
+                                                            {itm.mobileNo ? <>+{itm.mobileNo}</> : ''}
+                                                        </p>
                                                     </div>
-                                                </td>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.createdAt)}</td>
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.updatedAt)}</td>
-                                                {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.plan?.planId?.name || '--'}</td> */}
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
+                                                </div>
+                                            </td>
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.createdAt)}</td>
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm?.updatedAt)}</td>
+                                            {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.plan?.planId?.name || '--'}</td> */}
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
                                                 <div onClick={() => statusChange(itm)}>
                                                     <Tooltip placement="top" title="Active / Inactive">
                                                         <span className={`${itm.status == 'deactive' ? 'bg-[#EEE] text-[#3C3E49A3]' : 'bg-[#0fac80] text-white'} text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] !rounded`}>
@@ -174,36 +172,38 @@ const Html = ({
                                                     </Tooltip>
                                                 </div>
 
-                                                </td>
-                                                {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.companyAddress || '--'}</td> */}
-                                                {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.website||'--'}</td> */}
-                                                <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
-                                                    <div className="flex items-center justify-center gap-1.5">
-                                                        {/* <Tooltip placement="top" title="View">
-                                                            <a className='border border-[#EBEBEB] rounded-lg bg-[#FAFAFA] hover:opacity-70 w-10 h-10 text-typo flex items-center justify-center text-xl' title="View" onClick={e => view(itm.id)}>
-                                                                <AiOutlineEye />
-                                                            </a>
-                                                        </Tooltip> */}
+                                            </td>
+                                            {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.companyAddress || '--'}</td> */}
+                                            {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.website||'--'}</td> */}
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
+                                                <div className="flex items-center justify-center gap-1.5">
+
+                                                    {isAllow('editCustomers') ? <>
                                                         <Tooltip placement="top" title="Edit">
                                                             <a className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' title="Edit" onClick={e => edit(itm.id)}>
                                                                 <FiEdit3 />
                                                             </a>
                                                         </Tooltip>
+                                                    </> : <></>}
+
+                                                    {isAllow('deleteCustomers') ? <>
                                                         <Tooltip placement="top" title="Delete">
                                                             <span className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
                                                                 <BsTrash3 />
                                                             </span>
                                                         </Tooltip>
-                                                    </div>
-                                                </td>
-                                                {/* end */}
-                                            </tr>
-                                        })
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                                    </> : <></>}
+
+                                                </div>
+                                            </td>
+                                            {/* end */}
+                                        </tr>
+                                    })
+                                    }
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
                 </div>
 
                 {!loaging && total == 0 ? <div className="py-3 text-center">No Data</div> : <></>}

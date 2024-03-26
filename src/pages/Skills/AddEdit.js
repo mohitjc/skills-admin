@@ -116,7 +116,7 @@ const AddEdit = () => {
                             />
                         </div>
 
-                        <div className="col-md-6 mb-3">
+                        {/* <div className="col-md-6 mb-3">
                             <label>Role<span className="star">*</span></label>
                             <div className="custom_dropdown">
                                 <SelectDropdown
@@ -129,7 +129,7 @@ const AddEdit = () => {
                                 />
                                 {submitted && !form.skillRole ? <div className="text-danger">Role is Required</div> : <></>}
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="col-md-6 mb-3">
                             <label>Status<span className="star">*</span></label>

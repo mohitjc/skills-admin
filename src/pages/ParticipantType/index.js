@@ -134,8 +134,7 @@ const ParticipantType = (p) => {
         let permissions = user.roleDetail?.permissions
         let value = permissions?.[key]
         if (user?.roleDetail?._id == environment.adminRoleId) value = true
-        // return value
-        return true
+        return value
     }
 
     return <><Html

@@ -2,19 +2,14 @@ import React from 'react';
 import Layout from '../../components/global/layout';
 import './style.scss';
 import { Link } from 'react-router-dom';
-import environment from '../../environment';
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Tooltip } from "antd";
-import { PiFileCsv } from 'react-icons/pi';
 import { FiEdit3, FiPlus } from 'react-icons/fi';
 import { BsTrash3 } from 'react-icons/bs';
 import Table from "../../components/Table";
 import SelectDropdown from '../../components/common/SelectDropdown';
 import statusModel from '../../models/status.model';
 import datepipeModel from '../../models/datepipemodel';
-
+import shared from "./shared";
 const Html = ({
     sorting,
     edit,
@@ -26,7 +21,6 @@ const Html = ({
     filters,
     loaging,
     data,
-    exportfun,
     changestatus,
     isAllow,
     total = { total }
@@ -77,14 +71,14 @@ const Html = ({
                                 <span class="material-symbols-outlined">visibility</span>
                                 </a>
                             </Tooltip>
-                        {isAllow('editTypes') ?
+                        {isAllow(`edit${shared.check}`) ?
                             <Tooltip placement="top" title="Edit">
                                 <a className="border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
                                     <FiEdit3 />
                                 </a>
                             </Tooltip>
                             : <></>}
-                        {isAllow('deleteTypes') ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
+                        {isAllow(`delete${shared.check}`) ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
                             <BsTrash3 />
                         </span> </Tooltip> : <></>}
                     </div>
@@ -98,7 +92,7 @@ const Html = ({
         <Layout>
             <div className="flex justify-between items-center">
                 <div>
-                    <h3 className="text-2xl font-semibold text-[#111827]"> Events</h3>
+                    <h3 className="text-2xl font-semibold text-[#111827]"> {shared.title}</h3>
                     <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Event</p>
                 </div>
 
@@ -111,9 +105,9 @@ const Html = ({
                         <PiFileCsv className="text-typo text-xl" />  Export CSV
                     </button> */}
 
-                    {isAllow('addTypes') ?
+                    {isAllow(`add${shared.check}`) ?
                         <Link className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to="/event/add">
-                            <FiPlus className="text-xl text-white" />   Add Event
+                            <FiPlus className="text-xl text-white" />   Add {shared.title}
                         </Link>
                         : <></>}
                 </div>

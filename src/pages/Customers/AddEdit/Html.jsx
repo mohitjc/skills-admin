@@ -51,7 +51,9 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   }
 
   const getSkills = () => {
-    ApiClient.get('api/skills/listing', { status: 'active',skillRole:form.customerRole }).then(res => {
+    ApiClient.get('api/skills/listing', { status: 'active',
+    // skillRole:form.customerRole
+   }).then(res => {
       if (res.success) {
         setSkillRoles(res.data)
       }
@@ -77,12 +79,13 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   useEffect(() => {
     getCertificates()
     getCategories()
+    getSkills()
   }, [])
 
   useEffect(() => {
-    if(form.customerRole){
-      getSkills()
-    }
+    // if(form.customerRole){
+    //   getSkills()
+    // }
   }, [form.customerRole])
 
   useEffect(() => {
@@ -362,10 +365,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
 
-
-
-            {form.customerRole ? <>
-              <div className="col-span-12 md:col-span-6">
+            <div className="col-span-12 md:col-span-6">
                 <label>Skills</label>
                 <MultiSelectDropdown
                   displayValue="title"
@@ -380,8 +380,6 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 />
                 {/* {submitted && !form.skills?.length ? <div className="invalid-feedback d-block">Skills is Required</div> : <></>} */}
               </div>
-            </> : <></>}
-
             <div className="col-span-full">
               <label>Networking Groups</label>
               <textarea

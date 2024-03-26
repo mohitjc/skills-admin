@@ -11,6 +11,57 @@ export const rolePermissions=[
       name:'Users',
       key:'Users'
     },
+    {
+      name:'Subscription Plan',
+      key:'Plan'
+    },
+    {
+      name:'Currency',
+      key:'Currency'
+    },
+    {
+      name:'Customers',
+      key:'Customers'
+    },
+    {
+      name:'ParticipantTypes',
+      key:'ParticipantTypes'
+    },
+    {
+      name:'Skills',
+      key:'Skills'
+    },
+    {
+      name:'Group',
+      key:'Group'
+    },
+    {
+      name:'Certification',
+      key:'Certification'
+    },
+    {
+      name:'Content Management',
+      key:'Content'
+    },
+    {
+      name:'Events',
+      key:'Events'
+    },
+  ]
+
+  export const customerRolePermissions=[
+    {
+      name:'Dashboard',
+      key:'Dashboard'
+    },
+    {
+      name:'Events',
+      key:'Events'
+    },
+    {
+        name:'Members',
+        key:'Members'
+      },
   ]
 
   export const rolePermission=[
@@ -20,9 +71,11 @@ export const rolePermissions=[
     {name:"Delete",key:'delete'},
   ]
 
-  export const roleGetAllKeys=()=>{
+  export const roleGetAllKeys=(type='admin')=>{
     let keys={};
-    rolePermissions.map(itm=>{
+    let arr=rolePermissions
+    if(type=='customer') arr=customerRolePermissions
+    arr.map(itm=>{
         rolePermission.map(pitm=>{
         keys={...keys,[`${pitm.key}${itm.key}`]:false}
       })

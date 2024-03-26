@@ -74,7 +74,7 @@ const Html = ({
                         {/* <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed mr-3" onClick={() => exportfun()}>
                             <PiFileCsv className="text-typo text-xl" />  Export CSV
                         </button> */}
-                    {isAllow('addPlanFeatures') ?
+                    {isAllow('addPlan') ?
                         <Link className="bg-primary flex items-center gap-2 leading-10 mr-3 h-10 shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg mr-2" to="/features/add">
                             <FiPlus className="text-xl text-white" />  Add Plan Feature
                         </Link>
@@ -151,14 +151,14 @@ const Html = ({
                                             {/* dropdown */}
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
                                                 <div className="flex items-center justify-center gap-1.5">
-                                                    {isAllow('editPlanFeatures') ?
+                                                    {isAllow('editPlan') ?
                                                         <Tooltip placement="top" title="Edit">
                                                             <a className="border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
                                                                 <FiEdit3 />
                                                             </a>
                                                         </Tooltip>
                                                         : <></>}
-                                                    {isAllow('deletePlanFeatures') ?
+                                                    {isAllow('deletePlan') ?
                                                         <Tooltip placement="top" title="Delete">
                                                             <span className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
                                                                 <BsTrash3 />

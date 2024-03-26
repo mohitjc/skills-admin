@@ -23,63 +23,63 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
     {
       name: 'Main Menu',
     },
-    // {
-    //   name:'Dashboard',
-    //   icon:<RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
-    //   url:'/dashboard',
-    //   key:'dashboard',
-    // },
+    {
+      name:'Dashboard',
+      icon:<RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
+      url:'/dashboard',
+      key:'readDashboard',
+    },
     {
       name: 'User Management',
       icon: <FiUsers className="text-[#5577FF] shrink-0 text-lg" />,
-      key: 'roles,users',
+      key: 'readUsers,readRoles',
       tab: 'user',
       menu: [
         {
           name: 'Roles',
           url: '/roles',
-          key: 'roles'
+          key: 'readRoles'
         },
         {
           name: 'Users',
           url: '/users',
-          key: 'users'
+          key: 'readUsers'
         },
       ]
     },
     {
       name: 'Catalogue',
       icon: <GrCatalogOption className="text-[#fd71af] shrink-0 text-lg" />,
-      key: 'categories,types',
+      key: 'readCategory',
       tab: 'catalogue',
       menu: [
         {
           name: 'Types',
           url: '/types',
-          key: 'types'
+          key: 'readCategory'
         },
         {
           name: 'Categories',
           url: '/categories',
-          key: 'categories'
+          key: 'readCategory'
         },
       ]
     },
     {
       name: 'Subscription Plan',
       icon: <i className="material-icons text-[#ffc800] shrink-0 text-lg" >subscriptions</i>,
-      key: 'features,plans',
+      key: 'readPlan',
       tab: 'plan',
       menu: [
         {
           name: 'Features',
           url: '/features',
-          key: 'features'
+          key: 'readPlan'
         },
         {
           name: 'Plans',
           url: '/plans',
-          key: 'plans'
+          key: 'readPlan'
         },
       ]
     },
@@ -87,23 +87,23 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
       name: 'Currency',
       icon: <i className="material-icons text-[#00b884] shrink-0 text-lg" title="">currency_exchange</i>,
       url: '/currency',
-      key: 'currency',
+      key: 'readCurrency',
     },
     {
       name: 'Customers',
       icon: <RiPresentationLine className="text-[#7b68ee] shrink-0 text-lg" />,
-      key: 'customer,skill-roles',
+      key: 'readCustomers',
       tab: 'customer',
       menu: [
         {
           name: 'Customer Roles',
           url: '/skill-roles',
-          key: 'skillRoles'
+          key: 'readCustomers'
         },
         {
           name: 'Customers',
           url: '/customer',
-          key: 'customer'
+          key: 'readCustomers'
         },
       ]
     },
@@ -111,37 +111,37 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
       name: 'Participant Type',
       icon: <RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
       url: '/participant-type',
-      key: 'participant-type',
+      key: 'readParticipantTypes',
     },
     {
       name: 'Skills',
       icon: <RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
-      key: 'skills',
       url: '/skills',
+      key: 'readSkills',
     },
     {
       name: 'Group',
       icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">groups</span>,
       url: '/group',
-      key: 'group',
+      key: 'readGroup',
     },
     {
       name: 'Certification',
       icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">workspace_premium</span>,
       url: '/certification',
-      key: 'certification',
+      key: 'readCertification',
     },
     {
       name: 'Content Management',
       icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">content_paste</span>,
       url: '/content',
-      key: 'content',
+      key: 'readContent',
     },
     {
       name: 'Events',
       icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">workspace_premium</span>,
       url: '/event',
-      key: 'event',
+      key: 'Events',
     },
   ]
 
@@ -156,6 +156,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
               {itm.icon ? <>
                 <li>
                   {itm.menu ? <>
+                  {urlAllow(itm.key)?<>
                     <Disclosure as="div" defaultOpen={tabclass(itm.tab)}>
                       {({ open }) => (
                         <>
@@ -203,6 +204,8 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
                         </>
                       )}
                     </Disclosure>
+                  </>:<></>}
+               
                   </> : <>
                     {urlAllow(itm.key) ? <>
                       <Tooltip placement="right" title={itm.name}>

@@ -13,7 +13,7 @@ import axios from 'axios';
 import environment from '../../environment';
 
 const Customer = (p) => {
-    let user = useSelector(state => state.user)
+    const user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
     const [filters, setFilter] = useState({ page: 1, count: 50, search: '', role:'', isDeleted: false })
     const [data, setData] = useState([])
@@ -251,7 +251,7 @@ const Customer = (p) => {
 
     const reset=()=>{
         let f={
-            planStatus:'',
+            status:'',
             plan:'',
             country:'',
             startDate:'',
@@ -260,7 +260,15 @@ const Customer = (p) => {
         filter(f)
     }
 
+    const isAllow = (key = '') => {
+        let permissions = user.roleDetail?.permissions
+        let value = permissions?.[key]
+        if (user?.roleDetail?._id == environment.adminRoleId) value = true
+        return value
+    }
+
     return <><Html
+    isAllow={isAllow}
         colClick={colClick}
         sortClass={sortClass}
     sorting={sorting}

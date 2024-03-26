@@ -150,6 +150,7 @@ const AddEditFeature = () => {
                                 <SelectDropdown
                                     id="statusDropdown"
                                     displayValue="name"
+                                    placeholder="Select Category"
                                     intialValue={form.category}
                                     result={e => { setform({ ...form, category: e.value }) }}
                                     options={categories}
@@ -163,7 +164,7 @@ const AddEditFeature = () => {
                                 <SelectDropdown
                                     id="statusDropdown"
                                     displayValue="name"
-                                    placeholder="Select Category"
+                                    placeholder="Select Status"
                                     intialValue={form.status}
                                     result={e => { setform({ ...form, status: e.value }) }}
                                     options={statusModel.list}

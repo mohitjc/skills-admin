@@ -30,7 +30,11 @@ const Layout = ({ children }) => {
       if (!browseload) {
         ApiClient.get('api/user/detail', { id: user._id }).then(res => {
           if (res.success) {
-            let data = { ...user, ...res.data }
+            let data = { ...user, ...res.data,
+              role:res.data.role._id,
+              roleDetail:res.data.role
+            }
+            console.log("iser",data)
             dispatch(login_success(data))
             localStorage.setItem('browseload', 'true')
           }

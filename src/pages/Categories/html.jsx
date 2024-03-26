@@ -65,7 +65,7 @@ const Html = ({
             </div></td>
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
                 <div className="flex items-center justify-center gap-1.5">
-                    {isAllow(type ? 'editResellerCategory' : 'editCategory') ?
+                    {isAllow('editCategory') ?
                         <Tooltip placement="top" title="Edit">
                             <a className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' title="Edit" onClick={e => edit(itm.id)}>
                                 <FiEdit3 />
@@ -73,7 +73,7 @@ const Html = ({
                         </Tooltip>
 
                         : <></>}
-                    {isAllow(type ? 'deleteResellerCategory' : 'deleteCategory') ?
+                    {isAllow('deleteCategory') ?
                         <Tooltip placement="top" title="Delete">
                             <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
                                 <BsTrash3 />
@@ -103,7 +103,7 @@ const Html = ({
                     </button> */}
 
 
-                    {isAllow(type ? 'addResellerCategory' : 'addCategory') ?
+                    {isAllow('addCategory') ?
                         <a className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" onClick={e => add()}>
                             <FiPlus className="text-xl text-white" /> Add {type ? 'Reseller' : ''} Category
                         </a>

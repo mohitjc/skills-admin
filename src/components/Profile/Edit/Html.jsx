@@ -111,7 +111,7 @@ const Html = ({ handleSubmit, setForm, form, getError, uploadImage, submitted })
                       value={form.mobileNo}
                       enableSearch={true}
                       limitMaxLength
-minLength={10}
+                      minLength={10}
                       required
                       onChange={e => setForm({ ...form, mobileNo: e })}
                       countryCodeEditable={true}
