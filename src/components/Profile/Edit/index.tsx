@@ -40,7 +40,7 @@ const EditProfile = () => {
     if (invalid) return
 
     let value = { fullName: form.fullName, dialCode: '', mobileNo: form.mobileNo, image: form.image, id: user._id }
-    if(form?.mobileNo<10){
+    if(form?.mobileNo.length<10){
       return
     }
 

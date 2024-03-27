@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 const Events = () => {
     const user = useSelector((state) => state.user);
-    const searchState = {data:''}
+    const searchState = useSelector((state) => state.search);
     const [filters, setFilter] = useState({ page: 1, count: 50, search: '', catType: '' })
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0)
@@ -23,7 +23,7 @@ const Events = () => {
             setFilter({ ...filters, search: searchState.data })
             getData({ search: searchState.data, page: 1 })
         }
-    }, [])
+    }, [searchState])
 
 
     const sortClass = (key) => {

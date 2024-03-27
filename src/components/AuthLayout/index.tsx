@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
 const AuthLayout=({children}:any)=>{
@@ -15,7 +16,9 @@ const AuthLayout=({children}:any)=>{
         </div>
         <div className="col-span-9 md:col-span-9 lg:col-span-9">
           <div className="relative flex flex-col items-center justify-center h-screen py-8 overflow-auto">
+            <Link to='/'>
             <img src="/assets/img/logo.png" className="w-[250px] mb-6 mx-auto" alt="logo" />
+            </Link>
             <div className="shadow-box w-full max-w-md px-4 py-6 mx-auto overflow-hidden bg-white rounded-lg">
               {children}
             </div>

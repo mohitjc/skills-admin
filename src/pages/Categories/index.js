@@ -19,7 +19,7 @@ const Categories = (p) => {
     const { type } = useParams()
     const dispatch = useDispatch()
     const searchState = useSelector((state) => state.search);
-    const [filters, setFilter] = useState({ page: 1, count: 50, search: '', catType: type ? type : '', parentCategory: '',sortBy: 'order asc' })
+    const [filters, setFilter] = useState({ page: 1, count: 50, search: '', catType: type ? type : '', parentCategory: '',sortBy: 'createdAt desc' })
     const [data, setData] = useState([])
     const [tab, setTab] = useState('list')
     const [total, setTotal] = useState(0)

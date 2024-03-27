@@ -116,6 +116,7 @@ const Html = ({ handleSubmit, setForm, form, getError, uploadImage, submitted })
                       onChange={e => setForm({ ...form, mobileNo: e })}
                       countryCodeEditable={true}
                     />
+                    {form.mobileNo?.length<10 ? <div className="invalid-feedback d-block">Mobile No is invalid</div> : <></>}
                     {/* <div className="phoneInput">
                 <input
                   type="text"
