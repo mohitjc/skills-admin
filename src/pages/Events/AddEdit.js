@@ -116,7 +116,7 @@ const AddEdit = () => {
 
 
                     <h3 className="ViewUser mb-3"></h3>
-                    <div className="form-row">
+                    <div className="grid grid-cols-2 gap-4">
                         <div className="col-md-6 mb-3">
                             <FormControl
                                 type="text"
@@ -191,16 +191,7 @@ const AddEdit = () => {
                             />
                         </div>
 
-                        <div className="col-md-6 mb-3">
-                            <FormControl
-                                type="editor"
-                                name="description"
-                                label="Description"
-                                value={form.description}
-                                onChange={e => setform({ ...form, description: e })}
-                                required
-                            />
-                        </div>
+                        
 
                         <div className="col-md-6 mb-3">
                             <FormControl
@@ -219,6 +210,18 @@ const AddEdit = () => {
                                 label="Location"
                                 value={form.address}
                                 onChange={e => setform({ ...form, address: e })}
+                                required
+                            />
+                        </div>
+
+
+                        <div className="col-md-6 mb-3">
+                            <FormControl
+                                type="editor"
+                                name="description"
+                                label="Description"
+                                value={form.description}
+                                onChange={e => setform({ ...form, description: e })}
                                 required
                             />
                         </div>
