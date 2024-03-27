@@ -409,7 +409,7 @@ const AddEditPlan = () => {
                         <div className="col-span-12 md:col-span-12">
                             <hr className="borderHr" />
                             <h5 className="monthTerm">Term: 1 Month<span className="star">*</span></h5>
-                            <div className="row">
+                            <div className="grid grid-cols-12 gap-4">
                                 {currencys && currencys.map((item, index) => {
                                     return (
                                         <div className="col-spam-12 md:col-span-4 pl-3 mb-3">

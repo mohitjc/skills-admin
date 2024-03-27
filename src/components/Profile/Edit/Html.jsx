@@ -18,7 +18,7 @@ const Html = ({ handleSubmit, setForm, form, getError, uploadImage, submitted })
         <form name="profileForm" className="" onSubmit={handleSubmit} >
 
 
-          <div className='inner_part sm:mt-3 md:mt-8 p-6 shadow-box overflow-hidden rounded-lg bg-white'>
+          <div className='inner_part sm:mt-3 md:mt-8 p-6 shadow-box rounded-lg bg-white'>
             <div className='grid items-center grid-cols-12 gap-4'>
               <div className='col-span-12 md:col-span-2'>
                 <div className='text_head'>

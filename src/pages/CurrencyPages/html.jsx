@@ -182,7 +182,7 @@ const Html = ({
                                     </td>
                                     <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'> <div className={`user_hours ${itm.status}`} onClick={() => statusChange(itm)}>
                                         <Tooltip placement="top" title="Active / Inactive">
-                                            <span className='contract'>
+                                            <span className={`text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] w-32 mx-auto text-white !rounded capitalize ${itm.status === 'active' ? 'bg-green-400' : 'bg-red-400 '}`}>
                                                 {itm.status == 'deactive' ? 'inactive' : 'active'}
                                             </span>
                                         </Tooltip>

@@ -58,7 +58,7 @@ const Html = ({
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm?.updatedBy?.fullName || '--'}</td>
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'> <div className={`user_hours ${itm.status}`} onClick={() => statusChange(itm)}>
                 <Tooltip placement="top" title={itm.status != 'deactive' ? 'Inactive' : 'Active'}>
-                    <span className='contract'>
+                    <span className={`text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB]  text-white !rounded capitalize ${itm.status === 'active' ? 'bg-green-400' : 'bg-red-400 '}`}>
                         {itm.status == 'deactive' ? 'Inactive' : 'Active'}
                     </span>
                 </Tooltip>

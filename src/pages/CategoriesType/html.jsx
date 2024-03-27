@@ -43,7 +43,7 @@ const Html = ({
                 return <>
                     <div className='w-32' onClick={() => statusChange(row)}>
                         <Tooltip placement="top" title="Active / Inactive">
-                            <span className='bg-[#EEE] text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] text-[#3C3E49A3] !rounded capitalize'>
+                            <span className={`text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB]  text-white !rounded capitalize cursor-pointer ${row.status === 'active' ? 'bg-green-400' : 'bg-red-400 '}`}>
                                 {row.status == 'deactive' ? 'inactive' : 'active'}
                             </span>
                         </Tooltip>
