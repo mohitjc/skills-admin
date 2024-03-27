@@ -4,7 +4,6 @@ import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../methods/methods";
-import { featureType } from "../../models/type.model";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import SelectDropdown from "../../components/common/SelectDropdown";
@@ -16,16 +15,8 @@ const AddEditFeature = () => {
     const [images, setImages] = useState({ image: '', banner: '', icon: '' });
     const [features, setFeatures] = useState([{ name: 'Option 1️⃣', id: 1 }, { name: 'Option 2️⃣', id: 2 }])
 
-    const defaultvalue = () => {
-        let keys = { ...featureType }
-        Object.keys(featureType).map(itm => {
-            if (itm != 'permissions') keys[itm] = ''
-        })
-        keys.status = 'active'
-        return keys
-    }
     const { id } = useParams()
-    const [form, setform] = useState(featureType)
+    const [form, setform] = useState({id:'',name:'',description:'',category:'',status:'active'})
     const history = useHistory()
     const [submitted, setSubmitted] = useState(false)
     const [categories, setcategories] = useState()
@@ -69,15 +60,11 @@ const AddEditFeature = () => {
             ApiClient.get('api/feature/detail', { id }).then(res => {
                 if (res.success) {
                     let value = res.data
-                    let payload = featureType
+                    let payload = form
 
                     Object.keys(payload).map(itm => {
                         payload[itm] = value[itm]
                     })
-                    if (value.permissions) {
-                        payload.permissions = { ...value.permissions[0] }
-                        // payload.permissions={ ...payload.permissions,...value.permissions}
-                    }
                     if (value.category?._id) {
                         payload.category = value.category._id
                     }
@@ -88,8 +75,6 @@ const AddEditFeature = () => {
                 }
                 loader(false)
             })
-        } else {
-            setform(defaultvalue())
         }
 
     }, [id])
