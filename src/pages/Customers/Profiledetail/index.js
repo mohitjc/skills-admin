@@ -92,7 +92,7 @@ const UserDetail = (p) => {
                 </div>
                 <div className="grid grid-cols-12 gap-4">
                     <div className="sideclass col-span-12 md:col-span-12">
-                        <h3 className="mt-3 mb-6 py-2 bg-gray-300 px-3">Customer Details</h3>
+                        <h3 className="mt-3 mb-6 py-2 bg-gray-300 px-3">Frontend User Details</h3>
                         <div className="grid grid-cols-12 gap-4">
                             <div className="col-span-12 md:col-span-6">
                                 <label className="profileheddingcls">Name</label>

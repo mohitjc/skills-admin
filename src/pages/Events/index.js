@@ -140,6 +140,7 @@ const Events = () => {
     const isAllow = (key = '') => {
         let permissions = user.customerRoleDetail?.permissions
         let value = permissions?.[key]
+        if (user?.roleDetail?._id == environment.adminRoleId) value = true;
         return value
     }
 

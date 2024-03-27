@@ -113,9 +113,9 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </Tooltip>
             <div>
               <h3 className="text-2xl font-semibold text-[#111827]">
-                {form && form.id ? 'Edit' : 'Add'} Customer
+                {form && form.id ? 'Edit' : 'Add'} Frontend User
               </h3>
-              <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Customer</p>
+              <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Frontend User</p>
             </div>
           </div>
 

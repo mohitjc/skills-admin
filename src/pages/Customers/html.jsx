@@ -17,6 +17,7 @@ import { FiEdit3, FiPlus } from "react-icons/fi";
 import { AiOutlineEye } from "react-icons/ai";
 import { BsTrash3 } from "react-icons/bs";
 import { FaCopy } from "react-icons/fa";
+import environment from '../../environment';
 
 
 const Html = ({
@@ -49,9 +50,9 @@ const Html = ({
 
                 <div>
                     <h3 className="text-2xl font-semibold text-[#111827]">
-                        Customers
+                    Frontend User
                     </h3>
-                    <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Customers</p>
+                    <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Frontend User</p>
                 </div>
 
 
@@ -186,7 +187,7 @@ const Html = ({
                                                         </Tooltip>
                                                     </> : <></>}
 
-                                                    {isAllow('deleteCustomers') ? <>
+                                                    {isAllow('deleteCustomers')? <>
                                                         <Tooltip placement="top" title="Delete">
                                                             <span className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
                                                                 <BsTrash3 />

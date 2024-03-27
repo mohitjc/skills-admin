@@ -63,7 +63,7 @@ const Html = ({
                                 </a>
                             </Tooltip>
                             : <></>}
-                        {isAllow('deleteCustomers') ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
+                        {isAllow('deleteCustomers') && environment.customerRoleId!=itm.id? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
                             <BsTrash3 />
                         </span> </Tooltip> : <></>}
                     </div>

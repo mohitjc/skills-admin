@@ -90,18 +90,18 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen }) => {
       key: 'readCurrency',
     },
     {
-      name: 'Customers',
+      name: 'Frontend Users',
       icon: <RiPresentationLine className="text-[#7b68ee] shrink-0 text-lg" />,
       key: 'readCustomers',
       tab: 'customer',
       menu: [
         {
-          name: 'Customer Roles',
+          name: 'Frontend User Roles',
           url: '/skill-roles',
           key: 'readCustomers'
         },
         {
-          name: 'Customers',
+          name: 'Frontend Users',
           url: '/customer',
           key: 'readCustomers'
         },

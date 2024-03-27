@@ -12,6 +12,10 @@ export const rolePermissions=[
       key:'Users'
     },
     {
+      name:'Catalogue',
+      key:'Category'
+    },
+    {
       name:'Subscription Plan',
       key:'Plan'
     },
