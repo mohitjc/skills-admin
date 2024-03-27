@@ -11,7 +11,7 @@ import { Tooltip } from "antd";
 
 const AddEdit = () => {
     const { id } = useParams()
-    const [form, setform] = useState({ id: '', title: '', status: 'active',skillRole:'' })
+    const [form, setform] = useState({ id: '', title: '', status: 'active' })
     const [roles, setRoles] = useState([])
     const history = useHistory()
     const [submitted, setSubmitted] = useState(false)
