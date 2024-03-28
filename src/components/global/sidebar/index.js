@@ -61,6 +61,7 @@ const Sidebar = ({ isOpen }) => {
   return <>
     <Html
       route={route}
+      user={user}
       tabclass={tabclass}
       urlAllow={isAllow}
       ListItemLink={ListItemLink}
