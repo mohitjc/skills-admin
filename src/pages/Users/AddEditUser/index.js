@@ -49,7 +49,7 @@ const AddEditUser = () => {
         }
         if (value.id) {
             method = 'put'
-            url = 'api/user/profile'
+            url = 'api/user'
         } else {
             value.addedBy=user._id
             delete value.id

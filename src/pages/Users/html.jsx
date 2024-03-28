@@ -16,6 +16,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import { FiEdit3, FiPlus } from 'react-icons/fi';
 import SelectDropdown from '../../components/common/SelectDropdown';
 import statusModel from '../../models/status.model';
+import Table from '../../components/Table';
 
 const Html = ({
     sorting,
@@ -214,13 +215,8 @@ const Html = ({
                                     }
                                 </tbody>
                             </table>
-
-
-
                         </div>
                     </div>
-
-
 
 
                 {!loaging && total == 0 ? <div className="py-3 text-center">No Data</div> : <></>}

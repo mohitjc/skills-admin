@@ -208,6 +208,18 @@ const Customer = (p) => {
         }
     }
 
+    const approveDecline=(itm,value)=>{
+        if(window.confirm(`Do you want to ${value=='approve'?'Approve':'Decline'} this user`)){
+            loader(true)
+            ApiClient.put(`api/user/${itm.id}`,{verifiedGroupLeader:value,id:itm.id}).then(res=>{
+                if(res.success){
+                    getData()
+                }
+                loader(false)
+            })
+        }
+    }
+
     const blockunblock=(itm)=>{
         if(window.confirm(`Do you want to ${!itm.isBlock?'Block':'Un-block'} this user`)){
             loader(true)
@@ -271,6 +283,7 @@ const Customer = (p) => {
     isAllow={isAllow}
         colClick={colClick}
         sortClass={sortClass}
+        approveDecline={approveDecline}
     sorting={sorting}
         exportfun={exportfun}
         tabChange={tabChange}

@@ -19,7 +19,7 @@ const AddEdit = () => {
          email:'', 
          mobileNo:'',
          fullName:'',
-         multiAddress:[{id:String(new Date().getTime())}],
+         multiAddress:[],
          profession:'',
          company:'',
          companyUrl:'',
@@ -84,7 +84,7 @@ const AddEdit = () => {
         }
         if (value.id) {
             method = 'put'
-            url = 'api/user/detail'
+            url = 'api/user'
         } else {
             value.addedBy=user._id
             delete value.id
@@ -165,7 +165,7 @@ const AddEdit = () => {
                     payload.id=id
                     if(payload.customerRole?._id) payload.customerRole=payload.customerRole._id
                     let multiAddress=value.multiAddress||[]
-                    payload.multiAddress=multiAddress.length?multiAddress:[{id:String(new Date().getTime())}]
+                    payload.multiAddress=multiAddress.length?multiAddress:[]
                     setform({ ...payload })
                     images.image = payload?.image
                     images.logo = payload?.logo
