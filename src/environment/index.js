@@ -11,6 +11,7 @@ const environment = {
     planTypeId:'65ead4e65cfbfd7a03ed102f',
     userRoleId:'65eac23ceac028f4dbfb1fbc',
     customerRoleId:'66026ea2f105ac23ab31e48e',
+    glRoleId:'65fc4a1e2e22cff912335e12',
     adminRoleId:'65eab1d84e01e43033dc2438',
     professionType:'65fa7ad79ef95c639effcf1c',
     productTypeId:'64a7d198fa039f179c0320ca'
