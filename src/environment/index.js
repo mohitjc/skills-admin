@@ -1,6 +1,6 @@
 let host = document.location.host;
-// let apiUrl ='https://skillprobackend.azurewebsites.net/'
-let apiUrl ='http://192.168.1.52:7071/'
+let apiUrl ='https://skillprobackend.azurewebsites.net/'
+// let apiUrl ='http://192.168.1.52:7071/'
 // if(host.includes('localhost')){
 //   // apiUrl='http://portal.jcsoftwaresolution.in:6068/'
 //   apiUrl='http://192.168.1.52:7071/'

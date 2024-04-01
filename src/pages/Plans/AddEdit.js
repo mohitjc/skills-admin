@@ -178,6 +178,7 @@ const AddEditPlan = () => {
             value.pricing = fpricing
         } else {
             value.addedBy=user._id
+            value.pricing = fpricing
             delete value.id
         }
         loader(true)
