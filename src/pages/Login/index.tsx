@@ -151,12 +151,12 @@ const Login = () => {
                   </>}
                 <div className='flex'>
                 <label className='flex items-center pointer'><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="mr-2 h-4 w-4" /> <span className='text-md text-gray-600'>Remember Me</span></label>
-                  <Link className="sign_up ml-auto text-primary" to="/forgotpassword"> Forgot Password</Link>
+                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link>
                 </div>
                 
 
                 <div className="mt-8">
-                  <button type="submit" className="px-4 w-full text-sm font-normal text-white h-12 flex items-center justify-center gap-2 !bg-primary rounded-lg shadow-btn hover:opacity-80 transition-all focus:ring-2 ring-[#EDEBFC] disabled:bg-[#D0CAF6] disabled:cursor-not-allowed">Sign in</button>
+                  <button type="submit" className="px-4 w-full text-sm font-normal text-white h-12 flex items-center justify-center gap-2  rounded-lg shadow-btn hover:opacity-80 transition-all focus:ring-2 ring-[#EDEBFC] disabled:bg-[#D0CAF6] disabled:cursor-not-allowed">Sign in</button>
                 </div>
 
                 <p className='accopuntt'></p>

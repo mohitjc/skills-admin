@@ -12,6 +12,7 @@ import ApiClient from "../../../methods/api/apiClient";
 import environment from "../../../environment";
 import countryStateModel from "../../../models/countryState.model";
 import timezoneModel from "../../../models/timezone.model";
+import { MdDeleteOutline } from "react-icons/md";
 
 const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
 
@@ -433,7 +434,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               <div className="">
                 {form?.multiAddress?.map((itm, i) => {
                   return <>
-                    <div className="grid grid-cols-2 gap-2 shadow-2xl p-3 mb-3 bg-white rounded-md">
+                    <div className="grid grid-cols-2 gap-2 shadow bg-white p-4 p-3 mb-3 bg-white rounded-md">
                       <div className="">
                         <label>First Name</label>
                         <input type="text"
@@ -482,9 +483,18 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                           required
                         />
                       </div>
-                      <div>
-                        <span class="material-symbols-outlined cursor-pointer text-red-500" onClick={() => removeAddress(i)}>close</span>
+
+                      <div className='relative'>
+                          <div className='bg-red-500 absolute right-0 top-6  rounded-md p-2 cursor-pointer' onClick={() => removeAddress(i)}>
+                           
+                            <p className='flex items-center gap-x-2 text-white'>  <MdDeleteOutline className=" text-white"  /> Delete</p>
+                          </div>
                       </div>
+
+
+                      {/* <div>
+                        <span class="material-symbols-outlined cursor-pointer text-red-500" onClick={() => removeAddress(i)}>close</span>
+                      </div> */}
                     </div>
                   </>
                 })}
