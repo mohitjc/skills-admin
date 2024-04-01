@@ -99,8 +99,8 @@ const Html = ({
                     </>}
                 </>:<>
                 <div className='flex gap-2'>
-                <button type="button" onClick={()=>approveDecline(row,'approve')} class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2 px-3 text-center">Approve</button>
-                <button type="button" onClick={()=>approveDecline(row,'decline')} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs py-2 px-3 text-center">Decline</button>
+                <button type="button" onClick={()=>approveDecline(row,'approved')} class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2 px-3 text-center">Approve</button>
+                <button type="button" onClick={()=>approveDecline(row,'declined')} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs py-2 px-3 text-center">Decline</button>
                 </div>
                 </>}
                     
