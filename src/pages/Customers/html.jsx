@@ -71,6 +71,14 @@ const Html = ({
             }
         },
         {
+            key: 'groupId', name: 'Group',
+            render: (row) => {
+                return <>
+                    {row.groupIdDetails?.name}
+                </>
+            }
+        },
+        {
             key: 'createdAt', name: 'Created At',sort: true,
             render: (row) => {
                 return <>

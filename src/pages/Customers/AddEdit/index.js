@@ -37,8 +37,10 @@ const AddEdit = () => {
          networkingGroup:'',
          category:'',
          subCategory:'',
+         subSubCategory:'',
          aboutUs:'',
-         country:'usa'
+         country:'usa',
+         groupId:''
         })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)

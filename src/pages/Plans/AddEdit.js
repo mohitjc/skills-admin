@@ -350,6 +350,17 @@ const AddEditPlan = () => {
                                 required
                             />
                         </div>
+                        <div className="col-span-12 md:col-span-6">
+                            <label>No of Member<span className="star">*</span></label>
+                            <input
+                                type="text"
+                                className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
+                                value={form.member}
+                                onChange={e => setform({ ...form, member: methodModel.isNumber(e) })}
+                                maxLength="12"
+                                required
+                            />
+                        </div>
                         {/* <div className="col-span-12 md:col-span-6">
                             <label>Price<span className="star">*</span></label>
                             <input

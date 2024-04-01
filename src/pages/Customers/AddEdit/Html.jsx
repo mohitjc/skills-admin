@@ -39,6 +39,8 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
   const [categories, setCategories] = useState([])
   const [states, setState] = useState([])
   const [subcategories, setSubCategories] = useState([])
+  const [groups, setGroups] = useState([])
+  const [subsubcategories, setSubSubCategories] = useState([])
   const countries=countryStateModel.list
   const timezones=timezoneModel.list
 
@@ -74,12 +76,30 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
       }
     })
   }
+
+  const getGroups = () => {
+    ApiClient.get('api/group/list', { status: 'active'}).then(res => {
+      if (res.success) {
+        setGroups(res.data)
+      }
+    })
+  }
+
+  const getSubSubCategories = (p={}) => {
+    ApiClient.get('api/categorie/list', { status: 'active',catType:environment.professionType,...p }).then(res => {
+      if (res.success) {
+        setSubSubCategories(res.data)
+      }
+    })
+  }
+  
   
 
   useEffect(() => {
     getCertificates()
     getCategories()
     getSkills()
+    getGroups()
   }, [])
 
   useEffect(() => {
@@ -93,6 +113,12 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
       getSubCategories({parentCategory:form.category})
     }
   }, [form.category])
+
+  useEffect(() => {
+    if(form.subCategory){
+      getSubSubCategories({parentCategory:form.subCategory})
+    }
+  }, [form.subCategory])
 
   useEffect(() => {
     if(form.country){
@@ -413,6 +439,34 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 intialValue={form.subCategory}
                 result={e => { setform({ ...form, subCategory: e.value }) }}
                 options={subcategories}
+                theme="search"
+              />
+              {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
+            </div>
+
+            <div className="col-span-12 md:col-span-6">
+               <label>Profession Sub Sub Category</label>
+               <SelectDropdown
+                 id="statusDropdown"
+                 displayValue="name"
+                 placeholder="Select Profession Sub Sub Category"
+                 intialValue={form.subSubCategory}
+                 result={e => { setForm({ ...form, subSubCategory: e.value }) }}
+                 options={subsubcategories}
+                 theme="search"
+               />
+               {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
+             </div>
+
+            <div className="col-span-12 md:col-span-6">
+              <label>Group</label>
+              <SelectDropdown
+                id="statusDropdown"
+                displayValue="name"
+                placeholder="Select Group"
+                intialValue={form.groupId}
+                result={e => { setform({ ...form, groupId: e.value }) }}
+                options={groups}
                 theme="search"
               />
               {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
