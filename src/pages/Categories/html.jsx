@@ -127,6 +127,7 @@ const Html = ({
                             intialValue={filters.catType}
                             result={e => { ChangeRole(e.value) }}
                             options={cattype}
+                            theme="search"
                         />
 
                     </> : <></>}
@@ -140,6 +141,7 @@ const Html = ({
                             intialValue={filters.status}
                             result={e => { statuschange(e.value) }}
                             options={statusModel.list}
+                            theme="search"
                         />
                     {filters.search || filters.parentCategory || filters.status || (filters.catType && !type) ? <>
                         <a className="bg-primary leading-10 h-10 shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg mr-2" onClick={e => reset()}>

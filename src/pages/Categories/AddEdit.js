@@ -198,6 +198,7 @@ const AddEditCategory = () => {
                                         displayValue="name"
                                         placeholder="Select Type"
                                         intialValue={form.catType}
+                                        theme="search"
                                         result={e => { setform({ ...form, catType: e.value, parentCategory: '' }); getCategory(e.value) }}
                                         options={Types && Types.map(itm => { return { id: itm.id, name: itm.name } })}
                                     />
@@ -228,6 +229,7 @@ const AddEditCategory = () => {
                                         intialValue={form.parentCategory}
                                         result={e => { setform({ ...form, parentCategory: e.value }) }}
                                         options={categories}
+                                        theme="search"
                                     />
                                 </div>
                             </div>
