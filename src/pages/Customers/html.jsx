@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../../components/global/layout';
 import './style.scss';
 import { Link } from 'react-router-dom';
@@ -9,11 +9,12 @@ import { Tooltip } from "antd";
 import { PiFileCsv } from "react-icons/pi";
 import { HiOutlineArrowDown } from "react-icons/hi";
 import { FiEdit3, FiPlus } from "react-icons/fi";
-import { BsTrash3 } from "react-icons/bs";
+import { BsEnvelope, BsTrash3 } from "react-icons/bs";
 import Table from '../../components/Table';
 import shared from './shared';
 import environment from '../../environment';
-
+import  Modal from "../../components/common/Modal";
+import SendEmail from './SendEmail';
 
 const Html = ({
     approveDecline,
@@ -39,6 +40,9 @@ const Html = ({
             startDate: datepipeModel.datetostring(e.startDate),
         })
     }
+
+    const [modal,setModel]=useState(false)
+    const [item,setItem]=useState()
 
     const columns = [
         {
@@ -152,14 +156,25 @@ const Html = ({
                         {isAllow(`delete${shared.check}`) ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
                             <BsTrash3 />
                         </span> </Tooltip> : <></>}
+
+                        <Tooltip placement="top" title="Send Email"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => sendEmail(itm)}>
+                            <BsEnvelope />
+                        </span> </Tooltip>
                     </div>
                 </>
             }
         },
     ]
 
+    const sendEmail=(itm)=>{
+        // setItem(itm)
+        // setModel(true)
+        window.open(`mailto:${itm.email}`)
+    }
+
     return (
-        <Layout>
+        <>
+         <Layout>
             <div className="flex justify-between items-center mb-6">
 
 
@@ -265,11 +280,23 @@ const Html = ({
 
 
             </div>
-
-
-
-
         </Layout>
+        {modal?<>
+            <Modal
+            title='Send Email'
+            body={<SendEmail
+                result={e=>{
+                    if(e.event=='submit') setModel(false)
+                }}
+            />}
+            result={e=>{
+                if(e.event=='close') setModel(false)
+            }}
+            /> 
+        </>:<></>}
+       
+        </>
+       
     );
 };
 
