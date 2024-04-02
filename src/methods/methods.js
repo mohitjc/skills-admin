@@ -115,36 +115,46 @@ const emailvalidation = (val) => {
     }
     return false
 }
-// match errors for fields
 const matchError = (ext, fValue) => {
-
     let invalid = false
     let kValue = fValue[ext.key]
     let value = { minLength: false, maxLength: false, confirmMatch: false ,required:false}
+    let message=''
     if (ext.required) {
         if (!kValue || (!kValue.length && typeof kValue!='object')){
             invalid = true
+            message=ext?.message||'This is Required'
         }
     }
     if (ext.minLength && kValue) {
-        if (kValue.length < ext.minLength) value.minLength = true
+        if (kValue.length < ext.minLength){
+            value.minLength = true
+            message=ext?.message||`Min Length is ${ext.minLength}`
+        }
     }
-
     if (ext.email && kValue) {
-        if (!emailvalidation(kValue)) value.email = true
+        if (!emailvalidation(kValue)){
+            value.email = true
+            message=ext?.message||`Email is invalid`
+        } 
     }
     if (ext.maxLength && kValue) {
-        if (kValue.length > ext.maxLength) value.maxLength = true
+        if (kValue.length > ext.maxLength){
+            value.maxLength = true
+            message=ext?.message||`Max Length is ${ext.maxLength}`
+        }
     }
     if (ext.dialCode && kValue) {
         if (dialMatch(kValue)) {
             kValue.indexOf("+");
             if (kValue.indexOf("+") != 0) {
                 value.dialCode = true
+                message=ext?.message||`DialCode is Invalid`
             }
 
         } else {
             value.dialCode = true
+            message=ext?.message||`DialCode is Invalid`
         }
     }
 
@@ -153,7 +163,10 @@ const matchError = (ext, fValue) => {
     }
 
     if (ext.confirmMatch && kValue) {
-        if (fValue[ext.confirmMatch[0]] != fValue[ext.confirmMatch[1]]) value.confirmMatch = true
+        if (fValue[ext.confirmMatch[0]] != fValue[ext.confirmMatch[1]]){
+            value.confirmMatch = true
+            message=ext?.message||`Confirm Password is not matched`
+        } 
     }
 
     let vArr = Object.keys(value)
@@ -161,7 +174,7 @@ const matchError = (ext, fValue) => {
         if (value[itm]) invalid = true
     })
 
-    let res = { invalid: invalid, err: value }
+    let res = { invalid: invalid, err: value,message }
     return res
 }
 

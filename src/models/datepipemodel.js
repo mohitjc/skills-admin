@@ -158,6 +158,16 @@ const DaysNo = (s, e) => {
     return Difference_In_Days + 1
 }
 
+const datetodatepicker = (p) => {
+    let time=timeString(p)
+    if(time){
+        time=time.split(':')
+        time.pop()
+        time=time.join(':')
+    }
+    return `${datetostring(p)}T${time}`
+}
+
 const datepipeModel = {
     DaysNo,
     date,
@@ -175,7 +185,8 @@ const datepipeModel = {
     monthfind,
     getWeekDate,
     monthname,
-    monthArray
+    monthArray,
+    datetodatepicker
 }
 
 export default datepipeModel;

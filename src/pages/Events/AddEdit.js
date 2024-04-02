@@ -10,16 +10,18 @@ import FormControl from "../../components/common/FormControl";
 import timezoneModel from "../../models/timezone.model";
 import shared from "./shared";
 import { useSelector } from "react-redux";
+import datepipeModel from "../../models/datepipemodel";
 
 const AddEdit = () => {
     const { id } = useParams()
     const [images, setImages] = useState({ image: ''});
-    const [form, setform] = useState({ id: '', title: '', date:'',timezone:'',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active' })
+    const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active' })
     const history = useHistory()
     const [submitted, setSubmitted] = useState(false)
     const user = useSelector((state) => state.user);
     const formValidation = [
         { key: 'status', required: true },
+        { key: 'type', required: true,message:'Type is required'},
         { key: 'timezone', required: true }
     ]
 
@@ -128,6 +130,24 @@ const AddEdit = () => {
                             />
                         </div>
 
+                        <div className=" mb-3">
+                        <FormControl
+                                type="select"
+                                name="type"
+                                label="Type"
+                                displayValue="name"
+                                placeholder="Select Type"
+                                value={form.type}
+                                onChange={e => setform({ ...form, type: e })}
+                                options={[
+                                    {id:'inPerson',name:'In-Person'},
+                                    {id:'virtual',name:'Virtual'},
+                                ]}
+                                required
+                                error={getError('type')}
+                            />
+                        </div>
+
                         <div className="col-md-6 mb-3">
                         <FormControl
                                 type="select"
@@ -148,7 +168,7 @@ const AddEdit = () => {
                                 type="datetime-local"
                                 name="date"
                                 label="Event Date"
-                                value={form.date}
+                                value={datepipeModel.datetodatepicker(form.date)}
                                 onChange={e => setform({ ...form, date: e })}
                                 required
                             />
@@ -184,7 +204,7 @@ const AddEdit = () => {
                                type="datetime-local"
                                 name="deadline"
                                 label="RSVP Deadline"
-                                value={form.deadline}
+                                value={datepipeModel.datetodatepicker(form.deadline)}
                                 maxlength="8"
                                 onChange={e => setform({ ...form, deadline: e })}
                                 required
@@ -215,7 +235,7 @@ const AddEdit = () => {
                         </div>
 
 
-                        <div className="col-md-6 mb-3">
+                        <div className="col-span-full mb-3">
                             <FormControl
                                 type="editor"
                                 name="description"
