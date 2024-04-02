@@ -92,7 +92,7 @@ export const userType={ id:'',fullName: '',role:'', email: '', mobileNo: '',abou
 export const CategoryType={id:'',name:'',catType:'',subParentCategory:'',description:'',image:'',order:'',parentCategory:'',status:'active',icon:'',banner:'',altImageName:'',altIconName:'',bannerOverlayHeading:'',bannerOverlayBody:'',description:'',featured:'No',urlKey:'',metaTitle:'',metaDescription:'',keywords:''}
 export const roleType={id:'',name:'',status:'active',permissions:roleGetAllKeys()}
 export const resellerCategoryType={id:'',name:'',catType:'Reseller',description:'',image:''}
-export const planType={id:'',name:'',price:'',member:'',status:'active',interval:'Monthly',category:'',recommended:'',allowedProducts:'',feature:[],
+export const planType={id:'',name:'',planType:'',price:'',member:'',status:'active',interval:'Monthly',category:'',recommended:'',allowedProducts:'',feature:[],
 monthlyPrice:'',threeMonthPrice:'',sixMonthPrice:'',yearlyPrice:'',extraProductPrice:''
 
 }

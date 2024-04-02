@@ -389,6 +389,24 @@ const AddEditPlan = () => {
                                 {submitted && !form.status ? <div className="text-danger">Status is Required</div> : <></>}
                             </div>
                         </div>
+                        <div className="col-span-12 md:col-span-6">
+                            <label>Plan Type<span className="star">*</span></label>
+                            <div className="custom_dropdown">
+                                <SelectDropdown
+                                    isSingle={true}
+                                    id="statusDropdown"
+                                    displayValue="name"
+                                    placeholder="Select Plan Type"
+                                    intialValue={form.planType}
+                                    result={e => { setform({ ...form, planType: e.value }) }}
+                                    options={[
+                                        {id:'free',name:'Free'},
+                                        {id:'paid',name:'Paid'},
+                                    ]}
+                                />
+                                {submitted && !form.status ? <div className="text-danger">Status is Required</div> : <></>}
+                            </div>
+                        </div>
                         {/* <div className="col-span-12 md:col-span-6">
                             <label>Recommended<span className="star">*</span></label>
                             <div className="custom_dropdown">
@@ -418,6 +436,7 @@ const AddEditPlan = () => {
                                 />
                             </div>
                         </div> */}
+                        {form.planType=='free'?<></>:<>
                         <div className="col-span-12 md:col-span-12">
                             <hr className="borderHr" />
                             <h5 className="monthTerm">Term: 1 Month<span className="star">*</span></h5>
@@ -468,6 +487,8 @@ const AddEditPlan = () => {
                                 ))}
                             </div>
                         </div>
+                        </>}
+                        
                         {/* <div className="col-span-12 md:col-span-12">
                             <hr className="borderHr" />
                             <div className="grid grid-cols-12 gap-4">
