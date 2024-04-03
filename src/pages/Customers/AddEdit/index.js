@@ -166,6 +166,8 @@ const AddEdit = () => {
                     payload.password=''
                     payload.id=id
                     if(payload.customerRole?._id) payload.customerRole=payload.customerRole._id
+                    if(payload.groupId?._id) payload.groupId=payload.groupId._id
+                    
                     let multiAddress=value.multiAddress||[]
                     payload.multiAddress=multiAddress.length?multiAddress:[]
                     setform({ ...payload })

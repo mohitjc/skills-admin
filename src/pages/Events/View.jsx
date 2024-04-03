@@ -8,13 +8,25 @@ import shared from "./shared";
 import AttendeeList from "./AttendeeList";
 const View = () => {
     const [data, setData] = useState()
+    const [host, setHost] = useState()
     const history = useHistory()
     const {id}=useParams()
+
+
+    const getHostDetail=(id)=>{
+        ApiClient.get('api/user/detail',{id:id}).then(res=>{
+            if(res.success){
+                setHost(res.data)
+               
+            }
+        })
+    }
 
     const getDetail=()=>{
         ApiClient.get(shared.detailApi,{id:id}).then(res=>{
             if(res.success){
                 setData(res.data)
+                getHostDetail(res.data.addedBy)
             }
         })
     }
@@ -68,6 +80,14 @@ const View = () => {
                             <div className="col-span-12 md:col-span-6">
                                 <label className="profileheddingcls">Location</label>
                                 <div className='profiledetailscls'>{data?.address || '--'}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Host</label>
+                                <div className='profiledetailscls'>{host?.fullName || '--'}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Group</label>
+                                <div className='profiledetailscls'>{host?.groupId?.name || '--'}</div>
                             </div>
                         </div>
 
