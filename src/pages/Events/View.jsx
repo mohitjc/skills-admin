@@ -53,6 +53,10 @@ const View = () => {
                                 <div className='profiledetailscls'>{data?.title || '--'}</div>
                             </div>
                             <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Type</label>
+                                <div className='profiledetailscls capitalize'>{data?.type || '--'}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
                                 <label className="profileheddingcls">Event Date</label>
                                 <div className='profiledetailscls'>{datepipeModel.date(data?.date)}</div>
                             </div>
@@ -72,15 +76,16 @@ const View = () => {
                                 <label className="profileheddingcls">External Link</label>
                                 <div className='profiledetailscls'>{data?.externalLink || '--'}</div>
                             </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Location</label>
+                                <div className='profiledetailscls'>{data?.address || '--'}</div>
+                            </div>
                             <div className="col-span-12 col-span-full">
                                 <label className="profileheddingcls">Description</label>
                                 <div className='profiledetailscls' dangerouslySetInnerHTML={{__html:data?.description || '--'}}></div>
                             </div>
                            
-                            <div className="col-span-12 md:col-span-6">
-                                <label className="profileheddingcls">Location</label>
-                                <div className='profiledetailscls'>{data?.address || '--'}</div>
-                            </div>
+                           
                             <div className="col-span-12 md:col-span-6">
                                 <label className="profileheddingcls">Host</label>
                                 <div className='profiledetailscls'>{host?.fullName || '--'}</div>
