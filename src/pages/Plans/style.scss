@@ -1,0 +1,120 @@
+tr.deactive {
+    background-color: #ffd9dd;
+}
+
+i.fa.fa-copy {
+    font-size: 15px;
+    font-weight: 600;
+    color: #898989;
+}
+
+.dragStart {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    // transition: box-shadow .2s ease; 
+    background-color: #ff764126 !important;
+    transition-duration: 6s;
+    // transform : translateY(10px);
+}
+
+.dragEnter {
+    opacity: 0 !important;
+}
+
+.dragEnter+tr {
+    transition-duration: 5s;
+    transform: translateY(-10px);
+}
+
+.dragEnter+tr {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    padding: 8px 30px;
+    background: #ebe6f2;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.DragDrop {
+    box-shadow: 0 .1rem 3px rgba(0, 0, 0, .15) !important;
+    padding: 8px 30px;
+    transition: 0.5s;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 0px !important;
+}
+
+h5.monthTerm {
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+hr.borderHr {
+    border: 1px solid #ced4da !important;
+    margin-top: 0;
+}
+
+label.form-check-label.pointer {
+    color: #5A5A5A !important;
+}
+
+label.mb-2.d-block.text-uppercase {
+    color: #363636;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.activedeactiveicon {
+    font-size: 18px;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.featureHeight {
+    max-height: 550px;
+    overflow: auto;
+}
+
+.addDropdown {
+    .dropdown-menu {
+        left: initial !important;
+        right: 0 !important;
+        top: 110% !important;
+        transform: none !important;
+    }
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.phoneInput {
+    display: flex;
+    justify-content: space-between;
+
+    >*:first-child {
+        width: 60px;
+    }
+
+    & *:last-child {
+        width: calc(100% - 70px);
+    }
+}
+
+.modal-dialog-md {
+    max-width: 900px !important;
+}
+
+hr {
+    border: 1px solid;
+}
+
+
+// .mainarea {
+//     overflow: unset !important;
+// }
