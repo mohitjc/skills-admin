@@ -133,7 +133,7 @@ const productCategory = ({
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
                 <div className="flex items-center justify-center gap-1.5">
                     <Tooltip placement="top" title="Edit">
-                        <a className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' title="Edit" onClick={e => edit(itm.id)}>
+                        <a className='border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl' title="Edit" onClick={e => edit(itm.id)}>
                             <FiEdit3 />
                         </a>
                     </Tooltip>
@@ -227,7 +227,7 @@ const productCategory = ({
                                 leaveFrom="transform opacity-100 scale-100"
                                 leaveTo="transform opacity-0 scale-95"
                             >
-                                <Menu.Items className={`${dynamicStyle ? "" : "max-h-60"}  focus:!outline-[#6956e5] focus:!outline text-sm absolute z-40 ${className ? className : " min-w-[260px]"
+                                <Menu.Items className={`${dynamicStyle ? "" : "max-h-60"}  focus:!outline-[#ff7641] focus:!outline text-sm absolute z-40 ${className ? className : " min-w-[260px]"
                                     }  right-0 shadow-lg !py-2 !mt-1.5 overflow-auto bg-white  rounded-lg scrollbar`}>
                                     <div className="mt-2">
                                         <Menu.Item>
