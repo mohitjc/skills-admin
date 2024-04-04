@@ -49,7 +49,7 @@ const Html = ({ options, dynamicStyle = false, className = null, selectedValues,
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className={`${dynamicStyle ? "" : "max-h-60"}  focus:!outline-[#6956e5] focus:!outline text-sm absolute z-40 ${className ? className : " min-w-[260px]"
+                            <Menu.Items className={`${dynamicStyle ? "" : "max-h-60"}  focus:!outline-[#ff7641] focus:!outline text-sm absolute z-40 ${className ? className : " min-w-[260px]"
                                 }  right-0 shadow-lg !py-2 !mt-1.5 overflow-auto bg-white  rounded-lg scrollbar capitalize`}>
                                 <div className="mt-2">
                                     {noDefault ?

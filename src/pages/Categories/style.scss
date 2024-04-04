@@ -51,7 +51,7 @@ tr.deactive {
 
 .bg_hover .dropdown-item:focus,
 .dropdown-item:hover {
-    background-color: #645dde26;
+    background-color: #ff764126;
 
     color: #765aa6 !important;
     border-radius: 8px;
@@ -77,7 +77,7 @@ tr.deactive {
 .bg_hover .dropdown-item.active,
 .bg_hover .dropdown-item:active {
     text-decoration: none;
-    background-color: #645dde26;
+    background-color: #ff764126;
     color: #765aa6 !important;
     border-radius: 8px;
     padding: 0.25rem 1rem;
@@ -138,11 +138,11 @@ tr.deactive {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #645dde;
+    background: #ff7641;
 }
 
 ::-moz-scrollbar-thumb:hover {
-    background: #645dde;
+    background: #ff7641;
 }
 
 .nowrap {

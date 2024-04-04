@@ -199,7 +199,7 @@ const DateRangePicker = ({ value, onChange, dynamicStyle = false,
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className={`${dynamicStyle ? "" : ""}  focus:!outline-[#6956e5] focus:!outline text-sm absolute z-40 ${className ? className : " min-w-[360px]"
+                <Menu.Items className={`${dynamicStyle ? "" : ""}  focus:!outline-[#ff7641] focus:!outline text-sm absolute z-40 ${className ? className : " min-w-[360px]"
                     }  right-0 shadow-lg !py-2 !mt-3 overflow-auto bg-white  rounded-lg scrollbar`}>
                     <div className="fffff">
                         <div className="" >

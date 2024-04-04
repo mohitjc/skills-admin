@@ -121,14 +121,14 @@ const Html = ({
                                                 <div className="flex items-center justify-start gap-1.5">
                                                     {isAllow('editRoles') ? <>
                                                         <Tooltip placement="top" title="Edit">
-                                                            <a className="border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
+                                                            <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
                                                                 <FiEdit3 />
                                                             </a>
                                                         </Tooltip>
                                                     </> : <></>}
 
 
-                                                    {itm.id != environment.adminRoleId && itm.id != environment.userRoleId && isAllow('deleteRoles')? <> <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer border-[#6956E5] hover:opacity-70 rounded-lg bg-[#6956E514] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
+                                                    {itm.id != environment.adminRoleId && itm.id != environment.userRoleId && isAllow('deleteRoles')? <> <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
                                                         <BsTrash3 />
                                                     </span></Tooltip>
                                                     </> : <></>}
