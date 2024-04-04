@@ -73,9 +73,9 @@ const Layout = ({ children }) => {
 
           <div className="main-sidebar scrollbar transition-[width] duration-300">
             <div
-              className="sidebar-brand p-3 pt-4 pl-5 text-left">
+              className="sidebar-brand text-center">
               <label className="editLogo">
-                <img src={logo()} width="250" height="35" className="pl-3 show-logo" />
+                <img src={logo()} width="200" height="35" className="pl-3 show-logo" />
                 <img src={logos()} className="hide-logo" />
               </label>
             </div>
