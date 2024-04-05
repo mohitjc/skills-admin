@@ -31,7 +31,7 @@ const AddEdit = () => {
         e.preventDefault()
         setSubmitted(true)
         let invalid = methodModel.getFormError(formValidation, form)
-        if (invalid) return
+        if (invalid||getDateErrr(form.date)||getDateErrr(form.deadline)) return
         let method = 'post'
         let url = shared.addApi
         let value = {
@@ -94,6 +94,17 @@ const AddEdit = () => {
 
     const getError = (key) => {
         return submitted?methodModel.getError(key, form, formValidation)?.message:''
+    }
+
+    const getDateErrr=(date)=>{
+        let value=false
+        if(date){
+            if(new Date(date).getTime()<new Date().getTime()){
+                value=true
+            }
+        }
+
+        return value
     }
 
     return <>
@@ -172,6 +183,7 @@ const AddEdit = () => {
                                 value={datepipeModel.datetodatepicker(form.date)}
                                 onChange={e => setform({ ...form, date: e })}
                                 required
+                                error={getDateErrr(form.date)&&submitted?'Entered date is less then Current Date':''}
                             />
                         </div>
                         <div className="col-md-6 mb-3">
@@ -209,6 +221,7 @@ const AddEdit = () => {
                                 value={datepipeModel.datetodatepicker(form.deadline)}
                                 maxlength="8"
                                 onChange={e => setform({ ...form, deadline: e })}
+                                error={getDateErrr(form.deadline)&&submitted?'Entered date is less then Current Date':''}
                                 required
                             />
                         </div>
