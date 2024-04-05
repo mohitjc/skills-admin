@@ -105,7 +105,7 @@ const Html = ({
                                 {!loaging && data && data.map((itm, i) => {
                                     if (itm.id != environment.adminRoleId && itm.id != environment.userRoleId)
                                         return <tr className=''>
-                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.name}</td>
+                                            <td className='!text-typo capitalize !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'>{itm.name}</td>
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]'> 
                                                 <div className='w-32' onClick={() => statusChange(itm)}>
                                                         <Tooltip placement="top" title="Active / Inactive">
