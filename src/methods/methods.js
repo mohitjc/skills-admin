@@ -106,13 +106,14 @@ const dialMatch = (val) => {
     return value
 }
 const emailvalidation = (val) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val)) {
-    
+    if (val.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )) {
         return true
     }
-    if(!val.includes(".")){
-        return false
-    }
+    // if(!val.includes(".")){
+    //     return false
+    // }
     return false
 }
 const matchError = (ext, fValue) => {

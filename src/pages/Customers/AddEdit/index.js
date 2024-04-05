@@ -58,8 +58,8 @@ const AddEdit = () => {
         { key: 'mobileNo', minLength: 10 }, 
         { key: 'customerRole', required: true },
         { key: 'email', email: true },
-        { key: 'certification', required: true },
-        { key: 'state', required: true },
+        // { key: 'certification', required: true },
+        // { key: 'state', required: true },
         { key: 'password', minLength: 8 },
         { key: 'confirmPassword', minLength: 8, confirmMatch: ['confirmPassword', 'password'] }
     ]
@@ -72,11 +72,7 @@ const AddEdit = () => {
         e.preventDefault()
         setSubmitted(true)
         let invalid = methodModel.getFormError(formValidation, form)
-        if (invalid || emailErr) return
-        if(!methodModel.emailvalidation(form?.email)){
-            setEmailErr('Enter a valid email')
-            return
-        }
+        if (invalid) return
         let method = 'post'
         let url = 'api/add/user'
         let value = {

@@ -168,7 +168,6 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.profession}
                 onChange={e => setform({ ...form, profession: e.target.value })}
-                required
               />
             </div>
 
@@ -181,7 +180,6 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 value={form.mobileNo}
                 enableSearch={true}
                 limitMaxLength
-                required
                 onChange={e => setform({ ...form, mobileNo: e })}
                 countryCodeEditable={true}
               />
@@ -244,7 +242,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.company}
                 onChange={e => setform({ ...form, company: e.target.value })}
-                required
+                
               />
             </div>
 
@@ -255,7 +253,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.companyUrl}
                 onChange={e => setform({ ...form, companyUrl: e.target.value })}
-                required
+                
               />
             </div>
 
@@ -266,7 +264,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.address}
                 onChange={e => setform({ ...form, address: e.target.value })}
-                required
+                
               />
             </div>
 
@@ -292,7 +290,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={countries}
                 theme="search"
               />
-              {submitted && !form.state ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>}
+              {/* {submitted && !form.country ? <div className="invalid-feedback d-block">Country is Required</div> : <></>} */}
             </div>
 
             <div className="col-span-12 md:col-span-6">
@@ -306,7 +304,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={states}
                 theme="search"
               />
-              {submitted && !form.state ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>}
+              {/* {submitted && !form.state ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>} */}
             </div>
             <div className="col-span-12 md:col-span-6">
               <label>Zip/Postal Code<span className="star">*</span></label>
@@ -315,7 +313,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.postal_code}
                 onChange={e => setform({ ...form, postal_code: e.target.value })}
-                required
+                
               />
             </div>
             <div className="col-span-12 md:col-span-6">
@@ -325,7 +323,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.city}
                 onChange={e => setform({ ...form, city: e.target.value })}
-                required
+                
               />
             </div>
             <div className="col-span-12 md:col-span-6">
@@ -339,7 +337,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={timezones}
                 theme="search"
               />
-              {submitted && !form.timezone ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>}
+              {/* {submitted && !form.timezone ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>} */}
             </div>
 
             <div className="col-span-12 md:col-span-6">
@@ -388,7 +386,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={certificate}
                 theme="search"
               />
-              {submitted && !form.certification ? <div className="invalid-feedback d-block">Certification is Required</div> : <></>}
+              {/* {submitted && !form.certification ? <div className="invalid-feedback d-block">Certification is Required</div> : <></>} */}
             </div>
 
 
@@ -428,7 +426,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={categories}
                 theme="search"
               />
-              {submitted && !form.category ? <div className="invalid-feedback d-block">Profession Category is Required</div> : <></>}
+              {/* {submitted && !form.category ? <div className="invalid-feedback d-block">Profession Category is Required</div> : <></>} */}
             </div>
 
             <div className="col-span-12 md:col-span-6">
@@ -452,7 +450,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                  displayValue="name"
                  placeholder="Select Profession Sub Sub Category"
                  intialValue={form.subSubCategory}
-                 result={e => { setForm({ ...form, subSubCategory: e.value }) }}
+                 result={e => { setform({ ...form, subSubCategory: e.value }) }}
                  options={subsubcategories}
                  theme="search"
                />
