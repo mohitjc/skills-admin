@@ -14,7 +14,7 @@ const Html = ({ options, dynamicStyle = false, className = null, selectedValues,
 
     return <>
         {theme == 'search' ? <>
-
+        <div className="capitalize">
             <Select
                 options={options?.map(itm => { return { value: itm.id, label: itm[displayValue] } }) || []}
                 placeholder={placeholder}
@@ -26,7 +26,7 @@ const Html = ({ options, dynamicStyle = false, className = null, selectedValues,
                 className="text-gray-700 block text-sm options_classs"
 
             />
-
+    </div>
         </> : <>
             <div className="selectDropdown">
                 <input type="hidden" name={name} required={required} value={selectedValues} />

@@ -17,6 +17,7 @@ export default function FormControl({
     onChange,
     maxlength = '',
     minlength = '',
+    min='',
     value,
     theme=''
 }) {
@@ -76,6 +77,7 @@ export default function FormControl({
                 value={value||''}
                 maxLength={maxlength}
                 minLength={minlength}
+                min={min}
                 onChange={e => onChange(methodModel.isNumber(e))}
             /> : type=='badge'?<>
             <div className='flex'>
@@ -141,6 +143,7 @@ export default function FormControl({
                 value={value||''}
                 maxLength={maxlength}
                 minLength={minlength}
+                min={min}
                 onChange={e => onChange(e.target.value)}
             />
             }

@@ -124,11 +124,11 @@ const datetoIsotime = (p) => {
 
 const isototime = (p) => {
     if (!p) return ''
-    let value = p.split('T')[1].split('.000Z')
-    if (value.length === 2) {
-    } else {
-        value = p.split('T')[1].split('+')
-    }
+    let value = p.split('T')[1].split('.')
+    // if (value.length === 2) {
+    // } else {
+    //     value = p.split('T')[1].split('+')
+    // }
     return value[0]
 }
 

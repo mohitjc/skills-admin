@@ -168,6 +168,7 @@ const AddEdit = () => {
                                 type="datetime-local"
                                 name="date"
                                 label="Event Date"
+                                min={datepipeModel.datetodatepicker(new Date().toISOString())}
                                 value={datepipeModel.datetodatepicker(form.date)}
                                 onChange={e => setform({ ...form, date: e })}
                                 required
@@ -204,6 +205,7 @@ const AddEdit = () => {
                                type="datetime-local"
                                 name="deadline"
                                 label="RSVP Deadline"
+                                min={datepipeModel.datetodatepicker(new Date().toISOString())}
                                 value={datepipeModel.datetodatepicker(form.deadline)}
                                 maxlength="8"
                                 onChange={e => setform({ ...form, deadline: e })}
