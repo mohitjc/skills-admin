@@ -35,9 +35,9 @@ const AddEdit = () => {
          certification:'',
          skills:[],
          networkingGroup:'',
-         category:'',
-         subCategory:'',
-         subSubCategory:'',
+         category:null,
+         subCategory:null,
+         subSubCategory:null,
          aboutUs:'',
          country:'usa',
          groupId:''
@@ -156,14 +156,16 @@ const AddEdit = () => {
                     let payload = form
                     let oarr = Object.keys(form)
                     oarr.map(itm => {
-                        payload[itm] = value[itm] || ''
+                        payload[itm] = value[itm] || null
                     })
                     // payload.role=value.role._id
                     payload.password=''
                     payload.id=id
                     if(payload.customerRole?._id) payload.customerRole=payload.customerRole._id
                     if(payload.groupId?._id) payload.groupId=payload.groupId._id
-                    
+                    if(payload.category?._id) payload.category=payload.category._id
+                    if(payload.subCategory?._id) payload.subCategory=payload.subCategory._id
+                    if(payload.subSubCategory?._id) payload.subSubCategory=payload.subSubCategory._id
                     let multiAddress=value.multiAddress||[]
                     payload.multiAddress=multiAddress.length?multiAddress:[]
                     setform({ ...payload })
