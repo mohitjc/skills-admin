@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../components/global/layout';
 import './style.scss';
 import { Link } from 'react-router-dom';
@@ -15,6 +15,7 @@ import shared from './shared';
 import environment from '../../environment';
 import  Modal from "../../components/common/Modal";
 import SendEmail from './SendEmail';
+import ApiClient from '../../methods/api/apiClient';
 
 const Html = ({
     approveDecline,
@@ -77,9 +78,9 @@ const Html = ({
         {
             key: 'groupId', name: 'Group',
             render: (row) => {
-                return <>
+                return <span className='capitalize'>
                     {row.groupIdDetails?.name}
-                </>
+                </span>
             }
         },
         {
@@ -172,6 +173,39 @@ const Html = ({
         window.open(`mailto:${itm.email}`)
     }
 
+    const [groups, setGroup] = useState([])
+
+    const getGroups = () => {
+        let f = {
+            page: 1,
+            count: 50
+        }
+        ApiClient.get('api/group/list', f).then(res => {
+            if (res.success) {
+                setGroup(res.data)
+            }
+        })
+    }
+
+    const [roles, setRoles] = useState([])
+
+    const getRoles = () => {
+        let f = {
+            page: 1,
+            count: 50
+        }
+        ApiClient.get('api/skillRole/list', f).then(res => {
+            if (res.success) {
+                setRoles(res.data)
+            }
+        })
+    }
+
+    useEffect(() => {
+        getGroups()
+        getRoles()
+    }, [])
+
     return (
         <>
          <Layout>
@@ -224,8 +258,7 @@ const Html = ({
                                 />
 
                             </div> */}
-                            <div className='w-80'>
-                                <SelectDropdown
+                           <SelectDropdown
                                     isSingle={true}
                                     id="statusDropdown"
                                     displayValue="name"
@@ -238,8 +271,29 @@ const Html = ({
                                         { id: 'deactive', name: 'Inactive' },
                                     ]}
                                 />
-                            </div>
+                                <SelectDropdown
+                            id="statusDropdown"
+                            displayValue="name"
+                            placeholder='All Groups'
+                            intialValue={filters.groupId}
+                            theme="search"
+                            result={e => filter({ groupId: e.value })}
+                            options={groups}
+                        />
+
+<SelectDropdown
+                            id="statusDropdown"
+                            displayValue="name"
+                            placeholder='All Customer Role'
+                            intialValue={filters.customerRole}
+                            theme="search"
+                            result={e => filter({ customerRole: e.value })}
+                            options={roles}
+                        />
+
+                        {filters.groupId||filters.status||filters.customerRole?<>
                             <button className='bg-primary leading-10  h-10 shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg ' onClick={reset}>Reset</button>
+                        </>:<></>}
 
                         </div>
 

@@ -264,10 +264,8 @@ const Customer = (p) => {
     const reset=()=>{
         let f={
             status:'',
-            plan:'',
-            country:'',
-            startDate:'',
-            endDate:''
+            groupId:'',
+            customerRole:''
         }
         filter(f)
     }
