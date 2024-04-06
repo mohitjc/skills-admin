@@ -122,8 +122,12 @@ const Customer = (p) => {
     }
 
     const filter=(p)=>{
-        setFilter({...filters,...p})
-        getData(p)
+        let f={
+            page:1,
+            ...p
+        }
+        setFilter({...filters,...f})
+        getData(f)
     }
 
 
