@@ -42,6 +42,12 @@ const Html = ({
             }
         },
         {
+            key: 'groupId', name: 'Group',
+            render: (row) => {
+                return <>{row?.groupDetails?.name}</>
+            }
+        },
+        {
             key: 'timezone', name: 'Timezone',
             render: (row) => {
                 return <>{row?.timezone}</>
