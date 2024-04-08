@@ -21,6 +21,7 @@ const Html = ({ options, dynamicStyle = false, className = null, selectedValues,
                 value={categoryVal()}
                 isClearable={true}
                 name={name}
+                required={required}
                 formatOptionLabel="bordere"
                 onChange={e => handleChange(e?.value || '')}
                 className="text-gray-700 block text-sm options_classs"

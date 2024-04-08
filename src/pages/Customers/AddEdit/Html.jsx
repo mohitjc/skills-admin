@@ -162,7 +162,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>Profession Title<span className="star">*</span></label>
+              <label>Profession Title</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -174,7 +174,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
 
 
             <div className="col-span-12 md:col-span-6">
-              <label>Mobile No<span className="star">*</span></label>
+              <label>Mobile No</label>
               <PhoneInput
                 country={'us'}
                 value={form.mobileNo}
@@ -240,7 +240,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
 
 
             <div className="col-span-12 md:col-span-6">
-              <label>Company<span className="star">*</span></label>
+              <label>Company</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -251,7 +251,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>Company Url<span className="star">*</span></label>
+              <label>Company Url</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -262,7 +262,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>Address<span className="star">*</span></label>
+              <label>Address</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -273,7 +273,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>Address 2<span className="star">*</span></label>
+              <label>Address 2</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -284,7 +284,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>Country<span className="star">*</span></label>
+              <label>Country</label>
               <SelectDropdown
                 id="statusDropdown"
                 displayValue="name"
@@ -298,7 +298,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>State/Province<span className="star">*</span></label>
+              <label>State/Province</label>
               <SelectDropdown
                 id="statusDropdown"
                 displayValue="name"
@@ -311,7 +311,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               {/* {submitted && !form.state ? <div className="invalid-feedback d-block">State/Province Title is Required</div> : <></>} */}
             </div>
             <div className="col-span-12 md:col-span-6">
-              <label>Zip/Postal Code<span className="star">*</span></label>
+              <label>Zip/Postal Code</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -321,7 +321,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               />
             </div>
             <div className="col-span-12 md:col-span-6">
-              <label>City<span className="star">*</span></label>
+              <label>City</label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -331,7 +331,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               />
             </div>
             <div className="col-span-12 md:col-span-6">
-              <label>Timezone<span className="star">*</span></label>
+              <label>Timezone</label>
               <SelectDropdown
                 id="statusDropdown"
                 displayValue="name"
@@ -462,7 +462,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
              </div>
 
             <div className="col-span-12 md:col-span-6">
-              <label>Group</label>
+              <label>Group<span className="star">*</span></label>
               <SelectDropdown
                 id="statusDropdown"
                 displayValue="name"
@@ -471,6 +471,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 result={e => { setform({ ...form, groupId: e.value }) }}
                 options={groups}
                 theme="search"
+                required
               />
               {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
             </div>
