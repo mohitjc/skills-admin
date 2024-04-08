@@ -88,6 +88,10 @@ const AddEdit = () => {
             delete value.id
         }
 
+        Object.keys(value).map(itm=>{
+            if(!value[itm]) value[itm]=null
+           })
+
         loader(true)
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
