@@ -82,6 +82,15 @@ const UserDetail = (p) => {
         })
     }
 
+    const Column=({data='',label=''})=>{
+        return <>
+        <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">{label}</label>
+                                <div className='profiledetailscls'>{data || '--'}</div>
+                            </div>
+        </>
+    }
+
     return (
         <Layout>
             <div className='bg-white shadow-box rounded-lg w-full p-4 mt-6'>
@@ -94,18 +103,30 @@ const UserDetail = (p) => {
                     <div className="sideclass col-span-12 md:col-span-12">
                         <h3 className="mt-3 mb-6 py-2 bg-gray-300 px-3">Frontend User Details</h3>
                         <div className="grid grid-cols-12 gap-4">
-                            <div className="col-span-12 md:col-span-6">
-                                <label className="profileheddingcls">Name</label>
-                                <div className='profiledetailscls'>{data && data.fullName}</div>
-                            </div>
-                            <div className="col-span-12 md:col-span-6">
-                                <label className="profileheddingcls">Email</label>
-                                <div className='profiledetailscls'>{data && data.email || '--'}</div>
-                            </div>
-                            <div className="col-span-12 md:col-span-6">
-                                <label className="profileheddingcls">Mobile No</label>
-                                <div className='profiledetailscls'>{data?.mobileNo ? <>+{data && data.mobileNo}</> : <>--</>}</div>
-                            </div>
+                            <Column data={data && data.fullName} label="Name" />
+                            <Column data={data && data.email} label="Email" />
+                            <Column data={data?.mobileNo ? <>+{data && data.mobileNo}</> : <>--</>} label="Mobile No" />
+                            <Column data={data && data.email} label="Mobile No" />
+                            <Column data={data && data.company} label="Company" />
+                            <Column data={data && data.address} label="Address" />
+                            <Column data={data && data.address2} label="Address2" />
+                            <Column data={data && data.address2} label="Address 2" />
+                            <Column data={data && data.country} label="Country" />
+                            <Column data={data && data.state} label="State" />
+                            <Column data={data && data.zinpcode} label="Cinpcode" />
+                            <Column data={data && data.city} label="City" />
+                            <Column data={data && data.timezone} label="Timezone" />
+                            <Column data={data && data.customerRole?.name} label="Customer Role" />
+                            <Column data={data && data.adminComment} label="Admin Comment" />
+                            <Column data={data && data.linkedInUrl} label="Linkedin Profile Url" />
+                            <Column data={data && data.certification?.name} label="Certification" />
+                            <Column data={data && data.skills} label="skills" />
+                            <Column data={data && data.networkingGroup} label="Networking Groups" />
+                            <Column data={data && data.category?.name} label="Profession Category" />
+                            <Column data={data && data.subCategory?.name} label="Profession Sub Category" />
+                            <Column data={data && data.subSubCategory?.name} label="Profession Sub Sub Category" />
+                            <Column data={data && data.groupId?.name} label="Group" />
+                            <Column data={data && data.aboutUs} label="Short Bio" />
                         </div>
 
                     
