@@ -110,7 +110,6 @@ const UserDetail = (p) => {
                             <Column data={data && data.company} label="Company" />
                             <Column data={data && data.address} label="Address" />
                             <Column data={data && data.address2} label="Address2" />
-                            <Column data={data && data.address2} label="Address 2" />
                             <Column data={data && data.country} label="Country" />
                             <Column data={data && data.state} label="State" />
                             <Column data={data && data.zinpcode} label="Cinpcode" />
@@ -120,7 +119,7 @@ const UserDetail = (p) => {
                             <Column data={data && data.adminComment} label="Admin Comment" />
                             <Column data={data && data.linkedInUrl} label="Linkedin Profile Url" />
                             <Column data={data && data.certification?.name} label="Certification" />
-                            <Column data={data && data.skills} label="skills" />
+                            <Column data={data && data.skills1} label="skills" />
                             <Column data={data && data.networkingGroup} label="Networking Groups" />
                             <Column data={data && data.category?.name} label="Profession Category" />
                             <Column data={data && data.subCategory?.name} label="Profession Sub Category" />
