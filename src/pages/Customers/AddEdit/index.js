@@ -87,6 +87,8 @@ const AddEdit = () => {
             value.addedBy=user._id
             delete value.id
         }
+        
+        value.addedBy=user._id
 
         Object.keys(value).map(itm=>{
             if(!value[itm]) value[itm]=null

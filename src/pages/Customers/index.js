@@ -215,7 +215,7 @@ const Customer = (p) => {
     const approveDecline=(itm,value)=>{
         if(window.confirm(`Do you want to ${value=='approved'?'Approve':'Decline'} this user`)){
             loader(true)
-            ApiClient.put(`api/user`,{verifiedGroupLeader:value,id:itm.id}).then(res=>{
+            ApiClient.put(`api/user`,{verifiedGroupLeader:value,id:itm.id,addedBy:user._id}).then(res=>{
                 if(res.success){
                     getData()
                 }
