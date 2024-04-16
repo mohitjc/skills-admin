@@ -39,18 +39,18 @@ const EditProfile = () => {
     let invalid = formModel.getFormError('profileForm')
     if (invalid) return
 
-    let value = { fullName: form.fullName, dialCode: '', mobileNo: form.mobileNo, image: form.image, id: user._id }
+    let value = { fullName: form.fullName, dialCode: '', mobileNo: form.mobileNo, image: form.image, id: user._id ,addedBy: user._id }
     if(form?.mobileNo.length<10){
       return
     }
 
     loader(true)
-    ApiClient.put('api/user/detail', value).then(res => {
+    ApiClient.put('api/user', value).then(res => {
       if (res.success) {
         let uUser = { ...user, ...value }
         dispatch(login_success(uUser))
         history.push("/profile")
-        // ToastsStore.success(res.message)
+        ToastsStore.success(res.message)
       }
       loader(false)
     })

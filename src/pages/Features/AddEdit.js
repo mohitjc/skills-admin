@@ -23,7 +23,8 @@ const AddEditFeature = () => {
     const user = useSelector((state) => state.user);
     const formValidation = [
         { key: 'status', required: true },
-        { key: 'category', required: true }
+        { key: 'category', required: true },
+        {key :'description' ,required: true },
     ]
 
     const handleSubmit = (e) => {
@@ -165,6 +166,7 @@ const AddEditFeature = () => {
                                 value={form.description}
                                 onChange={e => setform({ ...form, description: e.target.value })}
                             />
+                             {submitted && !form.description ? <div className="text-danger">Description is Required</div> : <></>}
                         </div>
                     </div>
 
