@@ -2005,7 +2005,9 @@ li.page.disabled {
 td.\!text-typo.\!border-l-0.\!px-3\.5.text-sm.font-normal.\!py-4.\!border.text-center.border-\[\#EAECF0\] {
   text-transform: capitalize;
 }
-
+.paginationWrapper{
+  padding: 10px;
+}
 
 .btn-primary:hover {
   background-color: #cf663e !important;

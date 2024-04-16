@@ -75,7 +75,7 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
 
         {count < total ? <>
             <div className='paginationWrapper flex items-center justify-between mt-15'>
-                        <span>Show {count} from {total} data</span>
+                        {/* <span>Show {count} from {total} data</span> */}
                         <Pagination
                             currentPage={page}
                             totalSize={total}
