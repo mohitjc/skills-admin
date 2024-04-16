@@ -34,14 +34,14 @@ const Html = ({
         {
             key: 'name', name: 'Name', sort: true,
             render: (row) => {
-                return <>{row?.name}</>
+                return <><p className='capitalize'>{row?.name}</p></>
             }
         },
         {
             key: 'status', name: 'Status',
             render: (row) => {
                 return <>
-                    <div className='w-32' onClick={() => statusChange(row)}>
+                    <div className='w-32 ' onClick={() => statusChange(row)}>
                         <Tooltip placement="top" title="Active / Inactive">
                             <span className={`text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB]  text-white !rounded capitalize cursor-pointer ${row.status === 'active' ? 'bg-green-400' : 'bg-red-400 '}`}>
                                 {row.status == 'deactive' ? 'inactive' : 'active'}
