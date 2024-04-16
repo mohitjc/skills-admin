@@ -71,7 +71,7 @@ const Html = ({
 
             <div className="shadow-box w-full bg-white rounded-lg mt-6">
 
-                <div className='flex justify-end p-4 gap-2'>
+                <div className='flex justify-end p-4 gap-2 capitalize'>
                 <SelectDropdown
                             id="statusDropdown"
                             displayValue="name"
@@ -150,7 +150,7 @@ const Html = ({
                                         <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3 ' onClick={e => sorting('lastLogin')}>Last Login<span className='ml-2'> <HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
                                         <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3 '>Account Status</th>
                                         <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3 ' onClick={e => sorting('createdAt')}>Date Created<span className='ml-2'> <HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3 ' onClick={e => sorting('updatedAt')}>Last Modified <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                        {/* <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3 ' onClick={e => sorting('updatedAt')}>Last Modified <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th> */}
                                         <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3 '>Action</th>
                                     </tr>
                                 </thead>
@@ -184,7 +184,7 @@ const Html = ({
                                                     </Tooltip>
                                                 </div></td>
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm.createdAt)}</td>
-                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm.updatedAt)}</td>
+                                            {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm.updatedAt)}</td> */}
 
 
 
