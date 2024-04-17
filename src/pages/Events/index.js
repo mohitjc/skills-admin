@@ -12,8 +12,9 @@ import { useSelector } from 'react-redux';
 const Events = () => {
     const user = useSelector((state) => state.user);
     const searchState = useSelector((state) => state.search);
-    const [filters, setFilter] = useState({ page: 1, count: 50, search: '', catType: '' })
+    const [filters, setFilter] = useState({ page: 1, count: 10, search: '', catType: '' ,groupId:"",search:""})
     const [data, setData] = useState([])
+    const [groupdata, setgroupData] = useState([])
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
     const history = useHistory()
@@ -63,11 +64,25 @@ const Events = () => {
             setLoader(false)
         })
     }
-
-
+    const filter = (p={}) => {
+        let f={
+            page:1,
+            ...p
+        }
+        setFilter({ ...filters, ...f})
+        getData({ ...f})
+    }
+    const getGroupData = (p = {}) => {
+        let filter = {  page: 1, count: 50, search: '', catType: ''  }
+        ApiClient.get(shared?.groupApi, filter).then(res => {
+            if (res.success) {
+                setgroupData(res?.data)
+            }
+        })
+    }
     const clear = () => {
-        setFilter({ ...filters, search: '',status:'', page: 1 })
-        getData({ search: '', status:'',page: 1 })
+        setFilter({ ...filters, search: '',status:'', page: 1 ,groupId: '', })
+        getData({ search: '', status:'',page: 1 , groupId: ''})
     }
 
     const deleteItem = (id) => {
@@ -92,7 +107,10 @@ const Events = () => {
         setFilter({ ...filters, status: e, page: 1 })
         getData({ status: e, page: 1 })
     }
-
+    const changeGroup = (e) => {
+        setFilter({ ...filters, groupId: e, page: 1 })
+        getData({ groupId: e, page: 1 })
+    }
 
     const statusChange = (itm) => {
         let status = 'active'
@@ -143,6 +161,9 @@ const Events = () => {
         if (user?.roleDetail?._id == environment.adminRoleId) value = true;
         return value
     }
+useEffect(() => {
+    getGroupData()
+}, [])
 
     return <><Html
         edit={edit}
@@ -159,7 +180,11 @@ const Events = () => {
         total={total}
         statusChange={statusChange}
         changestatus={changestatus}
+        changeGroup={changeGroup}
         exportfun={exportfun}
+        groupdata={groupdata}
+        filter={filter}
+        setFilter={setFilter}
     />
     </>;
 };

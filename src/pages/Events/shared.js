@@ -7,6 +7,7 @@ const shared={
     detailApi:'api/event/details',
     listApi:'api/event/all',
     statusApi:'api/event/edit',
+    groupApi:"api/group/list",
     deleteApi:'api/event/delete'
 }
 
