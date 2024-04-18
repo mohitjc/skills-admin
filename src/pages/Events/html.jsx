@@ -109,9 +109,9 @@ const Html = ({
     setIsOpen(false)
   }
 
-  function openModal() {
-    setIsOpen(true)
-  }
+//   function openModal() {
+//     setIsOpen(true)
+//   }
 
 
 
@@ -147,28 +147,10 @@ const Html = ({
 </div>
 
             <div className='shadow-box w-full bg-white rounded-lg mt-6'>
-                <div className='flex p-4 justify-end'>
-                    {/* group i search */}
-                <div className="col-md-6 mb-3">
-    <label>Group</label>
-    {/* <select  value={filters?.groupId}  onChange={(e) => changeGroup(e?.target?.value)}>
-    <option value=""  disabled selected>select Group</option>
-        {groupdata?.map((ele)=>{ return(<><option key={ele.id} value={ele.id}>{ele?.name}</option></>)})}
-        
-    </select> */}
-    <SelectDropdown
-    id="statusDropdown"
-    displayValue="name"
-    placeholder='select Group'
-    initialValue={filters.groupId}
-    result={e => { changeGroup(e.value) }}
-    options={groupdata}
-/>
-
-</div>
-{/*  */}
-{/* search filter */}
-<form class="flex items-center max-w-sm" onSubmit={e => {
+                <div className='flex items-center justify-between p-4 '>
+                    
+                    {/* search filter */}
+                    <form class="flex items-center max-w-sm" onSubmit={e => {
                         e.preventDefault()
                         filter()
                     }}>
@@ -188,13 +170,13 @@ const Html = ({
                             
                                 />
                                 {filters?.search && (
-                        <i
-                          className="fa fa-times absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm"
-                          aria-hidden="true"
-                          onClick={(e) => clear()}
-                        ></i>
-                      )}
-                        </div>
+                            <i
+                            className="fa fa-times absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm"
+                            aria-hidden="true"
+                            onClick={(e) => clear()}
+                            ></i>
+                            )}
+                    </div>
                         <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-orange-500  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -202,8 +184,27 @@ const Html = ({
                             <span class="sr-only">Search</span>
                         </button>
                     </form>
-{/*  */}
+                    {/*  */}
                     <div className="flex gap-2">
+
+                        {/* group i search */}
+                    <div className=" flex items-center gap-2 mb-3">
+                         
+                          
+                            <SelectDropdown
+                            id="statusDropdown"
+                            displayValue="name"
+                            placeholder='Select Group'
+                            initialValue={filters.groupId}
+                            result={e => { changeGroup(e.value) }}
+                            options={groupdata}
+                        />
+
+                    </div>
+                    {/*  */}
+
+
+
                         <SelectDropdown
                             id="statusDropdown"
                             displayValue="name"
@@ -252,7 +253,7 @@ const Html = ({
 
 
 
-            <div className="fixed inset-0 flex items-center justify-center">
+            {/* <div className="fixed inset-0 flex items-center justify-center">
         <button
           type="button"
           onClick={openModal}
@@ -260,9 +261,9 @@ const Html = ({
         >
           Open dialog
         </button>
-      </div>
+      </div> */}
 
-   <ActiveDeactiveModal openModal={openModal}/>
+  
 
 
         </Layout >

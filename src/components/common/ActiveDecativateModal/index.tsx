@@ -12,9 +12,9 @@ export default function ActiveDeactiveModal(){
     setIsOpen(false)
   }
 
-  function openModal() {
-    setIsOpen(true)
-  }
+//   function openModal() {
+//     setIsOpen(true)
+//   }
 
     return <>
 <Transition appear show={isOpen} as={Fragment}>
