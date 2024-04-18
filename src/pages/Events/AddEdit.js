@@ -51,7 +51,7 @@ const AddEdit = () => {
             url = shared.editApi
         } else {
             value.addedBy=user._id
-            delete value.id
+            // delete value.id
         }
 
         loader(true)
@@ -263,14 +263,28 @@ useEffect(() => {
                                 required
                             />
                         </div>
-<div className="col-md-6 mb-3">
-    <label>Group</label>
-    <select  value={form.groupId}  onChange={(e) => handleSelectValue(e)}>
-    <option value=""  disabled selected>select Group</option>
-        {data?.map((ele)=>{ return(<><option key={ele.id} value={ele.id}>{ele?.name}</option></>)})}
-        
-    </select>
-</div>
+                        <div className="col-md-6 mb-3">
+                            {/* <label className="block">Group</label> */}
+                            {/* <select  className="relative shadow-box bg-white focus:outline-none w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2" value={form.groupId}  onChange={(e) => handleSelectValue(e)}>
+                            <option value=""  disabled selected>select Group</option>
+                                {data?.map((ele)=>{ return(<><option key={ele.id} value={ele.id}>{ele?.name}</option></>)})}
+                                
+                            </select> */}
+                            <FormControl
+    type="select"
+    name="groupId"
+    label="Group"
+    displayValue="name"
+    placeholder="Select Group"
+    value={form.groupId}
+    onChange={e => setform({ ...form, groupId: e })}
+    // onChange={handleSelectValue}
+    options={data}
+    required
+    // error={getError('groupId')}
+/>
+
+                        </div>
 
                         <div className="col-span-full mb-3">
                             <FormControl

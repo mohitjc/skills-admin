@@ -8,6 +8,7 @@ import environment from '../../environment';
 import axios from 'axios';
 import shared from './shared';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 const Events = () => {
     const user = useSelector((state) => state.user);
@@ -116,15 +117,39 @@ const Events = () => {
         let status = 'active'
         if (itm.status == 'active') status = 'deactive'
 
-        if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
-            loader(true)
-            ApiClient.put(shared.statusApi, { id: itm.id, status }).then(res => {
-                if (res.success) {
-                    getData()
-                }
-                loader(false)
-            })
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text:`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                loader(true)
+                ApiClient.put(shared.statusApi, { id: itm.id, status }).then(res => {
+                            if (res.success) {
+                                getData()
+                            }
+                            loader(false)
+                        })
+              Swal.fire({
+            
+                text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
+                icon: "success"
+              });
+            }
+          });
+        // if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
+        //     loader(true)
+        //     ApiClient.put(shared.statusApi, { id: itm.id, status }).then(res => {
+        //         if (res.success) {
+        //             getData()
+        //         }
+        //         loader(false)
+        //     })
+        // }
     }
 
     const edit = (id) => {
