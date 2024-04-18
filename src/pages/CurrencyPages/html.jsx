@@ -10,7 +10,7 @@ import { Tooltip } from "antd";
 import { PiFileCsv } from 'react-icons/pi';
 import { HiOutlineArrowDown } from 'react-icons/hi';
 import { FiPlus } from 'react-icons/fi';
-
+import methodModel from '../../methods/methods';
 const Html = ({
     sortClass,
     sorting,

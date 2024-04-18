@@ -15,10 +15,11 @@ import datepipeModel from "../../models/datepipemodel";
 const AddEdit = () => {
     const { id } = useParams()
     const [images, setImages] = useState({ image: ''});
-    const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active' })
+    const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active',groupId:"" })
     const history = useHistory()
+    const [data,setData]= useState()
     const [submitted, setSubmitted] = useState(false)
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user); 
     const formValidation = [
         { key: 'status', required: true },
         { key: 'type', required: true,message:'Type is required'},
@@ -26,7 +27,14 @@ const AddEdit = () => {
     ]
 
     const timezones=timezoneModel.list
-
+    const getData = () => {
+        let filter = {  page: 1, count: 50, search: '', catType: ''  }
+        ApiClient.get('api/group/list', filter).then(res => {
+            if (res.success) {
+                setData(res?.data)
+            }
+        })
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
         setSubmitted(true)
@@ -91,7 +99,11 @@ const AddEdit = () => {
         images[key] = e.value
         setImages(images)
     }
-
+const handleSelectValue=(e)=>{
+console.log(e.target.value,"groupsdssssss")
+setform({...form , groupId:e.target.value})
+}
+console.log(form?.groupId ,"nnnnnnnnnnnnnnnnnn")
     const getError = (key) => {
         return submitted?methodModel.getError(key, form, formValidation)?.message:''
     }
@@ -106,6 +118,9 @@ const AddEdit = () => {
 
         return value
     }
+useEffect(() => {
+    getData()
+}, [])
 
     return <>
         <Layout>
@@ -248,7 +263,14 @@ const AddEdit = () => {
                                 required
                             />
                         </div>
-
+<div className="col-md-6 mb-3">
+    <label>Group</label>
+    <select  value={form.groupId}  onChange={(e) => handleSelectValue(e)}>
+    <option value=""  disabled selected>select Group</option>
+        {data?.map((ele)=>{ return(<><option key={ele.id} value={ele.id}>{ele?.name}</option></>)})}
+        
+    </select>
+</div>
 
                         <div className="col-span-full mb-3">
                             <FormControl

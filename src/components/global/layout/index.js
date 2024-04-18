@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import permissionModel from '../../../models/permisstion.model';
 import ApiClient from '../../../methods/api/apiClient';
 import { login_success } from '../../../actions/user';
-
+import methodModel from '../../../methods/methods';
 
 const Layout = ({ children }) => {
   const user = useSelector(state => state.user)
