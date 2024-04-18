@@ -108,8 +108,8 @@ const AddEdit = () => {
 
 
                     <h3 className="ViewUser mb-3"></h3>
-                    <div className="form-row">
-                        <div className="col-md-6 mb-3">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="mb-3">
                             <label>Name<span className="star">*</span></label>
                             <input
                                 type="text"
@@ -120,7 +120,7 @@ const AddEdit = () => {
                             />
                         </div>
 
-                        <div className="col-md-6 mb-3">
+                        <div className="mb-3">
                             <label>Status<span className="star">*</span></label>
                             <div className="custom_dropdown">
                                 <SelectDropdown
@@ -152,7 +152,7 @@ const AddEdit = () => {
                             required
                           />
                             </div> */}
-                        <div className="col-span-12 md:col-span-6">
+                        <div className="">
                                 <label className='lablefontcls'>Image</label><br></br>
                                 <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} />
                             </div>
