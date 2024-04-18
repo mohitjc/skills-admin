@@ -131,11 +131,20 @@ const Html = ({
                     {/* group i search */}
                 <div className="col-md-6 mb-3">
     <label>Group</label>
-    <select  value={filters?.groupId}  onChange={(e) => changeGroup(e?.target?.value)}>
+    {/* <select  value={filters?.groupId}  onChange={(e) => changeGroup(e?.target?.value)}>
     <option value=""  disabled selected>select Group</option>
         {groupdata?.map((ele)=>{ return(<><option key={ele.id} value={ele.id}>{ele?.name}</option></>)})}
         
-    </select>
+    </select> */}
+    <SelectDropdown
+    id="statusDropdown"
+    displayValue="name"
+    placeholder='select Group'
+    initialValue={filters.groupId}
+    result={e => { changeGroup(e.value) }}
+    options={groupdata}
+/>
+
 </div>
 {/*  */}
 {/* search filter */}
