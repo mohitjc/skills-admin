@@ -346,7 +346,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
 
             <div className="col-span-12 md:col-span-6">
               <label>Customer Role<span className="star">*</span></label>
-              <SelectDropdown
+              <SelectDropdown  
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Customer Role"
