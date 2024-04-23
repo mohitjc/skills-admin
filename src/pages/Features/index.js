@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import environment from '../../environment';
 import { toast } from 'react-toastify';
-
+import Swal from 'sweetalert2';
 const Features = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -100,16 +100,39 @@ const Features = (p) => {
     }
 
     const deleteItem = (id) => {
-        if (window.confirm("Do you want to delete this")) {
-            loader(true)
-            ApiClient.delete('api/feature', { id: id }).then(res => {
-                if (res.success) {
-                    // ToastsStore.success(res.message)
-                    clear()
-                }
-                loader(false)
-            })
-        }
+        // if (window.confirm("Do you want to delete this")) {
+        //     loader(true)
+        //     ApiClient.delete('api/feature', { id: id }).then(res => {
+        //         if (res.success) {
+        //             // ToastsStore.success(res.message)
+        //             clear()
+        //         }
+        //         loader(false)
+        //     })
+        // }
+        Swal.fire({
+            title: "Are you sure?",
+            text:`Do you want to delete this`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                loader(true)
+                ApiClient.delete('api/feature', { id: id }).then(res => {
+                            if (res.success) {
+                                // ToastsStore.success(res.message)
+                                clear()
+                            }
+                            loader(false)
+                        })
+            //   Swal.fire({
+            //     icon: "success"
+            //   });
+            }
+          });
     }
 
     const pageChange = (e) => {
@@ -165,15 +188,39 @@ const Features = (p) => {
         let status = 'active'
         if (itm.status == 'active') status = 'deactive'
 
-        if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
-            loader(true)
-            ApiClient.put(`api/feature`, { id: itm.id, status }).then(res => {
-                if (res.success) {
-                    getData()
-                }
-                loader(false)
-            })
-        }
+        // if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
+        //     loader(true)
+        //     ApiClient.put(`api/feature`, { id: itm.id, status }).then(res => {
+        //         if (res.success) {
+        //             getData()
+        //         }
+        //         loader(false)
+        //     })
+        // }
+        Swal.fire({
+            title: "Are you sure?",
+            text:`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                loader(true)
+                ApiClient.put(`api/feature`, { id: itm.id, status }).then(res => {
+                            if (res.success) {
+                                getData()
+                            }
+                            loader(false)
+                        })
+            //   Swal.fire({
+            
+            //     // text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
+            //     icon: "success"
+            //   });
+            }
+          });
     }
     const exportfun = async () => {
         const token = await localStorage.getItem("token");

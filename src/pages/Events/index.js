@@ -87,16 +87,39 @@ const Events = () => {
     }
 
     const deleteItem = (id) => {
-        if (window.confirm("Do you want to delete this")) {
-            loader(true)
-            ApiClient.delete(shared.deleteApi, { id: id }).then(res => {
-                if (res.success) {
-                    // ToastsStore.success(res.message)
-                    clear()
-                }
-                loader(false)
-            })
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text:`Do you want to delete this`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                loader(true)
+                ApiClient.delete(shared.deleteApi, { id: id }).then(res => {
+                            if (res.success) {
+                                // ToastsStore.success(res.message)
+                                clear()
+                            }
+                            loader(false)
+                        })
+            //   Swal.fire({
+            //     icon: "success"
+            //   });
+            }
+          });
+        // if (window.confirm("Do you want to delete this")) {
+        //     loader(true)
+        //     ApiClient.delete(shared.deleteApi, { id: id }).then(res => {
+        //         if (res.success) {
+        //             // ToastsStore.success(res.message)
+        //             clear()
+        //         }
+        //         loader(false)
+        //     })
+        // }
     }
 
     const pageChange = (e) => {
@@ -134,11 +157,11 @@ const Events = () => {
                             }
                             loader(false)
                         })
-              Swal.fire({
+            //   Swal.fire({
             
-                text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
-                icon: "success"
-              });
+            //     // text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
+            //     icon: "success"
+            //   });
             }
           });
         // if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
