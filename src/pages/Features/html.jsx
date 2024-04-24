@@ -126,12 +126,12 @@ const Html = ({
 
 
                             <table class="w-full">
-                                <thead className='border-b border-[#EAECF0]'>
+                                <thead className='text-xs text-gray-700 capitalize bg-gray-50  border-b border-[#EAECF0]'>
                                     <tr className='border-b border-[#EAECF0]'>
-                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-left bg-[#F7FAFF] !py-3' onClick={e => sorting('name')}>Name<span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3' onClick={e => sorting('categoryName')}>Category <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3'>Status</th>
-                                        <th scope="col" className='cursor-pointer text-[#82838B] !border-l-0 font-normal text-sm !border border-[#EAECF0] px-3.5 text-center bg-[#F7FAFF] !py-3'>Action</th>
+                                        <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer text-left' onClick={e => sorting('name')}>Name<span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                        <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer ' onClick={e => sorting('categoryName')}>Category <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                        <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer '>Status</th>
+                                        <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer '>Action</th>
 
                                     </tr>
                                 </thead>
