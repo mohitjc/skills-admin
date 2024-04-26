@@ -88,21 +88,10 @@ const Certification = (p) => {
                             }
                             loader(false)
                         })
-            //   Swal.fire({
-            //     icon: "success"
-            //   });
+           
             }
           });
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/certificate', { id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
+     
     }
 
     const pageChange = (e) => {
@@ -121,15 +110,7 @@ const Certification = (p) => {
         let status = 'active'
         if (itm.status == 'active') status = 'deactive'
 
-        // if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
-        //     loader(true)
-        //     ApiClient.put(`api/certificate/change-status`, { id: itm.id, status }).then(res => {
-        //         if (res.success) {
-        //             getData()
-        //         }
-        //         loader(false)
-        //     })
-        // }
+        
         
         Swal.fire({
             title: "Are you sure?",
@@ -148,11 +129,7 @@ const Certification = (p) => {
                             }
                             loader(false)
                         })
-            //   Swal.fire({
-            
-            //     // text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
-            //     icon: "success"
-            //   });
+         
             }
           });
     }

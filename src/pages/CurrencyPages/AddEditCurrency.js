@@ -21,10 +21,7 @@ const AddEditCurrency = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if (!form?.countryFlagImage) {
-        //     toast.error('Add Country Flag')
-        //     return
-        // }
+      
         setSubmitted(true)
         let invalid = methodModel.getFormError(formValidation, form)
         if (invalid) return
@@ -129,17 +126,7 @@ const AddEditCurrency = () => {
                                 required
                             />
                         </div>
-                        {/* <div className="col-span-12 md:col-span-6">
-                            <label>Country<span className="star">*</span></label>
-                            <SelectDropdown
-                                id="statusDropdown"
-                                displayValue="name"
-                                intialValue={form.country}
-                                result={e => {setform({...form,country:e.value})}}
-                                options={country}
-                                onChange={(e) => setcountry({...form, country: e.target.value})}
-                            />
-                        </div> */}
+                      
                         <div className="col-span-12 md:col-span-6">
                             <label>Symbol<span className="star">*</span></label>
                             <input

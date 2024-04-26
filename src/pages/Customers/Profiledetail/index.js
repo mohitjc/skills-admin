@@ -102,17 +102,17 @@ const UserDetail = (p) => {
                 <div className="grid grid-cols-12 gap-4">
                     <div className="sideclass col-span-12 md:col-span-12">
                         <h3 className="mt-3 mb-6 py-2 bg-gray-300 px-3">Frontend User Details</h3>
-                        <div className="grid grid-cols-12 gap-4">
-                            <Column data={data && data.fullName} label="Name" />
+                        <div className="grid grid-cols-12 gap-4 ">
+                            <Column className="capitalize" data={data && data.fullName} label="Name" />
                             <Column data={data && data.email} label="Email" />
                             <Column data={data?.mobileNo ? <>+{data && data.mobileNo}</> : <>--</>} label="Mobile No" />
-                            <Column data={data && data.email} label="Mobile No" />
+                            {/* <Column data={data && data.email} label="Mobile No" /> */}
                             <Column data={data && data.company} label="Company" />
                             <Column data={data && data.address} label="Address" />
                             <Column data={data && data.address2} label="Address2" />
                             <Column data={data && data.country} label="Country" />
                             <Column data={data && data.state} label="State" />
-                            <Column data={data && data.zinpcode} label="Cinpcode" />
+                            <Column data={data && data.zinpcode} label="PinCode" />
                             <Column data={data && data.city} label="City" />
                             <Column data={data && data.timezone} label="Timezone" />
                             <Column data={data && data.customerRole?.name} label="Customer Role" />

@@ -70,16 +70,7 @@ const Types = (p) => {
     }
 
     const deleteItem = (id) => {
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/categorytype/delete', { id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
+     
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to delete this`,
@@ -98,9 +89,7 @@ const Types = (p) => {
                             }
                             loader(false)
                         })
-            //   Swal.fire({
-            //     icon: "success"
-            //   });
+            
             }
           });
     }
@@ -120,16 +109,6 @@ const Types = (p) => {
         let modal = 'category'
         let status = 'active'
         if (itm.status == 'active') status = 'deactive'
-
-        // if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
-        //     loader(true)
-        //     ApiClient.put(`api/categorytype/status/change`, { id: itm.id, status }).then(res => {
-        //         if (res.success) {
-        //             getData()
-        //         }
-        //         loader(false)
-        //     })
-        // }
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
@@ -147,11 +126,6 @@ const Types = (p) => {
                             }
                             loader(false)
                         })
-            //   Swal.fire({
-            
-            //     // text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
-            //     icon: "success"
-            //   });
             }
           });
     }
