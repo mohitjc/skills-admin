@@ -57,7 +57,7 @@ const Profile = () => {
             </div>
             <div className='col-span-12 md:col-span-10'>
               <div className='sub_fatch'>
-                <img src={methodModel.userImg(data && data.image)} className="profileImage" />
+              <img src={methodModel.userImg(data && data.image)} className="h-32 w-32 mx-auto" />
               </div>
             </div>
 

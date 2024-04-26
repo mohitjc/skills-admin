@@ -266,7 +266,8 @@ const AddEditCategory = () => {
 
                             <div className="col-span-12 md:col-span-6">
                                 <label className='lablefontcls'>Image</label><br></br>
-                                <ImageUpload model="users" result={e => imageResult(e, 'banner')} value={images.banner || form.banner} />
+                                <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} multiple={false} />
+                                {/* <ImageUpload model="users" result={e => imageResult(e, 'banner')} value={images.banner || form.banner} /> */}
                             </div>
                             {/* <div className="col-md-6  mb-3">
                                 <label className='lablefontcls'>Icon</label><br></br>
