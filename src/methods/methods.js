@@ -23,16 +23,17 @@ const generatekeysArr = (arr, key = 'typeofresult') => {
         })
     }
 }
-
 const userImg = (img) => {
     let value = '/assets/img/person.jpg'
-    if (img) value = environment.api + 'img/' + img
+    // if (img) value = environment.api + 'img/' + img
+    if (img) value = `${environment.sasurl}/${environment.container}/${img}`
     return value
 }
 
 const noImg = (img,modal='blogs') => {
     let value = '/assets/img/placeholder.png'
-    if (img) value = environment.api + 'img/' + img
+    // if (img) value = environment.api + 'img/' + img
+    if (img) value = `${environment.sasurl}/${environment.container}/${img}`
     return value
 }
 

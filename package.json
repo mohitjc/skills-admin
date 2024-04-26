@@ -8,6 +8,7 @@
     "node": "~14.20.1"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.17.0",
     "@coreui/react": "^5.0.0-alpha.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
