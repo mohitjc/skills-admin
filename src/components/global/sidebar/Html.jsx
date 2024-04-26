@@ -182,7 +182,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
                                 {itm.menu.map(sitm => {
                                   return <>
                                     {urlAllow(sitm.key) ? <li> <NavLink className={(isActive) =>
-                                      "p-2.5 rounded-md block text-sm font-normal text-[#ef7a2b] cursor-pointer hover:!text-[#fff] hover:bg-[#5577FF]/10 !no-underline transition-all " +
+                                      "p-2.5 rounded-md block text-sm font-normal text-[#ef7a2b] cursor-pointer hover:!text-[#fff ] hover:bg-[#5577FF]/10 !no-underline transition-all " +
                                       (location?.pathname == sitm.url &&
                                         " !text-[#ef7a2b] !bg-[#ef7a2b]/10 !font-medium")
                                     } to={sitm.url}>
