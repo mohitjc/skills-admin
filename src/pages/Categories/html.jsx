@@ -98,9 +98,7 @@ const Html = ({
 
                 <div className="flex filterFlex phSpace">
 
-                    {/* <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed mr-2" onClick={() => exportfun()}>
-                        <PiFileCsv className="text-typo text-xl" />  Export CSV
-                    </button> */}
+                   
 
 
                     {isAllow('addCategory') ?

@@ -172,10 +172,7 @@ const AddEditCategory = () => {
 
 
                     <div className="grid grid-cols-12 gap-4">
-                        {/* <div className="col-span-12 md:col-span-12">
-                            <a className={`btn ${tab == 'info' ? 'btn-primary cat' : 'btn-light list'} mr-3`} onClick={e => setTab('info')}>Information</a>
-                            <a className={`btn ${tab == 'seo' ? 'btn-primary cat' : 'btn-light list'} mr-3 ml-3`} onClick={e => setTab('seo')}>SEO</a>
-                        </div> */}
+                        
 
                         {tab == 'info' ? <>
                             <div className="col-span-12 md:col-span-6">
@@ -208,16 +205,7 @@ const AddEditCategory = () => {
                             </div> : <></>}
 
 
-                            {/* <div className="col-span-12 md:col-span-6">
-                                <label>Order</label>
-                                <input
-                                    type="text"
-                                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                                    value={form.order}
-                                    maxLength="10"
-                                    onChange={e => setform({ ...form, order: methodModel.isNumber(e) })}
-                                />
-                            </div> */}
+                          
 
                             <div className="col-span-12 md:col-span-6">
                                 <label>Parent Category</label>
@@ -248,82 +236,14 @@ const AddEditCategory = () => {
                                     {submitted && !form.status ? <div className="text-danger">Status is Required</div> : <></>}
                                 </div>
                             </div>
-                            {/* <div className="col-span-12 md:col-span-6">
-                                <label>Featured<span className="star">*</span></label>
-                                <SelectDropdown
-                                    id="statusDropdown"
-                                    displayValue="name"
-                                    placeholder="Select Feature"
-                                    intialValue={form.featured}
-                                    result={e => { setform({ ...form, featured: e.value }) }}
-                                    options={[
-                                        {id:'Yes',name:'Yes'},
-                                        {id:'No',name:'No'},
-                                    ]}
-                                />
-                                {submitted && !form.featured ? <div className="text-danger">Feature is Required</div> : <></>}
-                            </div> */}
+                            
 
                             <div className="col-span-12 md:col-span-6">
                                 <label className='lablefontcls'>Image</label><br></br>
                                 <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} multiple={false} />
-                                {/* <ImageUpload model="users" result={e => imageResult(e, 'banner')} value={images.banner || form.banner} /> */}
-                            </div>
-                            {/* <div className="col-md-6  mb-3">
-                                <label className='lablefontcls'>Icon</label><br></br>
-                                <ImageUpload model="users" result={e => imageResult(e, 'icon')} value={images.icon || form.icon} />
-                            </div> */}
 
-                            {/* <div className="col-span-12 md:col-span-6">
-                                <label>Alt Image Name<span className="star">*</span></label>
-                                <input
-                                    type="text"
-                                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                                    value={form.altImageName}
-                                    onChange={e => setform({ ...form, altImageName: e.target.value })}
-                                    required
-                                />
-                            </div> */}
-                            {/* <div className="col-span-12 md:col-span-6">
-                                <label>Alt Icon Name<span className="star">*</span></label>
-                                <input
-                                    type="text"
-                                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                                    value={form.altIconName}
-                                    onChange={e => setform({ ...form, altIconName: e.target.value })}
-                                    required
-                                />
-                            </div> */}
-                            {/* <div className="col-span-12 md:col-span-12">
-                                <label>Banner Overlay Text Heading<span className="star">*</span></label>
-                                <input
-                                    type="text"
-                                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                                    value={form.bannerOverlayHeading}
-                                    onChange={e => setform({ ...form, bannerOverlayHeading: e.target.value })}
-                                    required
-                                />
                             </div>
-                            <div className="col-span-12 md:col-span-12">
-                                <label>Banner Overlay Text Body<span className="star">*</span></label>
-                                <Editor textareaName='bannerOverlayBody' initialValue={form.bannerOverlayBody ? form.bannerOverlayBody : ''} className='tuncketcls'
-                                    onEditorChange={(newValue, editor) => {
-                                        setform({ ...form, tiny_bannerOverlayBody: newValue })
-                                    }}
-                                    required
-                                />
-                                {submitted && !form.tiny_bannerOverlayBody ? <div className="text-danger">Banner Overlay Text Body is Required</div> : <></>}
-                            </div> */}
-                            {/* <div className="col-span-12 md:col-span-12">
-                                <label>Category Description<span className="star">*</span></label>
-                                <Editor textareaName='description' initialValue={form.description ? form.description : ''} className='tuncketcls'
-                                    onEditorChange={(newValue, editor) => {
-                                        setform({ ...form, tiny_description: newValue })
-                                    }}
-                                    required
-                                />
-                                {submitted && !form.tiny_description ? <div className="text-danger">Category Description is Required</div> : <></>}
-                            </div> */}
+                           
                         </> : <>
                             <div className="col-span-12 md:col-span-12">
                                 <label>URL Key</label>

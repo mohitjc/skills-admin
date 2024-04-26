@@ -74,12 +74,6 @@ const CustomerDetail = (p) => {
                                 </div>
                             </div>
                         </div>
-
-                       
-                        {/* <div className="col-md-12 mb-3">
-                            <label className="profileheddingcls">About Us</label>
-                            <div className='profiledetailscls'>{data && data.aboutUs}</div>
-                        </div> */}
                     </div>
                 </div>
             </div>
