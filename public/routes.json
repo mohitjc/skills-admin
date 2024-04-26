@@ -1,7 +1,7 @@
 {
     "routes": [
       {
-        "route": "/404.html",
+        "route": "/index.html",
         "statusCode": 404
       },
       {
