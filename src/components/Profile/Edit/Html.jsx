@@ -3,8 +3,8 @@ import methodModel from '../../../methods/methods';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import PhoneInput from 'react-phone-input-2';
-
-const Html = ({ handleSubmit, setForm, form, getError, uploadImage, submitted }) => {
+import ImageUpload from '../../common/ImageUpload';
+const Html = ({ handleSubmit, setForm, form, getError, submitted ,imageResult,uploadImage,images}) => {
   return (
     <>
 
@@ -27,12 +27,12 @@ const Html = ({ handleSubmit, setForm, form, getError, uploadImage, submitted })
               </div>
               <div className='col-span-12 md:col-span-10'>
                 <div className='sub_fatch flex items-center'>
-                  <label className=" mr-6">
-                    <img src={methodModel.userImg(form && form.image)} className="h-28 w-28 rounded-lg object-cover" />
-                  </label>
+                  {/* <label className=" mr-6">
+                    <img src={methodModel.userImg(images && images.image)} className="h-28 w-28 rounded-lg object-cover" />
+                  </label> */}
                   <div className='profile_btn '>
 
-                    <div>
+                    {/* <div>
                       <label className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2 cursor-pointer">
                         <input
                           id="bannerImage"
@@ -42,7 +42,11 @@ const Html = ({ handleSubmit, setForm, form, getError, uploadImage, submitted })
                           value={form.baseImg ? form.baseImg : ''}
                           onChange={(e) => { uploadImage(e); }}
                         />{form.image ? 'Change' : 'Upload'} Image</label>
-                    </div>
+                    </div> */}
+                     <div className="col-span-12 md:col-span-6">
+              <label className='lablefontcls'>Image</label><br></br>
+              <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} multiple={false} />
+            </div>
                     <div>
                       {form.image ? <label className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-4 cursor-pointer py-2.5 text-center me-2 mb-2" onClick={e => setForm({ ...form, image: "" })}>Remove Image</label> : <></>}
                     </div>

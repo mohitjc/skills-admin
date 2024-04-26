@@ -56,15 +56,6 @@ const Html = ({ role, form, handleSubmit, setform, roles, addressResult, submitt
                             {submitted && !form.role ? <div className="invalid-feedback d-block">Role is Required</div> : <></>}
                         </div>}
 
-                        {/* <div className="col-span-12 md:col-span-6 ">
-                            <label>Address<span className="star">*</span></label>
-                            <GooglePlaceAutoComplete
-                                value={form.address}
-                                result={addressResult}
-                                id="address"
-                                placeholder=""
-                            />
-                        </div> */}
 
                         <div className="col-span-12 md:col-span-6 ">
                             <label>Mobile No<span className="star">*</span></label>
@@ -79,23 +70,6 @@ const Html = ({ role, form, handleSubmit, setform, roles, addressResult, submitt
                                     countryCodeEditable={true}
                                 />
                             </div>
-                            {/* <div className="phoneInput">
-                                <input
-                                    type="text"
-                                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2" placeholder='+1'
-                                    value={form && form.dialCode}
-                                    maxLength={4}
-                                    onChange={e => setform({ ...form, dialCode: e.target.value })}
-                                />
-                                <input
-                                    type="text"
-                                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2" placeholder='Mobile No.'
-                                    value={form && form.mobileNo}
-                                    maxLength={12}
-                                    onChange={e => setform({ ...form, mobileNo: methodModel.isNumber(e) })}
-                                    required={form.dialCode?true:false}
-                                />
-                            </div> */}
                             {submitted && getError('dialCode').invalid ? <div className="invalid-feedback d-block">invalid country code</div> : <></>}
                             {submitted && getError('mobileNo').invalid && !getError('dialCode').invalid ? <div className="invalid-feedback d-block">Min Length is 10</div> : <></>}
                         </div>
@@ -142,16 +116,6 @@ const Html = ({ role, form, handleSubmit, setform, roles, addressResult, submitt
                             </div>
                             {submitted && getError('confirmPassword').invalid ? <div className="invalid-feedback d-block">Confirm Password is not matched with Password</div> : <></>}
                         </div>
-
-                        {/* <div className="col-md-12 mb-3">
-                                    <label>AboutUs<span className="star">*</span></label>
-                                    <textarea
-                                        className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                                        value={form.aboutUs}
-                                        onChange={e => setform({ ...form, aboutUs: e.target.value })}
-                                        required
-                                    />
-                                </div> */}
                         <div className="col-span-12 md:col-span-6 ">
                             <label className='lablefontcls'>Image</label><br></br>
                             <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} multiple={false} />

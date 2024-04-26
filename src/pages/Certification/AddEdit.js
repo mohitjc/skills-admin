@@ -133,25 +133,7 @@ const AddEdit = () => {
                                 {submitted && !form.status ? <div className="text-danger">Status is Required</div> : <></>}
                             </div>
                         </div>
-                        {/* <div className="col-span-12 md:col-span-6">
-                                <label className='lablefontcls'>Description</label>
-                                <Editor
-                            textareaName="description"
-                            value={form?.description}
-                            className="tuncketcls"
-                            onEditorChange={(newValue, editor) => {
-                              setform({ ...form, description: newValue });
-                            }}
-                            apiKey={tinymcModel.apiKey}
-                            init={{
-                              selector: "textarea#autocompleter-cardmenuitem",
-                              height: 250,
-                              plugins: tinymcModel.plugins,
-                              toolbar: tinymcModel.toolbar,
-                            }}
-                            required
-                          />
-                            </div> */}
+                     
                         <div className="">
                                 <label className='lablefontcls'>Image</label><br></br>
                                 <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} />

@@ -48,6 +48,11 @@ const Layout = ({ children }) => {
     return value
   }
 
+  const logowhite = () => {
+    let value = '/assets/img/fd.png'
+    return value
+  }
+
   const logos = () => {
     let value = '/assets/img/logo-small.png'
     return value
@@ -75,7 +80,7 @@ const Layout = ({ children }) => {
             <div
               className="sidebar-brand text-center">
               <label className="editLogo">
-                <img src={logo()} width="200" height="35" className="pl-3 show-logo" />
+                <img src={logowhite()} width="200" height="35" className="pl-3 show-logo" />
                 <img src={logos()} className="hide-logo" />
               </label>
             </div>

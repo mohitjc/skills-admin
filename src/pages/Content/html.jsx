@@ -38,32 +38,7 @@ const Html = ({
                 return <>{row?.title}</>
             }
         },
-        // {
-        //     key: 'slug', name: 'Slug', sort: true,
-        //     render: (row) => {
-        //         return <>{row?.slug}</>
-        //     }
-        // },
-        // {
-        //     key: 'createdAt', name: 'Created At', sort: true,
-        //     render: (row) => {
-        //         return <>{datepipeModel.date(row.createdAt)}</>
-        //     }
-        // },
-        // {
-        //     key: 'status', name: 'Status',
-        //     render: (row) => {
-        //         return <>
-        //             <div className='w-32' onClick={() => statusChange(row)}>
-        //                 <Tooltip placement="top" title="Active / Inactive">
-        //                     <span className='bg-[#EEE] text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] text-[#3C3E49A3] !rounded capitalize'>
-        //                         {row.status == 'deactive' ? 'inactive' : 'active'}
-        //                     </span>
-        //                 </Tooltip>
-        //             </div>
-        //         </>
-        //     }
-        // },
+     
         {
             key: 'action', name: 'Action',
             render: (itm) => {
@@ -96,15 +71,6 @@ const Html = ({
                 <div className="flex">
 
 
-                    {/* <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed mr-3" onClick={() => exportfun()}>
-                        <PiFileCsv className="text-typo text-xl" />  Export CSV
-                    </button> */}
-
-                    {/* {isAllow('addContent') ?
-                        <Link className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to="/content/add">
-                            <FiPlus className="text-xl text-white" />   Add Content Management
-                        </Link>
-                        : <></>} */}
                 </div>
 
 
@@ -115,14 +81,7 @@ const Html = ({
             <div className='shadow-box w-full bg-white rounded-lg mt-6'>
                 <div className='flex p-4 justify-end'>
                     <div className="flex gap-2">
-                        {/* <SelectDropdown
-                            id="statusDropdown"
-                            displayValue="name"
-                            placeholder='All Status'
-                            intialValue={filters.status}
-                            result={e => { changestatus(e.value) }}
-                            options={statusModel.list}
-                        /> */}
+                      
                         {filters.status ? <>
                             <button
                                 className="bg-primary leading-10 h-10 inline-block shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg"

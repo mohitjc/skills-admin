@@ -20,13 +20,13 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name:'Dashboard',
-      icon:<RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
+      icon:<RiHome6Line className="text-[#fff] shrink-0 text-lg" />,
       url:'/dashboard',
       key:'readDashboard',
     },
     {
       name: 'User Management',
-      icon: <FiUsers className="text-[#5577FF] shrink-0 text-lg" />,
+      icon: <FiUsers className="text-[#fff] shrink-0 text-lg" />,
       key: 'readUsers,readRoles',
       tab: 'user',
       menu: [
@@ -44,7 +44,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Catalogue',
-      icon: <GrCatalogOption className="text-[#fd71af] shrink-0 text-lg" />,
+      icon: <GrCatalogOption className="text-[#fff] shrink-0 text-lg" />,
       key: 'readCategory',
       tab: 'catalogue',
       menu: [
@@ -62,7 +62,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Subscription Plan',
-      icon: <i className="material-icons text-[#ffc800] shrink-0 text-lg" >subscriptions</i>,
+      icon: <i className="material-icons text-[#fff] shrink-0 text-lg" >subscriptions</i>,
       key: 'readPlan',
       tab: 'plan',
       menu: [
@@ -80,13 +80,13 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Currency',
-      icon: <i className="material-icons text-[#00b884] shrink-0 text-lg" title="">currency_exchange</i>,
+      icon: <i className="material-icons text-[#fff] shrink-0 text-lg" title="">currency_exchange</i>,
       url: '/currency',
       key: 'readCurrency',
     },
     {
       name: 'Frontend Users',
-      icon: <RiPresentationLine className="text-[#7b68ee] shrink-0 text-lg" />,
+      icon: <RiPresentationLine className="text-[#fff] shrink-0 text-lg" />,
       key: 'readCustomers',
       tab: 'customer',
       menu: [
@@ -104,37 +104,37 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Participant Type',
-      icon: <RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
+      icon: <RiHome6Line className="text-[#fff] shrink-0 text-lg" />,
       url: '/participant-type',
       key: 'readParticipantTypes',
     },
     {
       name: 'Skills',
-      icon: <RiHome6Line className="text-[#00b884] shrink-0 text-lg" />,
+      icon: <RiHome6Line className="text-[#fff] shrink-0 text-lg" />,
       url: '/skills',
       key: 'readSkills',
     },
     {
       name: 'Group',
-      icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">groups</span>,
+      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">groups</span>,
       url: '/group',
       key: 'readGroup',
     },
     {
       name: 'Certification',
-      icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">workspace_premium</span>,
+      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">workspace_premium</span>,
       url: '/certification',
       key: 'readCertification',
     },
     {
       name: 'Content Management',
-      icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">content_paste</span>,
+      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">content_paste</span>,
       url: '/content',
       key: 'readContent',
     },
     {
       name: 'Events',
-      icon: <span class="material-symbols-outlined text-[#ffc800] shrink-0 text-lg">workspace_premium</span>,
+      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">workspace_premium</span>,
       url: '/event',
       key: 'readEvents',
     },
@@ -160,7 +160,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
 
                               <span className="text-sm font-normal text-inherit flex items-center gap-[12px] crm">
                                 {itm.icon}
-                                <span className=" text-inherit leading-none sidebar_text"> {itm.name}</span>
+                                <span className=" text-white leading-none sidebar_text"> {itm.name}</span>
 
                               </span>
 
@@ -182,9 +182,9 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
                                 {itm.menu.map(sitm => {
                                   return <>
                                     {urlAllow(sitm.key) ? <li> <NavLink className={(isActive) =>
-                                      "p-2.5 rounded-md block text-sm font-normal text-[#4A545E] cursor-pointer hover:!text-[#5577FF] hover:bg-[#5577FF]/10 !no-underline transition-all " +
+                                      "p-2.5 rounded-md block text-sm font-normal text-[#ef7a2b] cursor-pointer hover:!text-[#fff] hover:bg-[#5577FF]/10 !no-underline transition-all " +
                                       (location?.pathname == sitm.url &&
-                                        " !text-[#5577FF] !bg-[#5577FF]/10 !font-medium")
+                                        " !text-[#ef7a2b] !bg-[#ef7a2b]/10 !font-medium")
                                     } to={sitm.url}>
 
                                       <span className="text-inherit leading-none sidebar_text" title={sitm.name}> {sitm.name}</span>
@@ -207,12 +207,12 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
                         <NavLink
                           to={itm.url}
                           className={(isActive) =>
-                            "p-2.5 rounded-md flex items-center gap-[12px] text-sm font-normal text-[#4A545E] hover:!text-[#00b884] hover:bg-[#00b884]/10 !no-underline transition-all " +
-                            (location?.pathname == itm.url && " !text-[#00b884] !bg-[#EDECF9] !font-medium")
+                            "p-2.5 rounded-md flex items-center gap-[12px] text-sm font-normal text-[#fff] hover:!text-[#fff] hover:bg-[#00b884]/10 !no-underline transition-all " +
+                            (location?.pathname == itm.url && " !text-[#fff] !bg-[#ef7a2b] !font-medium")
                           }>
 
                           {itm.icon}
-                          <span className="text-inherit leading-none sidebar_text">{itm.name}</span>
+                          <span className="!text-white leading-none sidebar_text">{itm.name}</span>
 
                         </NavLink>
                       </Tooltip>
@@ -223,7 +223,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
                 <li>
                   <h6
                     className={`${isOpen ? "py-[12px] text-center " : "p-[12px]"
-                      } text-md font-medium text-[#7E8B99] mt-[20px] text-center`} t>
+                      } text-md font-medium text-[#fff] mt-[20px] text-center`} t>
                     <span className=" sidebar_text"> {itm.name} </span>
                   </h6>
                 </li>

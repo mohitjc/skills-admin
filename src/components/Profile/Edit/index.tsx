@@ -17,13 +17,25 @@ const EditProfile = () => {
   const dispatch = useDispatch();
   const history=useHistory()
   const [submitted, setSubmitted] = useState(false)
-
+  const [images, setImages]:any = useState({ image: '' });
   const gallaryData = () => {
     loader(true)
     ApiClient.get(`api/user/detail`,{id:user._id}).then(res => {
       if (res.success) {
+        let payload = form
+        let value = res.data
+        let oarr = Object.keys(form)
+        oarr.map(itm => {
+            payload[itm] = value[itm] || null
+        })
         setForm({form,...res.data,role:res.data.role.name})
-        setData(res.data)
+        let img=images
+      
+        Object.keys(images).map(itm=>{
+          img[itm]=value[itm]
+        })
+        setImages({...img})
+        setData(value)
       }
       loader(false)
     })
@@ -32,18 +44,20 @@ const EditProfile = () => {
   const getError = (key:any) => {
     return formModel.getError('profileForm',key)
   }
-
+ 
   const handleSubmit = (e:any) => {
     e.preventDefault();
     setSubmitted(true)
     let invalid = formModel.getFormError('profileForm')
     if (invalid) return
 
-    let value = { fullName: form.fullName, dialCode: '', mobileNo: form.mobileNo, image: form.image, id: user._id ,addedBy: user._id }
+    let value = { fullName: form.fullName, dialCode: '', mobileNo: form.mobileNo, image: form.image, id: user._id ,addedBy: user._id , ...images}
     if(form?.mobileNo.length<10){
       return
     }
-
+    Object.keys(value).map(itm=>{
+      if(!value[itm]) value[itm]=null
+     })
     loader(true)
     ApiClient.put('api/user', value).then(res => {
       if (res.success) {
@@ -55,7 +69,11 @@ const EditProfile = () => {
       loader(false)
     })
   };
-
+  const imageResult = (e:any, key:any) => {
+    images[key] = e.value
+    setImages(images)
+    console.log("imageResult", e)
+}
   const uploadImage = (e:any) => {
     setForm({ ...form, baseImg: e.target.value })
     let files = e.target.files
@@ -88,6 +106,8 @@ const EditProfile = () => {
      handleSubmit={handleSubmit}
      setForm={setForm}
      form={form}
+     imageResult={imageResult}
+     images={images}
      uploadImage={uploadImage}
      getError={getError}
      submitted={submitted}

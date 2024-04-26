@@ -121,16 +121,6 @@ const Categories = (p) => {
     }
 
     const deleteItem = (id) => {
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/categorie', { id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to delete this`,
@@ -211,16 +201,6 @@ const Categories = (p) => {
         let status = 'active'
         if (itm.status == 'active') status = 'deactive'
 
-        // if (window.confirm(`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`)) {
-        //     loader(true)
-        //     ApiClient.put(`api/categorie/change-status`, { id: itm.id, status }).then(res => {
-        //         if (res.success) {
-        //             getData()
-        //         }
-        //         loader(false)
-        //     })
-        // }
-
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
@@ -238,11 +218,7 @@ const Categories = (p) => {
                             }
                             loader(false)
                         })
-            //   Swal.fire({
-            
-            //     // text: `Sucessfully ${status == 'active' ? 'Activate' : 'Deactivate'} this`,
-            //     icon: "success"
-            //   });
+          
             }
           });
     }
