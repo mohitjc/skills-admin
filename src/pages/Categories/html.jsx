@@ -48,7 +48,7 @@ const Html = ({
     const TableRow = ({ itm, className, index, parentCategory }) => {
         return <tr className={` ${className || ''} ${dargIndex == index ? 'dragStart' : ''} ${dargEnterIndex == index ? 'dragEnter' : ''}`} onDragStart={(e) => dragStart(e, index)} onDragEnter={(e) => dragEnter(e, index)} onDragEnd={e => drop(e)} key={index} draggable={parentCategory ? false : true}>
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]' onClick={e => edit(itm.id)}> <div className='user_detail'>
-                <img src={methodModel.noImg(itm.banner)} className="cat_img" />
+                 <img src={itm.image ? methodModel.userImg(itm.image) : methodModel.noImg(itm.banner)} className="cat_img" />
             </div></td>
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0] capitalize' >{itm.name || '--'}</td>
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.parentCategory?.name || '--'}</td>

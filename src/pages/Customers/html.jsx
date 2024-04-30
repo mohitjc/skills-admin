@@ -91,14 +91,14 @@ const Html = ({
                 </>
             }
         },
-        {
-            key: 'updatedAt', name: 'Updated At',sort: true,
-            render: (row) => {
-                return <>
-                    {datepipeModel.datetime(row?.updatedAt)}
-                </>
-            }
-        },
+        // {
+        //     key: 'updatedAt', name: 'Updated At',sort: true,
+        //     render: (row) => {
+        //         return <>
+        //             {datepipeModel.datetime(row?.updatedAt)}
+        //         </>
+        //     }
+        // },
         {
             key: 'Approve/Decline', name: 'Approve/Decline',
             render: (row) => {
