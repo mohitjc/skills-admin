@@ -77,11 +77,13 @@ const Member = () => {
         <Layout>
             
           
-                <Tooltip placement="top" title="Back">
+            <div className='flex items-center gap-2 mb-4imagethumbWrapper'>
+            <Tooltip placement="top" title="Back">
                   <Link to="/group" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
                 </Tooltip>
               
-            <h4>Member List</h4>
+            <h2 className='font-bold text-xl'>Member List</h2>
+            </div>
             {!loaging ? <>
                 <Table
                     className='mb-3'

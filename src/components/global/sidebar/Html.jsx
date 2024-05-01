@@ -7,7 +7,10 @@ import { RiHome6Line } from "react-icons/ri";
 import { FiUsers } from "react-icons/fi";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { RiPresentationLine } from "react-icons/ri";
-import { GrCatalogOption } from "react-icons/gr";
+import { GrCatalogOption, GrUserExpert } from "react-icons/gr";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { MdCurrencyExchange, MdOutlineContentPaste, MdOutlineEmojiEvents, MdOutlineSubscriptions } from "react-icons/md";
+import { PiCertificateLight } from "react-icons/pi";
 
 
 const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
@@ -62,7 +65,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Subscription Plan',
-      icon: <i className="material-icons text-[#fff] shrink-0 text-lg" >subscriptions</i>,
+      icon: <MdOutlineSubscriptions className="text-[#fff] shrink-0 text-lg" />      ,
       key: 'readPlan',
       tab: 'plan',
       menu: [
@@ -80,7 +83,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Currency',
-      icon: <i className="material-icons text-[#fff] shrink-0 text-lg" title="">currency_exchange</i>,
+      icon:<MdCurrencyExchange className="text-[#fff] shrink-0 text-lg" />      ,
       url: '/currency',
       key: 'readCurrency',
     },
@@ -110,31 +113,31 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
     },
     {
       name: 'Skills',
-      icon: <RiHome6Line className="text-[#fff] shrink-0 text-lg" />,
+      icon: <GrUserExpert className="text-[#fff] shrink-0 text-lg" />,
       url: '/skills',
       key: 'readSkills',
     },
     {
       name: 'Group',
-      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">groups</span>,
+      icon: <AiOutlineUsergroupAdd className="text-[#fff] shrink-0 text-lg" /> ,
       url: '/group',
       key: 'readGroup',
     },
     {
       name: 'Certification',
-      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">workspace_premium</span>,
+      icon: <PiCertificateLight className="text-[#fff] shrink-0 text-lg" />      ,
       url: '/certification',
       key: 'readCertification',
     },
     {
       name: 'Content Management',
-      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">content_paste</span>,
+      icon: <MdOutlineContentPaste className="text-[#fff] shrink-0 text-lg" />      ,
       url: '/content',
       key: 'readContent',
     },
     {
       name: 'Events',
-      icon: <span class="material-symbols-outlined text-[#fff] shrink-0 text-lg">workspace_premium</span>,
+      icon: <MdOutlineEmojiEvents className="text-[#fff] shrink-0 text-lg" />,
       url: '/event',
       key: 'readEvents',
     },
@@ -182,7 +185,7 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
                                 {itm.menu.map(sitm => {
                                   return <>
                                     {urlAllow(sitm.key) ? <li> <NavLink className={(isActive) =>
-                                      "p-2.5 rounded-md block text-sm font-normal text-[#ef7a2b] cursor-pointer hover:!text-[#fff] hover:bg-[#5577FF]/10 !no-underline transition-all " +
+                                      "p-2.5 rounded-md block text-sm font-normal text-[#ef7a2b] cursor-pointer hover:!text-[#fff ] hover:bg-[#5577FF]/10 !no-underline transition-all " +
                                       (location?.pathname == sitm.url &&
                                         " !text-[#ef7a2b] !bg-[#ef7a2b]/10 !font-medium")
                                     } to={sitm.url}>
