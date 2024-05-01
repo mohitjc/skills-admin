@@ -159,7 +159,10 @@ const Group = (p) => {
     const edit = (id) => {
         history.push(`/group/edit/${id}`)
     }
-
+const viewMember =(id)=>{
+    console.log(id ,"idddddddddddd")
+    history.push(`/member/${id}`)
+}
     const exportfun = async () => {
         const token = await localStorage.getItem("token");
         const req = await axios({
@@ -199,6 +202,7 @@ const Group = (p) => {
         statusChange={statusChange}
         changestatus={changestatus}
         exportfun={exportfun}
+        viewMember={viewMember}
     />
     </>;
 };
