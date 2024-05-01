@@ -75,6 +75,7 @@ import AddEditSkillsRoles from "./pages/SkillsRoles/AddEdit";
 import Event from "./pages/Events";
 import AddEditEvent from "./pages/Events/AddEdit";
 import ViewEvent from "./pages/Events/View";
+import Member from './pages/Group/view';
 
 
 export const history = createBrowserHistory();
@@ -145,6 +146,7 @@ export default () => {
                             <Route exact={true} path="/group" component={Group} />
                             <Route exact={true} path="/group/add" component={AddEditGroup} />
                             <Route exact={true} path="/group/edit/:id" component={AddEditGroup} />
+                            <Route exact={true} path="/member/:id" component={Member} />
                             {/* Certification */}
                             <Route exact={true} path="/certification" component={Certification} />
                             <Route exact={true} path="/certification/add" component={AddEditCertification} />

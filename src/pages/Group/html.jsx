@@ -13,6 +13,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import Table from "../../components/Table";
 import SelectDropdown from '../../components/common/SelectDropdown';
 import statusModel from '../../models/status.model';
+import { IoEyeOutline } from "react-icons/io5";
 
 const Html = ({
     sorting,
@@ -25,7 +26,7 @@ const Html = ({
     loaging,
     data,
     exportfun,
-    changestatus,
+    changestatus,viewMember,
     isAllow,
     total = { total }
 }) => {
@@ -52,7 +53,7 @@ const Html = ({
             }
         },
         {
-            key: 'action', name: 'Action',
+            key: 'action', name: 'Action', 
             render: (itm) => {
                 return <>
                     <div className="flex items-center justify-start gap-1.5">
@@ -65,6 +66,9 @@ const Html = ({
                             : <></>}
                         {isAllow('deleteGroup') ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
                             <BsTrash3 />
+                        </span> </Tooltip> : <></>}
+                        {isAllow('viewMember') ? <Tooltip placement="top" title="View"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => viewMember(itm.id)}>
+                            <IoEyeOutline /> 
                         </span> </Tooltip> : <></>}
                     </div>
                 </>
