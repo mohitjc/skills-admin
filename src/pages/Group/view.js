@@ -5,6 +5,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import ApiClient from '../../methods/api/apiClient';
 import loader from '../../methods/loader';
 import { Tooltip } from "antd";
+import datepipeModel from '../../models/datepipemodel';
 const Member = () => {
     const [filters, setFilter] = useState({ page: 1, count: 10, search: '', catType: '' })
     const [data, setData] = useState([])
@@ -24,7 +25,12 @@ const Member = () => {
                 return <span>{row?.email}</span>
             }
         },
-
+        {
+            key: 'lastLogin', name: 'Last Login',
+            render: (row) => {
+                return <span> { row?.addedByDetail?.lastLogin ?  datepipeModel.datetime(row?.addedByDetail?.lastLogin):"N/A"}</span>
+            }
+        },
     ]
     const sorting = (key) => {
         let sorder = 'asc'
