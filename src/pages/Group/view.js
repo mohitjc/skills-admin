@@ -28,7 +28,7 @@ const Member = () => {
         {
             key: 'lastLogin', name: 'Last Login',
             render: (row) => {
-                return <span> { datepipeModel.datetime(row?.addedByDetail?.lastLogin)}</span>
+                return <span> { row?.addedByDetail?.lastLogin ?  datepipeModel.datetime(row?.addedByDetail?.lastLogin):"N/A"}</span>
             }
         },
     ]
