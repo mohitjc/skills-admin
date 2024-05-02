@@ -9,16 +9,21 @@ import Layout from "../../components/global/layout";
 import SelectDropdown from "../../components/common/SelectDropdown";
 import { toast } from "react-toastify";
 import { Tooltip } from "antd";
-
+import ImageUpload from "../../components/common/ImageUpload";
 const AddEditCurrency = () => {
-    const [form, setform] = useState({ currency: '',symbol:'',isoCode:'',countryFlagImage:'' })
+    const [form, setform] = useState({ currency: '',symbol:'',isoCode:''})
     const history = useHistory()
     const [submitted, setSubmitted] = useState(false)
     const { id } = useParams()
     const user = useSelector((state) => state.user);
     const formValidation = [
     ]
-
+    const [images, setImages] = useState({ image: ''});
+    const imageResult = (e, key) => {
+        images[key] = e.value
+        setImages(images)
+        console.log("imageResult", e)
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
       
@@ -29,13 +34,13 @@ const AddEditCurrency = () => {
         //  URL Please
         let url = 'api/currency'
         let value = {
-            ...form,
+            ...form,...images
         }
         if (value.id) {
             method = 'put'
             url = 'api/currency/update'
             value = {
-                ...form, id: id
+                ...form, id: id,...images
             }
         } else {
             value.addedBy=user._id
@@ -57,25 +62,58 @@ const AddEditCurrency = () => {
             getdetail()
         }
     }, [id])
-
+  
+    // const getdetail = () => {
+    //     loader(true)
+    //     ApiClient.get(`api/currency/detail?id=${id}`).then(res => {
+    //         if (res.success) {
+    //             // let value=res.data
+    //             // let payload = form
+    //             let value = res.data
+    //             let payload = form
+    //             let oarr = Object.keys(form)
+    //             oarr.map(itm => {
+    //                 payload[itm] = value[itm] || ''
+    //             })
+    //                 Object.keys(payload).map(itm => {
+    //                     payload[itm] = value[itm]
+    //                 })
+    //                 payload.id=id
+    //             setform({
+    //                 ...payload,
+    //             })
+    //             Object.keys(images).map(itm => {
+    //                 images[itm] = value?.[itm]
+    //             })
+    //             setImages(images)
+    //         }
+    //         loader(false)
+    //     })
+    // }
     const getdetail = () => {
         loader(true)
         ApiClient.get(`api/currency/detail?id=${id}`).then(res => {
             if (res.success) {
                 let value=res.data
                 let payload = form
-                    Object.keys(payload).map(itm => {
-                        payload[itm] = value[itm]
-                    })
+                let oarr = Object.keys(form)
+                oarr.map(itm => {
+                    payload[itm] = value[itm] || null
+                })
                     payload.id=id
                 setform({
                     ...payload,
                 })
+                let img=images
+      
+                Object.keys(images).map(itm=>{
+                  img[itm]=value[itm]
+                })
+                setImages({...img})
             }
             loader(false)
         })
     }
-
     useEffect(() => {
    
     }, [])
@@ -149,8 +187,8 @@ const AddEditCurrency = () => {
                         </div>
                         <div className="col-span-12 md:col-span-6">
                             <label>Upload Country Flag<span className="star">*</span></label>
-                            <div className="flex">
-                                {form?.countryFlagImage ?
+                            <div className="flex"> 
+                                {/* {form?.countryFlagImage ?
                                     <div className="relative">
                                         <img src={methodModel.userImg(form && form.countryFlagImage)} width='160px' />
                                         <i className="fa fa-trash text-danger icon-css" onClick={e => setform({ ...form, countryFlagImage: '' })}></i>
@@ -167,7 +205,13 @@ const AddEditCurrency = () => {
                                                 onChange={(e) => { uploadImage(e); }}
                                             />{form.countryFlagImage ? 'Change' : 'Upload'} Image</label>
                                     </div>
-                                }
+                                } */}
+                                
+                            <div className="col-span-12 md:col-span-6">
+                                {/* <label className='lablefontcls'>Image</label><br></br> */}
+                                <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} multiple={false} />
+
+                            </div>
                             </div>
                         </div>
                     </div>
