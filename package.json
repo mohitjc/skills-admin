@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "https://calm-water-0d2e5ce10.4.azurestaticapps.net",
   "engines": {
-    "npm": "~6.14.17",
-    "node": "~14.20.1"
+    "npm": "~8.19.4",
+    "node": "~16.20.2"
   },
   "dependencies": {
     "@azure/storage-blob": "^12.17.0",
