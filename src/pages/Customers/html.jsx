@@ -91,6 +91,14 @@ const Html = ({
                 </>
             }
         },
+        {
+            key: 'loginId', name: 'Login Id',
+            render: (row) => {
+                return <>
+                    {row?.loginId}
+                </>
+            }
+        },
         // {
         //     key: 'updatedAt', name: 'Updated At',sort: true,
         //     render: (row) => {
