@@ -40,7 +40,8 @@ const AddEdit = () => {
          subSubCategory:null,
          aboutUs:'',
          country:'usa',
-         groupId:''
+         groupId:'',
+         loginId:""
         })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)

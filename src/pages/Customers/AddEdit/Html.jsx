@@ -194,9 +194,22 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 autoComplete="false"
                 onChange={e => { setform({ ...form, email: e.target.value });}}
                 required
-                disabled={form.id?true:false}
+                // disabled={form.id?true:false}
               />
     {submitted && getError('email').invalid? <div className="invalid-feedback d-block">Email is Invalid</div> : <></>}
+            </div>
+            <div className="col-span-12 md:col-span-6">
+              <label>Login Id</label>
+              <input
+                type="text"
+                className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
+                value={form.loginId}
+                autoComplete="false"
+                onChange={e => { setform({ ...form, loginId: e.target.value });}}
+                required
+                disabled={form.id?true:false}
+              />
+   
             </div>
             {form.id?<>
               <div className="col-span-12 md:col-span-6">
