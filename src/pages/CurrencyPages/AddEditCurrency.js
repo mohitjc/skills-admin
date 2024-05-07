@@ -18,7 +18,7 @@ const AddEditCurrency = () => {
     const user = useSelector((state) => state.user);
     const formValidation = [
     ]
-    const [images, setImages] = useState({ image: ''});
+    const [images, setImages] = useState({  countryFlagImage:""});
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
@@ -209,7 +209,7 @@ const AddEditCurrency = () => {
                                 
                             <div className="col-span-12 md:col-span-6">
                                 {/* <label className='lablefontcls'>Image</label><br></br> */}
-                                <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} multiple={false} />
+                                <ImageUpload model="users" result={e => imageResult(e, 'countryFlagImage')} value={images.countryFlagImage || images.countryFlagImage} multiple={false} />
 
                             </div>
                             </div>
