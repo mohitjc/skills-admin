@@ -22,6 +22,7 @@ const Html = ({
     filters,
     loaging,
     data,
+    count,
     changestatus,
     changeGroup,
     isAllow,
@@ -218,6 +219,7 @@ const Html = ({
                         result={(e) => {
                             if (e.event == 'page') pageChange(e.value)
                             if (e.event == 'sort') sorting(e.value)
+                            if(e.event == 'count') count(e.value)
                         }}
                     />
 

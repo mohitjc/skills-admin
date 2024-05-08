@@ -115,7 +115,10 @@ const Skills = (p) => {
         getData({ status: e, page: 1 })
     }
 
-
+    const count = (e) => {
+        setFilter({ ...filters, count:e })
+        getData({ ...filters ,count: e })
+        }
     const statusChange = (itm) => {
         let modal = 'category'
         let status = 'active'
@@ -196,6 +199,7 @@ const Skills = (p) => {
         loaging={loaging}
         data={data}
         total={total}
+        count={count}
         statusChange={statusChange}
         changestatus={changestatus}
         exportfun={exportfun}

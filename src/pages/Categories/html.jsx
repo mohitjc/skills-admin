@@ -27,6 +27,7 @@ const Html = ({
     deleteItem,
     exportfun,
     filters,
+  
     loaging,
     data,
     statuschange,
@@ -42,9 +43,13 @@ const Html = ({
     dargIndex,
     isAllow,
     showData,
+    setFilter,getData
 }) => {
     const [status, setstatus] = useState("")
-
+    const handleItemCountChange =(e)=>{
+        setFilter({ ...filters, page: 1 ,count : e?.target?.value})
+        getData({ page: 1 ,count : e?.target?.value})
+    }
     const TableRow = ({ itm, className, index, parentCategory }) => {
         return <tr className={` ${className || ''} ${dargIndex == index ? 'dragStart' : ''} ${dargEnterIndex == index ? 'dragEnter' : ''}`} onDragStart={(e) => dragStart(e, index)} onDragEnter={(e) => dragEnter(e, index)} onDragEnd={e => drop(e)} key={index} draggable={parentCategory ? false : true}>
             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]' onClick={e => edit(itm.id)}> <div className='user_detail'>
@@ -197,6 +202,17 @@ const Html = ({
                             sizePerPage={filters.count}
                             changeCurrentPage={pageChange}
                         />
+                        <select
+                className="ml-3 p-1 border border-gray-300 rounded"
+                value={filters.count} // Current value of items per page
+                onChange={(e)=>handleItemCountChange(e)} // Function to handle changes
+            >
+                {[10, 20,30,40 ,50,60,70,80,90, 100].map((count) => (
+                    <option key={count} value={count}>
+                        {count}
+                    </option>
+                ))}
+            </select>
                     </div> : <></>
                 }
                 {loaging ? <div className="text-center py-4">

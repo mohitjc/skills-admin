@@ -378,6 +378,9 @@ const Categories = (p) => {
         dragEnter={dragEnter}
         drop={drop}
         showData={showData}
+        setFilter={setFilter}
+        getData={getData}
+        
         dargIndex={dargIndex.current}
         dargEnterIndex={dargEnterIndex.current}
     />

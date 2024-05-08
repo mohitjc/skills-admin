@@ -68,7 +68,10 @@ const Types = (p) => {
         setFilter({ ...filters, search: '',status:'', page: 1 })
         getData({ search: '', status:'',page: 1 })
     }
-
+    const count = (e) => {
+        setFilter({ ...filters, count:e })
+        getData({ ...filters ,count: e })
+        }
     const deleteItem = (id) => {
      
         Swal.fire({
@@ -173,6 +176,7 @@ const Types = (p) => {
         statusChange={statusChange}
         changestatus={changestatus}
         exportfun={exportfun}
+        count={count}
     />
     </>;
 };

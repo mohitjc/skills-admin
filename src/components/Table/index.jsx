@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import { HiOutlineArrowDown } from "react-icons/hi";
 import Pagination from "react-pagination-js";
 
 const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, total = 0, page = 1, result = (e) => { }, nodata = 'Data Not Found' }) => {
-
+    const [pageSize, setPageSize] = useState(count);
     const handlePaginate = (e) => {
         console.log("e", e)
         result({ event: 'page', value: e })
@@ -16,7 +17,17 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
             result({ event: 'sort', value: itm.key })
         }
     }
-
+    const handlePageSizeChange = (e) => {
+        setPageSize(parseInt(e.target.value));
+        result({ event: 'count', value: parseInt(e.target.value) });
+    };
+    const generateOptions = () => {
+        const options = [];
+        for (let i = 10; i <= total; i += 10) {
+            options.push(i);
+        }
+        return options;
+    };
     return <>
     <div className={`${className}`}>
         {total ? <>
@@ -76,12 +87,21 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
         {count < total ? <>
             <div className='paginationWrapper flex items-center justify-between mt-15'>
                         {/* <span>Show {count} from {total} data</span> */}
+                        <select value={pageSize} onChange={handlePageSizeChange} className="border rounded-md px-2 py-1">
+                                        {/* Dynamically generated options */}
+                                        {generateOptions().map(option => (
+                                            <option key={option} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>{' '}
                         <Pagination
                             currentPage={page}
                             totalSize={total}
                             sizePerPage={count}
                             changeCurrentPage={handlePaginate}
                         />
+                        
                     </div>
            
         </> : <></>}

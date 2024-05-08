@@ -135,7 +135,10 @@ const Customer = (p) => {
         setFilter({ ...filters, search: '', page: 1 })
         getData({ search: '', page: 1 })
     }
-
+    const count = (e) => {
+        setFilter({ ...filters, count:e })
+        getData({ ...filters ,count: e })
+        }
     const deleteItem = (id) => {
         // if (window.confirm("Do you want to delete this")) {
         //     loader(true)
@@ -383,6 +386,7 @@ const Customer = (p) => {
         loaging={loaging}
         data={data}
         edit={edit}
+        count={count}
         total={total}
         statusChange={statusChange}
         blockunblock={blockunblock}

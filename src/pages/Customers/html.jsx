@@ -32,7 +32,7 @@ const Html = ({
     view,
     total,
     reset,
-    isAllow
+    isAllow,count
 }) => {
     const blockDateChange = (e) => {
         console.log("e", e)
@@ -329,6 +329,7 @@ const Html = ({
                             result={(e) => {
                                 if (e.event == 'page') pageChange(e.value)
                                 if (e.event == 'sort') sorting(e.value)
+                                if(e.event == 'count') count(e.value)
                             }}
                         />
 

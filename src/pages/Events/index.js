@@ -131,6 +131,10 @@ const Events = () => {
         setFilter({ ...filters, status: e, page: 1 })
         getData({ status: e, page: 1 })
     }
+    const count = (e) => {
+        setFilter({ ...filters, count:e })
+        getData({ ...filters ,count: e })
+        }
     const changeGroup = (e) => {
         setFilter({ ...filters, groupId: e, page: 1 })
         getData({ groupId: e, page: 1 })
@@ -226,6 +230,7 @@ useEffect(() => {
         loaging={loaging}
         data={data}
         total={total}
+        count ={count}
         statusChange={statusChange}
         changestatus={changestatus}
         changeGroup={changeGroup}
