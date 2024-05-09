@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import Html from './html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { search_success } from '../../actions/search';
 import axios from 'axios';
 import environment from '../../environment';
@@ -23,7 +22,7 @@ const Currency = (p) => {
     const [loaging, setLoader] = useState(true)
     const [tableCols, setTableCols] = useState([])
     const [form, setform] = useState()
-    const history = useHistory()
+    const history = useNavigate()
     const [search, setSearch] = useState('')
     const [checkedItems,setCheckedItems]=useState([])
 
@@ -125,16 +124,6 @@ const Currency = (p) => {
     }
 
     const deleteItem = (id) => {
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/currency/delete', { id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
 
         Swal.fire({
             title: "Are you sure?",
@@ -149,7 +138,6 @@ const Currency = (p) => {
                 loader(true)
                 ApiClient.delete('api/currency/delete', { id: id }).then(res => {
                             if (res.success) {
-                                // ToastsStore.success(res.message)
                                 clear()
                             }
                             loader(false)
@@ -231,7 +219,7 @@ const Currency = (p) => {
     }
 
     const edit = (id) => {
-        history.push(`/currency/edit/${id}`)
+        history(`/currency/edit/${id}`)
     }
 
     const tabChange = (tab) => {

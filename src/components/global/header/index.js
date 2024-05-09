@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { search_success } from '../../../actions/search';
@@ -8,7 +8,7 @@ import Html from './Html';
 
 
 const Header = ({ setIsOpen, isOpen }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch()
   const toggle = () => { setIsOpen(!isOpen); localStorage.setItem('sidebar', !isOpen) };
   const [isOpen1, setIsOpen1] = useState(false);
@@ -21,7 +21,7 @@ const Header = ({ setIsOpen, isOpen }) => {
     dispatch(logout())
     localStorage.removeItem("persist:admin-app")
     localStorage.removeItem("token")
-    history.push('/login');
+    history('/login');
   };
 
   const user = useSelector((state) => state.user);

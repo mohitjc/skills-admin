@@ -4,7 +4,7 @@ import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
 import loader from '../../methods/loader';
 import Html from './html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ const Content = (p) => {
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
-    const history = useHistory()
+    const history = useNavigate()
 
     useEffect(() => {
         if (user && user.loggedIn) {
@@ -110,7 +110,7 @@ const Content = (p) => {
     }
 
     const edit = (id) => {
-        history.push(`/content/edit/${id}`)
+        history(`/content/edit/${id}`)
     }
 
     const exportfun = async () => {

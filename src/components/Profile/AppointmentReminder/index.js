@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ApiClient from '../../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../../methods/loader';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import rescheduleTimeModel from '../../../models/rescheduleTime.model';
 
 
 
 const AppointmentReminder = (p) => {
-    const history = useHistory()
+    const history = useNavigate()
     let user = useSelector(state => state.user)
     const [form, setForm] = useState()
 
@@ -26,7 +25,6 @@ const AppointmentReminder = (p) => {
         loader(true)
         ApiClient.allApi('add/update/remindertime', value, method).then(res => {
             if (res.success) {
-                // ToastsStore.success(res.message)
             }
             loader(false)
         })

@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Html from './Html';
 import permissionModel from '../../../models/permisstion.model';
@@ -8,7 +8,7 @@ import environment from '../../../environment';
 
 const Sidebar = ({ isOpen }) => {
   const user = useSelector(state => state.user)
-  const history = useHistory()
+  const history = useNavigate()
   const menus = {
     user: ['roles', 'users'],
     catalogue: ['types', 'categories', 'category/'],
@@ -55,7 +55,7 @@ const Sidebar = ({ isOpen }) => {
 }
 
   const route = (p) => {
-    history.push(p)
+    history(p)
   }
 
   return <>

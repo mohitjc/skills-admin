@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Layout from '../../../components/global/layout';
 import ApiClient from '../../../methods/api/apiClient';
 import loader from '../../../methods/loader';
@@ -13,7 +13,7 @@ import methodModel from '../../../methods/methods';
 import pipeModel from '../../../models/pipeModel';
 
 const UserDetail = (p) => {
-    const history = useHistory()
+    const history = useNavigate()
     const user = useSelector(state => state.user)
     const { id, userId } = useParams()
     const [data, setData] = useState()
@@ -32,7 +32,7 @@ const UserDetail = (p) => {
         })
     }
     const back = () => {
-        history.goBack()
+        history(-1)
     }
     const getPlanDetails = () => {
         ApiClient.get(`api/my/plan?id=${id}`).then(res => {

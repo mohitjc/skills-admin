@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import {
-    ToastsStore,
-} from 'react-toasts';
+import { useNavigate } from 'react-router-dom';
 import ApiClient from '../../methods/api/apiClient';
 import loader from '../../methods/loader';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import AuthLayout from '../../components/AuthLayout';
+import { toast } from 'react-toastify';
 
 
 const Forgotpassword = () => {
-    const history = useHistory();
+    const history = useNavigate();
 
     const user = useSelector((state:any) => state.user)
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            history.push('/dashboard')
+            history('/dashboard')
           }
     }, [])
 
@@ -33,9 +31,9 @@ const Forgotpassword = () => {
 
         ApiClient.post('api/forgot/password/admin', form).then(res => {
             if (res.success) {
-                history.push('/login');
+                history('/login');
                 setTimeout(() => {
-                  ToastsStore.success(res.message)
+                  toast.success(res.message)
                 }, 100);
             }
             loader(false)

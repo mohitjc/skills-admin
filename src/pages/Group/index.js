@@ -4,7 +4,7 @@ import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
 import loader from '../../methods/loader';
 import Html from './html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ const Group = (p) => {
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
-    const history = useHistory()
+    const history = useNavigate()
 
     useEffect(() => {
         if (user && user.loggedIn) {
@@ -157,11 +157,11 @@ const Group = (p) => {
       });
 }
     const edit = (id) => {
-        history.push(`/group/edit/${id}`)
+        history(`/group/edit/${id}`)
     }
 const viewMember =(id)=>{
     console.log(id ,"idddddddddddd")
-    history.push(`/member/${id}`)
+    history(`/member/${id}`)
 }
     const exportfun = async () => {
         const token = await localStorage.getItem("token");

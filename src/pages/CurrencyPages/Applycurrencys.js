@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ToastsStore } from 'react-toasts';
 import ApiClient from '../../methods/api/apiClient';
 import { useSelector } from 'react-redux';
 import methodModel from '../../methods/methods';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/global/layout';
 import loader from "../../methods/loader";
 
@@ -11,7 +10,7 @@ import loader from "../../methods/loader";
 const ApplyCurrency = () => {
 const [ checkedItems,setCheckedItems]=useState([])
   const [form, setform] = useState();
-  const history = useHistory();
+  const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const { id } = useParams();
   const user = useSelector((state) => state.user);
@@ -58,8 +57,7 @@ console.log('Form submitted:', { checkedItems });
     loader(true);
     ApiClient.allApi(url, value, method).then((res) => {
       if (res.success) {
-        // ToastsStore.success(res.message);
-        history.push('/currency');
+        history('/currency');
       }
       loader(false);
     });

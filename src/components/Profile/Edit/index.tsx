@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ApiClient from '../../../methods/api/apiClient';
 import loader from '../../../methods/loader';
-import { ToastsStore } from 'react-toasts';
 import { login_success } from '../../../actions/user';
 import './style.scss';
 import { userType } from '../../../models/type.model';
 import Html from './Html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import formModel from '../../../models/form.model';
+import { toast } from 'react-toastify';
 
 const EditProfile = () => {
   const user = useSelector((state:any) => state.user);
   const [data, setData] = useState('');
   const [form, setForm]:any = useState(userType);
   const dispatch = useDispatch();
-  const history=useHistory()
+  const history=useNavigate()
   const [submitted, setSubmitted] = useState(false)
   const [images, setImages]:any = useState({ image: '' });
   const gallaryData = () => {
@@ -63,8 +63,8 @@ const EditProfile = () => {
       if (res.success) {
         let uUser = { ...user, ...value }
         dispatch(login_success(uUser))
-        history.push("/profile")
-        ToastsStore.success(res.message)
+        history("/profile")
+        toast.success(res.message)
       }
       loader(false)
     })

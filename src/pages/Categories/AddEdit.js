@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { ToastsStore } from "react-toasts";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../methods/methods";
 import ImageUpload from "../../components/common/ImageUpload";
 import { CategoryType } from "../../models/type.model";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model"
 import { Tooltip } from "antd";
+import { toast } from "react-toastify";
 
 const AddEditCategory = () => {
     const [images, setImages] = useState({ image: '', banner: '', icon: '' });
@@ -19,7 +19,7 @@ const AddEditCategory = () => {
     const [form, setform] = useState({ defaultvalue, catType: type ? type : '' })
     const [categories, setCategories] = useState([])
     const [tab, setTab] = useState('info')
-    const history = useHistory()
+    const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const [Types, setTypes] = useState()
     const user = useSelector((state) => state.user);
@@ -34,7 +34,7 @@ const AddEditCategory = () => {
         setSubmitted(true)
         let invalid = methodModel.getFormError(formValidation, form)
         if (tab == 'seo' && (invalid)) {
-            ToastsStore.error("Please fill Required Fields")
+            toast.error("Please fill Required Fields")
         }
 
         if (invalid) return
@@ -59,11 +59,10 @@ const AddEditCategory = () => {
         loader(true)
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
-                // ToastsStore.success(res.message)
                 if (type) {
-                    history.push(`/category/${type}`)
+                    history(`/category/${type}`)
                 } else {
-                    history.push("/categories")
+                    history("/categories")
                 }
 
             }
@@ -93,7 +92,7 @@ const AddEditCategory = () => {
     }
 
     const back = () => {
-        history.goBack()
+        history(-1)
     }
 
     useEffect(() => {

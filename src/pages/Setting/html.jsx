@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Layout from '../../components/global/layout';
 
 import 'react-phone-input-2/lib/style.css';
-import { NavLink, useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
 import methodModel from '../../methods/methods';
 import ApiClient from '../../methods/api/apiClient';
 import { Tooltip } from "antd";
 
 const Html = ({ handleSubmit }) => {
-  const History = useHistory()
+  const History = useNavigate()
   const review = JSON.parse(localStorage.getItem('review'))
   console.log(review)
   const param = useParams()
@@ -44,7 +44,7 @@ const Html = ({ handleSubmit }) => {
     ApiClient.put('api/review/platform', { name: form.name, logo: img, id: param.id }).then((res) => {
       console.log(res)
       if (res.success) {
-        History.push('/reviews')
+        history('/reviews')
       }
     })
 

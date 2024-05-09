@@ -4,7 +4,7 @@ import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
 import loader from '../../methods/loader';
 import Html from './html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ const SkillsRoles = (p) => {
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
-    const history = useHistory()
+    const history = useNavigate()
 
     useEffect(() => {
         if (user && user.loggedIn) {
@@ -163,7 +163,7 @@ const SkillsRoles = (p) => {
     }
 
     const edit = (id) => {
-        history.push(`/skill-roles/edit/${id}`)
+        history(`/skill-roles/edit/${id}`)
     }
 
     const exportfun = async () => {

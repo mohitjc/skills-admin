@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login_success } from '../../actions/user';
 import ApiClient from '../../methods/api/apiClient';
 import loader from '../../methods/loader';
@@ -9,11 +9,11 @@ import './style.scss';
 import AuthLayout from '../../components/AuthLayout';
 
 const Login = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const user = useSelector((state:any) => state.user)
   useEffect(() => {
     if (user && user?.loggedIn) {
-      history.push('/dashboard')
+      history('/dashboard')
     }
   }, [])
 
@@ -56,7 +56,7 @@ const Login = () => {
     localStorage.setItem('token', data.access_token)
     dispatch(login_success(data))
     let url = '/profile'
-    history.push(url);
+    history(url);
   }
 
   const hendleSubmit = (e:any) => {

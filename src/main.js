@@ -6,23 +6,12 @@
  * */
 
 import React from 'react';
-import {
-    ToastsContainer,
-    ToastsStore,
-    ToastsContainerPosition
-} from 'react-toasts';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import "react-datepicker/dist/react-datepicker.css";
-import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import configureStore from './config';
-import { createBrowserHistory } from 'history';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Forgotpassword from './pages/Forgotpassword';
@@ -76,119 +65,113 @@ import Event from "./pages/Events";
 import AddEditEvent from "./pages/Events/AddEdit";
 import ViewEvent from "./pages/Events/View";
 import Member from './pages/Group/view';
+import { ToastContainer } from 'react-toastify';
 
 
-export const history = createBrowserHistory();
 /************ store configration *********/
-const { persistor, store } = configureStore(history);
+const { persistor, store } = configureStore();
 
 export default () => {
 
     return (<>
-        <Provider store={store}>
-            <PersistGate loading={'loading ...'} persistor={persistor}>
-                <ConnectedRouter history={history}>
-                    <Router>
-                        <Switch>
-                            <Route exact={true} path="/dashboard" component={Dashboard} />
-                            <Route exact={true} path="/dashboardpage" component={DashboardPage} />
-                            <Route exact={true} path="/setting" component={LogoSetting} />
-                            <Route exact={true} path="/settings/appointment/contact-details" component={ContactDetails} />
-                            <Route exact={true} path="/users"  component={Users} />
+     <Provider store={store}>
+        <PersistGate loading={"loading ..."} persistor={persistor}>
+        <Router>
+                    <Routes>
+                            <Route exact={true} path="/dashboard" Component={Dashboard} />
+                            <Route exact={true} path="/dashboardpage" Component={DashboardPage} />
+                            <Route exact={true} path="/setting" Component={LogoSetting} />
+                            <Route exact={true} path="/settings/appointment/contact-details" Component={ContactDetails} />
+                            <Route exact={true} path="/users"  Component={Users} />
                             
-                            <Route exact={true} path="/roles" component={Roles} />
-                            <Route exact={true} path="/roles/add"  component={AddEditRole} />
-                            <Route exact={true} path="/roles/edit/:id"  component={AddEditRole} />
-                            <Route exact={true} path="/users/add"  component={AddEditUser} />
-                            <Route exact={true} path="/users/:role"  component={Users} />
-                            <Route exact={true} path="/users/edit/:id"  component={AddEditUser} />
-                            <Route exact={true} path="/users/:role/add"  component={AddEditUser} />
-                            <Route exact={true} path="/users/:role/edit/:id"  component={AddEditUser} />
-                            <Route exact={true} path="/userDetail/:id"  component={UserDetail} />
-                            <Route exact={true} path="/profile"  component={Profile} />
-                            <Route exact={true} path="/profile/:tab"  component={Settings} />
-                            <Route exact={true} path="/login"  component={Login} />
-                            <Route exact={true} path="/forgotpassword"  component={Forgotpassword} />
-                            <Route exact={true} path="/resetpassword"  component={Resetpassword} />
+                            <Route exact={true} path="/roles" Component={Roles} />
+                            <Route exact={true} path="/roles/add"  Component={AddEditRole} />
+                            <Route exact={true} path="/roles/edit/:id"  Component={AddEditRole} />
+                            <Route exact={true} path="/users/add"  Component={AddEditUser} />
+                            <Route exact={true} path="/users/:role"  Component={Users} />
+                            <Route exact={true} path="/users/edit/:id"  Component={AddEditUser} />
+                            <Route exact={true} path="/users/:role/add"  Component={AddEditUser} />
+                            <Route exact={true} path="/users/:role/edit/:id"  Component={AddEditUser} />
+                            <Route exact={true} path="/userDetail/:id"  Component={UserDetail} />
+                            <Route exact={true} path="/profile"  Component={Profile} />
+                            <Route exact={true} path="/profile/:tab"  Component={Settings} />
+                            <Route exact={true} path="/login"  Component={Login} />
+                            <Route exact={true} path="/forgotpassword"  Component={Forgotpassword} />
+                            <Route exact={true} path="/resetpassword"  Component={Resetpassword} />
 
-                            <Route exact={true} path="/categories" component={Categories} />
-                            <Route exact={true} path="/categories/add" component={AddEditCategory} />
-                            <Route exact={true} path="/categories/edit/:id" component={AddEditCategory} />
-                            <Route exact={true} path="/category/:type" component={Categories} />
-                            <Route exact={true} path="/category/:type/add" component={AddEditCategory} />
-                            <Route exact={true} path="/category/:type/edit/:id" component={AddEditCategory} />
-                            <Route exact={true} path="/categoryDetail/:id" component={CategoryDetail} />
+                            <Route exact={true} path="/categories" Component={Categories} />
+                            <Route exact={true} path="/categories/add" Component={AddEditCategory} />
+                            <Route exact={true} path="/categories/edit/:id" Component={AddEditCategory} />
+                            <Route exact={true} path="/category/:type" Component={Categories} />
+                            <Route exact={true} path="/category/:type/add" Component={AddEditCategory} />
+                            <Route exact={true} path="/category/:type/edit/:id" Component={AddEditCategory} />
+                            <Route exact={true} path="/categoryDetail/:id" Component={CategoryDetail} />
                             {/* Categories Type */}
-                            <Route exact={true} path="/types" component={Types} />
-                            <Route exact={true} path="/types/add" component={AddEditTypes} />
-                            <Route exact={true} path="/types/edit/:id" component={AddEditTypes} />
+                            <Route exact={true} path="/types" Component={Types} />
+                            <Route exact={true} path="/types/add" Component={AddEditTypes} />
+                            <Route exact={true} path="/types/edit/:id" Component={AddEditTypes} />
                              {/* Feature */}
-                             <Route exact={true} path="/features" component={Features} />
-                            <Route exact={true} path="/features/add" component={AddEditFeature} />
-                            <Route exact={true} path="/features/edit/:id" component={AddEditFeature} />
+                             <Route exact={true} path="/features" Component={Features} />
+                            <Route exact={true} path="/features/add" Component={AddEditFeature} />
+                            <Route exact={true} path="/features/edit/:id" Component={AddEditFeature} />
                             {/* Plans */}
-                            <Route exact={true} path="/plans" component={Plans} />
-                            <Route exact={true} path="/plans/add" component={AddEditPlan} />
-                            <Route exact={true} path="/plans/edit/:id/:copy" component={AddEditPlan} />
+                            <Route exact={true} path="/plans" Component={Plans} />
+                            <Route exact={true} path="/plans/add" Component={AddEditPlan} />
+                            <Route exact={true} path="/plans/edit/:id/:copy" Component={AddEditPlan} />
                             {/* Participent Type */}
-                            <Route exact={true} path="/participant-type" component={ParticipantType} />
-                            <Route exact={true} path="/participant-type/add" component={AddEditParticipantType} />
-                            <Route exact={true} path="/participant-type/edit/:id" component={AddEditParticipantType} />
+                            <Route exact={true} path="/participant-type" Component={ParticipantType} />
+                            <Route exact={true} path="/participant-type/add" Component={AddEditParticipantType} />
+                            <Route exact={true} path="/participant-type/edit/:id" Component={AddEditParticipantType} />
                             {/* Skills */}
-                            <Route exact={true} path="/skills" component={Skills} />
-                            <Route exact={true} path="/skills/add" component={AddEditSkills} />
-                            <Route exact={true} path="/skills/edit/:id" component={AddEditSkills} />
+                            <Route exact={true} path="/skills" Component={Skills} />
+                            <Route exact={true} path="/skills/add" Component={AddEditSkills} />
+                            <Route exact={true} path="/skills/edit/:id" Component={AddEditSkills} />
                             {/* Skills Roles*/}
-                            <Route exact={true} path="/skill-roles" component={SkillsRoles} />
-                            <Route exact={true} path="/skill-roles/add" component={AddEditSkillsRoles} />
-                            <Route exact={true} path="/skill-roles/edit/:id" component={AddEditSkillsRoles} />
+                            <Route exact={true} path="/skill-roles" Component={SkillsRoles} />
+                            <Route exact={true} path="/skill-roles/add" Component={AddEditSkillsRoles} />
+                            <Route exact={true} path="/skill-roles/edit/:id" Component={AddEditSkillsRoles} />
                             {/* Group */}
-                            <Route exact={true} path="/group" component={Group} />
-                            <Route exact={true} path="/group/add" component={AddEditGroup} />
-                            <Route exact={true} path="/group/edit/:id" component={AddEditGroup} />
-                            <Route exact={true} path="/member/:id" component={Member} />
+                            <Route exact={true} path="/group" Component={Group} />
+                            <Route exact={true} path="/group/add" Component={AddEditGroup} />
+                            <Route exact={true} path="/group/edit/:id" Component={AddEditGroup} />
+                            <Route exact={true} path="/member/:id" Component={Member} />
                             {/* Certification */}
-                            <Route exact={true} path="/certification" component={Certification} />
-                            <Route exact={true} path="/certification/add" component={AddEditCertification} />
-                            <Route exact={true} path="/certification/edit/:id" component={AddEditCertification} />
+                            <Route exact={true} path="/certification" Component={Certification} />
+                            <Route exact={true} path="/certification/add" Component={AddEditCertification} />
+                            <Route exact={true} path="/certification/edit/:id" Component={AddEditCertification} />
                             {/* Events */}
-                            <Route exact={true} path="/event" component={Event} />
-                            <Route exact={true} path="/event/add" component={AddEditEvent} />
-                            <Route exact={true} path="/event/edit/:id" component={AddEditEvent} />
-                            <Route exact={true} path="/event/detail/:id" component={ViewEvent} />
+                            <Route exact={true} path="/event" Component={Event} />
+                            <Route exact={true} path="/event/add" Component={AddEditEvent} />
+                            <Route exact={true} path="/event/edit/:id" Component={AddEditEvent} />
+                            <Route exact={true} path="/event/detail/:id" Component={ViewEvent} />
                             {/* Content */}
-                            <Route exact={true} path="/content" component={Content} />
-                            <Route exact={true} path="/content/add" component={AddEditContent} />
-                            <Route exact={true} path="/content/edit/:id" component={AddEditContent} />
+                            <Route exact={true} path="/content" Component={Content} />
+                            <Route exact={true} path="/content/add" Component={AddEditContent} />
+                            <Route exact={true} path="/content/edit/:id" Component={AddEditContent} />
                              {/* Currency */}
-                             <Route exact={true} path="/currency" component={Currency} />
-                            <Route exact={true} path="/currency/add" component={AddEditCurrency} />
-                            <Route exact={true} path="/currency/edit/:id" component={AddEditCurrency} />
-                            <Route exact={true} path="/currency/:id" component={CurrencyDetail} />
+                             <Route exact={true} path="/currency" Component={Currency} />
+                            <Route exact={true} path="/currency/add" Component={AddEditCurrency} />
+                            <Route exact={true} path="/currency/edit/:id" Component={AddEditCurrency} />
+                            <Route exact={true} path="/currency/:id" Component={CurrencyDetail} />
                             {/* Apply Currency */}
-                            <Route exact={true} path="/applycurrency" component={ApplyCurrency} />
-                            <Route exact={true} path="/customer" component={Customer} />
-                            <Route exact={true} path="/customer/add" component={AddEditCustomer} />
-                            <Route exact={true} path="/customer/edit/:id" component={AddEditCustomer} />
-                            <Route exact={true} path="/customer/view/:id" component={ViewCustomer} />
+                            <Route exact={true} path="/applycurrency" Component={ApplyCurrency} />
+                            <Route exact={true} path="/customer" Component={Customer} />
+                            <Route exact={true} path="/customer/add" Component={AddEditCustomer} />
+                            <Route exact={true} path="/customer/edit/:id" Component={AddEditCustomer} />
+                            <Route exact={true} path="/customer/view/:id" Component={ViewCustomer} />
 
-                            <Route exact path="/">
-                                <Redirect to="/login" />
-                            </Route>
-                        </Switch>
+                            <Route exact path="/" element={<Navigate to="/login" />} />
+                            </Routes>
                     </Router>
-                </ConnectedRouter>
-            </PersistGate>
-        </Provider>
-        <div id="loader" className="loaderDiv d-none">
+    </PersistGate>
+    </Provider>
+     <div id="loader" className="loaderDiv d-none">
             <div>
                 <img src="/assets/img/loader.gif" alt="logo" className="loaderlogo" />
             </div>
         </div>
-        <ToastsContainer
-            position={ToastsContainerPosition.TOP_RIGHT}
-            store={ToastsStore}
-        />
+        <ToastContainer position="top-right" />
+       
     </>
     );
 };

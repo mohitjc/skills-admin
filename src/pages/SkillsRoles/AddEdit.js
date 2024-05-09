@@ -4,7 +4,7 @@ import loader from '../../methods/loader';
 import { useSelector } from 'react-redux';
 import methodModel from '../../methods/methods';
 import { customerRolePermissions, roleGetAllKeys, rolePermission } from '../../models/type.model';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/global/layout';
 import { Tooltip } from "antd";
 
@@ -15,7 +15,7 @@ const AddEditRole = () => {
 
   const { id } = useParams();
   const [form, setform] = useState({id:'',name:'',status:'active',permissions:roleGetAllKeys('customer')});
-  const history = useHistory();
+  const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const user = useSelector((state) => state.user);
   const formValidation = [
@@ -44,7 +44,7 @@ const AddEditRole = () => {
     ApiClient.allApi(url, value, method).then((res) => {
       if (res.success) {
         // ToastsStore.success(res.message);
-        history.push('/skill-roles');
+        history('/skill-roles');
       }
       loader(false);
     });

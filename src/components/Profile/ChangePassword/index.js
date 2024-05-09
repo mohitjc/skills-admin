@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
-import { ToastsStore } from 'react-toasts';
+import { useNavigate } from 'react-router';
 import { logout } from '../../../actions/user';
 import ApiClient from '../../../methods/api/apiClient';
 import loader from '../../../methods/loader';
@@ -10,7 +9,7 @@ import methodModel from '../../../methods/methods';
 const ChangePassword = p => {
   const user=useSelector(state=>state.user)
   const dispatch = useDispatch()
-  const history = useHistory()
+  const history = useNavigate()
   const [form, setForm] = useState({ confirmPassword: '', currentPassword: '', newPassword: '' })
   const [submitted, setSubmitted] = useState(false)
   const formValidation = [
@@ -41,7 +40,7 @@ const ChangePassword = p => {
         dispatch(logout())
         localStorage.removeItem('token')
         localStorage.removeItem('persist:admin-app')
-        history.push('/login');
+        history('/login');
       }
       loader(false)
     })

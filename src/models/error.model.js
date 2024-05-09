@@ -1,4 +1,4 @@
-import { ToastsStore } from 'react-toasts';
+import { toast } from 'react-toastify';
 
 export const handleError = (err, hideError) => {
     let message = ''
@@ -11,5 +11,5 @@ export const handleError = (err, hideError) => {
         if (!message) message = err.message
         if (!message) message = 'Server Error'
     }
-    if (!hideError) ToastsStore.error(message);
+    if (!hideError) toast.error(message);
 }
