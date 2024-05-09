@@ -3,7 +3,6 @@ import Layout from '../../components/global/layout';
 import EditProfile from '../../components/Profile/Edit';
 import ChangePassword from '../../components/Profile/ChangePassword';
 import ApiClient from '../../methods/api/apiClient';
-import { ToastsStore } from 'react-toasts';
 import AppointmentReminder from '../../components/Profile/AppointmentReminder';
 import methodModel from '../../methods/methods';
 import { useParams } from 'react-router-dom';
@@ -23,7 +22,6 @@ const Settings = () => {
 
     ApiClient.put('setting', value).then(res => {
       if (res.success) {
-        // ToastsStore.success(res.message)
       }
     })
   };

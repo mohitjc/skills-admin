@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { ToastsStore } from "react-toasts";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../methods/methods";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
-import SelectDropdown from "../../components/common/SelectDropdown";
-import { toast } from "react-toastify";
 import { Tooltip } from "antd";
 import ImageUpload from "../../components/common/ImageUpload";
 const AddEditCurrency = () => {
     const [form, setform] = useState({ currency: '',symbol:'',isoCode:''})
-    const history = useHistory()
+    const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const { id } = useParams()
     const user = useSelector((state) => state.user);
@@ -50,8 +47,7 @@ const AddEditCurrency = () => {
         loader(true)
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
-                // ToastsStore.success(res.message)
-                history.push("/currency")
+                history("/currency")
             }
             loader(false)
         })

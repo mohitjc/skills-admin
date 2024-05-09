@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../sidebar';
 import Header from '../header';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,18 +13,18 @@ import methodModel from '../../../methods/methods';
 
 const Layout = ({ children }) => {
   const user = useSelector(state => state.user)
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
   const [isOpen, setIsopen] = useState(false)
 
 
   useEffect(() => {
     if (user && !user.loggedIn) {
-      history.push('/login');
+      history('/login');
     } else {
       let permissions = user.roleDetail?.permissions
       if (!permissionModel.urlAllow(permissions)) {
-        // history.push("/profile")
+        // history("/profile")
       }
       let browseload = localStorage.getItem('browseload')
       if (!browseload) {
@@ -60,7 +60,7 @@ const Layout = ({ children }) => {
 
   const router = () => {
     let route = localStorage.getItem('route')
-    history.push(route);
+    history(route);
   }
 
   const [state, setstate] = useState(false)

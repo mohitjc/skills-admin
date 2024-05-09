@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { ToastsStore } from "react-toasts";
 import ApiClient from '../../../methods/api/apiClient';
 import loader from '../../../methods/loader';
 import rescheduleTimeModel from '../../../models/rescheduleTime.model';
@@ -28,7 +27,6 @@ const AddEdit = ({ form, setForm, modalClosed }) => {
         loader(true)
         ApiClient.allApi('reminder/time', value, method).then(res => {
             if (res.success) {
-                // ToastsStore.success(res.message)
                 document.getElementById('closeEditModal').click()
                 modalClosed()
             }

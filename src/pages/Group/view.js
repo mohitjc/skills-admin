@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import Layout from '../../components/global/layout'
 import Table from "../../components/Table";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ApiClient from '../../methods/api/apiClient';
 import loader from '../../methods/loader';
 import { Tooltip } from "antd";

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { ToastsStore } from "react-toasts";
 import ApiClient from "../../../methods/api/apiClient";
 import loader from "../../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../../methods/methods";
 import ImageUpload from "../../../components/common/ImageUpload";
 import { CategoryType } from "../../../models/type.model";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../../components/global/layout";
 import SelectDropdown from "../../../components/common/SelectDropdown";
 import statusModel from "../../../models/status.model"
@@ -20,7 +19,7 @@ const AddEditProductCategory = () => {
     const [form, setform] = useState({ defaultvalue, catType: type ? type : '' })
     const [categories, setCategories] = useState([])
     const [tab, setTab] = useState('info')
-    const history = useHistory()
+    const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const user = useSelector((state) => state.user);
     const formValidation = [
@@ -61,7 +60,7 @@ const AddEditProductCategory = () => {
                 setTimeout(() => {
                     // toast.success(res.message)
                 }, 100);
-                history.push(`/category/product/${type}`)
+                history(`/category/product/${type}`)
             }
             loader(false)
         })
@@ -88,7 +87,7 @@ const AddEditProductCategory = () => {
     }
 
     const back = () => {
-        history.goBack()
+        history(-1)
     }
 
     useEffect(() => {

@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ToastsStore } from "react-toasts";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../methods/methods";
 import { planType } from "../../models/type.model";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import statusModel from "../../models/status.model";
 import SelectDropdown from "../../components/common/SelectDropdown";
@@ -31,7 +30,7 @@ const AddEditPlan = () => {
     const [enterIndex, setEnterIndex] = useState(-1);
     const [selectedItem, setSelectedItem] = useState('');
     const [pricing, setPricing] = useState([]);
-    const history = useHistory()
+    const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const user = useSelector((state) => state.user);
     const dragItem = useRef();
@@ -184,8 +183,7 @@ const AddEditPlan = () => {
         loader(true)
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
-                // ToastsStore.success(res.message)
-                history.push("/plans")
+                history("/plans")
             }
             loader(false)
         })

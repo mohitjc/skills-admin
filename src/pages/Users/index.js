@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import Html from './html';
 import { userType } from '../../models/type.model';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import environment from '../../environment';
 import Swal from 'sweetalert2';
@@ -29,7 +28,7 @@ const Users = (p) => {
   const [tableCols, setTableCols] = useState([]);
   const [form, setform] = useState(userType);
   const [roles, setRoles] = useState([]);
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     getRoles();
@@ -92,16 +91,6 @@ const Users = (p) => {
   };
 
   const deleteItem = (id) => {
-    // if (window.confirm('Do you want to delete this')) {
-    //   loader(true);
-    //   ApiClient.delete('api/delete/user', { id: id }).then((res) => {
-    //     if (res.success) {
-    //       // ToastsStore.success(res.message);
-    //       clear();
-    //     }
-    //     loader(false);
-    //   });
-    // }
     Swal.fire({
       title: "Are you sure?",
       text:`Do you want to delete this`,
@@ -115,14 +104,10 @@ const Users = (p) => {
           loader(true)
           ApiClient.delete('api/delete/user', { id: id }).then((res) => {
                 if (res.success) {
-                  // ToastsStore.success(res.message);
                   clear();
                 }
                 loader(false);
               });
-      //   Swal.fire({
-      //     icon: "success"
-      //   });
       }
     });
   };
@@ -237,19 +222,19 @@ const Users = (p) => {
   };
 
   const view = (id) => {
-    history.push('/userDetail/' + id);
+    history('/userDetail/' + id);
   };
 
   const edit = (id) => {
     let url = `/users/edit/${id}`;
     if (role) url = `/users/${role}/edit/${id}`;
-    history.push(url);
+    history(url);
   };
 
   const add = () => {
     let url = `/users/add`;
     if (role) url = `/users/${role}/add`;
-    history.push(url);
+    history(url);
   };
 
   const tabChange = (tab) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import methodModel from "../../methods/methods";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import statusModel from "../../models/status.model";
 import { Tooltip } from "antd";
@@ -16,7 +16,7 @@ const AddEdit = () => {
     const { id } = useParams()
     const [images, setImages] = useState({ image: ''});
     const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active',groupId:"" })
-    const history = useHistory()
+    const history = useNavigate()
     const [data,setData]= useState()
     const [submitted, setSubmitted] = useState(false)
     const user = useSelector((state) => state.user); 
@@ -58,7 +58,7 @@ const AddEdit = () => {
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
                 // ToastsStore.success(res.message)
-                history.push(`/${shared.url}`)
+                history(`/${shared.url}`)
             }
             loader(false)
         })

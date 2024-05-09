@@ -3,7 +3,7 @@ import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../methods/methods";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model";
@@ -12,7 +12,7 @@ import { Tooltip } from "antd";
 const AddEdit = () => {
     const { id } = useParams()
     const [form, setform] = useState({ id: '', title: '', status: 'active' })
-    const history = useHistory()
+    const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const user = useSelector((state) => state.user);
     const formValidation = [
@@ -41,7 +41,7 @@ const AddEdit = () => {
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
                 // ToastsStore.success(res.message)
-                history.push("/participant-type")
+                history("/participant-type")
             }
             loader(false)
         })

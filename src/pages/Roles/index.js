@@ -5,7 +5,7 @@ import './style.scss';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import Html from './html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -18,7 +18,7 @@ const Roles = (p) => {
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
     const [tableCols, setTableCols] = useState([])
-    const history = useHistory()
+    const history = useNavigate()
     useEffect(() => {
         let cols = []
         for (let i = 0; i <= 2; i++) {
@@ -230,11 +230,11 @@ const Roles = (p) => {
     }
 
     const view = (id) => {
-        history.push("/roles/" + id)
+        history("/roles/" + id)
     }
 
     const edit = (id) => {
-        history.push(`/roles/edit/${id}`)
+        history(`/roles/edit/${id}`)
     }
 
     const tabChange = (tab) => {

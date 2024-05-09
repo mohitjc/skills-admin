@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import categoryType from '../../models/categoryType.model';
 import Html from './html';
 import { CategoryType } from '../../models/type.model';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import environment from '../../environment';
 import { toast } from 'react-toastify';
@@ -25,7 +24,7 @@ const Features = (p) => {
     const [form, setform] = useState(CategoryType)
     const [categories, setcategories] = useState()
     const types = categoryType.list
-    const history = useHistory()
+    const history = useNavigate()
     const dragItem = useRef();
     const dragOverItem = useRef();
     const dragItems = useRef();
@@ -100,16 +99,6 @@ const Features = (p) => {
     }
 
     const deleteItem = (id) => {
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/feature', { id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to delete this`,
@@ -123,7 +112,6 @@ const Features = (p) => {
                 loader(true)
                 ApiClient.delete('api/feature', { id: id }).then(res => {
                             if (res.success) {
-                                // ToastsStore.success(res.message)
                                 clear()
                             }
                             loader(false)
@@ -239,11 +227,11 @@ const Features = (p) => {
         link.click();
     }
     const view = (id) => {
-        history.push("/features/" + id)
+        history("/features/" + id)
     }
 
     const edit = (id) => {
-        history.push(`/features/edit/${id}`)
+        history(`/features/edit/${id}`)
     }
 
     const tabChange = (tab) => {

@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import categoryType from '../../models/categoryType.model';
 import Html from './html';
 import { CategoryType } from '../../models/type.model';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
 import environment from '../../environment';
 import { toast } from 'react-toastify';
@@ -27,7 +26,7 @@ const Plans = (p) => {
     const [tableCols, setTableCols] = useState([])
     const [form, setform] = useState(CategoryType)
     const types=categoryType.list
-    const history=useHistory()
+    const history=useNavigate()
     const dragItem = useRef();
     const dragItems = useRef();
     const dragOverItem = useRef();
@@ -116,16 +115,6 @@ const Plans = (p) => {
     
 
     const deleteItem = (id) => {
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/plan', {id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to delete this`,
@@ -139,7 +128,6 @@ const Plans = (p) => {
                 loader(true)
                 ApiClient.delete('api/plan', {id: id }).then(res => {
                             if (res.success) {
-                                // ToastsStore.success(res.message)
                                 clear()
                             }
                             loader(false)
@@ -241,11 +229,11 @@ const Plans = (p) => {
     }
 
     const view=(id)=>{
-        history.push("/plans/"+id)
+        history("/plans/"+id)
     }
 
     const edit=(id,copy)=>{
-        history.push(`/plans/edit/${id}/${copy}`)
+        history(`/plans/edit/${id}/${copy}`)
     }
 
     const tabChange=(tab)=>{

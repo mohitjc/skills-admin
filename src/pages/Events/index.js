@@ -3,7 +3,7 @@ import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
 import loader from '../../methods/loader';
 import Html from './html';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import shared from './shared';
@@ -18,7 +18,7 @@ const Events = () => {
     const [groupdata, setgroupData] = useState([])
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
-    const history = useHistory()
+    const history = useNavigate()
 
     useEffect(() => {
         if (user && user.loggedIn) {
@@ -180,12 +180,12 @@ const Events = () => {
     }
 
     const edit = (id) => {
-        history.push(`/${shared.url}/edit/${id}`)
+        history(`/${shared.url}/edit/${id}`)
     }
 
     const view = (id) => {
         let url=`/${shared.url}/detail/${id}`
-        history.push(url)
+        history(url)
     }
 
     

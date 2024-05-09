@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import categoryType from '../../models/categoryType.model';
 import Html from './html';
 import { CategoryType } from '../../models/type.model';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { search_success } from '../../actions/search';
 import axios from 'axios';
 import environment from '../../environment';
@@ -28,7 +27,7 @@ const Categories = (p) => {
     const [form, setform] = useState(CategoryType)
     const [cattype, setcattype] = useState()
     const types = categoryType.list
-    const history = useHistory()
+    const history = useNavigate()
     const dragItem = useRef();
     const dragOverItem = useRef();
     const dragItems = useRef();
@@ -134,7 +133,6 @@ const Categories = (p) => {
                 loader(true)
                 ApiClient.delete('api/categorie', { id: id }).then(res => {
                             if (res.success) {
-                                // ToastsStore.success(res.message)
                                 clear()
                             }
                             loader(false)
@@ -224,13 +222,13 @@ const Categories = (p) => {
     }
 
     const view = (id) => {
-        history.push("/categoryDetail/" + id)
+        history("/categoryDetail/" + id)
     }
 
     const edit = (id) => {
         let url = "/categories/edit/" + id
         if (type) url = `/category/${type}/edit/${id}`
-        history.push(url)
+        history(url)
     }
 
     const tabChange = (tab) => {
@@ -241,7 +239,7 @@ const Categories = (p) => {
     const add = () => {
         let url = "/categories/add"
         if (type) url = `/category/${type}/add`
-        history.push(url)
+        history(url)
     }
 
     const reset = () => {

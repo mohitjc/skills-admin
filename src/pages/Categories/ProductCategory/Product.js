@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Layout from '../../../components/global/layout';
 import environment from '../../../environment';
@@ -30,7 +30,7 @@ const productCategory = ({
     const [total, setTotal] = useState(0)
     const searchState = useSelector((state) => state.search);
     const [data, setdata] = useState([])
-    const history = useHistory()
+    const history = useNavigate()
     const { type } = useParams()
     const [filters, setFilter] = useState({ page: 1, count: 50, search: '', catType: type ? type : '', parentCategory: '', status: '' })
 
@@ -96,7 +96,7 @@ const productCategory = ({
     }
 
     const edit = (id) => {
-        history.push(`/category/product/${type}/edit/${id}`)
+        history(`/category/product/${type}/edit/${id}`)
     }
 
     const deleteItem = (id) => {

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ApiClient from '../../methods/api/apiClient';
 import './style.scss';
-import { ToastsStore } from 'react-toasts';
 import loader from '../../methods/loader';
 import userTableModel from '../../models/table.model';
 import rolesModel from '../../models/roles.model';
 import Html from './html';
 import { userType } from '../../models/type.model';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import environment from '../../environment';
 import Swal from 'sweetalert2';
@@ -25,7 +24,7 @@ const Customer = (p) => {
     const [countries, setCountries] = useState([])
     const [plans, setPlans] = useState([])
     const roles=rolesModel.list
-    const history=useHistory()
+    const history=useNavigate()
 
     useEffect(() => {
         let cols = []
@@ -140,16 +139,6 @@ const Customer = (p) => {
         getData({ ...filters ,count: e })
         }
     const deleteItem = (id) => {
-        // if (window.confirm("Do you want to delete this")) {
-        //     loader(true)
-        //     ApiClient.delete('api/delete/user', {id: id }).then(res => {
-        //         if (res.success) {
-        //             // ToastsStore.success(res.message)
-        //             clear()
-        //         }
-        //         loader(false)
-        //     })
-        // }
         Swal.fire({
             title: "Are you sure?",
             text:`Do you want to delete this`,
@@ -163,7 +152,6 @@ const Customer = (p) => {
                 loader(true)
                 ApiClient.delete('api/delete/user', {id: id }).then(res => {
                             if (res.success) {
-                                // ToastsStore.success(res.message)
                                 clear()
                             }
                             loader(false)
@@ -313,7 +301,7 @@ const Customer = (p) => {
     }
 
     const view=(id)=>{
-        history.push("/customer/view/"+id)
+        history("/customer/view/"+id)
     }
 
  
@@ -338,7 +326,7 @@ const Customer = (p) => {
           link.click();
     }
     const edit=(id)=>{
-        history.push(`/customer/edit/${id}`)
+        history(`/customer/edit/${id}`)
     }
 
     const reset=()=>{

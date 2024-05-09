@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Layout from '../../../components/global/layout';
 import ApiClient from '../../../methods/api/apiClient';
 import loader from '../../../methods/loader';
@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import methodModel from '../../../methods/methods';
 
 const RoleDetail = (p) => {
-    const history = useHistory()
+    const history = useNavigate()
     const user = useSelector(state => state.user)
     const { id, userId } = useParams()
     const [data, setData] = useState()
@@ -23,7 +23,7 @@ const RoleDetail = (p) => {
     };
 
     const back = () => {
-        history.goBack()
+        history(-1)
     }
 
     useEffect(() => {

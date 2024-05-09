@@ -1,4 +1,4 @@
-import {  useHistory } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import { useEffect, useState } from "react";
 import datepipeModel from "../../models/datepipemodel";
@@ -9,7 +9,7 @@ import AttendeeList from "./AttendeeList";
 const View = () => {
     const [data, setData] = useState()
     const [host, setHost] = useState()
-    const history = useHistory()
+    const history = useNavigate()
     const {id}=useParams()
 
 
@@ -39,7 +39,7 @@ const View = () => {
         <Layout>
             <div className="text-right">
                 <div>
-                    <a to="/users" onClick={() => history.push(`/${shared.url}`)}>  <i className="fa fa-arrow-left mr-4 mb-3 " title='Back' aria-hidden="true"></i></a>
+                    <a to="/users" onClick={() => history(`/${shared.url}`)}>  <i className="fa fa-arrow-left mr-4 mb-3 " title='Back' aria-hidden="true"></i></a>
                 </div>
             </div>
             <div className='bg-white shadow-box rounded-lg w-full p-4 mt-6'>

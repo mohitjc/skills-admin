@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { ToastsStore } from "react-toasts";
 import ApiClient from "../../../methods/api/apiClient";
 import loader from "../../../methods/loader";
 import { useSelector } from 'react-redux';
 import methodModel from "../../../methods/methods";
 import Html from "./Html";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import addressModel from "../../../models/address.model";
 import environment from "../../../environment";
 
@@ -45,7 +44,7 @@ const AddEdit = () => {
         })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)
-    const history = useHistory()
+    const history = useNavigate()
     const [roles, setRoles] = useState([])
     const [emailLoader, setEmailLoader] = useState(false) 
     const [emailErr, setEmailErr] = useState('') 
@@ -98,9 +97,8 @@ const AddEdit = () => {
         loader(true)
         ApiClient.allApi(url, value, method).then(res => {
             if (res.success) {
-                // ToastsStore.success(res.message)
                 let url='/customer'
-                history.push(url)
+                history(url)
             }
             loader(false)
         })
@@ -113,7 +111,7 @@ const AddEdit = () => {
     }
 
     const back=()=>{
-        history.goBack()
+        history(-1)
     }
 
 
