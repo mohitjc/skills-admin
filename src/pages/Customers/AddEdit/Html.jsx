@@ -207,7 +207,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 autoComplete="false"
                 onChange={e => { setform({ ...form, loginId: e.target.value });}}
                 required
-                minLength={8}
+                maxLength={8}
                 disabled={form.id?true:false}
               />
    
