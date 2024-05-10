@@ -1724,7 +1724,7 @@ img.hide-logo {
 
 
 .main-wrapper main.main {
-  width: calc(100% - 280px);
+  width: calc(100% - 280px) !important;
   padding-top: 0;
   padding-left: 0;
   padding-right: 0;
