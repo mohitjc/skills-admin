@@ -76,22 +76,6 @@ const Html = ({
             }
         },
         {
-            key: 'groupId', name: 'Group',
-            render: (row) => {
-                return <span className='capitalize'>
-                    {row.groupIdDetails?.name}
-                </span>
-            }
-        },
-        {
-            key: 'createdAt', name: 'Created At', sort: true,
-            render: (row) => {
-                return <>
-                    {datepipeModel.datetime(row?.createdAt)}
-                </>
-            }
-        },
-        {
             key: 'loginId', name: 'Login Id',
             render: (row) => {
                 return <>
@@ -99,14 +83,14 @@ const Html = ({
                 </>
             }
         },
-        // {
-        //     key: 'updatedAt', name: 'Updated At',sort: true,
-        //     render: (row) => {
-        //         return <>
-        //             {datepipeModel.datetime(row?.updatedAt)}
-        //         </>
-        //     }
-        // },
+        {
+            key: 'groupId', name: 'Group',
+            render: (row) => {
+                return <span className='capitalize'>
+                    {row.groupIdDetails?.name}
+                </span>
+            }
+        },
         {
             key: 'Approve/Decline', name: 'Approve/Decline',
             render: (row) => {
@@ -131,6 +115,24 @@ const Html = ({
                 </>
             }
         },
+        {
+            key: 'createdAt', name: 'Created At', sort: true,
+            render: (row) => {
+                return <>
+                    {datepipeModel.date(row?.createdAt)}
+                </>
+            }
+        },
+     
+        // {
+        //     key: 'updatedAt', name: 'Updated At',sort: true,
+        //     render: (row) => {
+        //         return <>
+        //             {datepipeModel.datetime(row?.updatedAt)}
+        //         </>
+        //     }
+        // },
+    
         {
             key: 'status', name: 'Status',
             render: (row) => {
