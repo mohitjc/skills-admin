@@ -53,7 +53,7 @@ const Html = ({
                     <div className='user_detail'>
                         <img src={methodModel.userImg(itm.image)} className="user_imgs" />
                         <div className='user_name'>
-                            <h4 className='user'>
+                            <h4 className='user capitalize'>
                                 {itm.fullName}
                             </h4>
                             <p className='user_info'>
