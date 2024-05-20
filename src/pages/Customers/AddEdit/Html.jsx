@@ -186,7 +186,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               {submitted && getError('mobileNo').invalid ? <div className="invalid-feedback d-block">Min Length is 10</div> : <></>}
             </div>
             <div className="col-span-12 md:col-span-6">
-              <label>Email</label>
+              <label>Email <span className="star">*</span></label>
               <input
                 type="email"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
@@ -199,7 +199,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
     {submitted && getError('email').invalid? <div className="invalid-feedback d-block">Email is Invalid</div> : <></>}
             </div>
             <div className="col-span-12 md:col-span-6">
-              <label>Login Id</label>
+              <label>Login Id <span className="star">*</span> </label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
