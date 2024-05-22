@@ -251,13 +251,13 @@ const Html = ({
                 {
                     key: 'Purchase', name: 'Plan Purchase Date',
                     render: (row) => {
-                        return <span className='capitalize'>{datepipeModel.date(row.planDetails?.createdAt)}</span>;
+                        return <span className='capitalize !w-24 inline-flex'>{datepipeModel.date(row.planDetails?.createdAt)}</span>;
                     }
                 },
                 {
                     key: 'validUpTo', name: 'Valid Up To',
                     render: (row) => {
-                        return <span className='capitalize'>{datepipeModel.date(row.planDetails?.validUpTo)}</span>;
+                        return <span className='capitalize !w-24 inline-flex'>{datepipeModel.date(row.planDetails?.validUpTo)}</span>;
                     }
                 }
             ]
@@ -291,7 +291,7 @@ const Html = ({
             key: 'createdAt', name: 'Created At', sort: true,
             render: (row) => {
                 return <>
-                    {datepipeModel.date(row?.createdAt)}
+                  <div className='!w-24 '>  {datepipeModel.date(row?.createdAt)}</div>
                 </>
             }
         },
