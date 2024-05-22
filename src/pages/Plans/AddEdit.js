@@ -39,6 +39,7 @@ const AddEditPlan = () => {
     const formValidation = [
         // { key: 'feature', required: true },
         { key: 'status', required: true },
+        { key: 'planType', required: true },
         // { key: 'recommended', required: true },
     ]
 
@@ -401,8 +402,9 @@ const AddEditPlan = () => {
                                         {id:'free',name:'Free'},
                                         {id:'paid',name:'Paid'},
                                     ]}
+                                 required
                                 />
-                                {submitted && !form.status ? <div className="text-danger">Status is Required</div> : <></>}
+                                {submitted && !form?.planType ? <div className="text-danger">PlanType is Required</div> : <></>}
                             </div>
                         </div>
                         {/* <div className="col-span-12 md:col-span-6">
@@ -455,7 +457,7 @@ const AddEditPlan = () => {
                             <div className="grid grid-cols-12 gap-4">
                                 {currencys && currencys.map((item, index) => (
                                     <div className="col-spam-12 md:col-span-4 pl-3 mb-3">
-                                        <label>Price <span className="text-uppercase">[{item.isoCode}]</span><span className="star">*</span></label>
+                                        <label>Price <span className="text-uppercase">[{item.isoCode.toUpperCase()}]</span><span className="star">*</span></label>
                                         <input className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2" name={item.isoCode} value={form.threeMonthPrice ? form.threeMonthPrice[item.isoCode] : ''} required={requiredCheck('threeMonthPrice')} maxLength="10" onChange={e => { setform({ ...form, threeMonthPrice: { ...form.threeMonthPrice, [e.target.name]: methodModel.isNumber(e) } }) }} placeholder={`Price ${item.isoCode.toUpperCase()}`} />
                                     </div>
                                 ))}
@@ -467,7 +469,7 @@ const AddEditPlan = () => {
                             <div className="grid grid-cols-12 gap-4">
                                 {currencys && currencys.map((item, index) => (
                                     <div className="col-spam-12 md:col-span-4 pl-3 mb-3">
-                                        <label>Price <span className="text-uppercase">[{item.isoCode}]</span><span className="star">*</span></label>
+                                        <label>Price <span className="text-uppercase">[{item.isoCode.toUpperCase()}]</span><span className="star">*</span></label>
                                         <input className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2" name={item.isoCode} value={form.sixMonthPrice ? form.sixMonthPrice[item.isoCode] : ''} required={requiredCheck('sixMonthPrice')} maxLength="10" onChange={e => { setform({ ...form, sixMonthPrice: { ...form.sixMonthPrice, [e.target.name]: methodModel.isNumber(e) } }) }} placeholder={`Price ${item.isoCode.toUpperCase()}`}></input>
                                     </div>
                                 ))}
@@ -479,7 +481,7 @@ const AddEditPlan = () => {
                             <div className="grid grid-cols-12 gap-4">
                                 {currencys && currencys.map((item, index) => (
                                     <div className="col-spam-12 md:col-span-3 pl-3 mb-3">
-                                        <label>Price <span className="text-uppercase">[{item.isoCode}]</span><span className="star">*</span></label>
+                                        <label>Price <span className="capitalize">[{item.isoCode.toUpperCase()}]</span><span className="star">*</span></label>
                                         <input className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2" name={item.isoCode} value={form.yearlyPrice ? form.yearlyPrice[item.isoCode] : ''} required={requiredCheck('yearlyPrice')} maxLength="10" onChange={e => { setform({ ...form, yearlyPrice: { ...form.yearlyPrice, [e.target.name]: methodModel.isNumber(e) } }) }} placeholder={`Price ${item.isoCode.toUpperCase()}`}></input>
                                     </div>
                                 ))}

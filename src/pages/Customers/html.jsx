@@ -45,52 +45,224 @@ const Html = ({
     const [modal, setModel] = useState(false)
     const [item, setItem] = useState()
 
+    // const columns = [
+    //     {
+    //         key: 'fullName', name: 'Name', sort: true,
+    //         render: (itm) => {
+    //             return <>
+    //                 <div className='user_detail'>
+    //                     <img src={methodModel.userImg(itm.image)} className="user_imgs" />
+    //                     <div className='user_name'>
+    //                         <h4 className='user capitalize'>
+    //                             {itm.fullName}
+    //                         </h4>
+    //                         <p className='user_info'>
+    //                             {itm.email}
+    //                         </p>
+    //                         <p className='user_info'>
+    //                             {itm.mobileNo ? <>+{itm.mobileNo}</> : ''}
+    //                         </p>
+    //                     </div>
+    //                 </div>
+    //             </>
+    //         }
+    //     },
+    //     {
+    //         key: 'customerRole', name: 'Role',
+    //         render: (row) => {
+    //             return <>
+    //                 {row.customerRoleDetails?.name}
+    //             </>
+    //         }
+    //     },
+    //     {
+    //         key: 'loginId', name: 'Login Id',
+    //         render: (row) => {
+    //             return <>
+    //                 {row?.loginId}
+    //             </>
+    //         }
+    //     },
+    //     {
+    //         key: 'groupId', name: 'Group',
+    //         render: (row) => {
+    //             return <span className='capitalize'>
+    //                 {row.groupIdDetails?.name}
+    //             </span>
+    //         }
+    //     },
+        
+    //     {
+    //         key: 'Planname', name: 'Plan Name',
+    //         render: (row) => {
+    //             return <span className='capitalize'>
+    //                 {row?.planName}
+    //             </span>
+    //         }
+    //     },
+    //     {
+    //         key: 'validUpTo', name: 'valid Up To ',
+    //         render: (row) => {
+    //             return <span className='capitalize'>
+                  
+    //                 {datepipeModel.date(row.planDetails?.validUpTo)}
+    //             </span>
+    //         }
+    //     },
+    //     {
+    //         key: 'Approve/Decline', name: 'Approve/Decline',
+    //         render: (row) => {
+    //             return <>
+    //                 {row.customerRole == environment.glRoleId ? <>
+    //                     {row.verifiedGroupLeader ? <>
+    //                         {row.verifiedGroupLeader == 'approved' ? <>
+    //                             <div className='text-green-600'>Approved</div>
+    //                         </> : <>
+    //                             <div className='text-red-600'>Declined</div>
+    //                         </>}
+    //                     </> : <>
+    //                         <div className='flex gap-2'>
+    //                             <button type="button" onClick={() => approveDecline(row, 'approved')} class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2 px-3 text-center">Approve</button>
+    //                             <button type="button" onClick={() => approveDecline(row, 'declined')} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs py-2 px-3 text-center">Decline</button>
+    //                         </div>
+    //                     </>}
+
+    //                 </> : <>
+    //                     <div className='text-green-600'>Approved</div>
+    //                 </>}
+    //             </>
+    //         }
+    //     },
+    //     {
+    //         key: 'createdAt', name: 'Created At', sort: true,
+    //         render: (row) => {
+    //             return <>
+    //                 {datepipeModel.date(row?.createdAt)}
+    //             </>
+    //         }
+    //     },
+     
+    //     // {
+    //     //     key: 'updatedAt', name: 'Updated At',sort: true,
+    //     //     render: (row) => {
+    //     //         return <>
+    //     //             {datepipeModel.datetime(row?.updatedAt)}
+    //     //         </>
+    //     //     }
+    //     // },
+    
+    //     {
+    //         key: 'status', name: 'Status',
+    //         render: (row) => {
+    //             return <>
+    //                 <div className='w-32' onClick={() => statusChange(row)}>
+    //                     <Tooltip placement="top" title="Active / Inactive">
+    //                         <span className={`text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB]  text-white !rounded capitalize ${row.status === 'active' ? 'bg-green-400' : 'bg-red-400 '}`}>
+    //                             {row.status == 'deactive' ? 'inactive' : 'active'}
+    //                         </span>
+    //                     </Tooltip>
+    //                 </div>
+    //             </>
+    //         }
+    //     },
+    //     {
+    //         key: 'action', name: 'Action',
+    //         render: (itm) => {
+    //             return <>
+    //                 <div className="flex items-center justify-start gap-1.5">
+    //                     <Tooltip placement="top" title="View">
+    //                         <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => view(itm.id)}>
+    //                             <span class="material-symbols-outlined">visibility</span>
+    //                         </a>
+    //                     </Tooltip>
+    //                     {isAllow(`edit${shared.check}`) ?
+    //                         <Tooltip placement="top" title="Edit">
+    //                             <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
+    //                                 <FiEdit3 />
+    //                             </a>
+    //                         </Tooltip>
+    //                         : <></>}
+    //                     {isAllow(`delete${shared.check}`) ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
+    //                         <BsTrash3 />
+    //                     </span> </Tooltip> : <></>}
+
+    //                     <Tooltip placement="top" title="Send Email"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => sendEmail(itm)}>
+    //                         <BsEnvelope />
+    //                     </span> </Tooltip>
+    //                 </div>
+    //             </>
+    //         }
+    //     },
+    // ]
     const columns = [
         {
-            key: 'fullName', name: 'Name', sort: true,
-            render: (itm) => {
-                return <>
-                    <div className='user_detail'>
-                        <img src={methodModel.userImg(itm.image)} className="user_imgs" />
-                        <div className='user_name'>
-                            <h4 className='user capitalize'>
-                                {itm.fullName}
-                            </h4>
-                            <p className='user_info'>
-                                {itm.email}
-                            </p>
-                            <p className='user_info'>
-                                {itm.mobileNo ? <>+{itm.mobileNo}</> : ''}
-                            </p>
-                        </div>
-                    </div>
-                </>
-            }
-        },
-        {
-            key: 'customerRole', name: 'Role',
-            render: (row) => {
-                return <>
-                    {row.customerRoleDetails?.name}
-                </>
-            }
-        },
-        {
-            key: 'loginId', name: 'Login Id',
-            render: (row) => {
-                return <>
-                    {row?.loginId}
-                </>
-            }
-        },
-        {
-            key: 'groupId', name: 'Group',
-            render: (row) => {
-                return <span className='capitalize'>
-                    {row.groupIdDetails?.name}
-                </span>
-            }
-        },
+                    key: 'fullName', name: 'Name', sort: true,
+                    render: (itm) => {
+                        return <>
+                            <div className='user_detail'>
+                                <img src={methodModel.userImg(itm.image)} className="user_imgs" />
+                                <div className='user_name'>
+                                    <h4 className='user capitalize'>
+                                        {itm.fullName}
+                                    </h4>
+                                    <p className='user_info'>
+                                        {itm.email}
+                                    </p>
+                                    <p className='user_info'>
+                                        {itm.mobileNo ? <>+{itm.mobileNo}</> : ''}
+                                    </p>
+                                </div>
+                            </div>
+                        </>
+                    }
+                },
+                {
+                    key: 'customerRole', name: 'Role',
+                    render: (row) => {
+                        return <>
+                            {row.customerRoleDetails?.name}
+                        </>
+                    }
+                },
+                {
+                    key: 'loginId', name: 'Login Id',
+                    render: (row) => {
+                        return <>
+                            {row?.loginId}
+                        </>
+                    }
+                },
+                {
+                    key: 'groupId', name: 'Group',
+                    render: (row) => {
+                        return <span className='capitalize'>
+                            {row.groupIdDetails?.name}
+                        </span>
+                    }
+                },
+        ...(filters?.customerRole === environment?.glRoleId
+            ? [
+                {
+                    key: 'Planname', name: 'Plan Name',
+                    render: (row) => {
+                        return <span className='capitalize'>{row?.planName ? row?.planName : "--"}</span>;
+                    }
+                },
+                {
+                    key: 'Purchase', name: 'Plan Purchase Date',
+                    render: (row) => {
+                        return <span className='capitalize'>{datepipeModel.date(row.planDetails?.createdAt)}</span>;
+                    }
+                },
+                {
+                    key: 'validUpTo', name: 'Valid Up To',
+                    render: (row) => {
+                        return <span className='capitalize'>{datepipeModel.date(row.planDetails?.validUpTo)}</span>;
+                    }
+                }
+            ]
+            : []
+        ),
         {
             key: 'Approve/Decline', name: 'Approve/Decline',
             render: (row) => {
@@ -175,8 +347,8 @@ const Html = ({
                 </>
             }
         },
-    ]
-
+    ];
+    
     const sendEmail = (itm) => {
         // setItem(itm)
         // setModel(true)
@@ -298,7 +470,7 @@ const Html = ({
                                     intialValue={filters.customerRole}
                                     theme="search"
                                     result={e => filter({ customerRole: e.value })}
-                                    options={roles}
+                                    options={roles} 
                                 />
 
                                 {filters.groupId || filters.status || filters.customerRole ? <>
