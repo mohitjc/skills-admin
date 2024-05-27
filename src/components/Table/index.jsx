@@ -33,9 +33,9 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
         {total ? <>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 capitalize bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="border-b border-[#EAECF0] text-xs text-gray-700  capitalize bg-gray-50 ">
                         {topHead?.length?<>  
-                        <tr className="bg-gray-200 border-b border-black">
+                        <tr className="border-b border-[#EAECF0]">
                             {topHead.map((itm,i)=>{
                                 return <>
                                 <th scope="col" className={`px-6 py-3 text-center capitalize ${(topHead.length-1)==i?'':'border-r border-black capitalize'}`} colSpan={itm?.colSpan||0} key={i}>
@@ -63,7 +63,7 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
                                 <tr onClick={() => view(itm)} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={itm.id}>
                                     {columns.map(citm => {
                                         return <>
-                                            <td className="px-6 py-4">
+                                            <td className="!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]">
                                                 {citm.render(itm)||'--'}
                                             </td>
                                         </>

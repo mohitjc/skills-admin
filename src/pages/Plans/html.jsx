@@ -68,7 +68,7 @@ const Html = ({
 
 
 
-                <div className="flex filterFlex phSpace">
+                <div className="flex ">
                     {/* <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed mr-3" onClick={() => exportfun()}>
                         <PiFileCsv className="text-typo text-xl" />  Export CSV
                     </button> */}
@@ -78,12 +78,7 @@ const Html = ({
                         </Link>
                         : <></>}
 
-
-                </div>
-            </div>
-
-            <div className='shadow-box w-full bg-white rounded-lg mt-6'>
-                <div className='flex justify-end items-center gap-3 p-4'>
+<div className='flex justify-end items-center gap-2'>
                 <SelectDropdown
                             id="statusDropdown"
                             displayValue="name"
@@ -98,6 +93,13 @@ const Html = ({
                         </button>
                     </> : <></>}
                 </div>
+
+
+                </div>
+            </div>
+
+            <div className='shadow-box w-full bg-white rounded-lg mt-6'>
+              
 
 
                 {tab == 'grid' ? <>
@@ -130,7 +132,7 @@ const Html = ({
                                                 <div className="flex items-center justify-start gap-1.5">
                                                     {isAllow('editPlan') ?
                                                         <Tooltip placement="top" title="Edit">
-                                                            <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id, 'false')}>
+                                                            <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md" onClick={e => edit(itm.id, 'false')}>
                                                                 <FiEdit3 />
                                                             </a>
                                                         </Tooltip>
@@ -139,7 +141,7 @@ const Html = ({
                                                     {!itm.activeSubscription ? <>
                                                         {isAllow('deletePlan') ?
                                                             <Tooltip placement="top" title="Delete">
-                                                                <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
+                                                                <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md ' onClick={() => deleteItem(itm.id)}>
                                                                     <BsTrash3 />
                                                                 </span>
                                                             </Tooltip>
@@ -148,7 +150,7 @@ const Html = ({
 
                                                     </> : <></>}
                                                     <Tooltip placement="top" title="Copy">
-                                                        <a className="border !border-[#94D5AE] rounded-lg bg-[#ECF4EF] hover:opacity-70 w-10 h-10 text-[#b4b7fb] flex items-center justify-center text-xls" onClick={e => edit(itm.id, 'true')}>
+                                                        <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md" onClick={e => edit(itm.id, 'true')}>
                                                             <FaCopy />
                                                         </a>
                                                     </Tooltip>

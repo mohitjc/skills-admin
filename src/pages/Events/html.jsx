@@ -10,6 +10,7 @@ import SelectDropdown from '../../components/common/SelectDropdown';
 import statusModel from '../../models/status.model';
 import datepipeModel from '../../models/datepipemodel';
 import shared from "./shared";
+import { IoEyeOutline } from 'react-icons/io5';
 const Html = ({
     sorting,
     edit,
@@ -77,18 +78,19 @@ const Html = ({
                 return <>
                     <div className="flex items-center justify-start gap-1.5">
                     <Tooltip placement="top" title="View">
-                                <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => view(itm.id)}>
-                                <span class="material-symbols-outlined">visibility</span>
+                                <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md " onClick={e => view(itm.id)}>
+                                <IoEyeOutline />
+
                                 </a>
                             </Tooltip>
                         {isAllow(`edit${shared.check}`) ?
                             <Tooltip placement="top" title="Edit">
-                                <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
+                                <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md " onClick={e => edit(itm.id)}>
                                     <FiEdit3 />
                                 </a>
                             </Tooltip>
                             : <></>}
-                        {isAllow(`delete${shared.check}`) ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
+                        {isAllow(`delete${shared.check}`) ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md  ' onClick={() => deleteItem(itm.id)}>
                             <BsTrash3 />
                         </span> </Tooltip> : <></>}
                     </div>
@@ -147,7 +149,7 @@ const Html = ({
                                 onChange={e => {
                                     setFilter({ ...filters, search: e.target.value })
                                 }}
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 pr-10  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required 
                             
                                 />
                                 {filters?.search && (

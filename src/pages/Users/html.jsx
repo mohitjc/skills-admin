@@ -175,10 +175,10 @@ const Html = ({
                                                 </div></td>
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.role?.name}</td>
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{datepipeModel.date(itm.lastLogin)}</td>
-                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
+                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5  text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>
                                                 <div onClick={() => statusChange(itm)}>
                                                     <Tooltip placement="top" title="Active / Inactive">
-                                                        <span className={`${itm.status == 'deactive' ? 'bg-red-400 text-[#fff]' : 'bg-green-400 text-white'} text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] !rounded`}>
+                                                        <span className={`${itm.status == 'deactive' ? 'bg-red-400 text-[#fff]' : 'bg-green-400 text-white'} text-sm w-32 mx-auto !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] !rounded`}>
                                                             {itm.status == 'deactive' ? 'Inactive' : 'Active'}
                                                         </span>
                                                     </Tooltip>
@@ -193,7 +193,7 @@ const Html = ({
                                                 <div className="flex items-center justify-center gap-1.5">
                                                     {isAllow('editUsers') ? <>
                                                         <Tooltip placement="top" title="Edit">
-                                                            <a className='border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl' title="Edit" onClick={e => edit(itm.id)}>
+                                                            <a className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md' title="Edit" onClick={e => edit(itm.id)}>
                                                                 <FiEdit3 />
                                                             </a>
                                                         </Tooltip>
@@ -201,7 +201,7 @@ const Html = ({
 
                                                     {isAllow('deleteUsers') ? <>
                                                         <Tooltip placement="top" title="Delete">
-                                                            <span className='border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
+                                                            <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md' onClick={() => deleteItem(itm.id)}>
                                                                 <BsTrash3 />
                                                             </span>
                                                         </Tooltip>

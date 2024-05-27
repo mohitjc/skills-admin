@@ -59,12 +59,12 @@ const Html = ({
                     <div className="flex items-center justify-start gap-1.5">
                         {isAllow('editCategory') ?
                             <Tooltip placement="top" title="Edit">
-                                <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
+                                <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md" onClick={e => edit(itm.id)}>
                                     <FiEdit3 />
                                 </a>
                             </Tooltip>
                             : <></>}
-                        {itm.id != environment.planTypeId && itm.id != environment.professionType && isAllow('deleteCategory') ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-lg bg-[#FDE9EA] w-10 h-10 text-[#E92531] flex items-center justify-center text-xl ' onClick={() => deleteItem(itm.id)}>
+                        {itm.id != environment.planTypeId && itm.id != environment.professionType && isAllow('deleteCategory') ? <Tooltip placement="top" title="Delete"> <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md ' onClick={() => deleteItem(itm.id)}>
                             <BsTrash3 />
                         </span> </Tooltip> : <></>}
                     </div>
@@ -84,7 +84,7 @@ const Html = ({
 
                 <a id='downloadFile'></a>
 
-                <div className="flex">
+                <div className="flex ">
 
 
                     {isAllow('addCategory') ?
@@ -92,16 +92,9 @@ const Html = ({
                             <FiPlus className="text-xl text-white" />   Add Type
                         </Link>
                         : <></>}
-                </div>
 
 
-            </div>
-
-
-
-            <div className='shadow-box w-full bg-white rounded-lg mt-6'>
-                <div className='flex p-4 justify-end'>
-                    <div className="flex gap-2">
+<div className="flex gap-2">
                         <SelectDropdown
                             id="statusDropdown"
                             displayValue="name"
@@ -123,10 +116,16 @@ const Html = ({
                 </div>
 
 
+            </div>
+
+
+
+            <div className='shadow-box w-full bg-white rounded-lg mt-6'>
+            
 
                 {!loaging ? <>
                     <Table
-                        className='mb-3'
+                        className='mb-3 '
                         data={data}
                         columns={columns}
                         page={filters.page}

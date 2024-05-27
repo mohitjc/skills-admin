@@ -153,14 +153,14 @@ const Html = ({
                                                 <div className="flex items-center justify-center gap-1.5">
                                                     {isAllow('editPlan') ?
                                                         <Tooltip placement="top" title="Edit">
-                                                            <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.id)}>
+                                                            <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md" onClick={e => edit(itm.id)}>
                                                                 <FiEdit3 />
                                                             </a>
                                                         </Tooltip>
                                                         : <></>}
                                                     {isAllow('deletePlan') ?
                                                         <Tooltip placement="top" title="Delete">
-                                                            <span className='border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl' onClick={() => deleteItem(itm.id)}>
+                                                            <span className='border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md' onClick={() => deleteItem(itm.id)}>
                                                                 <BsTrash3 />
                                                             </span>
                                                         </Tooltip>

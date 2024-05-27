@@ -46,7 +46,7 @@ const Html = ({
                     <div className="flex items-center justify-start gap-1.5">
                         {isAllow('editContent') ?
                             <Tooltip placement="top" title="Edit">
-                                <a className="border cursor-pointer border-[#ff7641] hover:opacity-70 rounded-lg bg-[#ff764114] w-10 h-10 !text-primary flex items-center justify-center text-xl" onClick={e => edit(itm.slug)}>
+                                <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md " onClick={e => edit(itm.slug)}>
                                     <FiEdit3 />
                                 </a>
                             </Tooltip>
@@ -79,7 +79,7 @@ const Html = ({
 
 
             <div className='shadow-box w-full bg-white rounded-lg mt-6'>
-                <div className='flex p-4 justify-end'>
+                {/* <div className='flex p-4 justify-end'>
                     <div className="flex gap-2">
                       
                         {filters.status ? <>
@@ -92,7 +92,7 @@ const Html = ({
 
 
                     </div>
-                </div>
+                </div> */}
 
 
 
