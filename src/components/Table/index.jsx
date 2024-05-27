@@ -38,7 +38,7 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
                         <tr className="border-b border-[#EAECF0]">
                             {topHead.map((itm,i)=>{
                                 return <>
-                                <th scope="col" className={`px-6 py-3 text-center capitalize ${(topHead.length-1)==i?'':'border-r border-black capitalize'}`} colSpan={itm?.colSpan||0} key={i}>
+                                <th scope="col" className={`px-3.5 py-3 text-center capitalize ${(topHead.length-1)==i?'':'border-r border-black capitalize'}`} colSpan={itm?.colSpan||0} key={i}>
                                         {itm.name}
                                     </th>
                                 </>
@@ -48,7 +48,7 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 50, to
                         <tr>
                             {columns.map(itm => {
                                 return <>
-                                    <th scope="col" className={`px-6 py-3 capitalize ${itm.sort?'cursor-pointer':''}`} onClick={()=>headclick(itm)} key={itm.key}>
+                                    <th scope="col" className={`px-3.5 py-3 capitalize ${itm.sort?'cursor-pointer':''}`} onClick={()=>headclick(itm)} key={itm.key}>
                                         {itm.name} {itm.sort?<>
                                             <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span>
                                         </>:<></>}
