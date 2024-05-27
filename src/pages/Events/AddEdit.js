@@ -144,7 +144,7 @@ useEffect(() => {
 
 
                     <h3 className="ViewUser mb-3"></h3>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1  md:grid-cols-2 gap-4">
                         <div className="col-md-6 mb-3">
                             <FormControl
                                 type="text"

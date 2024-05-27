@@ -35,7 +35,7 @@ const Html = ({ options, dynamicStyle = false, className = null, selectedValues,
 
                     <Menu as="div" className="relative list_box_active_state ml-auto">
                         <div>
-                            <Menu.Button disabled={disabled} id={"dropdownMenuButton" + id} className={`inline-flex w-full border justify-start gap-x-1.5 rounded-md bg-white px-3 py-2.5 text-sm font-normal text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-200 ${className}`}>
+                            <Menu.Button disabled={disabled} id={"dropdownMenuButton" + id} className={`inline-flex w-full border justify-start gap-x-1.5 rounded-md bg-white px-3 py-2.5 text-sm font-normal text-gray-900  hover:bg-gray-200 ${className}`}>
                                 {selectedValues ? methodModel.find(options, selectedValues, 'id')?.[displayValue] || placeholder : placeholder}
                                 <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                             </Menu.Button>
