@@ -18,6 +18,8 @@ const AddEdit = () => {
          email:'', 
          mobileNo:'',
          fullName:'',
+         firstName:"",
+         lastName :"",
          multiAddress:[],
          profession:'',
          company:'',

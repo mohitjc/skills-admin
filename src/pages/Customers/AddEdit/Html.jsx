@@ -151,16 +151,25 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
 
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 md:col-span-6">
-              <label>Name<span className="star">*</span></label>
+              <label> First Name<span className="star">*</span></label>
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                value={form.fullName}
-                onChange={e => setform({ ...form, fullName: e.target.value })}
+                value={form.firstName}
+                onChange={e => setform({ ...form, firstName: e.target.value })}
                 required
               />
             </div>
-
+            <div className="col-span-12 md:col-span-6">
+              <label>Last Name<span className="star">*</span></label>
+              <input
+                type="text"
+                className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
+                value={form.lastName }
+                onChange={e => setform({ ...form, lastName: e.target.value })}
+                required
+              />
+            </div>
             <div className="col-span-12 md:col-span-6">
               <label>Profession Title</label>
               <input
