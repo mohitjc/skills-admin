@@ -483,7 +483,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                />
                {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
              </div>
-
+{/* 
             <div className="col-span-12 md:col-span-6">
               <label>Group<span className="star">*</span></label>
               <SelectDropdown
@@ -495,9 +495,25 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
                 options={groups}
                 theme="search"
                 required
-              />
+              /> */}
               {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
-            </div>
+            {/* </div> */}
+            {form.customerRole === "65fc4a1e2e22cff912335e12" || form?.groupId && (
+                  <div className="col-span-12 md:col-span-6">
+                    <label>Group</label>
+                    <SelectDropdown
+                      id="statusDropdown"
+                      displayValue="name"
+                      placeholder="Select Group"
+                      intialValue={form.groupId}
+                      result={(e) => {
+                        setform({ ...form, groupId: e.value });
+                      }}
+                      options={groups}
+                      theme="search"
+                    />
+                  </div>
+                )}
 
 
             <div className="col-span-full">
