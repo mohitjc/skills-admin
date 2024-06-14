@@ -17,6 +17,7 @@ import Modal from "../../components/common/Modal";
 import SendEmail from './SendEmail';
 import ApiClient from '../../methods/api/apiClient';
 import { IoEyeOutline } from "react-icons/io5";
+import RolesList from './RolesList';
 
 
 const Html = ({
@@ -45,6 +46,8 @@ const Html = ({
     }
 
     const [modal, setModel] = useState(false)
+    const [isRModal, setIsRModal] = useState(false)
+    const [roleList ,setRolesList] = useState("")
     const [item, setItem] = useState()
 
     // const columns = [
@@ -222,7 +225,10 @@ const Html = ({
                     key: 'customerRole', name: 'Role',
                     render: (row) => {
                         return <>
-                            {row.customerRoleDetails?.name}
+                           <div className='flex flex-col items-center gap-2'>
+                           {row.customerRoleDetails?.name ?<> {row.customerRoleDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p> </>:""}
+                           {/* {row.customerRoleDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p> */}
+                           </div>
                         </>
                     }
                 },
@@ -237,8 +243,8 @@ const Html = ({
                 {
                     key: 'groupId', name: 'Group',
                     render: (row) => {
-                        return <span className='capitalize'>
-                            {row.groupIdDetails?.name}
+                        return <span className='capitalize flex flex-col items-center gap-2'>
+                            {row.groupIdDetails?.name ?<> {row.groupIdDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p> </>:""}
                         </span>
                     }
                 },
@@ -534,7 +540,20 @@ const Html = ({
                     }}
                 />
             </> : <></>}
-
+            {isRModal  ? <>
+        <Modal
+          title="Detail"
+          body={<>
+            <RolesList
+              list ={roleList}
+            
+            />
+          </>}
+          result={e => {
+            setIsRModal(false)
+          }}
+        />
+      </> : <></>}
         </>
 
     );

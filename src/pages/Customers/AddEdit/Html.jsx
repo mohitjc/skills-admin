@@ -14,7 +14,7 @@ import countryStateModel from "../../../models/countryState.model";
 import timezoneModel from "../../../models/timezone.model";
 import { MdDeleteOutline } from "react-icons/md";
 
-const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
+const Html = ({ detail,form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
 
   const editAddress = (i, v, key = 'value') => {
     let arr = form.multiAddress || []
@@ -34,7 +34,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
     arr = arr.filter((itm, index) => index != i)
     setform({ ...form, multiAddress: [...arr] })
   }
-
+console.info(detail)
   const [certificate, setCertificate] = useState([])
   const [skillRoles, setSkillRoles] = useState([])
   const [categories, setCategories] = useState([])
@@ -498,7 +498,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
               /> */}
               {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
             {/* </div> */}
-            {form.customerRole === "65fc4a1e2e22cff912335e12" || form?.groupId && (
+            {form.customerRole === "65fc4a1e2e22cff912335e12" ||  form.groupId && (
                   <div className="col-span-12 md:col-span-6">
                     <label>Group</label>
                     <SelectDropdown

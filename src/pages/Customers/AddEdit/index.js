@@ -169,7 +169,7 @@ const AddEdit = () => {
                     payload.password=''
                     payload.id=id
                     if(payload.customerRole?._id) payload.customerRole=payload.customerRole._id
-                    if(payload.groupId?._id) payload.groupId=payload.groupId._id
+                    if(value.groupId?._id) payload.groupId=value.groupId._id
                     if(payload.category?._id) payload.category=payload.category._id
                     if(payload.subCategory?._id) payload.subCategory=payload.subCategory._id
                     if(payload.subSubCategory?._id) payload.subSubCategory=payload.subSubCategory._id
