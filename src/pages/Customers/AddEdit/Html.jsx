@@ -494,7 +494,7 @@ const Html = ({ form, handleSubmit, setform, roles, submitted, images, imageResu
             <div className="col-span-full">
               <label>Short Bio</label>
               <textarea
-                className="relative shadow-box bg-white w-full rounded-lg flex items-center gap-2 overflow-hidden px-2"
+                className="relative shadow-box bg-white focus:outline-none w-full rounded-lg flex items-center gap-2 overflow-hidden px-2"
                 value={form.aboutUs}
                 onChange={e => setform({ ...form, aboutUs: e.target.value })}
 
