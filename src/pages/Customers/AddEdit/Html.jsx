@@ -14,7 +14,7 @@ import countryStateModel from "../../../models/countryState.model";
 import timezoneModel from "../../../models/timezone.model";
 import { MdDeleteOutline } from "react-icons/md";
 
-const Html = ({ detail,form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
+const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
 
   const editAddress = (i, v, key = 'value') => {
     let arr = form.multiAddress || []
@@ -24,8 +24,8 @@ const Html = ({ detail,form, handleSubmit, setform, roles, submitted, images, im
 
   const addAddress = () => {
     let arr = form.multiAddress || []
-    let aid=String(new Date().getTime())
-    arr.push({ id:aid})
+    let aid = String(new Date().getTime())
+    arr.push({ id: aid })
     setform({ ...form, multiAddress: [...arr] })
   }
 
@@ -34,7 +34,7 @@ const Html = ({ detail,form, handleSubmit, setform, roles, submitted, images, im
     arr = arr.filter((itm, index) => index != i)
     setform({ ...form, multiAddress: [...arr] })
   }
-console.info(detail)
+  console.info(detail)
   const [certificate, setCertificate] = useState([])
   const [skillRoles, setSkillRoles] = useState([])
   const [categories, setCategories] = useState([])
@@ -42,8 +42,8 @@ console.info(detail)
   const [subcategories, setSubCategories] = useState([])
   const [groups, setGroups] = useState([])
   const [subsubcategories, setSubSubCategories] = useState([])
-  const countries=countryStateModel.list
-  const timezones=timezoneModel.list
+  const countries = countryStateModel.list
+  const timezones = timezoneModel.list
 
   const getCertificates = () => {
     ApiClient.get('api/certificate/list', { status: 'active' }).then(res => {
@@ -52,26 +52,27 @@ console.info(detail)
       }
     })
   }
-
+  console.log(form.customerRole, "iiiiiiiiiiiiiiiiiiiii")
   const getSkills = () => {
-    ApiClient.get('api/skills/listing', { status: 'active',
-    // skillRole:form.customerRole
-   }).then(res => {
+    ApiClient.get('api/skills/listing', {
+      status: 'active',
+      // skillRole:form.customerRole
+    }).then(res => {
       if (res.success) {
         setSkillRoles(res.data)
       }
     })
   }
   const getCategories = () => {
-    ApiClient.get('api/categorie/list', { status: 'active',catType:environment.professionType }).then(res => {
+    ApiClient.get('api/categorie/list', { status: 'active', catType: environment.professionType }).then(res => {
       if (res.success) {
         setCategories(res.data)
       }
     })
   }
 
-  const getSubCategories = (p={}) => {
-    ApiClient.get('api/categorie/list', { status: 'active',catType:environment.professionType,...p }).then(res => {
+  const getSubCategories = (p = {}) => {
+    ApiClient.get('api/categorie/list', { status: 'active', catType: environment.professionType, ...p }).then(res => {
       if (res.success) {
         setSubCategories(res.data)
       }
@@ -79,22 +80,22 @@ console.info(detail)
   }
 
   const getGroups = () => {
-    ApiClient.get('api/group/list', { status: 'active'}).then(res => {
+    ApiClient.get('api/group/list', { status: 'active' }).then(res => {
       if (res.success) {
         setGroups(res.data)
       }
     })
   }
 
-  const getSubSubCategories = (p={}) => {
-    ApiClient.get('api/categorie/list', { status: 'active',catType:environment.professionType,...p }).then(res => {
+  const getSubSubCategories = (p = {}) => {
+    ApiClient.get('api/categorie/list', { status: 'active', catType: environment.professionType, ...p }).then(res => {
       if (res.success) {
         setSubSubCategories(res.data)
       }
     })
   }
-  
-  
+
+
 
   useEffect(() => {
     getCertificates()
@@ -110,20 +111,20 @@ console.info(detail)
   }, [form.customerRole])
 
   useEffect(() => {
-    if(form.category){
-      getSubCategories({parentCategory:form.category})
+    if (form.category) {
+      getSubCategories({ parentCategory: form.category })
     }
   }, [form.category])
 
   useEffect(() => {
-    if(form.subCategory){
-      getSubSubCategories({parentCategory:form.subCategory})
+    if (form.subCategory) {
+      getSubSubCategories({ parentCategory: form.subCategory })
     }
   }, [form.subCategory])
 
   useEffect(() => {
-    if(form.country){
-      let arr=countryStateModel.getStates(form.country)
+    if (form.country) {
+      let arr = countryStateModel.getStates(form.country)
       setState([...arr])
     }
   }, [form.country])
@@ -165,7 +166,7 @@ console.info(detail)
               <input
                 type="text"
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                value={form.lastName }
+                value={form.lastName}
                 onChange={e => setform({ ...form, lastName: e.target.value })}
                 required
               />
@@ -201,11 +202,11 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.email}
                 autoComplete="false"
-                onChange={e => { setform({ ...form, email: e.target.value });}}
+                onChange={e => { setform({ ...form, email: e.target.value }); }}
                 required
-                // disabled={form.id?true:false}
+              // disabled={form.id?true:false}
               />
-    {submitted && getError('email').invalid? <div className="invalid-feedback d-block">Email is Invalid</div> : <></>}
+              {submitted && getError('email').invalid ? <div className="invalid-feedback d-block">Email is Invalid</div> : <></>}
             </div>
             <div className="col-span-12 md:col-span-6">
               <label>Login Id <span className="star">*</span> </label>
@@ -214,46 +215,46 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.loginId}
                 autoComplete="false"
-                onChange={e => { setform({ ...form, loginId: e.target.value });}}
+                onChange={e => { setform({ ...form, loginId: e.target.value }); }}
                 required
                 minLength={8}
-                disabled={form.id?true:false}
+                disabled={form.id ? true : false}
               />
-   
-            </div>
-            {form.id?<>
-              <div className="col-span-12 md:col-span-6">
-              <label>Password</label>
-              <div className="inputWrapper">
-                <input
-                  type={eyes.password ? 'text' : 'password'}
-                  className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                  value={form.password}
-                  autoComplete="new-password"
-                  onChange={e => setform({ ...form, password: e.target.value })}
 
-                />
-                <i className={eyes.password ? 'fa fa-eye' : 'fa fa-eye-slash'} onClick={() => setEyes({ ...eyes, password: !eyes.password })}></i>
-              </div>
-              {submitted && getError('password').invalid ? <div className="invalid-feedback d-block">Password minimum length should be 8</div> : <></>}
             </div>
-            <div className="col-span-12 md:col-span-6">
-              <label>Confirm Password {form.password ? <span className="star">*</span> : <></>}</label>
-              <div className="inputWrapper">
-                <input
-                  type={eyes.confirmPassword ? 'text' : 'password'}
-                  className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
-                  value={form.confirmPassword}
-                  onChange={e => setform({ ...form, confirmPassword: e.target.value })}
-                  required={form.password ? true : false}
-                />
-                <i className={eyes.confirmPassword ? 'fa fa-eye' : 'fa fa-eye-slash'} onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}></i>
+            {form.id ? <>
+              <div className="col-span-12 md:col-span-6">
+                <label>Password</label>
+                <div className="inputWrapper">
+                  <input
+                    type={eyes.password ? 'text' : 'password'}
+                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
+                    value={form.password}
+                    autoComplete="new-password"
+                    onChange={e => setform({ ...form, password: e.target.value })}
+
+                  />
+                  <i className={eyes.password ? 'fa fa-eye' : 'fa fa-eye-slash'} onClick={() => setEyes({ ...eyes, password: !eyes.password })}></i>
+                </div>
+                {submitted && getError('password').invalid ? <div className="invalid-feedback d-block">Password minimum length should be 8</div> : <></>}
               </div>
-              {submitted && getError('confirmPassword').invalid ? <div className="invalid-feedback d-block">Confirm Password is not matched with Password</div> : <></>}
-            </div>
-            </>:<></>}
-            
-           
+              <div className="col-span-12 md:col-span-6">
+                <label>Confirm Password {form.password ? <span className="star">*</span> : <></>}</label>
+                <div className="inputWrapper">
+                  <input
+                    type={eyes.confirmPassword ? 'text' : 'password'}
+                    className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
+                    value={form.confirmPassword}
+                    onChange={e => setform({ ...form, confirmPassword: e.target.value })}
+                    required={form.password ? true : false}
+                  />
+                  <i className={eyes.confirmPassword ? 'fa fa-eye' : 'fa fa-eye-slash'} onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}></i>
+                </div>
+                {submitted && getError('confirmPassword').invalid ? <div className="invalid-feedback d-block">Confirm Password is not matched with Password</div> : <></>}
+              </div>
+            </> : <></>}
+
+
 
 
             <div className="col-span-12 md:col-span-6">
@@ -269,7 +270,7 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.company}
                 onChange={e => setform({ ...form, company: e.target.value })}
-                
+
               />
             </div>
 
@@ -280,7 +281,7 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.companyUrl}
                 onChange={e => setform({ ...form, companyUrl: e.target.value })}
-                
+
               />
             </div>
 
@@ -291,7 +292,7 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.address}
                 onChange={e => setform({ ...form, address: e.target.value })}
-                
+
               />
             </div>
 
@@ -302,7 +303,7 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.address2}
                 onChange={e => setform({ ...form, address2: e.target.value })}
-                
+
               />
             </div>
 
@@ -313,7 +314,7 @@ console.info(detail)
                 displayValue="name"
                 placeholder="Select Country"
                 intialValue={form.country}
-                result={e => { setform({ ...form, country: e.value,state:'' }) }}
+                result={e => { setform({ ...form, country: e.value, state: '' }) }}
                 options={countries}
                 theme="search"
               />
@@ -340,7 +341,7 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.postal_code}
                 onChange={e => setform({ ...form, postal_code: e.target.value })}
-                
+
               />
             </div>
             <div className="col-span-12 md:col-span-6">
@@ -350,7 +351,7 @@ console.info(detail)
                 className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                 value={form.city}
                 onChange={e => setform({ ...form, city: e.target.value })}
-                
+
               />
             </div>
             <div className="col-span-12 md:col-span-6">
@@ -369,12 +370,12 @@ console.info(detail)
 
             <div className="col-span-12 md:col-span-6">
               <label>Customer Role<span className="star">*</span></label>
-              <SelectDropdown  
+              <SelectDropdown
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Customer Role"
                 intialValue={form.customerRole}
-                result={e => { setform({ ...form, customerRole: e.value,skills:[] }) }}
+                result={e => { setform({ ...form, customerRole: e.value, skills: [] }) }}
                 options={roles}
                 theme="search"
               />
@@ -418,20 +419,20 @@ console.info(detail)
 
 
             <div className="col-span-12 md:col-span-6">
-                <label>Skills</label>
-                <MultiSelectDropdown
-                  displayValue="title"
-                  placeholder="Select Skills"
-                  intialValue={form.skills}
-                  result={e => {
-                    setform({ ...form, skills: e.value })
-                    console.log("e", e)
-                  }}
-                  options={skillRoles}
-                  theme="search"
-                />
-                {/* {submitted && !form.skills?.length ? <div className="invalid-feedback d-block">Skills is Required</div> : <></>} */}
-              </div>
+              <label>Skills</label>
+              <MultiSelectDropdown
+                displayValue="title"
+                placeholder="Select Skills"
+                intialValue={form.skills}
+                result={e => {
+                  setform({ ...form, skills: e.value })
+                  console.log("e", e)
+                }}
+                options={skillRoles}
+                theme="search"
+              />
+              {/* {submitted && !form.skills?.length ? <div className="invalid-feedback d-block">Skills is Required</div> : <></>} */}
+            </div>
             <div className="col-span-full">
               <label>Networking Groups</label>
               <textarea
@@ -449,7 +450,7 @@ console.info(detail)
                 displayValue="name"
                 placeholder="Select Profession Category"
                 intialValue={form.category}
-                result={e => { setform({ ...form, category: e.value,subCategory:'' }) }}
+                result={e => { setform({ ...form, category: e.value, subCategory: '' }) }}
                 options={categories}
                 theme="search"
               />
@@ -471,19 +472,19 @@ console.info(detail)
             </div>
 
             <div className="col-span-12 md:col-span-6">
-               <label>Profession Sub Sub Category</label>
-               <SelectDropdown
-                 id="statusDropdown"
-                 displayValue="name"
-                 placeholder="Select Profession Sub Sub Category"
-                 intialValue={form.subSubCategory}
-                 result={e => { setform({ ...form, subSubCategory: e.value }) }}
-                 options={subsubcategories}
-                 theme="search"
-               />
-               {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
-             </div>
-{/* 
+              <label>Profession Sub Sub Category</label>
+              <SelectDropdown
+                id="statusDropdown"
+                displayValue="name"
+                placeholder="Select Profession Sub Sub Category"
+                intialValue={form.subSubCategory}
+                result={e => { setform({ ...form, subSubCategory: e.value }) }}
+                options={subsubcategories}
+                theme="search"
+              />
+              {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
+            </div>
+            {/* 
             <div className="col-span-12 md:col-span-6">
               <label>Group<span className="star">*</span></label>
               <SelectDropdown
@@ -496,25 +497,71 @@ console.info(detail)
                 theme="search"
                 required
               /> */}
-              {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
+            {/* {submitted && !form.subCategory ? <div className="invalid-feedback d-block">Profession Sub Category is Required</div> : <></>} */}
             {/* </div> */}
-            {form.customerRole === "65fc4a1e2e22cff912335e12" ||  form.groupId && (
-                  <div className="col-span-12 md:col-span-6">
-                    <label>Group</label>
-                    <SelectDropdown
-                      id="statusDropdown"
-                      displayValue="name"
-                      placeholder="Select Group"
-                      intialValue={form.groupId}
-                      result={(e) => {
-                        setform({ ...form, groupId: e.value });
-                      }}
-                      options={groups}
-                      theme="search"
-                    />
-                  </div>
-                )}
+            {/*             
+            {form.customerRole == environment?.glRoleId || form.groupId ? (
+              <div className="col-span-12 md:col-span-6">
+                <label>Group</label>
+                <SelectDropdown
+                  id="statusDropdown"
+                  displayValue="name"
+                  placeholder="Select Group"
+                  intialValue={form.groupId}
+                  result={(e) => {
+                    setform({ ...form, groupId: e.value });
+                  }}
+                  options={groups}
+                  theme="search"
+                />
+              </div>
+            ) : ""}
+            <div className="col-span-12 md:col-span-6">
+              <label>Group</label>
+              {form.customerRole == environment?.customerRoleId ? <MultiSelectDropdown
 
+                id="statusDropdown"
+                displayValue="name"
+                placeholder="Select Group"
+                intialValue={form.groupId}
+                result={(e) => {
+                  setform({ ...form, groupId: e.value });
+                }}
+                options={groups}
+                theme="search"
+              /> : ""} </div> */}
+            {form.customerRole === environment?.customerRoleId ? (
+              <div className="col-span-12 md:col-span-6">
+                <label>Group</label>
+                <MultiSelectDropdown
+
+                  id="statusDropdown"
+                  displayValue="name"
+                  placeholder="Select Group"
+                  intialValue={form.groupId}
+                  result={(e) => {
+                    setform({ ...form, groupId: e.value });
+                  }}
+                  options={groups}
+                  theme="search"
+                />
+              </div>
+            ) : (form?.customerRole === environment?.glRoleId || form.groupId ? (
+              <div className="col-span-12 md:col-span-6">
+                <label>Group</label>
+                <SelectDropdown
+                  id="statusDropdown"
+                  displayValue="name"
+                  placeholder="Select Group"
+                  intialValue={form.groupId}
+                  result={(e) => {
+                    setform({ ...form, groupId: e.value });
+                  }}
+                  options={groups}
+                  theme="search"
+                />
+              </div>
+            ) : null)}
 
             <div className="col-span-full">
               <label>Short Bio</label>
@@ -541,7 +588,7 @@ console.info(detail)
                         />
                       </div>
                       <div className="">
-                      <label>Last Name</label>
+                        <label>Last Name</label>
                         <input type="text"
                           className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                           value={itm.lastName}
@@ -556,7 +603,7 @@ console.info(detail)
                           onChange={(e) => editAddress(i, e.target.value, 'email')}
                           required
                         />
-                     
+
                       </div>
                       <div className="">
                         <label>Phone Number</label>
@@ -566,12 +613,12 @@ console.info(detail)
                           enableSearch={true}
                           limitMaxLength
                           required
-                          onChange={e =>editAddress(i, e, 'mobileNo')}
+                          onChange={e => editAddress(i, e, 'mobileNo')}
                           countryCodeEditable={true}
                         />
                       </div>
                       <div className="">
-                      <label>Address</label>
+                        <label>Address</label>
                         <input type="text"
                           className="relative shadow-box bg-white w-full rounded-lg h-10 flex items-center gap-2 overflow-hidden px-2"
                           value={itm.address}
@@ -581,10 +628,10 @@ console.info(detail)
                       </div>
 
                       <div className='relative'>
-                          <div className='bg-red-500 absolute right-0 top-6  rounded-md p-2 cursor-pointer' onClick={() => removeAddress(i)}>
-                           
-                            <p className='flex items-center gap-x-2 text-white'>  <MdDeleteOutline className=" text-white"  /> Delete</p>
-                          </div>
+                        <div className='bg-red-500 absolute right-0 top-6  rounded-md p-2 cursor-pointer' onClick={() => removeAddress(i)}>
+
+                          <p className='flex items-center gap-x-2 text-white'>  <MdDeleteOutline className=" text-white" /> Delete</p>
+                        </div>
                       </div>
 
 
