@@ -531,6 +531,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 theme="search"
               /> : ""} </div> */}
             {form.customerRole === environment?.customerRoleId ? (
+              form?.customerRole === environment?.glRoleId || form.groupId ?
               <div className="col-span-12 md:col-span-6">
                 <label>Group</label>
                 <MultiSelectDropdown
@@ -545,7 +546,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                   options={groups}
                   theme="search"
                 />
-              </div>
+              </div>:""
             ) : (form?.customerRole === environment?.glRoleId || form.groupId ? (
               <div className="col-span-12 md:col-span-6">
                 <label>Group</label>
