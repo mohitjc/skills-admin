@@ -179,7 +179,7 @@ const Html = ({
 
                 {!loaging && total == 0 ? <div className="py-3 text-center">No Data</div> : <></>}
                 {
-                    !loaging && total > filters.count ? <div className='paginationWrapper flex items-center justify-between mt-15'>
+                    !loaging && total > filters.count ? <div className='paginationWrapper mt-15'>
                         {/* <span className='text-sm text-gray-600'>Show {filters.count} from {total} Categories</span> */}
                         <Pagination
                             currentPage={filters.page}

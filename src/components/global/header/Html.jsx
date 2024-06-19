@@ -51,7 +51,7 @@ const Html = ({ isOpen, toggle, searchHandle, search, user, isOpen1, searchChang
             <div className="flex items-center">
               <div className="flex items-center">
                 <img alt="image" src={methodModel.userImg(user.image)} className="h-12 w-12 rounded-full object-cover" />
-                <div className="ml-2 text-left">
+                <div className="ml-2 text-left hidden md:block">
                   <b>{user.fullName}</b>
                   <p className="grayCls mb-0 text-capitalize">{user.roleDetail?.name}</p>
                 </div>
