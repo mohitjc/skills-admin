@@ -160,15 +160,15 @@ const Html = ({
                     <table class="w-full">
                         <thead className='text-xs text-gray-700 capitalize bg-gray-50  border-b border-[#EAECF0]'>
                             <tr className='border-b border-[#EAECF0]'>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer text-left ' >Image</th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  ' onClick={e => sorting('name')} >Category Name  <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  '>Parent Category</th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  ' onClick={e => sorting('catTypeName')} >Category Type <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  ' onClick={e => sorting('createdAt')}>Date Created <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  ' onClick={e => sorting('updatedAt')}>Last Modified <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  '>Last Modified by</th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  '>Status</th>
-                                <th scope="col" className='px-6 py-3 capitalize cursor-pointer  '>Action</th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer text-left ' >Image</th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  ' onClick={e => sorting('name')} >Category Name  <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  '>Parent Category</th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  ' onClick={e => sorting('catTypeName')} >Category Type <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  ' onClick={e => sorting('createdAt')}>Date Created <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  ' onClick={e => sorting('updatedAt')}>Last Modified <span className='mr-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  '>Last Modified by</th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  '>Status</th>
+                                <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer  '>Action</th>
                             </tr>
                         </thead>
                         <tbody id='tableBodycat'>

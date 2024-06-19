@@ -1674,7 +1674,18 @@ input:focus-visible {
 }
 
 .react-tel-input .form-control {
-  width: 100%;
+  width: 100% !important;
+  border-color: hsl(217.5deg 19.05% 91.76%) !important;
+}
+
+
+
+.css-13cymwt-control {
+
+  min-height: 45px !important;
+  border-radius: 10px !important;
+  border-color: hsl(217.5deg 19.05% 91.76%) !important;
+ 
 }
 
 

@@ -14,7 +14,7 @@ import countryStateModel from "../../../models/countryState.model";
 import timezoneModel from "../../../models/timezone.model";
 import { MdDeleteOutline } from "react-icons/md";
 
-const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
+const Html = ({ detail, form, setRemoved,handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
 
   const editAddress = (i, v, key = 'value') => {
     let arr = form.multiAddress || []
@@ -34,7 +34,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
     arr = arr.filter((itm, index) => index != i)
     setform({ ...form, multiAddress: [...arr] })
   }
-  console.info(detail)
+  console.log(detail ,"detaildetaildetail")
   const [certificate, setCertificate] = useState([])
   const [skillRoles, setSkillRoles] = useState([])
   const [categories, setCategories] = useState([])
@@ -44,7 +44,6 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
   const [subsubcategories, setSubSubCategories] = useState([])
   const countries = countryStateModel.list
   const timezones = timezoneModel.list
-
   const getCertificates = () => {
     ApiClient.get('api/certificate/list', { status: 'active' }).then(res => {
       if (res.success) {
@@ -313,7 +312,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Country"
-                intialValue={form.country}
+                intialValue={form?.country}
                 result={e => { setform({ ...form, country: e.value, state: '' }) }}
                 options={countries}
                 theme="search"
@@ -327,7 +326,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select State/Province"
-                intialValue={form.state}
+                intialValue={form?.state}
                 result={e => { setform({ ...form, state: e.value }) }}
                 options={states}
                 theme="search"
@@ -360,7 +359,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Timezone"
-                intialValue={form.timezone}
+                intialValue={form?.timezone}
                 result={e => { setform({ ...form, timezone: e.value }) }}
                 options={timezones}
                 theme="search"
@@ -374,7 +373,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Customer Role"
-                intialValue={form.customerRole}
+                intialValue={form?.customerRole}
                 result={e => { setform({ ...form, customerRole: e.value, skills: [] }) }}
                 options={roles}
                 theme="search"
@@ -409,7 +408,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Certification"
-                intialValue={form.certification}
+                intialValue={form?.certification}
                 result={e => { setform({ ...form, certification: e.value }) }}
                 options={certificate}
                 theme="search"
@@ -423,7 +422,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
               <MultiSelectDropdown
                 displayValue="title"
                 placeholder="Select Skills"
-                intialValue={form.skills}
+                intialValue={form?.skills}
                 result={e => {
                   setform({ ...form, skills: e.value })
                   console.log("e", e)
@@ -449,7 +448,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Profession Category"
-                intialValue={form.category}
+                intialValue={form?.category}
                 result={e => { setform({ ...form, category: e.value, subCategory: '' }) }}
                 options={categories}
                 theme="search"
@@ -463,7 +462,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Profession Sub Category"
-                intialValue={form.subCategory}
+                intialValue={form?.subCategory}
                 result={e => { setform({ ...form, subCategory: e.value }) }}
                 options={subcategories}
                 theme="search"
@@ -477,7 +476,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 id="statusDropdown"
                 displayValue="name"
                 placeholder="Select Profession Sub Sub Category"
-                intialValue={form.subSubCategory}
+                intialValue={form?.subSubCategory}
                 result={e => { setform({ ...form, subSubCategory: e.value }) }}
                 options={subsubcategories}
                 theme="search"
@@ -530,8 +529,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                 options={groups}
                 theme="search"
               /> : ""} </div> */}
-            {form.customerRole === environment?.customerRoleId ? (
-              form?.customerRole === environment?.glRoleId || form.groupId ?
+            {/* {form.customerRole === environment?.customerRoleId ? (
               <div className="col-span-12 md:col-span-6">
                 <label>Group</label>
                 <MultiSelectDropdown
@@ -539,7 +537,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                   id="statusDropdown"
                   displayValue="name"
                   placeholder="Select Group"
-                  intialValue={form.groupId}
+                  intialValue={form?.groupId}
                   result={(e) => {
                     setform({ ...form, groupId: e.value });
                   }}
@@ -554,7 +552,7 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                   id="statusDropdown"
                   displayValue="name"
                   placeholder="Select Group"
-                  intialValue={form.groupId}
+                  intialValue={form?.groupId}
                   result={(e) => {
                     setform({ ...form, groupId: e.value });
                   }}
@@ -562,12 +560,47 @@ const Html = ({ detail, form, handleSubmit, setform, roles, submitted, images, i
                   theme="search"
                 />
               </div>
-            ) : null)}
+            ) : null)} */}
 
+<div className="col-span-12 md:col-span-6">
+                <label>Group</label>
+                <SelectDropdown
+                  id="statusDropdown"
+                  displayValue="name"
+                  placeholder="Select Group"
+                  intialValue={form?.groupId}
+                  result={(e) => {
+                    setform({ ...form, groupId: e.value });
+                  }}
+                  options={groups}
+                  theme="search"
+                />
+              </div>
+              {form.customerRole === environment?.customerRoleId  ? <div className="col-span-12 md:col-span-6">
+                <label>Member Groups</label>
+                <MultiSelectDropdown
+
+                  id="statusDropdown"
+                  displayValue="name"
+                  placeholder="Select Group"
+                  intialValue={form?.memberGroups}
+                  result={(e) => {
+                    const selectedGroups =e.value
+                    
+                    const removeoptions = form?.memberGroups?.filter(group => !selectedGroups.includes(group));
+                    setRemoved(prevRemovedIds => [...prevRemovedIds, ...removeoptions])
+                    setform({ ...form, memberGroups: e.value });
+                  }}
+                
+                  options={groups}
+                  theme="search"
+                />
+              </div> :""}
+              
             <div className="col-span-full">
               <label>Short Bio</label>
               <textarea
-                className="relative shadow-box bg-white w-full rounded-lg flex items-center gap-2 overflow-hidden px-2"
+                className="relative shadow-box bg-white focus:outline-none w-full rounded-lg flex items-center gap-2 overflow-hidden px-2"
                 value={form.aboutUs}
                 onChange={e => setform({ ...form, aboutUs: e.target.value })}
 

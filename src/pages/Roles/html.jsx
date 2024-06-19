@@ -95,9 +95,9 @@ const Html = ({
                         <table className="w-full">
                             <thead className='text-xs text-gray-700 capitalize bg-gray-50  border-b border-[#EAECF0]'>
                                 <tr className='border-b border-[#EAECF0]'>
-                                    <th scope="col" className='px-6 py-3 capitalize cursor-pointer text-left' onClick={e => sorting('name')}>Role Name <span className='ml-1'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                    <th scope="col" className='px-6 py-3 capitalize cursor-pointer text-left'>Status</th>
-                                    <th scope="col" className='px-6 py-3 capitalize cursor-pointer text-left'>Action</th>
+                                    <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer text-left' onClick={e => sorting('name')}>Role Name <span className='ml-1'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                    <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer text-left'>Status</th>
+                                    <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer text-left'>Action</th>
 
                                 </tr>
                             </thead>
