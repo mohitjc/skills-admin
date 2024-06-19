@@ -576,7 +576,7 @@ const Html = ({ detail, form, setRemoved,handleSubmit, setform, roles, submitted
                   theme="search"
                 />
               </div>
-              {form.customerRole === environment?.customerRoleId  ? <div className="col-span-12 md:col-span-6">
+              {form.customerRole === environment?.customerRoleId && form.id  ? <div className="col-span-12 md:col-span-6">
                 <label>Member Groups</label>
                 <MultiSelectDropdown
 
