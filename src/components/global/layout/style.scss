@@ -66,8 +66,12 @@
 
 @media (max-width: 767px) {
   .main-wrapper main.main {
-    width: 100%;
+    width: 100% !important;
   }
+
+  .w-\[calc\(100\%-280px\)\] {
+    width: calc(100% - 5px) !important;
+}
 }
 
 @media (max-width: 467px) {

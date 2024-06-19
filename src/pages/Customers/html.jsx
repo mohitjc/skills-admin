@@ -369,7 +369,7 @@ const Html = ({
     const getGroups = () => {
         let f = {
             page: 1,
-            count: 50
+            count: 10
         }
         ApiClient.get('api/group/list', f).then(res => {
             if (res.success) {
@@ -383,7 +383,7 @@ const Html = ({
     const getRoles = () => {
         let f = {
             page: 1,
-            count: 50
+            count: 10
         }
         ApiClient.get('api/skillRole/list', f).then(res => {
             if (res.success) {

@@ -116,7 +116,7 @@ i.fa.fa-trash.text-danger.icon-css {
 
 .paginationWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   margin-top: 15px;
 
@@ -154,7 +154,7 @@ button:focus:not(:focus-visible) {
         padding: 0 !important;
 
         &:not(.disabled) {
-          color: #1F7BF4 !important;
+          color: #ef7a2b !important;
         }
 
         &::after {
@@ -170,7 +170,7 @@ button:focus:not(:focus-visible) {
         padding: 0 !important;
 
         &:not(.disabled) {
-          color: #1F7BF4 !important;
+          color: #ef7a2b !important;
         }
 
         &::after {
@@ -192,7 +192,7 @@ button:focus:not(:focus-visible) {
       &.is-active {
         font-weight: 500 !important;
         background-color: #fff !important;
-        border-color: #1F7BF4 !important;
+        border-color: #ef7a2b !important;
         box-shadow: none !important;
         text-shadow: none !important;
         color: #202020 !important;
@@ -784,7 +784,7 @@ input.searchbar.mr-2 {
 
   .main-sidebar {
     position: absolute;
-    top: 143px;
+    // top: 143px;
     z-index: 998;
   }
 
@@ -896,7 +896,7 @@ input.searchbar.mr-2 {
 
   .main-sidebar {
     position: absolute;
-    top: 143px;
+    top: 72px;
     z-index: 998;
   }
 
@@ -1097,7 +1097,7 @@ input.searchbar.mr-2 {
 
   .main-sidebar {
     position: absolute;
-    top: 143px;
+    top: 72px;
     z-index: 998;
   }
 
@@ -1223,7 +1223,7 @@ input.searchbar.mr-2 {
 
   .main-sidebar {
     position: absolute;
-    top: 143px;
+    top: 72px;
     z-index: 998;
   }
 
@@ -1245,9 +1245,9 @@ input.searchbar.mr-2 {
     right: -16px;
   }
 
-  .headerSearch {
-    top: 20px !important;
-  }
+  // .headerSearch {
+  //   top: 20px !important;
+  // }
 
 
 
@@ -1378,7 +1378,7 @@ input.searchbar.mr-2 {
 
   .headerSearch .Searchbar {
     width: 100%;
-    max-width: 130px;
+    // max-width: 130px;
   }
 
   // form.headerSearch.ml-3 {
@@ -1682,7 +1682,7 @@ input:focus-visible {
 
 .css-13cymwt-control {
 
-  min-height: 45px !important;
+  // min-height: 45px !important;
   border-radius: 10px !important;
   border-color: hsl(217.5deg 19.05% 91.76%) !important;
  
@@ -1842,7 +1842,7 @@ img.hide-logo {
 
 
 .react-pagination-js-default ul>li:first-child {
-  margin-right: auto !important;
+  margin-right: 0 !important;
   border-radius: 8px;
   background: white;
   border: 1px solid #d0d5dd !important;
@@ -1898,11 +1898,11 @@ li.page.disabled {
 }
 
 .react-pagination-js-default ul>li:last-child:not(.disabled) {
-  color: #7f56d9 !important;
+  color: #ef7a2b !important;
 }
 
 .react-pagination-js-default ul>li:last-child {
-  margin-left: auto !important;
+  margin-left: 0 !important;
   border-radius: 8px;
   background: white;
   border: 1px solid #d0d5dd !important;
@@ -1919,6 +1919,8 @@ li.page.disabled {
 
 .react-pagination-js-default {
   width: 100%;
+  justify-content: end;
+  display: flex;
 }
 
 
