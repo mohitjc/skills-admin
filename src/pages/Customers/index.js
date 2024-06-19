@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 const Customer = (p) => {
     const user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
-    const [filters, setFilter] = useState({ page: 1, count: 10, search: '', role:'', isDeleted: false })
+    const [filters, setFilter] = useState({ page: 1, count: 10, search: '', role:'', isDeleted: false })    
     const [data, setData] = useState([])
     const [tab, setTab] = useState('list')
     const [total, setTotal] = useState(0)
