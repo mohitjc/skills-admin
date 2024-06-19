@@ -10,7 +10,6 @@ const MultiSelectDropdown = ({intialValue,options,result,displayValue='name',id}
         let value=[]
         value=e.map(itm=>{
             return itm.value
-          
         })
         result({event:"value",value:value})
     }
@@ -21,7 +20,7 @@ const MultiSelectDropdown = ({intialValue,options,result,displayValue='name',id}
                 value=intialValue?.map(itm=>{
                     return {
                         ...methodModel.find(options,itm,'id'),
-                        value:methodModel.find(options,itm,'id')?.id || '',
+                        value:methodModel.find(options,itm,'id')?.groupId || '',
                         label:methodModel.find(options,itm,'id')?.[displayValue] || 'Not Exist'
                     }
                 })

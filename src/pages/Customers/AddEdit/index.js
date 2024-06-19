@@ -11,6 +11,7 @@ import environment from "../../../environment";
 const AddEdit = () => {
     const { role, id } = useParams()
     const [images, setImages] = useState({ image: '', logo: '' });
+    const [removed,setRemoved]= useState([])
     const [form, setform] = useState({
          id:id,
          password:'',
@@ -42,7 +43,8 @@ const AddEdit = () => {
          aboutUs:'',
          country:'usa',
          groupId:'',
-         loginId:""
+         loginId:"",
+         memberGroups:""
         })
     const [eyes, setEyes] = useState({ password: false, confirmPassword: false });
     const [submitted, setSubmitted] = useState(false)
@@ -80,7 +82,8 @@ const AddEdit = () => {
         let value = {
             ...form,
             ...images,
-            role:environment.userRoleId
+            role:environment.userRoleId,
+            removeMemberGroups:removed
         }
         if (value.id) {
             method = 'put'
@@ -175,7 +178,7 @@ const AddEdit = () => {
                     if(payload.subSubCategory?._id) payload.subSubCategory=payload.subSubCategory._id
                     let multiAddress=value.multiAddress||[]
                     payload.multiAddress=multiAddress.length?multiAddress:[]
-                    setform({ ...payload })
+                    setform({ ...payload , memberGroups:payload?.memberGroups?.map((itm)=>itm?.groupId)})
                     images.image = payload?.image
                     images.logo = payload?.logo
                     setImages(images)
@@ -263,6 +266,7 @@ const AddEdit = () => {
             handleSubmit={handleSubmit}
             imageResult={imageResult}
             getError={getError}
+            setRemoved={setRemoved}
         />
     </>
 }
