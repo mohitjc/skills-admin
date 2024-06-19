@@ -244,7 +244,7 @@ const Html = ({
                     key: 'groupId', name: 'Group',
                     render: (row) => {
                         return <span className='capitalize flex flex-col items-center gap-2'>
-                            {row.groupIdDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p>
+                            {row.groupIdDetails?.name || row?.allGroupDetails[0]?.groupDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p>
                         </span>
                     }
                 },

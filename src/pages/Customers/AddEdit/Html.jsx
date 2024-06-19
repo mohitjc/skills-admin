@@ -13,9 +13,10 @@ import environment from "../../../environment";
 import countryStateModel from "../../../models/countryState.model";
 import timezoneModel from "../../../models/timezone.model";
 import { MdDeleteOutline } from "react-icons/md";
+import { useParams } from "react-router-dom";
 
 const Html = ({ detail, form, setRemoved,handleSubmit, setform, roles, submitted, images, imageResult, getError, setEyes, eyes, back, emailCheck, emailErr, emailLoader }) => {
-
+const {id} =useParams()
   const editAddress = (i, v, key = 'value') => {
     let arr = form.multiAddress || []
     arr[i][key] = v
@@ -28,13 +29,12 @@ const Html = ({ detail, form, setRemoved,handleSubmit, setform, roles, submitted
     arr.push({ id: aid })
     setform({ ...form, multiAddress: [...arr] })
   }
-
   const removeAddress = (i) => {
     let arr = form.multiAddress || []
     arr = arr.filter((itm, index) => index != i)
     setform({ ...form, multiAddress: [...arr] })
   }
-  console.log(detail ,"detaildetaildetail")
+  console.log(detail?._id ,"detaildetaildetail")
   const [certificate, setCertificate] = useState([])
   const [skillRoles, setSkillRoles] = useState([])
   const [categories, setCategories] = useState([])
@@ -79,7 +79,7 @@ const Html = ({ detail, form, setRemoved,handleSubmit, setform, roles, submitted
   }
 
   const getGroups = () => {
-    ApiClient.get('api/group/list', { status: 'active' }).then(res => {
+    ApiClient.get(`api/group/list?userId=${id ? id :""}&status=active`).then(res => {
       if (res.success) {
         setGroups(res.data)
       }
