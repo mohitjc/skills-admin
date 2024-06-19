@@ -226,7 +226,7 @@ const Html = ({
                     render: (row) => {
                         return <>
                            <div className='flex flex-col items-center gap-2'>
-                           {row.customerRoleDetails?.name ?<> {row.customerRoleDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p> </>:""}
+                           {row.customerRoleDetails?.name }
                            {/* {row.customerRoleDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p> */}
                            </div>
                         </>
@@ -244,7 +244,7 @@ const Html = ({
                     key: 'groupId', name: 'Group',
                     render: (row) => {
                         return <span className='capitalize flex flex-col items-center gap-2'>
-                            {row.groupIdDetails?.name ?<> {row.groupIdDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p> </>:""}
+                            {row.groupIdDetails?.name} <p className='bg-gray-200  rounded-sm inline-flex px-2 py-1 text-[12px] 'onClick={e=>{setIsRModal(true), setRolesList(row?.allGroupDetails)}}>See More</p>
                         </span>
                     }
                 },
