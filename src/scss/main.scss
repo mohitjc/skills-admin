@@ -2067,3 +2067,28 @@ div#headlessui-menu-items-185 {
   position: absolute !important;
   z-index: 99999 !important;
 }
+
+
+.ql-container {
+  height: 80px !important;
+  }
+  
+  .ql-editor {
+    height: 100%;
+  }
+  
+  
+  .ql-container.ql-snow {
+    height: 100px !important;
+    border: 1px solid #e5e7eb !important;
+  
+  }
+  .quills> .quill {
+    background: #fff !important;
+    border-radius: 10px !important;
+    padding-bottom: 13px !important;
+  }
+  
+  .ql-toolbar.ql-snow {
+    border: 1px solid #e5e7eb !important;
+  }

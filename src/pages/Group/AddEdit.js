@@ -11,11 +11,42 @@ import { Tooltip } from "antd";
 import ImageUpload from "../../components/common/ImageUpload";
 import { Editor } from "@tinymce/tinymce-react";
 import tinymcModel from "../../models/tinymc.model";
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 const AddEdit = () => {
+    const formats = [
+        'header',
+        'font',
+        'size',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'indent',
+        'link',
+        'image',
+        'color',
+    ];
+
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image', 'color'],
+            ['clean']
+        ],
+        clipboard: {
+            matchVisual: false,
+        }
+    };
     const { id } = useParams()
-    const [images, setImages] = useState({ image: ''});
-    const [form, setform] = useState({ id: '', name: '', image:'',description:'',status: 'active' })
+    const [images, setImages] = useState({ image: '' });
+    const [form, setform] = useState({ id: '', name: '', image: '', description: '', status: 'active' })
     const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const user = useSelector((state) => state.user);
@@ -38,7 +69,7 @@ const AddEdit = () => {
             method = 'put'
             url = 'api/group'
         } else {
-            value.addedBy=user._id
+            value.addedBy = user._id
             delete value.id
         }
 
@@ -63,15 +94,15 @@ const AddEdit = () => {
                     Object.keys(payload).map(itm => {
                         payload[itm] = value[itm]
                     })
-                    payload.id=id
+                    payload.id = id
                     setform({
                         ...payload
                     })
-                    let img=images
+                    let img = images
                     Object.keys(img).map(itm => {
                         img[itm] = value[itm]
                     })
-                    setImages({...img})
+                    setImages({ ...img })
                 }
                 loader(false)
             })
@@ -131,9 +162,9 @@ const AddEdit = () => {
                                 {submitted && !form.status ? <div className="text-danger">Status is Required</div> : <></>}
                             </div>
                         </div>
-                        <div className="col-span-12 md:col-span-6">
-                                <label className='lablefontcls'>Description</label>
-                                <Editor
+                        <div className="col-span-12 md:col-span-6 quills">
+                            <label className='lablefontcls'>Description</label>
+                            {/* <Editor
                             textareaName="description"
                             value={form?.description}
                             className="tuncketcls"
@@ -148,12 +179,22 @@ const AddEdit = () => {
                               toolbar: tinymcModel.toolbar,
                             }}
                             required
-                          />
-                            </div>
+                          /> */}
+
+                            <ReactQuill
+                                formats={formats}
+                                modules={modules}
+                                theme="snow"
+                                value={form?.description}
+                                onChange={e => setform({ ...form, description: e })}
+                                required
+                                className=" "
+                            />
+                        </div>
                         <div className="col-span-12 md:col-span-6">
-                                <label className='lablefontcls'>Image</label><br></br>
-                                <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} />
-                            </div>
+                            <label className='lablefontcls'>Image</label><br></br>
+                            <ImageUpload model="users" result={e => imageResult(e, 'image')} value={images.image || form.image} />
+                        </div>
                     </div>
                     <div className="text-right">
 

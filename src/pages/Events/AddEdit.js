@@ -11,11 +11,42 @@ import timezoneModel from "../../models/timezone.model";
 import shared from "./shared";
 import { useSelector } from "react-redux";
 import datepipeModel from "../../models/datepipemodel";
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; 
 const AddEdit = () => {
+    const formats = [
+        'header',
+        'font',
+        'size',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'indent',
+        'link',
+        'image',
+        'color',
+      ];
+      
+      const modules = {
+        toolbar: [
+          [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+          [{size: []}],
+          ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link', 'image', 'color'],
+          ['clean']
+        ],
+        clipboard: {
+          matchVisual: false,
+        }
+      };
     const { id } = useParams()
     const [images, setImages] = useState({ image: ''});
-    const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active',groupId:"" })
+    const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'America/Los_Angeles',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active',groupId:"" })
     const history = useNavigate()
     const [data,setData]= useState()
     const [submitted, setSubmitted] = useState(false)
@@ -286,15 +317,25 @@ useEffect(() => {
 
                         </div>
 
-                        <div className="col-span-full mb-3">
-                            <FormControl
+                        <div className="col-span-full mb-3 quills">
+                            {/* <FormControl
                                 type="editor"
                                 name="description"
                                 label="Description"
                                 value={form.description}
                                 onChange={e => setform({ ...form, description: e })}
                                 required
-                            />
+                            /> */}
+                             <label>Description</label>
+                    <ReactQuill
+                      formats={formats}
+                      modules={modules}
+          theme="snow"
+          value={form.description}
+                                onChange={e => setform({ ...form, description: e })}
+                                required
+          className=" "
+        />
                         </div>
 
                         {/* <div className="col-span-12 md:col-span-6">
