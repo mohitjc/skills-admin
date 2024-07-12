@@ -186,7 +186,7 @@ const AddEditRole = () => {
                   <Link to="/roles" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
                 </Tooltip>
                 <div>
-                  <h3 className="text-2xl font-semibold text-[#111827]">   {form && form.id ? 'Edit' : 'Add'} Role</h3>
+                  <h3 className="text-2xl font-semibold text-[#111827]">   {form && form.id ? 'Edit' : 'Add'} Staff Role</h3>
                   <p class="text-sm font-normal text-[#75757A]">Here you can see all about your  Roles</p>
                 </div>
               </div>

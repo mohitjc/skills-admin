@@ -53,13 +53,13 @@ const Html = ({
         <Layout>
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h3 className="text-2xl font-semibold text-[#111827]"> Roles</h3>
-                    <p className="text-sm font-normal text-[#75757A]">Here you can see all about your  Roles</p>
+                    <h3 className="text-2xl font-semibold text-[#111827]">Staff Roles</h3>
+                    <p className="text-sm font-normal text-[#75757A]">Here you can see all about your Staff Roles</p>
                 </div>
                 <div className="flex items-center gap-2">
 
                     {isAllow('addRoles') ? <Link className="bg-primary leading-10 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to="/roles/add">
-                        <FiPlus className="text-xl text-white" /> Add Role
+                        <FiPlus className="text-xl text-white" /> Add Staff Role
                     </Link> : <></>}
 
                     <SelectDropdown

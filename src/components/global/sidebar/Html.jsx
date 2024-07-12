@@ -28,18 +28,18 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
       key:'readDashboard',
     },
     {
-      name: 'User Management',
+      name: 'Staff',
       icon: <FiUsers className="text-[#fff] shrink-0 text-lg" />,
       key: 'readUsers,readRoles',
       tab: 'user',
       menu: [
         {
-          name: 'Roles',
+          name: 'Staff Roles',
           url: '/roles',
           key: 'readRoles'
         },
         {
-          name: 'Users',
+          name: 'Staff',
           url: '/users',
           key: 'readUsers'
         },
