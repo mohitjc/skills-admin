@@ -16,7 +16,7 @@ const Group = (p) => {
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
     const history = useNavigate()
-
+   
     useEffect(() => {
         if (user && user.loggedIn) {
             setFilter({ ...filters, search: searchState.data })
@@ -31,7 +31,10 @@ const Group = (p) => {
         else if (filters.key == key && filters.sorder == 'desc') cls = 'fa-sort-down'
         return 'fa ' + cls
     }
-
+    const count = (e) => {
+        setFilter({ ...filters, count:e })
+        getData({ ...filters ,count: e })
+        }
 
     const sorting = (key) => {
         let sorder = 'asc'
@@ -203,6 +206,7 @@ const viewMember =(id)=>{
         changestatus={changestatus}
         exportfun={exportfun}
         viewMember={viewMember}
+        count={ count}
     />
     </>;
 };
