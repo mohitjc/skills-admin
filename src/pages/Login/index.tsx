@@ -7,6 +7,7 @@ import loader from '../../methods/loader';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import AuthLayout from '../../components/AuthLayout';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const history = useNavigate();
@@ -80,6 +81,7 @@ const Login = () => {
     ApiClient.post(url, data).then(res => {
       loader(false)
       if (res.success == true) {
+        localStorage.setItem('id', res?.data?._id)
         if (remember) {
           localStorage.setItem('remember', JSON.stringify(data))
         } else {
@@ -97,16 +99,18 @@ const Login = () => {
       }
     })
   };
+  let userId = localStorage.getItem("id")
+  console.log(userId,"newwwnewwwnewww")
   const resendOtp =()=>{
-    let url  = 'api/login/admin' ,
-     data: any = {
-      email: username,
-      password
-   };
-     ApiClient.post(url, data)
-     .then((res) => {
-      console.log(res?.message,"messagessssssss")
-     })
+    let url  = 'api/resendOtp' ,
+  data: any = {
+ id:userId
+};
+  ApiClient.post(url, data)
+  .then((res) => {
+   console.log(res?.message,"messagessssssss")
+   toast(res?.message)
+  })
    
    }
   return (
