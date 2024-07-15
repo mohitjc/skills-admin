@@ -168,7 +168,7 @@ const Login = () => {
                 <div className='flex'>
                 
                   {step == 1 ? <><label className='flex items-center pointer'><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="mr-2 h-4 w-4" /> <span className='text-md text-gray-600'>Remember Me</span></label>
-                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link> </>: <p className="sign_up ml-auto text-orange-500" onClick={resendOtp} > Resend OTP</p>} 
+                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link> </>: <p className="sign_up ml-auto text-orange-500 cursor-pointer " onClick={resendOtp} > Resend OTP</p>} 
                 </div>
                 
 
