@@ -97,6 +97,18 @@ const Login = () => {
       }
     })
   };
+  const resendOtp =()=>{
+    let url  = 'api/login/admin' ,
+     data: any = {
+      email: username,
+      password
+   };
+     ApiClient.post(url, data)
+     .then((res) => {
+      console.log(res?.message,"messagessssssss")
+     })
+   
+   }
   return (
     <>
       <AuthLayout>
@@ -150,8 +162,9 @@ const Login = () => {
                   />
                   </>}
                 <div className='flex'>
-                <label className='flex items-center pointer'><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="mr-2 h-4 w-4" /> <span className='text-md text-gray-600'>Remember Me</span></label>
-                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link>
+                
+                  {step == 1 ? <><label className='flex items-center pointer'><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="mr-2 h-4 w-4" /> <span className='text-md text-gray-600'>Remember Me</span></label>
+                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link> </>: <p className="sign_up ml-auto text-orange-500" onClick={resendOtp} > Resend OTP</p>} 
                 </div>
                 
 
