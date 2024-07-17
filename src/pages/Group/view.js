@@ -44,16 +44,17 @@ const Member = () => {
         {
             key: 'role', name: 'Role',
             render: (row) => {
-                return <span className='capitalize'> { row?.role}</span>
+                return <span className='capitalize'> {row?.role == "meetManager" ? "Connect Meet Manager" : row?.role == "member" ? "member" : row?.role == "assistant" ? "Assistant Group Leader"
+                    : row?.role}</span>
             }
         },
         {
             key: 'status', name: 'Status',
             render: (row) => {
-                return <span className='capitalize'>  { row?.inviteStatus}</span>
+                return <span className='capitalize'>  {row?.inviteStatus}</span>
             }
         },
-            
+
     ]
     const sorting = (key) => {
         let sorder = 'asc'
@@ -70,9 +71,9 @@ const Member = () => {
         getData({ sortBy, key, sorder })
     }
     const count = (e) => {
-        setFilter({ ...filters, count:e })
-        getData({ ...filters ,count: e })
-        }
+        setFilter({ ...filters, count: e })
+        getData({ ...filters, count: e })
+    }
     const pageChange = (e) => {
         setFilter({ ...filters, page: e })
         getData({ page: e })
@@ -98,17 +99,17 @@ const Member = () => {
             loader(false)
         })
     }
-    const filter = (p={}) => {
-        let f={
-            page:1,
+    const filter = (p = {}) => {
+        let f = {
+            page: 1,
             ...p
         }
-        setFilter({ ...filters, ...f})
-        getData({ ...f})
+        setFilter({ ...filters, ...f })
+        getData({ ...f })
     }
     const clear = () => {
-        setFilter({ ...filters, search: '',status:'', page: 1 })
-        getData({ search: '', status:'',page: 1 })
+        setFilter({ ...filters, search: '', status: '', page: 1 })
+        getData({ search: '', status: '', page: 1 })
     }
     useEffect(() => {
         getData()
@@ -116,16 +117,16 @@ const Member = () => {
 
     return (
         <Layout>
-            
-          
+
+
             <div className='flex items-center gap-2 mb-4 justify-between'>
-            <div className='flex items-center gap-2'>
-            <Tooltip placement="top" title="Back">
-                  <Link to="/group" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
-                </Tooltip>
-              
-            <h2 className='font-bold text-xl'>Member List</h2>
-            </div>
+                <div className='flex items-center gap-2'>
+                    <Tooltip placement="top" title="Back">
+                        <Link to="/group" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
+                    </Tooltip>
+
+                    <h2 className='font-bold text-xl'>Member List</h2>
+                </div>
 
             </div>
             {!loaging ? <>
@@ -137,17 +138,17 @@ const Member = () => {
                     count={filters.count}
                     total={total}
 
-                    
+
                     result={(e) => {
                         if (e.event == 'page') pageChange(e.value)
                         if (e.event == 'sort') sorting(e.value)
-                            if(e.event == 'count') count(e.value)
+                        if (e.event == 'count') count(e.value)
                     }}
                 />
 
             </> : <></>}
-           
-           
+
+
         </Layout>
     )
 }
