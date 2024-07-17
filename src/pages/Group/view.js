@@ -121,7 +121,7 @@ const Member = () => {
     return (
         <Layout>
 
-<div className='flex'><h4 className='font-bold text-xl'>Group Leader </h4> : {list?.groupLeader?.fullName}</div>
+<div className='flex'><h4 className='font-bold text-xl'>Group Leader </h4>  <p className='font-normal text-xl '> : {list?.groupLeader?.fullName}</p> </div>
             <div className='flex items-center gap-2 mb-4 justify-between'>
                
             
