@@ -14,8 +14,10 @@ const Member = () => {
     const [data, setData] = useState([])
     const [loaging, setLoader] = useState(true)
     const [total, setTotal] = useState(0)
+    const [list ,setList] = useState()
     const { id } = useParams()
     const searchState = useSelector((state) => state.search);
+    console.log(list,"listlistlist")
     useEffect(() => {
         if (user && user.loggedIn) {
             setFilter({ ...filters, search: searchState.data })
@@ -89,6 +91,7 @@ const Member = () => {
         let filter = { ...filters, ...p, groupId: id }
         ApiClient.get('api/members/list', filter).then(res => {
             if (res.success) {
+                setList(res)
                 setData(res.data.map(itm => {
                     itm.id = itm._id
                     return itm
@@ -118,13 +121,15 @@ const Member = () => {
     return (
         <Layout>
 
-
+<div className='flex'><h4 className='font-bold text-xl'>Group Leader </h4> : {list?.groupLeader?.fullName}</div>
             <div className='flex items-center gap-2 mb-4 justify-between'>
+               
+            
+
                 <div className='flex items-center gap-2'>
                     <Tooltip placement="top" title="Back">
                         <Link to="/group" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
                     </Tooltip>
-
                     <h2 className='font-bold text-xl'>Member List</h2>
                 </div>
 
