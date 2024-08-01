@@ -102,7 +102,8 @@ const Events = () => {
                 ApiClient.delete(shared.deleteApi, { id: id }).then(res => {
                             if (res.success) {
                                 // ToastsStore.success(res.message)
-                                clear()
+                                // clear()
+                                getData()
                             }
                             loader(false)
                         })
