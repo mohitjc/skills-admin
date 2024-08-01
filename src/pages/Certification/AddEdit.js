@@ -9,9 +9,11 @@ import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model";
 import { Tooltip } from "antd";
 import ImageUpload from "../../components/common/ImageUpload";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEdit = () => {
-    const { id } = useParams()
+    const { editid } = useParams()
+    const id = decryptId(editid)
     const [images, setImages] = useState({ image: ''});
     const [form, setform] = useState({ id: '', name: '', image:'',description:'',status: 'active' })
     const history = useNavigate()

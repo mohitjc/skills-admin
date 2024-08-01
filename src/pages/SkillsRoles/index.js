@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const SkillsRoles = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -163,7 +164,7 @@ const SkillsRoles = (p) => {
     }
 
     const edit = (id) => {
-        history(`/skill-roles/edit/${id}`)
+        history(`/skill-roles/edit/${encryptId(id)}`)
     }
 
     const exportfun = async () => {

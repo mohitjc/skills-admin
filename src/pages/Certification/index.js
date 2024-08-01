@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Certification = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -135,7 +136,7 @@ const Certification = (p) => {
     }
 
     const edit = (id) => {
-        history(`/certification/edit/${id}`)
+        history(`/certification/edit/${encryptId(id)}`)
     }
 
     const exportfun = async () => {

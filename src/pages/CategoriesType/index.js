@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Types = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -134,7 +135,7 @@ const Types = (p) => {
     }
 
     const edit = (id) => {
-        history(`/types/edit/${id}`)
+        history(`/types/edit/${encryptId(id)}`)
     }
 
     const exportfun = async () => {

@@ -7,6 +7,7 @@ import Html from './html';
 import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
+import { encryptId } from '../../components/common/Encryption/encryption';
 
 const Content = (p) => {
     let user = useSelector(state => state.user)
@@ -110,7 +111,7 @@ const Content = (p) => {
     }
 
     const edit = (id) => {
-        history(`/content/edit/${id}`)
+        history(`/content/edit/${encryptId(id)}`)
     }
 
     const exportfun = async () => {

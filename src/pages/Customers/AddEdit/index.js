@@ -7,9 +7,11 @@ import Html from "./Html";
 import { useNavigate, useParams } from "react-router-dom";
 import addressModel from "../../../models/address.model";
 import environment from "../../../environment";
+import { decryptId } from "../../../components/common/Encryption/encryption";
 
 const AddEdit = () => {
-    const { role, id } = useParams()
+    const { role, editid } = useParams()
+    const id = decryptId(editid)
     const [images, setImages] = useState({ image: '', logo: '' });
     const [removed,setRemoved]= useState([])
     const [form, setform] = useState({

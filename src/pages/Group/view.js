@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 import { Tooltip } from "antd";
 import datepipeModel from '../../models/datepipemodel';
+import { decryptId } from '../../components/common/Encryption/encryption';
 const Member = () => {
     const [filters, setFilter] = useState({ page: 1, count: 10, search: '', catType: '' })
     let user = useSelector(state => state.user)
@@ -15,7 +16,8 @@ const Member = () => {
     const [loaging, setLoader] = useState(true)
     const [total, setTotal] = useState(0)
     const [list ,setList] = useState()
-    const { id } = useParams()
+    const { viewid } = useParams()
+    const id = decryptId(viewid)
     const searchState = useSelector((state) => state.search);
     console.log(list,"listlistlist")
     useEffect(() => {

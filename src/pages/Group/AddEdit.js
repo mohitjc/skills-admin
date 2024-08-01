@@ -13,6 +13,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import tinymcModel from "../../models/tinymc.model";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { decryptId } from "../../components/common/Encryption/encryption";
 const AddEdit = () => {
     const formats = [
         'header',
@@ -44,7 +45,8 @@ const AddEdit = () => {
             matchVisual: false,
         }
     };
-    const { id } = useParams()
+    const { editid } = useParams()
+    const id = decryptId(editid)
     const [images, setImages] = useState({ image: '' });
     const [form, setform] = useState({ id: '', name: '', image: '', description: '', status: 'active' })
     const history = useNavigate()

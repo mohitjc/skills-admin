@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Group = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -160,11 +161,11 @@ const Group = (p) => {
       });
 }
     const edit = (id) => {
-        history(`/group/edit/${id}`)
+        history(`/group/edit/${encryptId(id)}`)
     }
 const viewMember =(id)=>{
     console.log(id ,"idddddddddddd")
-    history(`/member/${id}`)
+    history(`/member/${encryptId(id)}`)
 }
     const exportfun = async () => {
         const token = await localStorage.getItem("token");

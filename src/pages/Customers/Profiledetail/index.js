@@ -11,11 +11,13 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 import methodModel from '../../../methods/methods';
 import pipeModel from '../../../models/pipeModel';
+import { decryptId } from '../../../components/common/Encryption/encryption';
 
 const UserDetail = (p) => {
     const history = useNavigate()
     const user = useSelector(state => state.user)
-    const { id, userId } = useParams()
+    const { viewid, userId } = useParams()
+    const id = decryptId(viewid)
     const [data, setData] = useState()
     const [planDetails, setplanDetails] = useState()
     const [trailDays, settrailDays] = useState()

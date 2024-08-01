@@ -7,6 +7,7 @@ import { rolePermission, rolePermissions, roleType } from '../../models/type.mod
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/global/layout';
 import { Tooltip } from "antd";
+import { decryptId } from '../../components/common/Encryption/encryption';
 
 const AddEditRole = () => {
 
@@ -24,7 +25,8 @@ const AddEditRole = () => {
     keys.status = 'active';
     return keys;
   };
-  const { id } = useParams();
+  const { userid } = useParams();
+  const id = decryptId(userid)
   const [form, setform] = useState({...roleType});
   const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);

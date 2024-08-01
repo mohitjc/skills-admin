@@ -11,6 +11,7 @@ import axios from 'axios';
 import environment from '../../environment';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Currency = (p) => {
     const dispatch = useDispatch()
     let user = useSelector(state => state.user)
@@ -219,7 +220,7 @@ const Currency = (p) => {
     }
 
     const edit = (id) => {
-        history(`/currency/edit/${id}`)
+        history(`/currency/edit/${encryptId(id)}`)
     }
 
     const tabChange = (tab) => {

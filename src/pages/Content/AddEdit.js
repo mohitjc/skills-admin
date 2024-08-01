@@ -11,9 +11,11 @@ import { Tooltip } from "antd";
 import ImageUpload from "../../components/common/ImageUpload";
 import { Editor } from "@tinymce/tinymce-react";
 import tinymcModel from "../../models/tinymc.model";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEdit = () => {
-    const { id } = useParams()
+    const { editid } = useParams()
+    const id = decryptId(editid)
     const [images, setImages] = useState({ image: ''});
     const [form, setform] = useState({ id: '', title: '', slug:'',description:'',status: 'active' })
     const history = useNavigate()

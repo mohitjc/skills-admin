@@ -9,12 +9,14 @@ import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model";
 import { Tooltip } from "antd";
 import environment from "../../environment";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEditFeature = () => {
     const [images, setImages] = useState({ image: '', banner: '', icon: '' });
     const [features, setFeatures] = useState([{ name: 'Option 1️⃣', id: 1 }, { name: 'Option 2️⃣', id: 2 }])
 
-    const { id } = useParams()
+    const { userid } = useParams()
+    const id = decryptId(userid)
     const [form, setform] = useState({id:'',name:'',description:'',category:'',status:'active'})
     const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)

@@ -10,6 +10,7 @@ import statusModel from "../../models/status.model";
 import SelectDropdown from "../../components/common/SelectDropdown";
 import requiredModel from "../../models/required.model";
 import { Tooltip } from "antd";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEditPlan = () => {
     const [features, setFeatures] = useState([])
@@ -23,7 +24,8 @@ const AddEditPlan = () => {
         keys.status = 'active'
         return keys
     }
-    const { id, copy } = useParams()
+    const { planid, copy } = useParams()
+    const id = decryptId(planid)
     const [form, setform] = useState(planType);
     const [checkedItems, setCheckedItems] = useState([]);
     const [startIndex, setStartIndex] = useState(-1);

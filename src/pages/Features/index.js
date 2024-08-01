@@ -12,6 +12,7 @@ import axios from 'axios';
 import environment from '../../environment';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Features = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -231,7 +232,7 @@ const Features = (p) => {
     }
 
     const edit = (id) => {
-        history(`/features/edit/${id}`)
+        history(`/features/edit/${encryptId(id)}`)
     }
 
     const tabChange = (tab) => {

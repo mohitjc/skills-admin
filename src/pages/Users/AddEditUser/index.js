@@ -7,9 +7,11 @@ import { userType } from "../../../models/type.model";
 import Html from "./Html";
 import { useNavigate, useParams } from "react-router-dom";
 import environment from "../../../environment";
+import { decryptId } from "../../../components/common/Encryption/encryption";
 
 const AddEditUser = () => {
-    const { role, id } = useParams()
+    const { role, userid } = useParams()
+    const id = decryptId(userid)
     const [images, setImages] = useState({ image: '', logo: '' });
     const defaultvalue = userType
     const [form, setform] = useState({ role })
