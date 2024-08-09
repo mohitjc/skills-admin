@@ -95,7 +95,8 @@ const Login = () => {
         } else {
           setLogin(resp)
         }
-        
+        const loginTime = new Date();
+        localStorage.setItem('loginTime', loginTime.toISOString());
       }
     })
   };
