@@ -24,12 +24,12 @@ const handleError = (err, hideError) => {
    
     let message = ''
     if (err) {
-        if (err && err.error && err.error.code == 401) {
-            localStorage.removeItem("persist:admin-app")
-            localStorage.removeItem("token")
+        if (err  && err.code == 401) {
+            // localStorage.removeItem("persist:admin-app")
+            // localStorage.removeItem("token")
             document.getElementById('logout').click()
             hideError=true
-            methodModel.route('/')
+            // methodModel.route('/')
         }
         message = err && err.error && err.error.message
         if (!message) message = err.message
