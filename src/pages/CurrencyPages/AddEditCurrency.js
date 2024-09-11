@@ -21,7 +21,7 @@ const AddEditCurrency = () => {
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
-        console.log("imageResult", e)
+       
     }
     const handleSubmit = (e) => {
         e.preventDefault()

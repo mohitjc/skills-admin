@@ -75,7 +75,7 @@ const AddEditCategory = () => {
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
-        console.log("imageResult", e)
+      
     }
 
     const getCategory = (t = type) => {

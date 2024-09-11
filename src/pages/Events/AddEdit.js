@@ -133,10 +133,10 @@ const AddEdit = () => {
         setImages(images)
     }
 const handleSelectValue=(e)=>{
-console.log(e.target.value,"groupsdssssss")
+
 setform({...form , groupId:e.target.value})
 }
-console.log(form?.groupId ,"nnnnnnnnnnnnnnnnnn")
+
     const getError = (key) => {
         return submitted?methodModel.getError(key, form, formValidation)?.message:''
     }

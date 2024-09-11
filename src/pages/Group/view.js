@@ -19,7 +19,7 @@ const Member = () => {
     const { viewid } = useParams()
     const id = decryptId(viewid)
     const searchState = useSelector((state) => state.search);
-    console.log(list,"listlistlist")
+  
     useEffect(() => {
         if (user && user.loggedIn) {
             setFilter({ ...filters, search: searchState.data })

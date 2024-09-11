@@ -34,7 +34,7 @@ const {id} =useParams()
     arr = arr.filter((itm, index) => index != i)
     setform({ ...form, multiAddress: [...arr] })
   }
-  console.log(detail?._id ,"detaildetaildetail")
+
   const [certificate, setCertificate] = useState([])
   const [skillRoles, setSkillRoles] = useState([])
   const [categories, setCategories] = useState([])
@@ -51,7 +51,7 @@ const {id} =useParams()
       }
     })
   }
-  console.log(form.customerRole, "iiiiiiiiiiiiiiiiiiiii")
+ 
   const getSkills = () => {
     ApiClient.get('api/skills/listing', {
       status: 'active',
@@ -425,7 +425,7 @@ const {id} =useParams()
                 intialValue={form?.skills}
                 result={e => {
                   setform({ ...form, skills: e.value })
-                  console.log("e", e)
+                
                 }}
                 options={skillRoles}
                 theme="search"

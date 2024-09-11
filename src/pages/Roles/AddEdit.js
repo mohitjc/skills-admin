@@ -79,8 +79,7 @@ const AddEditRole = () => {
           Object.keys(roleType.permissions).map((itm) => {
             payload.permissions[itm] = permissions[itm]||false;
           });
-          console.log('payload', payload);
-          console.log('permissions', permissions);
+          
           payload.id=id
           setform({
             ...payload,

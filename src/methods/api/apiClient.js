@@ -21,12 +21,13 @@ var baseUrl = environment.api
 
 
 const handleError = (err, hideError) => {
-    console.log("err",err)
+   
     let message = ''
     if (err) {
         if (err && err.error && err.error.code == 401) {
             localStorage.removeItem("persist:admin-app")
             localStorage.removeItem("token")
+            document.getElementById('logout').click()
             hideError=true
             methodModel.route('/')
         }
@@ -238,10 +239,10 @@ class ApiClient {
             var login = `${sasurl}/${container}/${blobName}?${sasKey}`;
             var blockBlobClient = new BlockBlobClient(login, new AnonymousCredential());
             blockBlobClient.uploadBrowserData(file).then(res => {
-                console.log("res", res)
+              
                 fulfill({ success: true, fileName: blobName })
             }).catch(err => {
-                console.log("err", err)
+               
                 fulfill({ success: false, message: err })
             });
         });
@@ -257,9 +258,9 @@ class ApiClient {
             var blockBlobClient = new BlockBlobClient(login, new AnonymousCredential());
             blockBlobClient.deleteIfExists(options).then(res=>{
                 fulfill({success:true})
-                console.log("delete res", res)
+               
             }).catch(err=>{
-                console.log("delete err", err)
+              
                 fulfill({success:false,message: err})
             })
         });

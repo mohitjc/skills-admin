@@ -11,16 +11,16 @@ import { Tooltip } from "antd";
 const Html = ({ handleSubmit }) => {
   const History = useNavigate()
   const review = JSON.parse(localStorage.getItem('review'))
-  console.log(review)
+
   const param = useParams()
-  console.log(param.id)
+
   const [loading, setloading] = useState(false)
   const [form, setForm] = useState({ ...review, name: review?.name || review?.platform || '' });
   const [img, setimg] = useState(review?.logo);
   const UploadImage = (e) => {
     let image = e.target.files;
     let file = image.item(0);
-    console.log(file);
+   
     setloading(true)
     ApiClient.postFormData('api/upload/image?modelName=logo', {
       file: file,
@@ -34,7 +34,7 @@ const Html = ({ handleSubmit }) => {
         if (image) {
           setimg(image);
         }
-        console.log(res);
+
       }
     });
   };
@@ -42,7 +42,7 @@ const Html = ({ handleSubmit }) => {
   const UpdateReview = (e) => {
 
     ApiClient.put('api/review/platform', { name: form.name, logo: img, id: param.id }).then((res) => {
-      console.log(res)
+      
       if (res.success) {
         history('/reviews')
       }

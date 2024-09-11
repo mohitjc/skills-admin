@@ -67,7 +67,7 @@ const Dashboard = () => {
           }
         })
 
-        console.log("barrAll", barrAll)
+      
 
         res.customers = barrAll
         setActiveSubscriptions(activeSubscriptions)
@@ -83,7 +83,7 @@ const Dashboard = () => {
   }
 
   const blockDateChange = (e:any) => {
-    console.log("e", e)
+  
     filter({
       endDate: datepipeModel.datetostring(e.endDate),
       startDate: datepipeModel.datetostring(e.startDate),

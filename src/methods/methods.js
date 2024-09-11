@@ -185,7 +185,7 @@ const getFormError = (formValidation, fvalue) => {
     let invalid = false
     formValidation.map(ext => {
         if (matchError(ext, fvalue).invalid) {
-            console.log("getFormError",ext)
+           
             invalid = true
         }
     })

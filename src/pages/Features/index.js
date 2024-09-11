@@ -135,7 +135,7 @@ const Features = (p) => {
     }
 
     const modalResult = (e) => {
-        console.log("modalResult", e)
+
         modalClosed()
     }
 

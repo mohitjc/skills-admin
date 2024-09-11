@@ -80,13 +80,13 @@ const AddEditFeature = () => {
 
     }, [id])
 
-    const onSelect = (e) => {
-        console.log("onSelect", e)
-    }
+    // const onSelect = (e) => {
+    //     console.log("onSelect", e)
+    // }
 
-    const onRemove = (e) => {
-        console.log("onRemove", e)
-    }
+    // const onRemove = (e) => {
+    //     console.log("onRemove", e)
+    // }
 
     const getCategoires = () => {
         ApiClient.get(`api/categorie/list`, { catType: environment.planTypeId, status: 'active' }).then(res => {

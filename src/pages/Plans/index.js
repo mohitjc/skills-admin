@@ -151,7 +151,7 @@ const Plans = (p) => {
     }
 
     const modalResult=(e)=>{
-        console.log("modalResult",e)
+       
         modalClosed()
     }
 
@@ -261,7 +261,7 @@ const Plans = (p) => {
     const dragStart = (e, position) => {
         dragItem.current = position;
         setDragIndex(position)
-        console.log("dragStart",position)
+     
     };
 
     const dragEnter = (e, position) => {

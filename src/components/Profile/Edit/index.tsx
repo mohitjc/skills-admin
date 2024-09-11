@@ -72,7 +72,7 @@ const EditProfile = () => {
   const imageResult = (e:any, key:any) => {
     images[key] = e.value
     setImages(images)
-    console.log("imageResult", e)
+
 }
   const uploadImage = (e:any) => {
     setForm({ ...form, baseImg: e.target.value })
@@ -96,7 +96,7 @@ const EditProfile = () => {
         gallaryData();
         let forms:any=document.forms
         let field=forms['profileForm'].elements['fullName']
-        console.log("field",field.minLength)
+     
       }
     },[]);
 

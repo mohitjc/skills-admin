@@ -156,7 +156,7 @@ const Categories = (p) => {
     }
 
     const modalResult = (e) => {
-        console.log("modalResult", e)
+      
         modalClosed()
     }
 

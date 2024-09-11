@@ -114,7 +114,7 @@ const AddEdit = () => {
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
-        console.log("imageResult", e)
+    
     }
 
     const back=()=>{
@@ -138,7 +138,7 @@ const AddEdit = () => {
             setEmailLoader(true)
             ApiClient.get('api/check/email',{email:email}).then(res=>{
                 if(!res.success){
-                    console.log("detail",detail)
+                  
                     if(id){
                         if(detail){
                             if(detail?.email!=email){

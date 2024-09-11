@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
               role:res.data.role._id,
               roleDetail:res.data.role
             }
-            console.log("iser",data)
+          
             dispatch(login_success(data))
             localStorage.setItem('browseload', 'true')
           }

@@ -101,7 +101,7 @@ const Login = () => {
     })
   };
   let userId = localStorage.getItem("id")
-  console.log(userId,"newwwnewwwnewww")
+  
   const resendOtp =()=>{
     let url  = 'api/resendOtp' ,
   data: any = {
@@ -109,7 +109,7 @@ const Login = () => {
 };
   ApiClient.post(url, data)
   .then((res) => {
-   console.log(res?.message,"messagessssssss")
+  
    toast(res?.message)
   })
    

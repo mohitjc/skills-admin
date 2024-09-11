@@ -21,8 +21,7 @@ const ImageUpload = ({ model, result, value, multiple ,required,err,label=''}) =
         setLoader(true)
         for await (let item of imgfile) {
             let file = files.item(i)
-            console.log("i", i)
-            console.log("file", file)
+       
             const res = await ApiClient.azureUpload({ file: file })
             if (res.fileName) {
                 let image = res.fileName

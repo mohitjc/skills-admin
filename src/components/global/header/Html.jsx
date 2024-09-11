@@ -15,7 +15,9 @@ function classNames(...classes) {
 
 const Html = ({ isOpen, toggle, searchHandle, search, user, isOpen1, searchChange, clear, Logout }) => {
   return (
-    <nav
+    <>
+    <div id="logout" onClick={()=>Logout()}></div>
+<nav
       component="header"
       className={`${isOpen ? "min-sidebar w-[calc(100%-80px)]" : "w-[calc(100%-280px)] "
         } shadow-btn py-1.5 bg-white border-b  fixed transition-[width] duration-300 ml-auto right-0 z-50 flex items-center !px-5
@@ -136,6 +138,8 @@ const Html = ({ isOpen, toggle, searchHandle, search, user, isOpen1, searchChang
         )
       }
     </nav >
+    </>
+    
   );
 }
 

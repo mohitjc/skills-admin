@@ -164,7 +164,7 @@ const Group = (p) => {
         history(`/group/edit/${encryptId(id)}`)
     }
 const viewMember =(id)=>{
-    console.log(id ,"idddddddddddd")
+   
     history(`/member/${encryptId(id)}`)
 }
     const exportfun = async () => {
