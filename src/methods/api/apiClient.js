@@ -24,7 +24,7 @@ const handleError = (err, hideError) => {
    
     let message = ''
     if (err) {
-        if (err  && err.code == 401 || err === "Authentication required.") {
+        if (err  && err.code == 401 ) {
             // localStorage.removeItem("persist:admin-app")
             // localStorage.removeItem("token")
             document.getElementById('logout')?.click()
