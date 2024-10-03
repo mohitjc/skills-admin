@@ -93,11 +93,11 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
       key: 'readCustomers',
       tab: 'customer',
       menu: [
-        {
-          name: 'Frontend User Roles',
-          url: '/skill-roles',
-          key: 'readCustomers'
-        },
+        // {
+        //   name: 'Frontend User Roles',
+        //   url: '/skill-roles',
+        //   key: 'readCustomers'
+        // },
         {
           name: 'Frontend Users',
           url: '/customer',

@@ -17,14 +17,14 @@ const AddEditFeature = () => {
 
     const { userid } = useParams()
     const id = decryptId(userid)
-    const [form, setform] = useState({id:'',name:'',description:'',category:'',status:'active'})
+    const [form, setform] = useState({id:'',name:'',description:'',status:'active'})
     const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const [categories, setcategories] = useState()
     const user = useSelector((state) => state.user);
     const formValidation = [
         { key: 'status', required: true },
-        { key: 'category', required: true },
+        // { key: 'category', required: true },
         {key :'description' ,required: true },
     ]
 
@@ -130,7 +130,7 @@ const AddEditFeature = () => {
                                 required
                             />
                         </div>
-                        <div className="col-span-12 md:col-span-6">
+                        {/* <div className="col-span-12 md:col-span-6">
                             <label>Categories<span className="star">*</span></label>
                             <div className="custom_dropdown">
                                 <SelectDropdown
@@ -143,7 +143,7 @@ const AddEditFeature = () => {
                                 />
                                 {submitted && !form.category ? <div className="text-danger">Categories is Required</div> : <></>}
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-span-12 md:col-span-6">
                             <label>Status<span className="star">*</span></label>
                             <div className="custom_dropdown">

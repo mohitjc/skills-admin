@@ -20,7 +20,7 @@ var config = {
 var baseUrl = environment.api
 
 
-const handleError = (err, hideError) => {
+const handleError = (err, hideError ,status) => {
    
     let message = ''
     if (err) {
@@ -34,6 +34,10 @@ const handleError = (err, hideError) => {
         message = err && err.error && err.error.message
         if (!message) message = err.message
         if (!message) message = 'Server Error'
+    }
+    if ( status == 404){
+        window.location.reload();
+            
     }
     if (!hideError) toast.error(message);
 }
@@ -128,7 +132,7 @@ class ApiClient {
                     loader(false)
                     if (error && error.response) {
                         let eres = error.response;
-                        handleError(eres.data, hidError)
+                        handleError(eres.data, hidError , eres?.status)
                         fulfill({ ...eres.data, success: false });
                     } else {
                         toast.error('Network Error')
