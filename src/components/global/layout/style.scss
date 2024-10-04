@@ -4,7 +4,7 @@
   background-color: #eee;
 
   main.main {
-    width: calc(100% - 250px);
+    
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -65,9 +65,7 @@
 }
 
 @media (max-width: 767px) {
-  .main-wrapper main.main {
-    width: 100% !important;
-  }
+ 
 
   .w-\[calc\(100\%-280px\)\] {
     width: calc(100% - 5px) !important;

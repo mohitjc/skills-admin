@@ -204,9 +204,9 @@ const Html = ({
                     key: 'fullName', name: 'Name', sort: true,
                     render: (itm) => {
                         return <>
-                            <div className='user_detail'>
-                                <img src={methodModel.userImg(itm.image)} className="user_imgs" />
-                                <div className='user_name'>
+                            <div className='flex items-center flex-wrap gap-2'>
+                                <img src={methodModel.userImg(itm.image)} className="h-12 w-12 object-contain mx-auto" />
+                                <div className='text-center w-full'>
                                     <h4 className='user capitalize'>
                                         {itm.fullName}
                                     </h4>
@@ -304,14 +304,7 @@ const Html = ({
             }
         },
      
-        // {
-        //     key: 'updatedAt', name: 'Updated At',sort: true,
-        //     render: (row) => {
-        //         return <>
-        //             {datepipeModel.datetime(row?.updatedAt)}
-        //         </>
-        //     }
-        // },
+        
     
         {
             key: 'status', name: 'Status',
