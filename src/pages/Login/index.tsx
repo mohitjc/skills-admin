@@ -7,6 +7,7 @@ import loader from '../../methods/loader';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import AuthLayout from '../../components/AuthLayout';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const history = useNavigate();
@@ -80,6 +81,7 @@ const Login = () => {
     ApiClient.post(url, data).then(res => {
       loader(false)
       if (res.success == true) {
+        localStorage.setItem('id', res?.data?._id)
         if (remember) {
           localStorage.setItem('remember', JSON.stringify(data))
         } else {
@@ -93,10 +95,25 @@ const Login = () => {
         } else {
           setLogin(resp)
         }
-        
+        const loginTime = new Date();
+        localStorage.setItem('loginTime', loginTime.toISOString());
       }
     })
   };
+  let userId = localStorage.getItem("id")
+  
+  const resendOtp =()=>{
+    let url  = 'api/resendOtp' ,
+  data: any = {
+ id:userId
+};
+  ApiClient.post(url, data)
+  .then((res) => {
+  
+   toast(res?.message)
+  })
+   
+   }
   return (
     <>
       <AuthLayout>
@@ -150,8 +167,9 @@ const Login = () => {
                   />
                   </>}
                 <div className='flex'>
-                <label className='flex items-center pointer'><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="mr-2 h-4 w-4" /> <span className='text-md text-gray-600'>Remember Me</span></label>
-                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link>
+                
+                  {step == 1 ? <><label className='flex items-center pointer'><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="mr-2 h-4 w-4" /> <span className='text-md text-gray-600'>Remember Me</span></label>
+                  <Link className="sign_up ml-auto text-orange-500" to="/forgotpassword"> Forgot Password</Link> </>: <p className="sign_up ml-auto text-orange-500 cursor-pointer " onClick={resendOtp} > Resend OTP</p>} 
                 </div>
                 
 

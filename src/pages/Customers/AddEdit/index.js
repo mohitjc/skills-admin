@@ -7,9 +7,11 @@ import Html from "./Html";
 import { useNavigate, useParams } from "react-router-dom";
 import addressModel from "../../../models/address.model";
 import environment from "../../../environment";
+import { decryptId } from "../../../components/common/Encryption/encryption";
 
 const AddEdit = () => {
-    const { role, id } = useParams()
+    const { role, editid } = useParams()
+    const id = decryptId(editid)
     const [images, setImages] = useState({ image: '', logo: '' });
     const [removed,setRemoved]= useState([])
     const [form, setform] = useState({
@@ -112,7 +114,7 @@ const AddEdit = () => {
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
-        console.log("imageResult", e)
+    
     }
 
     const back=()=>{
@@ -136,7 +138,7 @@ const AddEdit = () => {
             setEmailLoader(true)
             ApiClient.get('api/check/email',{email:email}).then(res=>{
                 if(!res.success){
-                    console.log("detail",detail)
+                  
                     if(id){
                         if(detail){
                             if(detail?.email!=email){

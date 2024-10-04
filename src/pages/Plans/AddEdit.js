@@ -10,6 +10,7 @@ import statusModel from "../../models/status.model";
 import SelectDropdown from "../../components/common/SelectDropdown";
 import requiredModel from "../../models/required.model";
 import { Tooltip } from "antd";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEditPlan = () => {
     const [features, setFeatures] = useState([])
@@ -23,7 +24,8 @@ const AddEditPlan = () => {
         keys.status = 'active'
         return keys
     }
-    const { id, copy } = useParams()
+    const { planid, copy } = useParams()
+    const id = decryptId(planid)
     const [form, setform] = useState(planType);
     const [checkedItems, setCheckedItems] = useState([]);
     const [startIndex, setStartIndex] = useState(-1);
@@ -520,7 +522,7 @@ const AddEditPlan = () => {
                             <div className="grid grid-cols-12 gap-4">
                                 {Object.keys(features).map((oitm, i) => {
                                     return <div className="mb-3 col-spam-12 md:col-span-4">
-                                        <label className="mb-2 d-block text-uppercase"><b>{oitm}</b></label>
+                                        {/* <label className="mb-2 d-block text-uppercase"><b>{oitm}</b></label> */}
                                         {features && showData(oitm)?.map((item, index) => {
                                             return <>
                                                 {/* <div className={`col-md-11 mt-2 ml-2 cursor-pointer DragDrop ${startIndex == index && selectedItem == oitm ? 'dragStart' : ''} ${enterIndex == index && selectedItem == oitm ? 'dragEnter' : ''}`} onDragStart={(e) => dragStart(e, index, oitm)} onDragEnter={(e) => dragEnter(e, index, oitm)} onDragEnd={e => drop(e, oitm)} key={index} draggable={id && copy == 'false' ? false : true}> */}

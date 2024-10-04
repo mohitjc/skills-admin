@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Roles = (p) => {
     const user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -234,7 +235,7 @@ const Roles = (p) => {
     }
 
     const edit = (id) => {
-        history(`/roles/edit/${id}`)
+        history(`/roles/edit/${encryptId(id)}`)
     }
 
     const tabChange = (tab) => {

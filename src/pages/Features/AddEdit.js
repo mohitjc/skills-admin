@@ -9,20 +9,22 @@ import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model";
 import { Tooltip } from "antd";
 import environment from "../../environment";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEditFeature = () => {
     const [images, setImages] = useState({ image: '', banner: '', icon: '' });
     const [features, setFeatures] = useState([{ name: 'Option 1️⃣', id: 1 }, { name: 'Option 2️⃣', id: 2 }])
 
-    const { id } = useParams()
-    const [form, setform] = useState({id:'',name:'',description:'',category:'',status:'active'})
+    const { userid } = useParams()
+    const id = decryptId(userid)
+    const [form, setform] = useState({id:'',name:'',description:'',status:'active'})
     const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
     const [categories, setcategories] = useState()
     const user = useSelector((state) => state.user);
     const formValidation = [
         { key: 'status', required: true },
-        { key: 'category', required: true },
+        // { key: 'category', required: true },
         {key :'description' ,required: true },
     ]
 
@@ -78,13 +80,13 @@ const AddEditFeature = () => {
 
     }, [id])
 
-    const onSelect = (e) => {
-        console.log("onSelect", e)
-    }
+    // const onSelect = (e) => {
+    //     console.log("onSelect", e)
+    // }
 
-    const onRemove = (e) => {
-        console.log("onRemove", e)
-    }
+    // const onRemove = (e) => {
+    //     console.log("onRemove", e)
+    // }
 
     const getCategoires = () => {
         ApiClient.get(`api/categorie/list`, { catType: environment.planTypeId, status: 'active' }).then(res => {
@@ -128,7 +130,7 @@ const AddEditFeature = () => {
                                 required
                             />
                         </div>
-                        <div className="col-span-12 md:col-span-6">
+                        {/* <div className="col-span-12 md:col-span-6">
                             <label>Categories<span className="star">*</span></label>
                             <div className="custom_dropdown">
                                 <SelectDropdown
@@ -141,7 +143,7 @@ const AddEditFeature = () => {
                                 />
                                 {submitted && !form.category ? <div className="text-danger">Categories is Required</div> : <></>}
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-span-12 md:col-span-6">
                             <label>Status<span className="star">*</span></label>
                             <div className="custom_dropdown">

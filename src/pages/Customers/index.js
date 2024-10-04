@@ -11,6 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import environment from '../../environment';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Customer = (p) => {
     const user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -174,7 +175,7 @@ const Customer = (p) => {
     }
 
     const modalResult=(e)=>{
-        console.log("modalResult",e)
+     
         modalClosed()
     }
 
@@ -301,7 +302,7 @@ const Customer = (p) => {
     }
 
     const view=(id)=>{
-        history("/customer/view/"+id)
+        history("/customer/view/"+encryptId(id))
     }
 
  
@@ -326,7 +327,7 @@ const Customer = (p) => {
           link.click();
     }
     const edit=(id)=>{
-        history(`/customer/edit/${id}`)
+        history(`/customer/edit/${encryptId(id)}`)
     }
 
     const reset=()=>{

@@ -7,11 +7,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import { Tooltip } from "antd";
 import ImageUpload from "../../components/common/ImageUpload";
+import { decryptId } from "../../components/common/Encryption/encryption";
 const AddEditCurrency = () => {
     const [form, setform] = useState({ currency: '',symbol:'',isoCode:''})
     const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)
-    const { id } = useParams()
+    const { editid } = useParams()
+    const id = decryptId(editid)
     const user = useSelector((state) => state.user);
     const formValidation = [
     ]
@@ -19,7 +21,7 @@ const AddEditCurrency = () => {
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
-        console.log("imageResult", e)
+       
     }
     const handleSubmit = (e) => {
         e.preventDefault()

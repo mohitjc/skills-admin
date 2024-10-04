@@ -6,12 +6,13 @@ import ApiClient from "../../methods/api/apiClient";
 import { useParams } from "react-router-dom";
 import shared from "./shared";
 import AttendeeList from "./AttendeeList";
+import { decryptId } from "../../components/common/Encryption/encryption";
 const View = () => {
     const [data, setData] = useState()
     const [host, setHost] = useState()
     const history = useNavigate()
-    const {id}=useParams()
-
+    const {detailid}=useParams()
+const id = decryptId(detailid)
 
     const getHostDetail=(id)=>{
         ApiClient.get('api/user/detail',{id:id}).then(res=>{

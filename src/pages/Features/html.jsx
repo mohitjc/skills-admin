@@ -90,7 +90,7 @@ const Html = ({
 
             <div className='shadow-box w-full bg-white rounded-lg mt-6'>
                 <div className='flex items-center p-4 justify-end gap-2'>
-                <SelectDropdown
+                {/* <SelectDropdown
                                 isSingle={true}
                                 id="statusDropdown"
                                 displayValue="name"
@@ -98,7 +98,7 @@ const Html = ({
                                 intialValue={filters.category}
                                 result={e => filter({ category: e.value })}
                                 options={categories}
-                            />
+                            /> */}
                     <SelectDropdown
                             id="statusDropdown"
                             displayValue="name"
@@ -129,7 +129,7 @@ const Html = ({
                                 <thead className='text-xs text-gray-700 capitalize bg-gray-50  border-b border-[#EAECF0]'>
                                     <tr className='border-b border-[#EAECF0]'>
                                         <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer text-left' onClick={e => sorting('name')}>Name<span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
-                                        <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer ' onClick={e => sorting('categoryName')}>Category <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th>
+                                        {/* <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer ' onClick={e => sorting('categoryName')}>Category <span className='ml-2'><HiOutlineArrowDown className="shrink-0 inline text-sm" /></span></th> */}
                                         <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer '>Status</th>
                                         <th scope="col" className='!px-3.5 py-3 capitalize cursor-pointer '>Action</th>
 
@@ -139,7 +139,7 @@ const Html = ({
                                     {!loaging && data && showData().map((itm, index) => {
                                         return <tr className={` ${dargIndex == index ? 'dragStart' : ''} ${dargEnterIndex == index ? 'dragEnter' : ''}`} onDragStart={(e) => dragStart(e, index)} onDragEnter={(e) => dragEnter(e, index)} onDragEnd={e => drop(e)} key={index} draggable>
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-left border-[#EAECF0]' onClick={e => edit(itm.id)}>{itm.name}</td>
-                                            <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.category ? itm.category.name : ''}</td>
+                                            {/* <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'>{itm.category ? itm.category.name : ''}</td> */}
                                             <td className='!text-typo !border-l-0 cursor-pointer !px-3.5 text-sm font-normal !py-4 !border text-center border-[#EAECF0]'> <div className={`user_hours ${itm.status}`} onClick={() => statusChange(itm)}>
                                                 <Tooltip placement="top" title="Active / Inactive">
                                                     <span className={`text-sm !px-3 h-[30px] flex items-center justify-center border border-[#EBEBEB] w-32 mx-auto  text-white !rounded capitalize ${itm.status === 'active' ? 'bg-green-400' : 'bg-red-400 '}`}>

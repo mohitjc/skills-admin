@@ -7,6 +7,7 @@ import { rolePermission, rolePermissions, roleType } from '../../models/type.mod
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/global/layout';
 import { Tooltip } from "antd";
+import { decryptId } from '../../components/common/Encryption/encryption';
 
 const AddEditRole = () => {
 
@@ -24,7 +25,8 @@ const AddEditRole = () => {
     keys.status = 'active';
     return keys;
   };
-  const { id } = useParams();
+  const { userid } = useParams();
+  const id = decryptId(userid)
   const [form, setform] = useState({...roleType});
   const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);
@@ -77,8 +79,7 @@ const AddEditRole = () => {
           Object.keys(roleType.permissions).map((itm) => {
             payload.permissions[itm] = permissions[itm]||false;
           });
-          console.log('payload', payload);
-          console.log('permissions', permissions);
+          
           payload.id=id
           setform({
             ...payload,
@@ -186,7 +187,7 @@ const AddEditRole = () => {
                   <Link to="/roles" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
                 </Tooltip>
                 <div>
-                  <h3 className="text-2xl font-semibold text-[#111827]">   {form && form.id ? 'Edit' : 'Add'} Role</h3>
+                  <h3 className="text-2xl font-semibold text-[#111827]">   {form && form.id ? 'Edit' : 'Add'} Staff Role</h3>
                   <p class="text-sm font-normal text-[#75757A]">Here you can see all about your  Roles</p>
                 </div>
               </div>

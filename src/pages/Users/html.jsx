@@ -47,9 +47,9 @@ const Html = ({
 
                 <div>
                     <h3 className="text-2xl font-semibold text-[#111827]">
-                        {role ? rolesModel.name(role) : 'Users'}
+                        {role ? rolesModel.name(role) : 'Staff'}
                     </h3>
-                    <p class="text-sm font-normal text-[#75757A]">Here you can see all about your  Users</p>
+                    <p class="text-sm font-normal text-[#75757A]">Here you can see all about your  Staff</p>
                 </div>
 
                 <div className="flex filterFlex phView">
@@ -61,7 +61,7 @@ const Html = ({
 
                     {isAllow('addUsers') ? <>
                         <a className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" onClick={e => add()}>
-                            <FiPlus className="text-xl text-white" />  Add {role ? rolesModel.name(role) : 'User'}
+                            <FiPlus className="text-xl text-white" />  Add {role ? rolesModel.name(role) : 'Staff'}
                         </a>
                     </> : <></>}
                 </div>

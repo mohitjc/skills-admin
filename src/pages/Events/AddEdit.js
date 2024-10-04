@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import datepipeModel from "../../models/datepipemodel";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; 
+import { decryptId } from "../../components/common/Encryption/encryption";
 const AddEdit = () => {
     const formats = [
         'header',
@@ -44,7 +45,8 @@ const AddEdit = () => {
           matchVisual: false,
         }
       };
-    const { id } = useParams()
+    const { editid } = useParams()
+    const id = decryptId(editid)
     const [images, setImages] = useState({ image: ''});
     const [form, setform] = useState({ id: '', title: '',type:'', date:'',timezone:'America/Los_Angeles',capacity:'',description:'',deadline:'',externalLink:'',address:'',status: 'active',groupId:"" })
     const history = useNavigate()
@@ -131,10 +133,10 @@ const AddEdit = () => {
         setImages(images)
     }
 const handleSelectValue=(e)=>{
-console.log(e.target.value,"groupsdssssss")
+
 setform({...form , groupId:e.target.value})
 }
-console.log(form?.groupId ,"nnnnnnnnnnnnnnnnnn")
+
     const getError = (key) => {
         return submitted?methodModel.getError(key, form, formValidation)?.message:''
     }

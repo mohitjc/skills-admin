@@ -20,9 +20,9 @@ const Html = ({ role, form, handleSubmit, setform, roles, addressResult, submitt
                         </Tooltip>
                         <div>
                             <h3 className="text-2xl font-semibold text-[#111827]">
-                                {form && form.id ? 'Edit' : 'Add'} {role ? rolesModel.name(role) : 'User'}
+                                {form && form.id ? 'Edit' : 'Add'} {role ? rolesModel.name(role) : 'Staff'}
                             </h3>
-                            <p class="text-sm font-normal text-[#75757A]">Here you can see all about your  Users</p>
+                            <p class="text-sm font-normal text-[#75757A]">Here you can see all about your  Staff</p>
                         </div>
                     </div>
 

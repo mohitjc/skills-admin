@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import environment from '../../environment';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Users = (p) => {
   const user = useSelector((state) => state.user);
   const { role } = useParams();
@@ -226,7 +227,7 @@ const Users = (p) => {
   };
 
   const edit = (id) => {
-    let url = `/users/edit/${id}`;
+    let url = `/users/edit/${encryptId(id)}`;
     if (role) url = `/users/${role}/edit/${id}`;
     history(url);
   };

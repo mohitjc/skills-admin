@@ -28,7 +28,8 @@ const Html = ({
     exportfun,
     changestatus,viewMember,
     isAllow,
-    total = { total }
+    total = { total },
+    count,
 }) => {
 
     const columns = [
@@ -144,6 +145,7 @@ const Html = ({
                         result={(e) => {
                             if (e.event == 'page') pageChange(e.value)
                             if (e.event == 'sort') sorting(e.value)
+                                if(e.event == 'count') count(e.value)
                         }}
                     />
 

@@ -9,6 +9,7 @@ import axios from 'axios';
 import shared from './shared';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 
 const Events = () => {
     const user = useSelector((state) => state.user);
@@ -101,7 +102,8 @@ const Events = () => {
                 ApiClient.delete(shared.deleteApi, { id: id }).then(res => {
                             if (res.success) {
                                 // ToastsStore.success(res.message)
-                                clear()
+                                // clear()
+                                getData()
                             }
                             loader(false)
                         })
@@ -180,11 +182,11 @@ const Events = () => {
     }
 
     const edit = (id) => {
-        history(`/${shared.url}/edit/${id}`)
+        history(`/${shared.url}/edit/${encryptId(id)}`)
     }
 
     const view = (id) => {
-        let url=`/${shared.url}/detail/${id}`
+        let url=`/${shared.url}/detail/${encryptId(id)}`
         history(url)
     }
 

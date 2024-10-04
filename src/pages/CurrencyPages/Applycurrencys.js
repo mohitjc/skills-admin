@@ -16,7 +16,7 @@ const [ checkedItems,setCheckedItems]=useState([])
   const user = useSelector((state) => state.user);
 //   const [loader, setLoader] = useState(true)
   const [currency, setcurrency] = useState()
-  console.log(currency,'sdfsdf');
+
   const formValidation = [];
 
   const handleSubmit = (e) => {
@@ -43,7 +43,7 @@ const [ checkedItems,setCheckedItems]=useState([])
       value.addedBy=user._id
       delete value.id;
     }
-    console.log(value,"Vlaue");
+
 
     if ((checkedItems).length<=0) {
         alert('Please select currency fields');
@@ -51,7 +51,7 @@ const [ checkedItems,setCheckedItems]=useState([])
       }
 
        // If validation is successful, proceed with form submission
-console.log('Form submitted:', { checkedItems });
+
 
 
     loader(true);
@@ -69,7 +69,7 @@ console.log('Form submitted:', { checkedItems });
     ApiClient.get(`api/currency/applied`).then((res) => {
       if (res.success) {
         setCheckedItems(res.data&&res.data.map(item=>item.id));
-        console.log(res.data,"data is here");
+       
       }
       loader(false)
     });

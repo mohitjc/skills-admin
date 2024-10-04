@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import environment from '../../environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Group = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -16,7 +17,7 @@ const Group = (p) => {
     const [total, setTotal] = useState(0)
     const [loaging, setLoader] = useState(true)
     const history = useNavigate()
-
+   
     useEffect(() => {
         if (user && user.loggedIn) {
             setFilter({ ...filters, search: searchState.data })
@@ -31,7 +32,10 @@ const Group = (p) => {
         else if (filters.key == key && filters.sorder == 'desc') cls = 'fa-sort-down'
         return 'fa ' + cls
     }
-
+    const count = (e) => {
+        setFilter({ ...filters, count:e })
+        getData({ ...filters ,count: e })
+        }
 
     const sorting = (key) => {
         let sorder = 'asc'
@@ -157,11 +161,11 @@ const Group = (p) => {
       });
 }
     const edit = (id) => {
-        history(`/group/edit/${id}`)
+        history(`/group/edit/${encryptId(id)}`)
     }
 const viewMember =(id)=>{
-    console.log(id ,"idddddddddddd")
-    history(`/member/${id}`)
+   
+    history(`/member/${encryptId(id)}`)
 }
     const exportfun = async () => {
         const token = await localStorage.getItem("token");
@@ -203,6 +207,7 @@ const viewMember =(id)=>{
         changestatus={changestatus}
         exportfun={exportfun}
         viewMember={viewMember}
+        count={ count}
     />
     </>;
 };

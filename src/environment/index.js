@@ -13,6 +13,7 @@ const environment = {
     glRoleId:'65fc4a1e2e22cff912335e12',
     adminRoleId:'65eab1d84e01e43033dc2438',
     professionType:'65fa7ad79ef95c639effcf1c',
-    productTypeId:'64a7d198fa039f179c0320ca'
+    productTypeId:'64a7d198fa039f179c0320ca',
+     secretKey:'AFFJgbhhFHJKNJ8Y78989'
   };
   export default environment;

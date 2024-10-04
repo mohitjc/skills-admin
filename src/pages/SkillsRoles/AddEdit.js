@@ -7,13 +7,15 @@ import { customerRolePermissions, roleGetAllKeys, rolePermission } from '../../m
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/global/layout';
 import { Tooltip } from "antd";
+import { decryptId } from '../../components/common/Encryption/encryption';
 
 const AddEditRole = () => {
 
   const permissions = customerRolePermissions
   const permission = rolePermission
 
-  const { id } = useParams();
+  const { rolesid } = useParams();
+  const id = decryptId(rolesid)
   const [form, setform] = useState({id:'',name:'',status:'active',permissions:roleGetAllKeys('customer')});
   const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);
@@ -66,8 +68,7 @@ const AddEditRole = () => {
           Object.keys(form.permissions).map((itm) => {
             payload.permissions[itm] = permissions[itm]||false;
           });
-          console.log('payload', payload);
-          console.log('permissions', permissions);
+          
           payload.id=id
           setform({
             ...payload,

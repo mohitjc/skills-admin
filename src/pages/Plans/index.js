@@ -12,6 +12,7 @@ import axios from 'axios';
 import environment from '../../environment';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Plans = (p) => {
     let user = useSelector(state => state.user)
     const searchState = useSelector((state) => state.search);
@@ -150,7 +151,7 @@ const Plans = (p) => {
     }
 
     const modalResult=(e)=>{
-        console.log("modalResult",e)
+       
         modalClosed()
     }
 
@@ -233,7 +234,7 @@ const Plans = (p) => {
     }
 
     const edit=(id,copy)=>{
-        history(`/plans/edit/${id}/${copy}`)
+        history(`/plans/edit/${encryptId(id)}/${copy}`)
     }
 
     const tabChange=(tab)=>{
@@ -260,7 +261,7 @@ const Plans = (p) => {
     const dragStart = (e, position) => {
         dragItem.current = position;
         setDragIndex(position)
-        console.log("dragStart",position)
+     
     };
 
     const dragEnter = (e, position) => {

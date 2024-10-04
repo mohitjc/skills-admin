@@ -23,18 +23,19 @@ const Header = ({ setIsOpen, isOpen }) => {
     localStorage.removeItem("token")
     history('/login');
   };
-
+  const loginTime = localStorage.getItem('loginTime');
+  
   const user = useSelector((state) => state.user);
   function autoLogout() {
     const oneDayInMillis = 24 * 60 * 60 * 1000; // One day in milliseconds
     const currentTime = new Date().getTime();
     
-    if (user?.lastLogin) {
-        const lastLoginTime = new Date(user?.lastLogin).getTime();
+    if (loginTime) {
+        const lastLoginTime = new Date(loginTime).getTime();
         const timeDifference = currentTime - lastLoginTime;
         
         if (timeDifference >= oneDayInMillis) {
-            console.log("Logging out user...");
+         
             Logout()
         }
     } else {

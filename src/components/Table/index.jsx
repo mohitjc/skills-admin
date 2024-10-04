@@ -26,6 +26,7 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 10, to
         for (let i = 10; i <= total; i += 10) {
             options.push(i);
         }
+        options.push(total); // Add total count as an option
         return options;
     };
     return <>
@@ -87,7 +88,8 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 10, to
         {count < total ? <>
             <div className='paginationWrapper mt-15'>
                         {/* <span>Show {count} from {total} data</span> */}
-                        <select value={pageSize} onChange={handlePageSizeChange} className="border rounded-md px-2 py-1">
+                        <p className="w-96 text-sm text-gray-500">Show{' '}
+                                    <select value={pageSize} onChange={handlePageSizeChange} className="border rounded-md px-2 py-1">
                                         {/* Dynamically generated options */}
                                         {generateOptions().map(option => (
                                             <option key={option} value={option}>
@@ -95,6 +97,8 @@ const Table = ({ className='',data = [], columns = [],topHead=[], count = 10, to
                                             </option>
                                         ))}
                                     </select>{' '}
+                                    from {total} data
+                                </p>
                         <Pagination
                             currentPage={page}
                             totalSize={total}

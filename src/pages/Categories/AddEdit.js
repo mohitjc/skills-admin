@@ -11,11 +11,13 @@ import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model"
 import { Tooltip } from "antd";
 import { toast } from "react-toastify";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEditCategory = () => {
     const [images, setImages] = useState({ image: '', banner: '', icon: '' });
     const defaultvalue = CategoryType
-    const { id, type } = useParams()
+    const { userid, type } = useParams()
+    const id = decryptId(userid)
     const [form, setform] = useState({ defaultvalue, catType: type ? type : '' })
     const [categories, setCategories] = useState([])
     const [tab, setTab] = useState('info')
@@ -73,7 +75,7 @@ const AddEditCategory = () => {
     const imageResult = (e, key) => {
         images[key] = e.value
         setImages(images)
-        console.log("imageResult", e)
+      
     }
 
     const getCategory = (t = type) => {

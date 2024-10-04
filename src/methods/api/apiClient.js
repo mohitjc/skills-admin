@@ -20,19 +20,24 @@ var config = {
 var baseUrl = environment.api
 
 
-const handleError = (err, hideError) => {
-    console.log("err",err)
+const handleError = (err, hideError ,status) => {
+   
     let message = ''
     if (err) {
-        if (err && err.error && err.error.code == 401) {
-            localStorage.removeItem("persist:admin-app")
-            localStorage.removeItem("token")
+        if (err  && err.code == 401 ) {
+            // localStorage.removeItem("persist:admin-app")
+            // localStorage.removeItem("token")
+            document.getElementById('logout')?.click()
             hideError=true
-            methodModel.route('/')
+            // methodModel.route('/')
         }
         message = err && err.error && err.error.message
         if (!message) message = err.message
         if (!message) message = 'Server Error'
+    }
+    if ( status == 404){
+        window.location.reload();
+            
     }
     if (!hideError) toast.error(message);
 }
@@ -127,7 +132,7 @@ class ApiClient {
                     loader(false)
                     if (error && error.response) {
                         let eres = error.response;
-                        handleError(eres.data, hidError)
+                        handleError(eres.data, hidError , eres?.status)
                         fulfill({ ...eres.data, success: false });
                     } else {
                         toast.error('Network Error')
@@ -238,10 +243,10 @@ class ApiClient {
             var login = `${sasurl}/${container}/${blobName}?${sasKey}`;
             var blockBlobClient = new BlockBlobClient(login, new AnonymousCredential());
             blockBlobClient.uploadBrowserData(file).then(res => {
-                console.log("res", res)
+              
                 fulfill({ success: true, fileName: blobName })
             }).catch(err => {
-                console.log("err", err)
+               
                 fulfill({ success: false, message: err })
             });
         });
@@ -257,9 +262,9 @@ class ApiClient {
             var blockBlobClient = new BlockBlobClient(login, new AnonymousCredential());
             blockBlobClient.deleteIfExists(options).then(res=>{
                 fulfill({success:true})
-                console.log("delete res", res)
+               
             }).catch(err=>{
-                console.log("delete err", err)
+              
                 fulfill({success:false,message: err})
             })
         });

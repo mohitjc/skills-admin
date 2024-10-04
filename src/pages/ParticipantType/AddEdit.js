@@ -8,9 +8,11 @@ import Layout from "../../components/global/layout";
 import SelectDropdown from "../../components/common/SelectDropdown";
 import statusModel from "../../models/status.model";
 import { Tooltip } from "antd";
+import { decryptId } from "../../components/common/Encryption/encryption";
 
 const AddEdit = () => {
-    const { id } = useParams()
+    const { editid } = useParams()
+    const id = decryptId(editid)
     const [form, setform] = useState({ id: '', title: '', status: 'active' })
     const history = useNavigate()
     const [submitted, setSubmitted] = useState(false)

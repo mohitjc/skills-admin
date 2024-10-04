@@ -18,7 +18,7 @@ const LogoSetting = (p) => {
     let value = { ...form };
 
     ApiClient.put('api/user/detail', value).then((res) => {
-      console.log(res);
+
       if (res.success) {
         let uUser = { ...user, ...value };
         dispatch(login_success(uUser));
@@ -31,7 +31,7 @@ const LogoSetting = (p) => {
   const UploadImage = (e) => {
     let image = e.target.files;
     let file = image.item(0);
-    console.log(file);
+
 
     ApiClient.postFormData('api/upload/image?modelName=logo', {
       file: file,
@@ -43,8 +43,7 @@ const LogoSetting = (p) => {
         setimg(image);
         setdata({ ...data, logo: image });
         setForm({ ...form, logo: image });
-        console.log(data);
-        console.log(res);
+        
       }
     });
   };

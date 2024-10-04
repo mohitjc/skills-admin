@@ -13,6 +13,7 @@ import axios from 'axios';
 import environment from '../../environment';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { encryptId } from '../../components/common/Encryption/encryption';
 const Categories = (p) => {
     let user = useSelector(state => state.user)
     const { type } = useParams()
@@ -155,7 +156,7 @@ const Categories = (p) => {
     }
 
     const modalResult = (e) => {
-        console.log("modalResult", e)
+      
         modalClosed()
     }
 
@@ -226,8 +227,8 @@ const Categories = (p) => {
     }
 
     const edit = (id) => {
-        let url = "/categories/edit/" + id
-        if (type) url = `/category/${type}/edit/${id}`
+        let url = "/categories/edit/" + encryptId(id)
+        if (type) url = `/category/${type}/edit/${encryptId(id)}`
         history(url)
     }
 
