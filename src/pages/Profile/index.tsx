@@ -50,16 +50,7 @@ const Profile = () => {
 
         <div className='inner_part sm:mt-3 md:mt-8 p-6 shadow-box overflow-hidden rounded-lg bg-white'>
           <div className='grid items-center grid-cols-12 gap-4'>
-            <div className='col-span-12 md:col-span-2'>
-              <div className='text_head'>
-                <label className='text-typo text-base font-medium max-w-sm w-full block' >Image</label>
-              </div>
-            </div>
-            <div className='col-span-12 md:col-span-10'>
-              <div className='sub_fatch'>
-              <img src={methodModel.userImg(data && data.image)} className="h-32 w-32 mx-auto" />
-              </div>
-            </div>
+            
 
 
             <div className='col-span-12 md:col-span-2'>
@@ -94,6 +85,17 @@ const Profile = () => {
             <div className='col-span-12 md:col-span-10'>
               <div className='sub_fatch'>
                 <p className=''>{String(data.mobileNo?'+'+data.mobileNo:'')}</p>
+              </div>
+            </div>
+
+            <div className='col-span-12 md:col-span-2'>
+              <div className='text_head'>
+                <label className='text-typo text-base font-medium max-w-sm w-full block' >Image</label>
+              </div>
+            </div>
+            <div className='col-span-12 md:col-span-10'>
+              <div className='sub_fatch'>
+              <img src={methodModel.userImg(data && data.image)} className="h-20 w-20 object-contain mx-auto" />
               </div>
             </div>
 
