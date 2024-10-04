@@ -508,9 +508,9 @@ button.btn.btn-primary.loginclass {
     max-height: calc(100vh - 300px);
   }
 
-  .main-wrapper main.main {
-   width: 100% !important; 
-}
+//   .main-wrapper main.main {
+//     width: calc(100% - 0px) !important;
+// }
 }
 
 .login-wrapper {
@@ -1122,9 +1122,9 @@ input.searchbar.mr-2 {
     display: none;
   }
 
-  .min-sidebar~div>main.main {
-    width: 100% !important;
-  }
+  // .min-sidebar~div>main.main {
+  //   width: 100% !important;
+  // }
 
   // proffile dropdown
   // .dropdown.ml-auto {
@@ -1236,7 +1236,7 @@ input.searchbar.mr-2 {
 
   .main-sidebar {
     position: absolute;
-    top: 72px;
+    // top: 72px;
     z-index: 998;
   }
 
@@ -1421,10 +1421,7 @@ input.searchbar.mr-2 {
     font-size: 14px;
   }
 
-  article.d-flex a,
-  button {
-    margin-bottom: 1rem !important;
-  }
+  
 
   button.btn.btn-primary.dropdown-toggle.removeBg {
     margin-bottom: 0px !important;
@@ -1754,6 +1751,7 @@ img.hide-logo {
   padding-right: 0;
   margin-left: auto;
   width: calc(100% - 280px);
+  // width: 100%;
 }
 
 .min-sidebar~div>main.main {

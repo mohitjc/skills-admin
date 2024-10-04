@@ -393,7 +393,7 @@ const Html = ({
     return (
         <>
             <Layout>
-                <div className="flex justify-between items-center mb-6">
+                <div className="flex justify-between flex-wrap gap-4 items-center mb-6">
 
 
                     <div>
@@ -404,21 +404,20 @@ const Html = ({
                     </div>
 
 
-                    <div className="flex">
-                        <div className="buttons_Section filterFlex">
+                    <div className="flex gap-2 items-center">
+                        
 
-                            <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed mr-3" onClick={() => exportfun()}>
+                            <button className="!px-2.5 text-[#3C3E49] text-sm font-normal py-2.5 flex items-center justify-center gap-2 bg-[#fff] rounded-lg shadow-btn hover:bg-[#F3F2F5] border border-[#D0D5DD] transition-all focus:ring-2 ring-[#F1F2F3] disabled:bg-[#F3F2F5] disabled:cursor-not-allowed " onClick={() => exportfun()}>
                                 <PiFileCsv className="text-typo text-xl" />  Export CSV
                             </button>
                             {isAllow(`add${shared.check}`) ? <>
-                                <Link className="bg-primary leading-10 mr-3 h-10 flex items-center shadow-btn px-6 hover:opacity-80 text-sm text-white rounded-lg gap-2" to={`/customer/add`}>
+                                <Link className="bg-primary py-2.5  flex items-center shadow-btn px-2.5 hover:opacity-80 text-sm text-white rounded-lg gap-2" to={`/customer/add`}>
                                     <FiPlus className="text-xl text-white" />  Create new
                                 </Link>
                             </> : <></>}
 
 
 
-                        </div>
 
                     </div>
                 </div>
