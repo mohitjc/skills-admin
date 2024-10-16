@@ -12,6 +12,7 @@ import ImageUpload from "../../components/common/ImageUpload";
 import { Editor } from "@tinymce/tinymce-react";
 import tinymcModel from "../../models/tinymc.model";
 import { decryptId } from "../../components/common/Encryption/encryption";
+import ReactQuill from "react-quill";
 
 const AddEdit = () => {
     const { editid } = useParams()
@@ -24,7 +25,36 @@ const AddEdit = () => {
     const formValidation = [
         { key: 'status', required: true }
     ]
+    const formats = [
+        'header',
+        'font',
+        'size',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'indent',
+        'link',
+        'image',
+        'color',
+    ];
 
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image', 'color'],
+            ['clean']
+        ],
+        clipboard: {
+            matchVisual: false,
+        }
+    };
     const handleSubmit = (e) => {
         e.preventDefault()
         setSubmitted(true)
@@ -150,7 +180,7 @@ const AddEdit = () => {
                         </div>
                         <div className="col-span-12 md:col-span-6">
                                 <label className='lablefontcls'>Description</label>
-                                <Editor
+                                {/* <Editor
                             textareaName="description"
                             value={form?.description}
                             className="tuncketcls"
@@ -165,7 +195,15 @@ const AddEdit = () => {
                               toolbar: tinymcModel.toolbar,
                             }}
                             required
-                          />
+                          /> */}
+                          <ReactQuill
+                            formats={formats}
+                            modules={modules}
+                            theme="snow"
+                            value={form.description}
+                            onChange={e => setform({ ...form, description: e })}
+                            className=" "
+                        />
                             </div>
                      
                     </div>
