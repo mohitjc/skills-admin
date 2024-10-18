@@ -563,7 +563,7 @@ const {id} =useParams()
             ) : null)} */}
 
 <div className="col-span-12 md:col-span-6">
-                <label>Group</label>
+                <label>Group <span className="star">*</span></label>
                 <SelectDropdown
                   id="statusDropdown"
                   displayValue="name"
@@ -574,6 +574,7 @@ const {id} =useParams()
                   }}
                   options={groups}
                   theme="search"
+                  required
                 />
               </div>
               { form.id  ? <div className="col-span-12 md:col-span-6">
