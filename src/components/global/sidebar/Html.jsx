@@ -141,6 +141,12 @@ const Html = ({ ListItemLink, tabclass, urlAllow, route, isOpen,user }) => {
       url: '/event',
       key: 'readEvents',
     },
+    {
+      name: 'About Us',
+      icon: <AiOutlineUsergroupAdd className="text-[#fff] shrink-0 text-lg" /> ,
+      url: '/aboutUs',
+      key: 'readGroup',
+    },
   ]
 
   return (
