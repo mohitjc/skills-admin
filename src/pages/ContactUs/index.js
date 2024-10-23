@@ -36,7 +36,10 @@ const AboutUs = (p) => {
         setFilter({ ...filters, count:e })
         getData({ ...filters ,count: e })
         }
-
+        const view = (id) => {
+            let url=`/contactus/${encryptId(id)}`
+            history(url)
+        }
     const sorting = (key) => {
         let sorder = 'asc'
         if (filters.key == key) {
@@ -208,6 +211,7 @@ const viewMember =(id)=>{
         exportfun={exportfun}
         viewMember={viewMember}
         count={ count}
+        view={view}
     />
     </>;
 };

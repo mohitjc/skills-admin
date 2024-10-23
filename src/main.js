@@ -67,6 +67,7 @@ import ViewEvent from "./pages/Events/View";
 import Member from './pages/Group/view';
 import { ToastContainer } from 'react-toastify';
 import AboutUs from './pages/ContactUs';
+import AboutUsView from "./pages/ContactUs/view"
 
 
 /************ store configration *********/
@@ -160,7 +161,8 @@ export default () => {
                             <Route exact={true} path="/customer/add" Component={AddEditCustomer} />
                             <Route exact={true} path="/customer/edit/:editid" Component={AddEditCustomer} />
                             <Route exact={true} path="/customer/view/:viewid" Component={ViewCustomer} />
-                            <Route exact={true} path="/aboutus" Component={AboutUs} />
+                            <Route exact={true} path="/contactus" Component={AboutUs} />
+                            <Route exact={true} path="/contactus/:detailid" Component={AboutUsView} />
                             <Route exact path="/" element={<Navigate to="/login" />} />
                             </Routes>
                     </Router>

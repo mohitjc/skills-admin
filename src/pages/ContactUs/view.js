@@ -1,163 +1,83 @@
-import { React, useState, useEffect } from 'react'
-import Layout from '../../components/global/layout'
-import Table from "../../components/Table";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import ApiClient from '../../methods/api/apiClient';
-import loader from '../../methods/loader';
-import { useSelector } from 'react-redux';
+import {  useNavigate } from "react-router-dom";
+import Layout from "../../components/global/layout";
+import { useEffect, useState } from "react";
+import datepipeModel from "../../models/datepipemodel";
+import ApiClient from "../../methods/api/apiClient";
+import { useParams } from "react-router-dom";
 
-import { Tooltip } from "antd";
-import datepipeModel from '../../models/datepipemodel';
-import { decryptId } from '../../components/common/Encryption/encryption';
-const Member = () => {
-    const [filters, setFilter] = useState({ page: 1, count: 10, search: '', catType: '' })
-    let user = useSelector(state => state.user)
-    const [data, setData] = useState([])
-    const [loaging, setLoader] = useState(true)
-    const [total, setTotal] = useState(0)
-    const [list ,setList] = useState()
-    const { viewid } = useParams()
-    const id = decryptId(viewid)
-    const searchState = useSelector((state) => state.search);
-  
-    useEffect(() => {
-        if (user && user.loggedIn) {
-            setFilter({ ...filters, search: searchState.data })
-            getData({ search: searchState.data, page: 1 })
-        }
-    }, [searchState])
-    const columns = [
-        {
-            key: 'name', name: 'Name',
-            render: (row) => {
-                return <span className='capitalize'>{row?.fullName}</span>
-            }
-        },
-        {
-            key: 'email', name: 'E-mail',
-            render: (row) => {
-                return <span>{row?.email}</span>
-            }
-        },
-        // {
-        //     key: 'lastLogin', name: 'Last Login',
-        //     render: (row) => {
-        //         return <span> { row?.addedByDetail?.lastLogin ?  datepipeModel.datetime(row?.addedByDetail?.lastLogin):"N/A"}</span>
-        //     }
-        // },
-        {
-            key: 'role', name: 'Role',
-            render: (row) => {
-                return <span className='capitalize'> {row?.role == "meetManager" ? "Connect Meet Manager" : row?.role == "member" ? "member" : row?.role == "assistant" ? "Assistant Group Leader"
-                    : row?.role}</span>
-            }
-        },
-        {
-            key: 'status', name: 'Status',
-            render: (row) => {
-                return <span className='capitalize'>  {row?.inviteStatus}</span>
-            }
-        },
+import { decryptId } from "../../components/common/Encryption/encryption";
+const View = () => {
+    const [data, setData] = useState()
+    const [host, setHost] = useState()
+    const history = useNavigate()
+    const {detailid}=useParams()
+const id = decryptId(detailid)
 
-    ]
-    const sorting = (key) => {
-        let sorder = 'asc'
-        if (filters.key == key) {
-            if (filters.sorder == 'asc') {
-                sorder = 'desc'
-            } else {
-                sorder = 'asc'
-            }
-        }
+   
 
-        let sortBy = `${key} ${sorder}`;
-        setFilter({ ...filters, sortBy, key, sorder })
-        getData({ sortBy, key, sorder })
-    }
-    const count = (e) => {
-        setFilter({ ...filters, count: e })
-        getData({ ...filters, count: e })
-    }
-    const pageChange = (e) => {
-        setFilter({ ...filters, page: e })
-        getData({ page: e })
-    }
-
-    const changestatus = (e) => {
-        setFilter({ ...filters, status: e, page: 1 })
-        getData({ status: e, page: 1 })
-    }
-    const getData = (p = {}) => {
-        loader(true)
-        setLoader(true)
-        let filter = { ...filters, ...p, groupId: id }
-        ApiClient.get('api/members/list', filter).then(res => {
-            if (res.success) {
-                setList(res)
-                setData(res.data.map(itm => {
-                    itm.id = itm._id
-                    return itm
-                }))
-                setTotal(res.total)
+    const getDetail=()=>{
+        ApiClient.get("api/contactus",{id:id}).then(res=>{
+            if(res.success){
+                setData(res.data)
+             
             }
-            setLoader(false)
-            loader(false)
         })
     }
-    const filter = (p = {}) => {
-        let f = {
-            page: 1,
-            ...p
-        }
-        setFilter({ ...filters, ...f })
-        getData({ ...f })
-    }
-    const clear = () => {
-        setFilter({ ...filters, search: '', status: '', page: 1 })
-        getData({ search: '', status: '', page: 1 })
-    }
-    useEffect(() => {
-        getData()
-    }, [])
 
-    return (
+    useEffect(()=>{
+        getDetail()
+    },[])
+
+    return <>
         <Layout>
-
-<div className='flex'><h4 className='font-bold text-xl'>Group Leader </h4>  <p className='font-normal text-xl '> : {list?.groupLeader?.fullName}</p> </div>
-            <div className='flex items-center gap-2 mb-4 justify-between'>
-               
-            
-
-                <div className='flex items-center gap-2'>
-                    <Tooltip placement="top" title="Back">
-                        <Link to="/group" className="!px-4  py-2 flex items-center justify-center  rounded-lg shadow-btn hover:bg-[#F3F2F5] border  transition-all    mr-3"><i className='fa fa-angle-left text-lg'></i></Link>
-                    </Tooltip>
-                    <h2 className='font-bold text-xl'>Member List</h2>
+            <div className="text-right">
+                <div>
+                    <a to="/users" onClick={() => history(-1)}>  <i className="fa fa-arrow-left mr-4 mb-3 " title='Back' aria-hidden="true"></i></a>
                 </div>
-
             </div>
-            {!loaging ? <>
-                <Table
-                    className='mb-3'
-                    data={data}
-                    columns={columns}
-                    page={filters.page}
-                    count={filters.count}
-                    total={total}
+            <div className='bg-white shadow-box rounded-lg w-full p-4 mt-6'>
+
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="sideclass col-span-12 md:col-span-12">
+                        <h3 className="mt-3 mb-6 py-2 bg-gray-300 px-3">ContactUs Details</h3>
+                        <div className="grid grid-cols-12 gap-4">
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls ">First Name</label>
+                                <div className='profiledetailscls capitalize'>{data?.firstName || '--'}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Last Name</label>
+                                <div className='profiledetailscls capitalize'>{data?.lastName || '--'}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Full Name</label>
+                                <div className='profiledetailscls capitalize'>{data?.fullName}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">E-mail</label>
+                                <div className='profiledetailscls '>{data?.email || '--'}</div>
+                            </div>
+                            <div className="col-span-12 md:col-span-6">
+                                <label className="profileheddingcls">Message</label>
+                                <div className='profiledetailscls capitalize'>{data?.message || '--'}</div>
+                            </div>
+                          
+                        </div>
 
 
-                    result={(e) => {
-                        if (e.event == 'page') pageChange(e.value)
-                        if (e.event == 'sort') sorting(e.value)
-                        if (e.event == 'count') count(e.value)
-                    }}
-                />
-
-            </> : <></>}
-
-
+                    </div>
+                </div>
+            </div>
+            {/* <div className='bg-white shadow-box rounded-lg w-full p-4 mt-6'>
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="sideclass col-span-12 md:col-span-12">
+                        <h3 className="mt-3 mb-6 py-2 bg-gray-300 px-3">Attendeee</h3>
+                       <AttendeeList eventId={id} eventDetail={data} />
+                    </div>
+                </div>
+            </div> */}
         </Layout>
-    )
+    </>
 }
 
-export default Member
+export default View;

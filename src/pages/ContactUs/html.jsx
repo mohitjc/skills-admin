@@ -24,7 +24,7 @@ const Html = ({
     clear,
     filters,
     loaging,
-    data,
+    data,view,
     exportfun,
     changestatus, viewMember,
     isAllow,
@@ -47,7 +47,7 @@ const Html = ({
         },
       
         {
-            key: 'email', name: 'Email', sort: true,
+            key: 'email', name: 'Email', sort: true, 
             render: (row) => {
                 return <span className='capitalize'>{row?.email}</span>
             }
@@ -58,6 +58,22 @@ const Html = ({
                 return <span className='capitalize'>{row?.message}</span>
             }
         },
+        {
+            key: 'action', name: 'Action',
+            render: (itm) => {
+                return <>
+                    <div className="flex items-center justify-start gap-1.5">
+                    <Tooltip placement="top" title="View">
+                                <a className="border cursor-pointer !border-[#E9253129] hover:opacity-70 rounded-md bg-[#fff] w-9 h-9 text-[#E92531] flex items-center justify-center text-md " onClick={e => view(itm.id)}>
+                                <IoEyeOutline />
+
+                                </a>
+                            </Tooltip>
+                       
+                    </div>
+                </>
+            }
+        },
     ]
 
 
@@ -65,7 +81,7 @@ const Html = ({
         <Layout>
             <div className="flex justify-between items-center">
                 <div>
-                    <h3 className="text-2xl font-semibold text-[#111827]"> About Us</h3>
+                    <h3 className="text-2xl font-semibold text-[#111827]"> Contact Us</h3>
                     {/* <p class="text-sm font-normal text-[#75757A]">Here you can see all about your Group</p> */}
                 </div>
 
