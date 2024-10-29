@@ -204,9 +204,9 @@ const Html = ({
                     key: 'fullName', name: 'Name', sort: true,
                     render: (itm) => {
                         return <>
-                            <div className='user_detail'>
+                            <div className='user_detail flex flex-col gap-2'>
                                 <img src={methodModel.userImg(itm.image)} className="user_imgs" />
-                                <div className='user_name'>
+                                <div className='user_name text-center'>
                                     <h4 className='user capitalize'>
                                         {itm.fullName}
                                     </h4>
